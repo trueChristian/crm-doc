@@ -18,3 +18,4 @@ Each electorate has a certified quorum. These cases concern the motion threshold
 | Two-thirds of decisive votes | 840 | [1–325](super-01.md), [326–650](super-02.md), [651–840](super-03.md) |
 | Three-fifths including abstentions | 840 | [1–325](cast-01.md), [326–650](cast-02.md), [651–840](cast-03.md) |
 | Three-quarters of eligible rights | 840 | [1–325](eligible-01.md), [326–650](eligible-02.md), [651–840](eligible-03.md) |
+| All abstain or no cast ballots, with two sole-decisive controls | 8 | [1–8](zero-denominators.md) |
