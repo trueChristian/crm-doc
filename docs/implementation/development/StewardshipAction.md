@@ -33,7 +33,7 @@ The target is [StewardshipPlan](StewardshipPlan.md). Resolve the identifier in t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | StewardshipPlan·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | StewardshipPlan·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | StewardshipPlan·MISSING | Queue the missing StewardshipPlan mapping or reject the command before linking. |
 | Wrong scope | StewardshipPlan·B01 | Do not attach another church’s StewardshipPlan without a supported exchange and local authority. |
 | Target rename | Rename StewardshipPlan·A01 after linking | The existing plan_id keeps the same identity and historic documents retain their original wording. |
@@ -72,7 +72,7 @@ The target is [ContactDecision](../communications/ContactDecision.md). Resolve t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ContactDecision·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ContactDecision·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ContactDecision·MISSING | Queue the missing ContactDecision mapping or reject the command before linking. |
 | Wrong scope | ContactDecision·B01 | Do not attach another church’s ContactDecision without a supported exchange and local authority. |
 | Target rename | Rename ContactDecision·A01 after linking | The existing contact_decision_id keeps the same identity and historic documents retain their original wording. |
@@ -85,7 +85,7 @@ The target is [DispatchRequest](../communications/DispatchRequest.md). Resolve t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | DispatchRequest·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | DispatchRequest·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | DispatchRequest·MISSING | Queue the missing DispatchRequest mapping or reject the command before linking. |
 | Wrong scope | DispatchRequest·B01 | Do not attach another church’s DispatchRequest without a supported exchange and local authority. |
 | Target rename | Rename DispatchRequest·A01 after linking | The existing dispatch_ref keeps the same identity and historic documents retain their original wording. |
@@ -124,7 +124,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing assigned_to keeps the same identity and historic documents retain their original wording. |
@@ -137,7 +137,7 @@ The target is [GivingDocument](../finance/GivingDocument.md). Resolve the identi
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | GivingDocument·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | GivingDocument·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | GivingDocument·MISSING | Queue the missing GivingDocument mapping or reject the command before linking. |
 | Wrong scope | GivingDocument·B01 | Do not attach another church’s GivingDocument without a supported exchange and local authority. |
 | Target rename | Rename GivingDocument·A01 after linking | The existing related_document_id keeps the same identity and historic documents retain their original wording. |

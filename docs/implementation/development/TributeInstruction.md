@@ -33,7 +33,7 @@ The target is [GivingParty](../finance/GivingParty.md). Resolve the identifier i
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | GivingParty·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | GivingParty·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | GivingParty·MISSING | Queue the missing GivingParty mapping or reject the command before linking. |
 | Wrong scope | GivingParty·B01 | Do not attach another church’s GivingParty without a supported exchange and local authority. |
 | Target rename | Rename GivingParty·A01 after linking | The existing giving_party_id keeps the same identity and historic documents retain their original wording. |
@@ -46,7 +46,7 @@ The target is [GiftAttribution](../finance/GiftAttribution.md). Resolve the iden
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | GiftAttribution·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | GiftAttribution·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | GiftAttribution·MISSING | Queue the missing GiftAttribution mapping or reject the command before linking. |
 | Wrong scope | GiftAttribution·B01 | Do not attach another church’s GiftAttribution without a supported exchange and local authority. |
 | Target rename | Rename GiftAttribution·A01 after linking | The existing gift_attribution_id keeps the same identity and historic documents retain their original wording. |
