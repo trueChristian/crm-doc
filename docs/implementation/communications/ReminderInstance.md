@@ -1,0 +1,266 @@
+# ReminderInstance
+
+[Reminders and orchestration](../../communications/reminders-and-orchestration.md) · [Department records](README.md) · [Value conventions](../value-conventions.md)
+
+## Record invariant
+
+Identity, audit fields, ownership and effective-date notation follow the [shared record envelope](../../foundation/record-conventions.md). A business key or parent-child uniqueness rule below remains enforceable even when an implementation also assigns an opaque identifier.
+
+Unique rule/occurrence/recipient unit/sequence. Changing the source revision reschedules or cancels the same semantic reminder. Reopening or reissuing requires an explicit new occurrence or sequence.
+
+## Field inventory
+
+| Field | Logical declaration | Presence at the applicable step | Validation family |
+| --- | --- | --- | --- |
+| `rule_id` | ReminderRule ref | Required when the record reaches its applicable state | [relation](../value-conventions.md#relation) |
+| `rule_revision` | integer | Required when the record reaches its applicable state | [integer](../value-conventions.md#integer) |
+| `source_kind` | code | Required when the record reaches its applicable state | [vocab](../value-conventions.md#vocab) |
+| `source_id` | opaque | Required when the record reaches its applicable state | [resource](../value-conventions.md#resource) |
+| `occurrence_key` | opaque | Required when the record reaches its applicable state | [key](../value-conventions.md#key) |
+| `source_revision` | text | Required when the record reaches its applicable state | [version](../value-conventions.md#version) |
+| `subject_person_id` | Person ref? | Optional under owner conditions | [relation](../value-conventions.md#relation) |
+| `subject_unit_key` | opaque | Required when the record reaches its applicable state | [key](../value-conventions.md#key) |
+| `sequence` | integer | Required when the record reaches its applicable state | [integer](../value-conventions.md#integer) |
+| `anchor_at` | instant | Required when the record reaches its applicable state | [instant](../value-conventions.md#instant) |
+| `intended_local_time` | local timestamp | Required when the record reaches its applicable state | [instant](../value-conventions.md#instant) |
+| `zone` | zone | Required when the record reaches its applicable state | [zone](../value-conventions.md#zone) |
+| `planned_at` | instant | Required when the record reaches its applicable state | [instant](../value-conventions.md#instant) |
+| `latest_useful_at` | instant? | Optional under owner conditions | [instant](../value-conventions.md#instant) |
+| `state` | pending/held/queued/sent/suppressed/cancelled/expired | Required when the record reaches its applicable state | [enum](../value-conventions.md#enum) |
+| `reason` | code? | Optional under owner conditions | [vocab](../value-conventions.md#vocab) |
+| `dispatch_id` | DispatchRequest ref? | Optional under owner conditions | [relation](../value-conventions.md#relation) |
+
+## Input, storage and exchange cases
+
+Each section targets one field on an otherwise admissible record. The first probe tests its declared representation, not permission to commit the transaction. The owner invariant above can reject an otherwise valid value. A change to a projection is tested at its source.
+
+### rule_id
+
+The target is [ReminderRule](ReminderRule.md). Resolve the identifier in the approved scope before using its fields.
+
+| Probe | Input or observation | Expected result |
+| --- | --- | --- |
+| Admissible representation | ReminderRule·A01 | Resolve stable identity in the permitted scope. |
+| Malformed or unmapped | ReminderRule·MISSING | Return a type mismatch without changing the link. |
+| Unresolved target | ReminderRule·MISSING | Queue the missing ReminderRule mapping or reject the command before linking. |
+| Wrong scope | ReminderRule·B01 | Do not attach another church’s ReminderRule without a supported exchange and local authority. |
+| Target rename | Rename ReminderRule·A01 after linking | The existing rule_id keeps the same identity and historic documents retain their original wording. |
+| Incomplete record | No rule_id at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
+
+### rule_revision
+
+Use whole-number measure for `ReminderInstance.rule_revision`. Preserve integer precision and enforce the specific field bounds.
+
+| Probe | Input or observation | Expected result |
+| --- | --- | --- |
+| Admissible representation | 2 subject to field bounds | Preserve integer precision and enforce the specific field bounds. |
+| Malformed or unmapped | 2.5 | Reject fractional input without rounding it into a whole person, place or sequence. |
+| Value equals the configured upper bound | value exactly equal to the applicable maximum | Apply its inclusive or exclusive rule explicitly. |
+| Value exceeds the bound by one | applicable maximum plus one | Return a range error before changing dependent totals. |
+| Missing count versus measured zero | observed 0 and omitted value | Keep absence distinct from an observed zero. |
+| Incomplete record | No rule_revision at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
+
+### source_kind
+
+Use versioned classification or status code for `ReminderInstance.source_kind`. Check the relevant vocabulary and permitted transition before applying.
+
+| Probe | Input or observation | Expected result |
+| --- | --- | --- |
+| Admissible representation | active source_kind code in the bound vocabulary | Check the relevant vocabulary and permitted transition before applying. |
+| Malformed or unmapped | unmapped source_kind code | Request mapping to an authorized code. |
+| Code retired before a new transaction | new operation after code retirement | Allow historic display; withhold new use unless policy permits. |
+| Same label in two code lists | same display name in two vocabularies | Use record type and field to locate the correct list. |
+| Bulk import requests a state transition | import requests the final approved state | Run ordinary transition guards and approval checks. |
+| Incomplete record | No source_kind at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
+
+### source_id
+
+Use scoped or external reference for `ReminderInstance.source_id`. Resolve against the permitted kind, owning namespace and purpose.
+
+| Probe | Input or observation | Expected result |
+| --- | --- | --- |
+| Admissible representation | verified source_id in the owner namespace | Resolve against the permitted kind, owning namespace and purpose. |
+| Malformed or unmapped | unmapped source_id | Request clarification or quarantine the mapping. |
+| Same visible code from two sources | issuer A:007 and issuer B:007 | Retain distinct namespace/key pairs. |
+| Referenced evidence is restricted | restricted attachment behind an otherwise visible request | Show a minimal permitted result and check document access independently. |
+| Duplicate delivery of the same mapped reference | same namespace, key and accepted mapping twice | Resolve the same destination record once. |
+| Incomplete record | No source_id at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
+
+### occurrence_key
+
+Use opaque identity or token for `ReminderInstance.occurrence_key`. Compare the opaque value under its issuer rules; preserve leading characters.
+
+| Probe | Input or observation | Expected result |
+| --- | --- | --- |
+| Admissible representation | ReminderInstance·0007 | Compare the opaque value under its issuer rules; preserve leading characters. |
+| Malformed or unmapped | human-readable name passed as the identifier | Request a verified lookup or an explicit mapping. |
+| Renamed display label | update display label; retain stable key | Identity comparisons still use the stable key. |
+| Conflicting claim on an existing key | second owner claims the same issued key | Retain original binding; route conflict for review. |
+| Retried creation with the original operation key | submit original creation receipt twice | Use the owning creation outcome and return the established identity. |
+| Incomplete record | No occurrence_key at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
+
+### source_revision
+
+Use revision number or opaque revision token for `ReminderInstance.source_revision`. Compare under the declared revision scheme. Require the expected version for conflicting work.
+
+| Probe | Input or observation | Expected result |
+| --- | --- | --- |
+| Admissible representation | the current revision returned by the owner | Compare under the declared revision scheme. Require the expected version for conflicting work. |
+| Malformed or unmapped | superseded version presented for a new approval | Reject or reopen review against the current contents. |
+| Two operators begin at revision seven | two edits both cite baseline 7 | Commit the first change once and re-evaluate the second; never overwrite an unreviewed difference. |
+| Re-read an already approved revision | re-open issued revision 4 after revision 6 | Return the frozen value and evidence for that edition. |
+| Replay of an earlier result | same business operation observed at two revisions | Correlate by the business operation identity; a newer version does not create a second effect. |
+| Incomplete record | No source_revision at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
+
+### subject_person_id
+
+The target is [Person](../people/Person.md). Resolve the identifier in the approved scope before using its fields.
+
+| Probe | Input or observation | Expected result |
+| --- | --- | --- |
+| Admissible representation | Person·A01 | Resolve stable identity in the permitted scope. |
+| Malformed or unmapped | Person·MISSING | Return a type mismatch without changing the link. |
+| Unresolved target | Person·MISSING | Queue the missing Person mapping or reject the command before linking. |
+| Wrong scope | Person·B01 | Do not attach another church’s Person without a supported exchange and local authority. |
+| Target rename | Rename Person·A01 after linking | The existing subject_person_id keeps the same identity and historic documents retain their original wording. |
+| Absent in intake | No subject_person_id provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
+
+### subject_unit_key
+
+Use opaque identity or token for `ReminderInstance.subject_unit_key`. Compare the opaque value under its issuer rules; preserve leading characters.
+
+| Probe | Input or observation | Expected result |
+| --- | --- | --- |
+| Admissible representation | ReminderInstance·0007 | Compare the opaque value under its issuer rules; preserve leading characters. |
+| Malformed or unmapped | human-readable name passed as the identifier | Request a verified lookup or an explicit mapping. |
+| Renamed display label | update display label; retain stable key | Identity comparisons still use the stable key. |
+| Conflicting claim on an existing key | second owner claims the same issued key | Retain original binding; route conflict for review. |
+| Retried creation with the original operation key | submit original creation receipt twice | Use the owning creation outcome and return the established identity. |
+| Incomplete record | No subject_unit_key at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
+
+### sequence
+
+Use whole-number measure for `ReminderInstance.sequence`. Preserve integer precision and enforce the specific field bounds.
+
+| Probe | Input or observation | Expected result |
+| --- | --- | --- |
+| Admissible representation | 2 subject to field bounds | Preserve integer precision and enforce the specific field bounds. |
+| Malformed or unmapped | 2.5 | Reject fractional input without rounding it into a whole person, place or sequence. |
+| Value equals the configured upper bound | value exactly equal to the applicable maximum | Apply its inclusive or exclusive rule explicitly. |
+| Value exceeds the bound by one | applicable maximum plus one | Return a range error before changing dependent totals. |
+| Missing count versus measured zero | observed 0 and omitted value | Keep absence distinct from an observed zero. |
+| Incomplete record | No sequence at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
+
+### anchor_at
+
+Use unambiguous point in time for `ReminderInstance.anchor_at`. Compare as the same instant as 07:00:00Z on that date; retain needed display context.
+
+| Probe | Input or observation | Expected result |
+| --- | --- | --- |
+| Admissible representation | 2026-11-26T09:00:00+02:00 | Compare as the same instant as 07:00:00Z on that date; retain needed display context. |
+| Malformed or unmapped | ambiguous local time in repeated hour | Request the offset, zone resolution or explicit policy decision. |
+| Two observations with different offsets denoting one instant | 09:00+02:00 and 07:00Z on the same day | Temporal comparison treats them as equal; business identity still uses its own key. |
+| Observation arrives after a later event | event at 09:00 reported after event at 09:05 | Retain occurrence and observation order separately. |
+| Expiry coincides with current instant | observation exactly at expiry | Apply the documented validity interval at the decision point. |
+| Incomplete record | No anchor_at at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
+
+### intended_local_time
+
+Use unambiguous point in time for `ReminderInstance.intended_local_time`. Compare as the same instant as 07:00:00Z on that date; retain needed display context.
+
+| Probe | Input or observation | Expected result |
+| --- | --- | --- |
+| Admissible representation | 2026-11-26T09:00:00+02:00 | Compare as the same instant as 07:00:00Z on that date; retain needed display context. |
+| Malformed or unmapped | ambiguous local time in repeated hour | Request the offset, zone resolution or explicit policy decision. |
+| Two observations with different offsets denoting one instant | 09:00+02:00 and 07:00Z on the same day | Temporal comparison treats them as equal; business identity still uses its own key. |
+| Observation arrives after a later event | event at 09:00 reported after event at 09:05 | Retain occurrence and observation order separately. |
+| Expiry coincides with current instant | observation exactly at expiry | Apply the documented validity interval at the decision point. |
+| Incomplete record | No intended_local_time at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
+
+### zone
+
+Use time zone with civil-time rules for `ReminderInstance.zone`. Preserve zone identity; use the applicable local rules for the date.
+
+| Probe | Input or observation | Expected result |
+| --- | --- | --- |
+| Admissible representation | Africa/Windhoek | Preserve zone identity; use the applicable local rules for the date. |
+| Malformed or unmapped | ambiguous zone abbreviation | Require a named zone or explicitly supported fixed offset. |
+| Future recurring appointment | fixed local Sunday service across offset change | Recompute local-time occurrences using its stored zone and change policy. |
+| Staff view from a second zone | remote attendee opens the schedule abroad | Show the requested local display without moving the actual instant. |
+| Zone changes for a campus | campus adopts a new effective zone | Re-evaluate future occurrences and retain historical issue evidence. |
+| Incomplete record | No zone at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
+
+### planned_at
+
+Use unambiguous point in time for `ReminderInstance.planned_at`. Compare as the same instant as 07:00:00Z on that date; retain needed display context.
+
+| Probe | Input or observation | Expected result |
+| --- | --- | --- |
+| Admissible representation | 2026-11-26T09:00:00+02:00 | Compare as the same instant as 07:00:00Z on that date; retain needed display context. |
+| Malformed or unmapped | ambiguous local time in repeated hour | Request the offset, zone resolution or explicit policy decision. |
+| Two observations with different offsets denoting one instant | 09:00+02:00 and 07:00Z on the same day | Temporal comparison treats them as equal; business identity still uses its own key. |
+| Observation arrives after a later event | event at 09:00 reported after event at 09:05 | Retain occurrence and observation order separately. |
+| Expiry coincides with current instant | observation exactly at expiry | Apply the documented validity interval at the decision point. |
+| Incomplete record | No planned_at at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
+
+### latest_useful_at
+
+Use unambiguous point in time for `ReminderInstance.latest_useful_at`. Compare as the same instant as 07:00:00Z on that date; retain needed display context.
+
+| Probe | Input or observation | Expected result |
+| --- | --- | --- |
+| Admissible representation | 2026-11-26T09:00:00+02:00 | Compare as the same instant as 07:00:00Z on that date; retain needed display context. |
+| Malformed or unmapped | ambiguous local time in repeated hour | Request the offset, zone resolution or explicit policy decision. |
+| Two observations with different offsets denoting one instant | 09:00+02:00 and 07:00Z on the same day | Temporal comparison treats them as equal; business identity still uses its own key. |
+| Observation arrives after a later event | event at 09:00 reported after event at 09:05 | Retain occurrence and observation order separately. |
+| Expiry coincides with current instant | observation exactly at expiry | Apply the documented validity interval at the decision point. |
+| Absent in intake | No latest_useful_at provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
+
+### state
+
+Declared alternatives in owner order: `pending`, `held`, `queued`, `sent`, `suppressed`, `cancelled`, `expired`. Approval and lifecycle guards still apply to transitions.
+
+| Probe | Input or observation | Expected result |
+| --- | --- | --- |
+| Admissible representation | pending | Preserve the stable code and resolve its localized label separately. |
+| Malformed or unmapped | outside_state | Return a choice error or place unmapped historical input in review. |
+| Translated label reused for two choices | localized display label shared by two codes | Require the underlying code. |
+| Display label changes after issue | display wording changes after issue | Keep the original issued rendering and stored code. |
+| Unknown historical source value | unmapped retired legacy code | Retain raw staging evidence; never silently choose the first option. |
+| Incomplete record | No state at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
+
+### reason
+
+Use versioned classification or status code for `ReminderInstance.reason`. Check the relevant vocabulary and permitted transition before applying.
+
+| Probe | Input or observation | Expected result |
+| --- | --- | --- |
+| Admissible representation | active reason code in the bound vocabulary | Check the relevant vocabulary and permitted transition before applying. |
+| Malformed or unmapped | unmapped reason code | Request mapping to an authorized code. |
+| Code retired before a new transaction | new operation after code retirement | Allow historic display; withhold new use unless policy permits. |
+| Same label in two code lists | same display name in two vocabularies | Use record type and field to locate the correct list. |
+| Bulk import requests a state transition | import requests the final approved state | Run ordinary transition guards and approval checks. |
+| Absent in intake | No reason provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
+
+### dispatch_id
+
+The target is [DispatchRequest](DispatchRequest.md). Resolve the identifier in the approved scope before using its fields.
+
+| Probe | Input or observation | Expected result |
+| --- | --- | --- |
+| Admissible representation | DispatchRequest·A01 | Resolve stable identity in the permitted scope. |
+| Malformed or unmapped | DispatchRequest·MISSING | Return a type mismatch without changing the link. |
+| Unresolved target | DispatchRequest·MISSING | Queue the missing DispatchRequest mapping or reject the command before linking. |
+| Wrong scope | DispatchRequest·B01 | Do not attach another church’s DispatchRequest without a supported exchange and local authority. |
+| Target rename | Rename DispatchRequest·A01 after linking | The existing dispatch_id keeps the same identity and historic documents retain their original wording. |
+| Absent in intake | No dispatch_id provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
+
+## Incoming references
+
+| Referencing record and field | Join key | Review when identity changes |
+| --- | --- | --- |
+| [ReminderAcknowledgement](ReminderAcknowledgement.md).`instance_id` | ReminderInstance identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
+
+## Acceptance evidence
+
+Record the owner revision, evaluated values, actor and scope, result, effective time, and any downstream references needed to reproduce a disputed decision. Release only the evidence permitted to the reader. The originating domain page defines the business action and precise historical or transactional effect.
