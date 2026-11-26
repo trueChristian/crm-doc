@@ -41,7 +41,7 @@ The target is [RiteRecord](RiteRecord.md). Resolve the identifier in the approve
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | RiteRecord·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | RiteRecord·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | RiteRecord·MISSING | Queue the missing RiteRecord mapping or reject the command before linking. |
 | Wrong scope | RiteRecord·B01 | Do not attach another church’s RiteRecord without a supported exchange and local authority. |
 | Target rename | Rename RiteRecord·A01 after linking | The existing rite_id keeps the same identity and historic documents retain their original wording. |
@@ -54,7 +54,7 @@ The target is [RiteFieldDefinition](RiteFieldDefinition.md). Resolve the identif
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | RiteFieldDefinition·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | RiteFieldDefinition·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | RiteFieldDefinition·MISSING | Queue the missing RiteFieldDefinition mapping or reject the command before linking. |
 | Wrong scope | RiteFieldDefinition·B01 | Do not attach another church’s RiteFieldDefinition without a supported exchange and local authority. |
 | Target rename | Rename RiteFieldDefinition·A01 after linking | The existing field_definition_id keeps the same identity and historic documents retain their original wording. |

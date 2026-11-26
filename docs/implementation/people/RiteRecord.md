@@ -54,7 +54,7 @@ The target is [RiteDefinition](RiteDefinition.md). Resolve the identifier in the
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | RiteDefinition·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | RiteDefinition·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | RiteDefinition·MISSING | Queue the missing RiteDefinition mapping or reject the command before linking. |
 | Wrong scope | RiteDefinition·B01 | Do not attach another church’s RiteDefinition without a supported exchange and local authority. |
 | Target rename | Rename RiteDefinition·A01 after linking | The existing definition_id keeps the same identity and historic documents retain their original wording. |
@@ -67,7 +67,7 @@ The target is [Congregation](../foundation/Congregation.md). Resolve the identif
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Congregation·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Congregation·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Congregation·MISSING | Queue the missing Congregation mapping or reject the command before linking. |
 | Wrong scope | Congregation·B01 | Do not attach another church’s Congregation without a supported exchange and local authority. |
 | Target rename | Rename Congregation·A01 after linking | The existing congregation_id keeps the same identity and historic documents retain their original wording. |
@@ -210,7 +210,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing recorded_by keeps the same identity and historic documents retain their original wording. |
@@ -223,7 +223,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing verified_by keeps the same identity and historic documents retain their original wording. |
@@ -249,7 +249,7 @@ The target is [RiteRecord](RiteRecord.md). Resolve the identifier in the approve
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | RiteRecord·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | RiteRecord·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | RiteRecord·MISSING | Queue the missing RiteRecord mapping or reject the command before linking. |
 | Wrong scope | RiteRecord·B01 | Do not attach another church’s RiteRecord without a supported exchange and local authority. |
 | Target rename | Rename RiteRecord·A01 after linking | The existing supersedes_id keeps the same identity and historic documents retain their original wording. |

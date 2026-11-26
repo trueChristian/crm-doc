@@ -47,7 +47,7 @@ The target is [RegisterBook](RegisterBook.md). Resolve the identifier in the app
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | RegisterBook·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | RegisterBook·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | RegisterBook·MISSING | Queue the missing RegisterBook mapping or reject the command before linking. |
 | Wrong scope | RegisterBook·B01 | Do not attach another church’s RegisterBook without a supported exchange and local authority. |
 | Target rename | Rename RegisterBook·A01 after linking | The existing book_id keeps the same identity and historic documents retain their original wording. |
@@ -60,7 +60,7 @@ The target is [RiteRecord](RiteRecord.md). Resolve the identifier in the approve
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | RiteRecord·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | RiteRecord·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | RiteRecord·MISSING | Queue the missing RiteRecord mapping or reject the command before linking. |
 | Wrong scope | RiteRecord·B01 | Do not attach another church’s RiteRecord without a supported exchange and local authority. |
 | Target rename | Rename RiteRecord·A01 after linking | The existing rite_id keeps the same identity and historic documents retain their original wording. |
@@ -125,7 +125,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing entered_by keeps the same identity and historic documents retain their original wording. |

@@ -46,7 +46,7 @@ The target is [RiteDefinition](RiteDefinition.md). Resolve the identifier in the
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | RiteDefinition·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | RiteDefinition·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | RiteDefinition·MISSING | Queue the missing RiteDefinition mapping or reject the command before linking. |
 | Wrong scope | RiteDefinition·B01 | Do not attach another church’s RiteDefinition without a supported exchange and local authority. |
 | Target rename | Rename RiteDefinition·A01 after linking | The existing definition_id keeps the same identity and historic documents retain their original wording. |

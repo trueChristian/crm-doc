@@ -48,7 +48,7 @@ The target is [Congregation](../foundation/Congregation.md). Resolve the identif
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Congregation·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Congregation·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Congregation·MISSING | Queue the missing Congregation mapping or reject the command before linking. |
 | Wrong scope | Congregation·B01 | Do not attach another church’s Congregation without a supported exchange and local authority. |
 | Target rename | Rename Congregation·A01 after linking | The existing congregation_id keeps the same identity and historic documents retain their original wording. |
@@ -100,7 +100,7 @@ The target is [MembershipPolicy](MembershipPolicy.md). Resolve the identifier in
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | MembershipPolicy·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | MembershipPolicy·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | MembershipPolicy·MISSING | Queue the missing MembershipPolicy mapping or reject the command before linking. |
 | Wrong scope | MembershipPolicy·B01 | Do not attach another church’s MembershipPolicy without a supported exchange and local authority. |
 | Target rename | Rename MembershipPolicy·A01 after linking | The existing policy_id keeps the same identity and historic documents retain their original wording. |
@@ -126,7 +126,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing certified_by keeps the same identity and historic documents retain their original wording. |
@@ -165,7 +165,7 @@ The target is [RollSnapshot](RollSnapshot.md). Resolve the identifier in the app
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | RollSnapshot·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | RollSnapshot·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | RollSnapshot·MISSING | Queue the missing RollSnapshot mapping or reject the command before linking. |
 | Wrong scope | RollSnapshot·B01 | Do not attach another church’s RollSnapshot without a supported exchange and local authority. |
 | Target rename | Rename RollSnapshot·A01 after linking | The existing supersedes_id keeps the same identity and historic documents retain their original wording. |
