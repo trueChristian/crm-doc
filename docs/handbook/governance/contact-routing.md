@@ -1,0 +1,33 @@
+# Deciding who may receive a notice
+
+A volunteer rota, a receipt, a prayer request and a public service update each have their own purpose and entitlements. Choose the intended person or publication target first. Resolve household representation only where expressly permitted for that purpose. Use [recipients and channel policy](../../communications/recipients-and-channels.md), [household authority](../../people/households-and-authority.md) and [privacy decisions](../../platform/privacy-records.md).
+
+## Route decision procedure
+
+1. Check the issuing organization and sender's authority over the source, purpose and original population. Preview does the same checks as sending. A leader with no giving access cannot select “members who gave” and infer a count.
+2. Freeze the intended audience on its documented selection basis. Choose separately whether the unit is one person, a named representative or an opted household copy. At handoff recheck current access, safety, representation, current purpose decisions and active destination. Adding a household member after freeze does not add them to that dispatch.
+3. Normalize candidate routes, retaining actual owner, source and verification time independently of whether two people share a destination. Evaluate highest-precedence applicable restrictions, then purpose authorization, contact decisions, sensitivity, sender capabilities, recipient preference order, quiet hours and deadline. A preference ranks routes that have passed earlier gates. A recent service message or delivery receipt is insufficient evidence of optional solicitation permission.
+4. Return one reasoned outcome per recipient and route. Deliver now, defer until time T, use specifically permitted next route, exclude, or refer to an authorized operator. A sensitive restriction can produce a generic operator reason while the protected audit preserves technical disposition. A preview count does not guarantee an eventual route after a later withdrawal.
+5. Apply a stable duplicate-prevention key to the person/approved household copy, purpose, source occurrence, sender envelope and released edition. Use a distinct key for a correction or approved channel publication. Deduplicate repeated qualification through two groups before addressing.
+
+## Worked decision matrix
+
+| Intended notice and available facts | Result at handoff | What a failure permits |
+| --- | --- | --- |
+| Weekly optional bulletin; verified email opted in, SMS declined | One email; no phone attempt | Definitive bounce puts email under review. Do not fall back to declined SMS. |
+| Private giving statement; finance authorized and member requested an inbox copy; a shared email is the only external endpoint | Protected member inbox, external reminder only if an independently permitted generic route exists | If the login is disabled, route to donor services for approved identity/posted-letter process. No family-wide copy. |
+| Child's class moved; adult A has notice authority until noon, adult B is authorized for pickup only; dispatch is at 12:05 | Neither adult qualifies on these facts | Fair exception to restricted coordinator. Pickup alone cannot grant access to a private class list. |
+| General service time changed; officer may publish and church bot retains channel posting permission | One Telegram channel publication | If posting rights were removed, suspend target; a separate approved individual dispatch is needed for personal notices. |
+| Personal duty reminder; member follows the channel and has a mobile number but has never linked a direct chat | Direct Telegram route unavailable | A verified, permitted email or SMS may proceed under the authorized fallback order. |
+| Same duty reminder; member initiated the bot, redeemed the signed-in challenge and allowed duty DMs | One private Telegram message with minimum appropriate detail | If member later blocks bot, close the direct attempt under its evidence; respect current consent for another route. |
+| Newsletter household copy requested; two adults share email and one declines personal appeals | One general household copy only if the household policy permits and both choices are respected | A targeted appeal remains a separate purpose. If targeted content could reveal or circumvent an individual decline, exclude or use a separately safe route. |
+| Formal meeting notice; service by addressed post is allowed; member opted out of newsletters | One individually addressed meeting notice using the documented governing basis | A returned letter reopens service review. Newsletter permission remains withdrawn. |
+| Private prayer update; phone is marked unsafe; emergency dispatch override is available to an officer | Unsafe phone remains excluded | Authorize a different safe contact explicitly. Never reveal private prayer content to a churchwide channel. |
+
+## Endpoints and remedies
+
+Email preview shows locale, sender, reply route, text fallback and confidentiality of addresses. Use individual envelopes or an approved delivery mode that prevents recipients discovering each other's addresses. SMS previews include actual rendered text, number of chargeable segments, opt-out support and a safe response channel. An opt-out from a shared number may require a destination-level block at that sender until resolved. Reassigning the number to a new profile does not lift that block. For push, verify the device for the account and use generic lock-screen wording by default for private material. On print, verify authorized postal recipient and do not expose group membership on an envelope.
+
+Linking Telegram starts with explicit member initiation of the private chat. Bind a short-lived, one-use proof to one account, expected church and purpose. A forwarded token, mismatched organization, expired token, unconfirmed ownership or repeated redemption cannot establish a second binding. Changing the bot identity or account ownership requires review before reusing the route. A private channel is a shared publication even when access requires invitation. Individual consent, eligibility and read evidence do not follow from channel membership.
+
+**Concurrency fixture C1.** At 09:00 freeze 30 intended people. Two qualify from three overlapping lists, leaving 30 distinct; at 09:05 three withdraw before handoff, two have no allowed routes, and one is held for a quiet window. Expected initial result is 24 eligible now, one deferred and five excluded, totaling 30. At 12:00 one deferred recipient withdraws too. Final count is 24 eligible and six excluded. Preserve the frozen audience and both evaluations. A separately approved channel publication adds one broadcast result and zero individually evidenced deliveries.
