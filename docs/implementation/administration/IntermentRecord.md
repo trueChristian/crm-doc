@@ -16,10 +16,10 @@ A burial entry requires verified location and authority. Use an authorized amend
 | `space_id` | → BurialSpace | Required at applicable lifecycle step | [relation](../value-conventions.md#relation) |
 | `right_id` | → BurialRight? | Optional under owner conditions | [relation](../value-conventions.md#relation) |
 | `deceased_person_id` | → Person? | Optional under owner conditions | [relation](../value-conventions.md#relation) |
-| `name_as_registered` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [structured](../value-conventions.md#structured) |
+| `name_as_registered` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [text](../value-conventions.md#text) |
 | `interred_on` | date | Required at applicable lifecycle step | [date](../value-conventions.md#date) |
 | `ceremony_ref` | → CeremonyRequest? | Optional under owner conditions | [relation](../value-conventions.md#relation) |
-| `registrar` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [structured](../value-conventions.md#structured) |
+| `registrar` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [resource](../value-conventions.md#resource) |
 | `authorizing_doc_ref` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [resource](../value-conventions.md#resource) |
 | `units` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [decimal](../value-conventions.md#decimal) |
 | `correction_ref` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [resource](../value-conventions.md#resource) |
@@ -49,7 +49,7 @@ The target is [BurialSpace](BurialSpace.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | BurialSpace·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | BurialSpace·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | BurialSpace·MISSING | Queue the missing BurialSpace mapping or reject the command before linking. |
 | Wrong scope | BurialSpace·B01 | Do not attach another church’s BurialSpace without a supported exchange and local authority. |
 | Target rename | Rename BurialSpace·A01 after linking | The existing space_id keeps the same identity and historic documents retain their original wording. |
@@ -62,7 +62,7 @@ The target is [BurialRight](BurialRight.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | BurialRight·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | BurialRight·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | BurialRight·MISSING | Queue the missing BurialRight mapping or reject the command before linking. |
 | Wrong scope | BurialRight·B01 | Do not attach another church’s BurialRight without a supported exchange and local authority. |
 | Target rename | Rename BurialRight·A01 after linking | The existing right_id keeps the same identity and historic documents retain their original wording. |
@@ -75,7 +75,7 @@ The target is [Person](../people/Person.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Person·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Person·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Person·MISSING | Queue the missing Person mapping or reject the command before linking. |
 | Wrong scope | Person·B01 | Do not attach another church’s Person without a supported exchange and local authority. |
 | Target rename | Rename Person·A01 after linking | The existing deceased_person_id keeps the same identity and historic documents retain their original wording. |
@@ -83,15 +83,15 @@ The target is [Person](../people/Person.md). Resolve the identifier in the appro
 
 ### name_as_registered
 
-Use typed value or bounded compound record for `IntermentRecord.name_as_registered`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use human-readable text for `IntermentRecord.name_as_registered`. Preserve the meaningful spelling, script and structure; derive separate search forms.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of name_as_registered matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for name_as_registered | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | entered name_as_registered in the original script | Preserve the meaningful spelling, script and structure; derive separate search forms. |
+| Malformed or unmapped | invalid text encoding | Return a field-level validation issue without silently changing meaning. |
+| Accented and non-Latin characters | Zoë and ǂNū-khoen in the original script | Preserve and display their original spelling. |
+| Label changes after formal issue | approved edition before a spelling correction | Keep the authorized original rendering in the issued edition. |
+| Bidirectional or multiline input | mixed-direction or multiline entered text | Render in the field’s declared context and respect accessibility and disclosure rules. |
 | Incomplete record | No name_as_registered at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### interred_on
@@ -114,7 +114,7 @@ The target is [CeremonyRequest](CeremonyRequest.md). Resolve the identifier in t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | CeremonyRequest·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | CeremonyRequest·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | CeremonyRequest·MISSING | Queue the missing CeremonyRequest mapping or reject the command before linking. |
 | Wrong scope | CeremonyRequest·B01 | Do not attach another church’s CeremonyRequest without a supported exchange and local authority. |
 | Target rename | Rename CeremonyRequest·A01 after linking | The existing ceremony_ref keeps the same identity and historic documents retain their original wording. |
@@ -122,15 +122,15 @@ The target is [CeremonyRequest](CeremonyRequest.md). Resolve the identifier in t
 
 ### registrar
 
-Use typed value or bounded compound record for `IntermentRecord.registrar`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use scoped or external reference for `IntermentRecord.registrar`. Resolve against the permitted kind, owning namespace and purpose.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of registrar matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for registrar | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | verified registrar in the owner namespace | Resolve against the permitted kind, owning namespace and purpose. |
+| Malformed or unmapped | unmapped registrar | Request clarification or quarantine the mapping. |
+| Same visible code from two sources | issuer A:007 and issuer B:007 | Retain distinct namespace/key pairs. |
+| Referenced evidence is restricted | restricted attachment behind an otherwise visible request | Show a minimal permitted result and check document access independently. |
+| Duplicate delivery of the same mapped reference | same namespace, key and accepted mapping twice | Resolve the same destination record once. |
 | Incomplete record | No registrar at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### authorizing_doc_ref

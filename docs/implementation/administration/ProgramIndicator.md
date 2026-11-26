@@ -46,7 +46,7 @@ The target is [ProgramServiceTerms](ProgramServiceTerms.md). Resolve the identif
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ProgramServiceTerms·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ProgramServiceTerms·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ProgramServiceTerms·MISSING | Queue the missing ProgramServiceTerms mapping or reject the command before linking. |
 | Wrong scope | ProgramServiceTerms·B01 | Do not attach another church’s ProgramServiceTerms without a supported exchange and local authority. |
 | Target rename | Rename ProgramServiceTerms·A01 after linking | The existing terms_id keeps the same identity and historic documents retain their original wording. |
@@ -59,7 +59,7 @@ The target is [ProjectMilestone](../ministry/ProjectMilestone.md). Resolve the i
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ProjectMilestone·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ProjectMilestone·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ProjectMilestone·MISSING | Queue the missing ProjectMilestone mapping or reject the command before linking. |
 | Wrong scope | ProjectMilestone·B01 | Do not attach another church’s ProjectMilestone without a supported exchange and local authority. |
 | Target rename | Rename ProjectMilestone·A01 after linking | The existing milestone_id keeps the same identity and historic documents retain their original wording. |

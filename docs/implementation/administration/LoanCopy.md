@@ -16,9 +16,9 @@ Unique accession code, separate from product SKU. Stock for sale is transferred 
 | `title_id` | → LoanTitle | Required at applicable lifecycle step | [relation](../value-conventions.md#relation) |
 | `accession_code` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [vocab](../value-conventions.md#vocab) |
 | `home_campus_id` | → Campus | Required at applicable lifecycle step | [relation](../value-conventions.md#relation) |
-| `physical_location` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [structured](../value-conventions.md#structured) |
-| `contents_list` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [structured](../value-conventions.md#structured) |
-| `condition` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [structured](../value-conventions.md#structured) |
+| `physical_location` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [text](../value-conventions.md#text) |
+| `contents_list` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [list](../value-conventions.md#list) |
+| `condition` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [vocab](../value-conventions.md#vocab) |
 | `status` | available, held, on_loan, missing, repair or withdrawn | Required at applicable lifecycle step | [enum](../value-conventions.md#enum) |
 | `linked_asset_ref` | → FixedAsset? | Optional under owner conditions | [relation](../value-conventions.md#relation) |
 
@@ -46,7 +46,7 @@ The target is [LoanTitle](LoanTitle.md). Resolve the identifier in the approved 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | LoanTitle·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | LoanTitle·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | LoanTitle·MISSING | Queue the missing LoanTitle mapping or reject the command before linking. |
 | Wrong scope | LoanTitle·B01 | Do not attach another church’s LoanTitle without a supported exchange and local authority. |
 | Target rename | Rename LoanTitle·A01 after linking | The existing title_id keeps the same identity and historic documents retain their original wording. |
@@ -72,7 +72,7 @@ The target is [Campus](../foundation/Campus.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Campus·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Campus·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Campus·MISSING | Queue the missing Campus mapping or reject the command before linking. |
 | Wrong scope | Campus·B01 | Do not attach another church’s Campus without a supported exchange and local authority. |
 | Target rename | Rename Campus·A01 after linking | The existing home_campus_id keeps the same identity and historic documents retain their original wording. |
@@ -80,41 +80,41 @@ The target is [Campus](../foundation/Campus.md). Resolve the identifier in the a
 
 ### physical_location
 
-Use typed value or bounded compound record for `LoanCopy.physical_location`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use human-readable text for `LoanCopy.physical_location`. Preserve the meaningful spelling, script and structure; derive separate search forms.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of physical_location matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for physical_location | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | entered physical_location in the original script | Preserve the meaningful spelling, script and structure; derive separate search forms. |
+| Malformed or unmapped | invalid text encoding | Return a field-level validation issue without silently changing meaning. |
+| Accented and non-Latin characters | Zoë and ǂNū-khoen in the original script | Preserve and display their original spelling. |
+| Label changes after formal issue | approved edition before a spelling correction | Keep the authorized original rendering in the issued edition. |
+| Bidirectional or multiline input | mixed-direction or multiline entered text | Render in the field’s declared context and respect accessibility and disclosure rules. |
 | Incomplete record | No physical_location at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### contents_list
 
-Use typed value or bounded compound record for `LoanCopy.contents_list`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use ordered collection or mathematical set for `LoanCopy.contents_list`. Preserve ordering when meaningful; enforce uniqueness when the declaration is a set.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of contents_list matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for contents_list | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | permitted members A and B | Preserve ordering when meaningful; enforce uniqueness when the declaration is a set. |
+| Malformed or unmapped | an element outside the declared domain | Reject the affected collection or stage its invalid item under the import policy. |
+| Same element appears twice | A, A, B | Apply declared sequence/set multiplicity without doubling financial or voting effects. |
+| Empty collection versus unknown collection | empty collection and missing collection | Preserve the distinction where the rule requires evidence. |
+| One element later becomes restricted | authorization for member B withdrawn before export | Recompute permitted projection before export or display. |
 | Incomplete record | No contents_list at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### condition
 
-Use typed value or bounded compound record for `LoanCopy.condition`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use versioned classification or status code for `LoanCopy.condition`. Check the relevant vocabulary and permitted transition before applying.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of condition matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for condition | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | active condition code in the bound vocabulary | Check the relevant vocabulary and permitted transition before applying. |
+| Malformed or unmapped | unmapped condition code | Request mapping to an authorized code. |
+| Code retired before a new transaction | new operation after code retirement | Allow historic display; withhold new use unless policy permits. |
+| Same label in two code lists | same display name in two vocabularies | Use record type and field to locate the correct list. |
+| Bulk import requests a state transition | import requests the final approved state | Run ordinary transition guards and approval checks. |
 | Incomplete record | No condition at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### status
@@ -137,7 +137,7 @@ The target is [FixedAsset](../finance/FixedAsset.md). Resolve the identifier in 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | FixedAsset·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | FixedAsset·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | FixedAsset·MISSING | Queue the missing FixedAsset mapping or reject the command before linking. |
 | Wrong scope | FixedAsset·B01 | Do not attach another church’s FixedAsset without a supported exchange and local authority. |
 | Target rename | Rename FixedAsset·A01 after linking | The existing linked_asset_ref keeps the same identity and historic documents retain their original wording. |

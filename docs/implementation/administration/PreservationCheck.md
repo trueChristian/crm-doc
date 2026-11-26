@@ -18,7 +18,7 @@ Do not replace a damaged master without preserving the evidence and decision. A 
 | `performed_at` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [instant](../value-conventions.md#instant) |
 | `expected_digest` | optional | Optional under owner conditions | [digest](../value-conventions.md#digest) |
 | `observed_digest` | optional | Optional under owner conditions | [digest](../value-conventions.md#digest) |
-| `condition_grade` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [structured](../value-conventions.md#structured) |
+| `condition_grade` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [vocab](../value-conventions.md#vocab) |
 | `result` | pass, repair, unreadable or mismatch | Required at applicable lifecycle step | [enum](../value-conventions.md#enum) |
 | `replacement_copy_id` | → ArchiveCopy | Required at applicable lifecycle step | [relation](../value-conventions.md#relation) |
 | `reported_by` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [resource](../value-conventions.md#resource) |
@@ -47,7 +47,7 @@ The target is [ArchiveCopy](ArchiveCopy.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ArchiveCopy·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ArchiveCopy·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ArchiveCopy·MISSING | Queue the missing ArchiveCopy mapping or reject the command before linking. |
 | Wrong scope | ArchiveCopy·B01 | Do not attach another church’s ArchiveCopy without a supported exchange and local authority. |
 | Target rename | Rename ArchiveCopy·A01 after linking | The existing copy_id keeps the same identity and historic documents retain their original wording. |
@@ -107,15 +107,15 @@ Use integrity fingerprint or opaque verifier for `PreservationCheck.observed_dig
 
 ### condition_grade
 
-Use typed value or bounded compound record for `PreservationCheck.condition_grade`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use versioned classification or status code for `PreservationCheck.condition_grade`. Check the relevant vocabulary and permitted transition before applying.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of condition_grade matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for condition_grade | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | active condition_grade code in the bound vocabulary | Check the relevant vocabulary and permitted transition before applying. |
+| Malformed or unmapped | unmapped condition_grade code | Request mapping to an authorized code. |
+| Code retired before a new transaction | new operation after code retirement | Allow historic display; withhold new use unless policy permits. |
+| Same label in two code lists | same display name in two vocabularies | Use record type and field to locate the correct list. |
+| Bulk import requests a state transition | import requests the final approved state | Run ordinary transition guards and approval checks. |
 | Incomplete record | No condition_grade at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### result
@@ -138,7 +138,7 @@ The target is [ArchiveCopy](ArchiveCopy.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ArchiveCopy·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ArchiveCopy·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ArchiveCopy·MISSING | Queue the missing ArchiveCopy mapping or reject the command before linking. |
 | Wrong scope | ArchiveCopy·B01 | Do not attach another church’s ArchiveCopy without a supported exchange and local authority. |
 | Target rename | Rename ArchiveCopy·A01 after linking | The existing replacement_copy_id keeps the same identity and historic documents retain their original wording. |

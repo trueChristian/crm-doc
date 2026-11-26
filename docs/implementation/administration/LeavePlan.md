@@ -15,7 +15,7 @@ Compute balance as of date. Keep opening balances and posted adjustments. One ap
 | `id` | Owner-scoped business value; see the record rule | Assigned or projected by owner | [key](../value-conventions.md#key) |
 | `unit` | hours/days | Required at applicable lifecycle step | [enum](../value-conventions.md#enum) |
 | `accrual_rule` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [rule](../value-conventions.md#rule) |
-| `cap` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [structured](../value-conventions.md#structured) |
+| `cap` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [decimal](../value-conventions.md#decimal) |
 | `carry_rule` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [rule](../value-conventions.md#rule) |
 | `effective_from` | date | Required at applicable lifecycle step | [date](../value-conventions.md#date) |
 | `effective_until` | date? | Optional under owner conditions | [date](../value-conventions.md#date) |
@@ -65,15 +65,15 @@ Use versioned structured decision or expression for `LeavePlan.accrual_rule`. Ch
 
 ### cap
 
-Use typed value or bounded compound record for `LeavePlan.cap`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use exact decimal measure for `LeavePlan.cap`. Retain decimal magnitude, unit and precision required by the record.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of cap matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for cap | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | 2.50 in the field unit | Retain decimal magnitude, unit and precision required by the record. |
+| Malformed or unmapped | sum across incompatible units | Obtain a unit or verified conversion before aggregating. |
+| 0.1 plus 0.2 with the same unit | 0.1 + 0.2 in identical units | Obtain 0.3 exactly before presentation rounding. |
+| Negative adjustment | a linked negative adjustment | Require the owner’s allowed sign and adjustment reason. |
+| Unit change after recording | two cases of twelve units versus two individual units | Use an effective conversion; preserve earlier observations. |
 | Incomplete record | No cap at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### carry_rule

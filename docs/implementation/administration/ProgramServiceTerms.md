@@ -23,7 +23,7 @@ Add operational terms to a specific agreement. A budget is a ceiling. It never a
 | `approved_budget_ref` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [resource](../value-conventions.md#resource) |
 | `report_due_rule` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [rule](../value-conventions.md#rule) |
 | `disclosure_limits` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [structured](../value-conventions.md#structured) |
-| `signatories` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [structured](../value-conventions.md#structured) |
+| `signatories` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [list](../value-conventions.md#list) |
 | `evidence_ref` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [resource](../value-conventions.md#resource) |
 
 ## Input, storage and exchange cases
@@ -50,7 +50,7 @@ The target is [PartnershipAgreement](../development/PartnershipAgreement.md). Re
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | PartnershipAgreement·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | PartnershipAgreement·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | PartnershipAgreement·MISSING | Queue the missing PartnershipAgreement mapping or reject the command before linking. |
 | Wrong scope | PartnershipAgreement·B01 | Do not attach another church’s PartnershipAgreement without a supported exchange and local authority. |
 | Target rename | Rename PartnershipAgreement·A01 after linking | The existing agreement_id keeps the same identity and historic documents retain their original wording. |
@@ -63,7 +63,7 @@ The target is [MissionProject](../ministry/MissionProject.md). Resolve the ident
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | MissionProject·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | MissionProject·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | MissionProject·MISSING | Queue the missing MissionProject mapping or reject the command before linking. |
 | Wrong scope | MissionProject·B01 | Do not attach another church’s MissionProject without a supported exchange and local authority. |
 | Target rename | Rename MissionProject·A01 after linking | The existing project_id keeps the same identity and historic documents retain their original wording. |
@@ -76,7 +76,7 @@ The target is [AidProgram](../people/AidProgram.md). Resolve the identifier in t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | AidProgram·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | AidProgram·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | AidProgram·MISSING | Queue the missing AidProgram mapping or reject the command before linking. |
 | Wrong scope | AidProgram·B01 | Do not attach another church’s AidProgram without a supported exchange and local authority. |
 | Target rename | Rename AidProgram·A01 after linking | The existing aid_program_id keeps the same identity and historic documents retain their original wording. |
@@ -175,15 +175,15 @@ Use typed value or bounded compound record for `ProgramServiceTerms.disclosure_l
 
 ### signatories
 
-Use typed value or bounded compound record for `ProgramServiceTerms.signatories`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use ordered collection or mathematical set for `ProgramServiceTerms.signatories`. Preserve ordering when meaningful; enforce uniqueness when the declaration is a set.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of signatories matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for signatories | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | permitted members A and B | Preserve ordering when meaningful; enforce uniqueness when the declaration is a set. |
+| Malformed or unmapped | an element outside the declared domain | Reject the affected collection or stage its invalid item under the import policy. |
+| Same element appears twice | A, A, B | Apply declared sequence/set multiplicity without doubling financial or voting effects. |
+| Empty collection versus unknown collection | empty collection and missing collection | Preserve the distinction where the rule requires evidence. |
+| One element later becomes restricted | authorization for member B withdrawn before export | Recompute permitted projection before export or display. |
 | Incomplete record | No signatories at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### evidence_ref

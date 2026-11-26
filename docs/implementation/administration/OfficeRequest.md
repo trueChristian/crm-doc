@@ -19,7 +19,7 @@ One enquiry may yield a ceremony request, a care referral or a booking. Store th
 | `requester_contact` | optional restricted ref | Optional under owner conditions | [resource](../value-conventions.md#resource) |
 | `topic` | code | Required at applicable lifecycle step | [vocab](../value-conventions.md#vocab) |
 | `summary` | limited text | Required at applicable lifecycle step | [text](../value-conventions.md#text) |
-| `safe_reply_method` | optional | Optional under owner conditions | [structured](../value-conventions.md#structured) |
+| `safe_reply_method` | optional | Optional under owner conditions | [vocab](../value-conventions.md#vocab) |
 | `queue_ref` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [resource](../value-conventions.md#resource) |
 | `assigned_actor` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [resource](../value-conventions.md#resource) |
 | `due_at` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [instant](../value-conventions.md#instant) |
@@ -50,7 +50,7 @@ The target is [Organization](../foundation/Organization.md). Resolve the identif
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Organization·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Organization·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Organization·MISSING | Queue the missing Organization mapping or reject the command before linking. |
 | Wrong scope | Organization·B01 | Do not attach another church’s Organization without a supported exchange and local authority. |
 | Target rename | Rename Organization·A01 after linking | The existing organization_id keeps the same identity and historic documents retain their original wording. |
@@ -85,6 +85,7 @@ Declared alternatives in owner order: `phone`, `desk`, `letter`, `web`, `referra
 ### requester_contact
 
 Use scoped or external reference for `OfficeRequest.requester_contact`. Resolve against the permitted kind, owning namespace and purpose.
+Field access: enforce the declared protection on reads, search, previews, exports and audit evidence as well as the underlying resource value.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
@@ -123,15 +124,15 @@ Use human-readable text for `OfficeRequest.summary`. Preserve the meaningful spe
 
 ### safe_reply_method
 
-Use typed value or bounded compound record for `OfficeRequest.safe_reply_method`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use versioned classification or status code for `OfficeRequest.safe_reply_method`. Check the relevant vocabulary and permitted transition before applying.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of safe_reply_method matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for safe_reply_method | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | active safe_reply_method code in the bound vocabulary | Check the relevant vocabulary and permitted transition before applying. |
+| Malformed or unmapped | unmapped safe_reply_method code | Request mapping to an authorized code. |
+| Code retired before a new transaction | new operation after code retirement | Allow historic display; withhold new use unless policy permits. |
+| Same label in two code lists | same display name in two vocabularies | Use record type and field to locate the correct list. |
+| Bulk import requests a state transition | import requests the final approved state | Run ordinary transition guards and approval checks. |
 | Absent in intake | No safe_reply_method provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
 
 ### queue_ref

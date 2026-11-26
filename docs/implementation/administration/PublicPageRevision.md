@@ -15,17 +15,17 @@ Reapply visibility checks to previews, calendar feeds, cached pages and shared p
 | `id` | Owner-scoped business value; see the record rule | Assigned or projected by owner | [key](../value-conventions.md#key) |
 | `page_id` | → PublicPage | Required at applicable lifecycle step | [relation](../value-conventions.md#relation) |
 | `revision` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [version](../value-conventions.md#version) |
-| `locale` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [structured](../value-conventions.md#structured) |
+| `locale` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [language](../value-conventions.md#language) |
 | `title` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [text](../value-conventions.md#text) |
 | `summary` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [text](../value-conventions.md#text) |
-| `body` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [structured](../value-conventions.md#structured) |
+| `body` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [text](../value-conventions.md#text) |
 | `accessible_media_ref` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [resource](../value-conventions.md#resource) |
 | `reviewer` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [resource](../value-conventions.md#resource) |
 | `approved_at` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [instant](../value-conventions.md#instant) |
-| `visible_from` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [structured](../value-conventions.md#structured) |
-| `visible_until` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [structured](../value-conventions.md#structured) |
+| `visible_from` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [instant](../value-conventions.md#instant) |
+| `visible_until` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [instant](../value-conventions.md#instant) |
 | `supersedes_id` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [resource](../value-conventions.md#resource) |
-| `link_target` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [structured](../value-conventions.md#structured) |
+| `link_target` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [resource](../value-conventions.md#resource) |
 
 ## Input, storage and exchange cases
 
@@ -51,7 +51,7 @@ The target is [PublicPage](PublicPage.md). Resolve the identifier in the approve
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | PublicPage·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | PublicPage·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | PublicPage·MISSING | Queue the missing PublicPage mapping or reject the command before linking. |
 | Wrong scope | PublicPage·B01 | Do not attach another church’s PublicPage without a supported exchange and local authority. |
 | Target rename | Rename PublicPage·A01 after linking | The existing page_id keeps the same identity and historic documents retain their original wording. |
@@ -72,15 +72,15 @@ Use revision number or opaque revision token for `PublicPageRevision.revision`. 
 
 ### locale
 
-Use typed value or bounded compound record for `PublicPageRevision.locale`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use language or locale identifier for `PublicPageRevision.locale`. Resolve the published language or locale without inferring a person’s nationality.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of locale matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for locale | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | en | Resolve the published language or locale without inferring a person’s nationality. |
+| Malformed or unmapped | unmapped locale display label | Keep the source value for review. |
+| Specific translation unavailable | specific translation missing at delivery time | Apply the declared fallback and identify which language is being displayed. |
+| User changes preferred language | approved letter after preferred-language change | Future communications use the effective preference; issued wording is preserved. |
+| Two regional variants exist | two permitted regional variants in catalogue | Apply the requested locale/version where available. |
 | Incomplete record | No locale at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### title
@@ -111,15 +111,15 @@ Use human-readable text for `PublicPageRevision.summary`. Preserve the meaningfu
 
 ### body
 
-Use typed value or bounded compound record for `PublicPageRevision.body`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use human-readable text for `PublicPageRevision.body`. Preserve the meaningful spelling, script and structure; derive separate search forms.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of body matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for body | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | entered body in the original script | Preserve the meaningful spelling, script and structure; derive separate search forms. |
+| Malformed or unmapped | invalid text encoding | Return a field-level validation issue without silently changing meaning. |
+| Accented and non-Latin characters | Zoë and ǂNū-khoen in the original script | Preserve and display their original spelling. |
+| Label changes after formal issue | approved edition before a spelling correction | Keep the authorized original rendering in the issued edition. |
+| Bidirectional or multiline input | mixed-direction or multiline entered text | Render in the field’s declared context and respect accessibility and disclosure rules. |
 | Incomplete record | No body at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### accessible_media_ref
@@ -163,28 +163,28 @@ Use unambiguous point in time for `PublicPageRevision.approved_at`. Compare as t
 
 ### visible_from
 
-Use typed value or bounded compound record for `PublicPageRevision.visible_from`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use unambiguous point in time for `PublicPageRevision.visible_from`. Compare as the same instant as 07:00:00Z on that date; retain needed display context.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of visible_from matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for visible_from | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | 2026-11-26T09:00:00+02:00 | Compare as the same instant as 07:00:00Z on that date; retain needed display context. |
+| Malformed or unmapped | ambiguous local time in repeated hour | Request the offset, zone resolution or explicit policy decision. |
+| Two observations with different offsets denoting one instant | 09:00+02:00 and 07:00Z on the same day | Temporal comparison treats them as equal; business identity still uses its own key. |
+| Observation arrives after a later event | event at 09:00 reported after event at 09:05 | Retain occurrence and observation order separately. |
+| Expiry coincides with current instant | observation exactly at expiry | Apply the documented validity interval at the decision point. |
 | Incomplete record | No visible_from at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### visible_until
 
-Use typed value or bounded compound record for `PublicPageRevision.visible_until`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use unambiguous point in time for `PublicPageRevision.visible_until`. Compare as the same instant as 07:00:00Z on that date; retain needed display context.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of visible_until matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for visible_until | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | 2026-11-26T09:00:00+02:00 | Compare as the same instant as 07:00:00Z on that date; retain needed display context. |
+| Malformed or unmapped | ambiguous local time in repeated hour | Request the offset, zone resolution or explicit policy decision. |
+| Two observations with different offsets denoting one instant | 09:00+02:00 and 07:00Z on the same day | Temporal comparison treats them as equal; business identity still uses its own key. |
+| Observation arrives after a later event | event at 09:00 reported after event at 09:05 | Retain occurrence and observation order separately. |
+| Expiry coincides with current instant | observation exactly at expiry | Apply the documented validity interval at the decision point. |
 | Incomplete record | No visible_until at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### supersedes_id
@@ -202,15 +202,15 @@ Use scoped or external reference for `PublicPageRevision.supersedes_id`. Resolve
 
 ### link_target
 
-Use typed value or bounded compound record for `PublicPageRevision.link_target`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use scoped or external reference for `PublicPageRevision.link_target`. Resolve against the permitted kind, owning namespace and purpose.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of link_target matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for link_target | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | verified link_target in the owner namespace | Resolve against the permitted kind, owning namespace and purpose. |
+| Malformed or unmapped | unmapped link_target | Request clarification or quarantine the mapping. |
+| Same visible code from two sources | issuer A:007 and issuer B:007 | Retain distinct namespace/key pairs. |
+| Referenced evidence is restricted | restricted attachment behind an otherwise visible request | Show a minimal permitted result and check document access independently. |
+| Duplicate delivery of the same mapped reference | same namespace, key and accepted mapping twice | Resolve the same destination record once. |
 | Incomplete record | No link_target at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ## Acceptance evidence
