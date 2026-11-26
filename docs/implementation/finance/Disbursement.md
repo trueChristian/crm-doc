@@ -33,7 +33,7 @@ The target is [PaymentRun](PaymentRun.md). Resolve the identifier in the approve
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | PaymentRun·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | PaymentRun·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | PaymentRun·MISSING | Queue the missing PaymentRun mapping or reject the command before linking. |
 | Wrong scope | PaymentRun·B01 | Do not attach another church’s PaymentRun without a supported exchange and local authority. |
 | Target rename | Rename PaymentRun·A01 after linking | The existing run_id keeps the same identity and historic documents retain their original wording. |

@@ -34,7 +34,7 @@ The target is [CustomerAccount](CustomerAccount.md). Resolve the identifier in t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | CustomerAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | CustomerAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | CustomerAccount·MISSING | Queue the missing CustomerAccount mapping or reject the command before linking. |
 | Wrong scope | CustomerAccount·B01 | Do not attach another church’s CustomerAccount without a supported exchange and local authority. |
 | Target rename | Rename CustomerAccount·A01 after linking | The existing customer_id keeps the same identity and historic documents retain their original wording. |
@@ -47,7 +47,7 @@ The target is [SalesInvoice](SalesInvoice.md). Resolve the identifier in the app
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | SalesInvoice·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | SalesInvoice·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | SalesInvoice·MISSING | Queue the missing SalesInvoice mapping or reject the command before linking. |
 | Wrong scope | SalesInvoice·B01 | Do not attach another church’s SalesInvoice without a supported exchange and local authority. |
 | Target rename | Rename SalesInvoice·A01 after linking | The existing invoice_id keeps the same identity and historic documents retain their original wording. |
@@ -112,7 +112,7 @@ The target is [Fund](Fund.md). Resolve the identifier in the approved scope befo
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Fund·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Fund·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Fund·MISSING | Queue the missing Fund mapping or reject the command before linking. |
 | Wrong scope | Fund·B01 | Do not attach another church’s Fund without a supported exchange and local authority. |
 | Target rename | Rename Fund·A01 after linking | The existing fund_id keeps the same identity and historic documents retain their original wording. |

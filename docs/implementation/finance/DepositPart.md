@@ -14,7 +14,7 @@ Exactly one originating collection or receipt portion. Several batches can share
 | --- | --- | --- | --- |
 | `deposit_id` | → Deposit | Required when the record reaches its applicable state | [relation](../value-conventions.md#relation) |
 | `collection_batch_id` | → CollectionBatch? | Optional under owner conditions | [relation](../value-conventions.md#relation) |
-| `receipt_source` | ? | Optional under owner conditions | [structured](../value-conventions.md#structured) |
+| `receipt_source` | ? | Optional under owner conditions | [resource](../value-conventions.md#resource) |
 | `tender` | code | Required when the record reaches its applicable state | [vocab](../value-conventions.md#vocab) |
 | `amount` | money | Required when the record reaches its applicable state | [money](../value-conventions.md#money) |
 | `fund_id` | → Fund | Required when the record reaches its applicable state | [relation](../value-conventions.md#relation) |
@@ -30,7 +30,7 @@ The target is [Deposit](Deposit.md). Resolve the identifier in the approved scop
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Deposit·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Deposit·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Deposit·MISSING | Queue the missing Deposit mapping or reject the command before linking. |
 | Wrong scope | Deposit·B01 | Do not attach another church’s Deposit without a supported exchange and local authority. |
 | Target rename | Rename Deposit·A01 after linking | The existing deposit_id keeps the same identity and historic documents retain their original wording. |
@@ -43,7 +43,7 @@ The target is [CollectionBatch](CollectionBatch.md). Resolve the identifier in t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | CollectionBatch·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | CollectionBatch·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | CollectionBatch·MISSING | Queue the missing CollectionBatch mapping or reject the command before linking. |
 | Wrong scope | CollectionBatch·B01 | Do not attach another church’s CollectionBatch without a supported exchange and local authority. |
 | Target rename | Rename CollectionBatch·A01 after linking | The existing collection_batch_id keeps the same identity and historic documents retain their original wording. |
@@ -51,15 +51,15 @@ The target is [CollectionBatch](CollectionBatch.md). Resolve the identifier in t
 
 ### receipt_source
 
-Use typed value or bounded compound record for `DepositPart.receipt_source`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use scoped or external reference for `DepositPart.receipt_source`. Resolve against the permitted kind, owning namespace and purpose.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of receipt_source matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for receipt_source | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | verified receipt_source in the owner namespace | Resolve against the permitted kind, owning namespace and purpose. |
+| Malformed or unmapped | unmapped receipt_source | Request clarification or quarantine the mapping. |
+| Same visible code from two sources | issuer A:007 and issuer B:007 | Retain distinct namespace/key pairs. |
+| Referenced evidence is restricted | restricted attachment behind an otherwise visible request | Show a minimal permitted result and check document access independently. |
+| Duplicate delivery of the same mapped reference | same namespace, key and accepted mapping twice | Resolve the same destination record once. |
 | Absent in intake | No receipt_source provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
 
 ### tender
@@ -95,7 +95,7 @@ The target is [Fund](Fund.md). Resolve the identifier in the approved scope befo
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Fund·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Fund·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Fund·MISSING | Queue the missing Fund mapping or reject the command before linking. |
 | Wrong scope | Fund·B01 | Do not attach another church’s Fund without a supported exchange and local authority. |
 | Target rename | Rename Fund·A01 after linking | The existing fund_id keeps the same identity and historic documents retain their original wording. |

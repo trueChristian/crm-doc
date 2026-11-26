@@ -40,7 +40,7 @@ The target is [TaxRuleVersion](TaxRuleVersion.md). Resolve the identifier in the
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | TaxRuleVersion·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | TaxRuleVersion·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | TaxRuleVersion·MISSING | Queue the missing TaxRuleVersion mapping or reject the command before linking. |
 | Wrong scope | TaxRuleVersion·B01 | Do not attach another church’s TaxRuleVersion without a supported exchange and local authority. |
 | Target rename | Rename TaxRuleVersion·A01 after linking | The existing tax_rule_version_id keeps the same identity and historic documents retain their original wording. |
@@ -53,7 +53,7 @@ The target is [FinanceTaxComponent](FinanceTaxComponent.md). Resolve the identif
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | FinanceTaxComponent·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | FinanceTaxComponent·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | FinanceTaxComponent·MISSING | Queue the missing FinanceTaxComponent mapping or reject the command before linking. |
 | Wrong scope | FinanceTaxComponent·B01 | Do not attach another church’s FinanceTaxComponent without a supported exchange and local authority. |
 | Target rename | Rename FinanceTaxComponent·A01 after linking | The existing tax_component_id keeps the same identity and historic documents retain their original wording. |
@@ -92,7 +92,7 @@ The target is [FinanceAppliedTaxComponent](FinanceAppliedTaxComponent.md). Resol
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | FinanceAppliedTaxComponent·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | FinanceAppliedTaxComponent·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | FinanceAppliedTaxComponent·MISSING | Queue the missing FinanceAppliedTaxComponent mapping or reject the command before linking. |
 | Wrong scope | FinanceAppliedTaxComponent·B01 | Do not attach another church’s FinanceAppliedTaxComponent without a supported exchange and local authority. |
 | Target rename | Rename FinanceAppliedTaxComponent·A01 after linking | The existing original_applied_id keeps the same identity and historic documents retain their original wording. |
