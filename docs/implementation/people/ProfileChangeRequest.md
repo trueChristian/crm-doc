@@ -49,7 +49,7 @@ The target is [Person](Person.md). Resolve the identifier in the approved scope 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Person·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Person·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Person·MISSING | Queue the missing Person mapping or reject the command before linking. |
 | Wrong scope | Person·B01 | Do not attach another church’s Person without a supported exchange and local authority. |
 | Target rename | Rename Person·A01 after linking | The existing person_id keeps the same identity and historic documents retain their original wording. |
@@ -62,7 +62,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing requested_by keeps the same identity and historic documents retain their original wording. |
@@ -75,7 +75,7 @@ The target is [RepresentationAuthority](RepresentationAuthority.md). Resolve the
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | RepresentationAuthority·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | RepresentationAuthority·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | RepresentationAuthority·MISSING | Queue the missing RepresentationAuthority mapping or reject the command before linking. |
 | Wrong scope | RepresentationAuthority·B01 | Do not attach another church’s RepresentationAuthority without a supported exchange and local authority. |
 | Target rename | Rename RepresentationAuthority·A01 after linking | The existing authority_id keeps the same identity and historic documents retain their original wording. |
@@ -110,6 +110,7 @@ Use whole-number measure for `ProfileChangeRequest.old_revision`. Preserve integ
 ### proposed_value
 
 Use typed value or bounded compound record for `ProfileChangeRequest.proposed_value`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Field access: enforce the declared protection on reads, search, previews, exports and audit evidence as well as the underlying structured value.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
@@ -153,7 +154,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing reviewed_by keeps the same identity and historic documents retain their original wording. |

@@ -53,7 +53,7 @@ The target is [Congregation](../foundation/Congregation.md). Resolve the identif
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Congregation·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Congregation·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Congregation·MISSING | Queue the missing Congregation mapping or reject the command before linking. |
 | Wrong scope | Congregation·B01 | Do not attach another church’s Congregation without a supported exchange and local authority. |
 | Target rename | Rename Congregation·A01 after linking | The existing congregation_id keeps the same identity and historic documents retain their original wording. |
@@ -66,7 +66,7 @@ The target is [ProtectionPolicy](ProtectionPolicy.md). Resolve the identifier in
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ProtectionPolicy·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ProtectionPolicy·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ProtectionPolicy·MISSING | Queue the missing ProtectionPolicy mapping or reject the command before linking. |
 | Wrong scope | ProtectionPolicy·B01 | Do not attach another church’s ProtectionPolicy without a supported exchange and local authority. |
 | Target rename | Rename ProtectionPolicy·A01 after linking | The existing policy_id keeps the same identity and historic documents retain their original wording. |
@@ -144,7 +144,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing assigned_lead keeps the same identity and historic documents retain their original wording. |
@@ -157,7 +157,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing fallback_owner keeps the same identity and historic documents retain their original wording. |

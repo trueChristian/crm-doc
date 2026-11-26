@@ -48,7 +48,7 @@ The target is [Person](Person.md). Resolve the identifier in the approved scope 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Person·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Person·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Person·MISSING | Queue the missing Person mapping or reject the command before linking. |
 | Wrong scope | Person·B01 | Do not attach another church’s Person without a supported exchange and local authority. |
 | Target rename | Rename Person·A01 after linking | The existing from_person_id keeps the same identity and historic documents retain their original wording. |
@@ -61,7 +61,7 @@ The target is [Person](Person.md). Resolve the identifier in the approved scope 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Person·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Person·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Person·MISSING | Queue the missing Person mapping or reject the command before linking. |
 | Wrong scope | Person·B01 | Do not attach another church’s Person without a supported exchange and local authority. |
 | Target rename | Rename Person·A01 after linking | The existing to_person_id keeps the same identity and historic documents retain their original wording. |
@@ -74,7 +74,7 @@ The target is [RelationshipType](RelationshipType.md). Resolve the identifier in
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | RelationshipType·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | RelationshipType·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | RelationshipType·MISSING | Queue the missing RelationshipType mapping or reject the command before linking. |
 | Wrong scope | RelationshipType·B01 | Do not attach another church’s RelationshipType without a supported exchange and local authority. |
 | Target rename | Rename RelationshipType·A01 after linking | The existing type_id keeps the same identity and historic documents retain their original wording. |
@@ -152,7 +152,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing recorded_by keeps the same identity and historic documents retain their original wording. |
