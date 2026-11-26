@@ -14,6 +14,9 @@ This is a product and data specification for a congregation, a church with sever
 | Gifts, funds, payroll, accounts or the annual close | [Finance](docs/finance/README.md) | Can the treasurer trace a reported amount back to its approved source? |
 | Merchandise, a bookstall, sermon media or subscriptions | [Commerce and media](docs/commerce/README.md) | When does a paid order grant access and what happens on a refund? |
 | Staff, outreach programs, church offices or denominational reporting | [Church administration](docs/administration/README.md) | How does a clerk submit a return or a relief coordinator account for a distribution? |
+| Appeals, donor stewardship, grant applications or sponsorship | [Fundraising and partnerships](docs/development/README.md) | Who promised support, what is still due, and which gifts actually reached the books? |
+| Risk, insurance, complaints or continuity | [Assurance and independent review](docs/assurance/README.md) | Who owns the response, who reviews it independently, and how is closure evidenced? |
+| Finding a named logical table, relationship or workflow handoff | [Logical record catalogue](docs/reference/records.md) and [relationship map](docs/foundation/boundaries.md) | Where are this record's fields and rules, and which other departments depend on it? |
 | Accounts, access, privacy, integration, operations, analytics or assisted work | [Platform services](docs/platform/README.md) | How does the same permission apply in a search, export and automated suggestion? |
 | Planning implementation or checking the whole product | [Delivery and verification](docs/verification/README.md) | Which record, amount or permission must agree across departments? |
 
