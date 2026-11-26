@@ -33,7 +33,7 @@ The target is [Delivery](Delivery.md). Resolve the identifier in the approved sc
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Delivery·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Delivery·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Delivery·MISSING | Queue the missing Delivery mapping or reject the command before linking. |
 | Wrong scope | Delivery·B01 | Do not attach another church’s Delivery without a supported exchange and local authority. |
 | Target rename | Rename Delivery·A01 after linking | The existing delivery_id keeps the same identity and historic documents retain their original wording. |
@@ -46,7 +46,7 @@ The target is [DeliveryAttempt](DeliveryAttempt.md). Resolve the identifier in t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | DeliveryAttempt·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | DeliveryAttempt·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | DeliveryAttempt·MISSING | Queue the missing DeliveryAttempt mapping or reject the command before linking. |
 | Wrong scope | DeliveryAttempt·B01 | Do not attach another church’s DeliveryAttempt without a supported exchange and local authority. |
 | Target rename | Rename DeliveryAttempt·A01 after linking | The existing attempt_id keeps the same identity and historic documents retain their original wording. |
@@ -120,6 +120,7 @@ Declared alternatives in owner order: `verified`, `quarantined`. Approval and li
 ### source_ref
 
 Use scoped or external reference for `DeliveryObservation.source_ref`. Resolve against the permitted kind, owning namespace and purpose.
+Field access: enforce the declared protection on reads, search, previews, exports and audit evidence as well as the underlying resource value.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |

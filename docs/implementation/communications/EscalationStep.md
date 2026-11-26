@@ -32,7 +32,7 @@ The target is [ReminderRule](ReminderRule.md). Resolve the identifier in the app
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ReminderRule·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ReminderRule·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ReminderRule·MISSING | Queue the missing ReminderRule mapping or reject the command before linking. |
 | Wrong scope | ReminderRule·B01 | Do not attach another church’s ReminderRule without a supported exchange and local authority. |
 | Target rename | Rename ReminderRule·A01 after linking | The existing rule_id keeps the same identity and historic documents retain their original wording. |
@@ -110,7 +110,7 @@ The target is [MessageTemplate](MessageTemplate.md). Resolve the identifier in t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | MessageTemplate·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | MessageTemplate·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | MessageTemplate·MISSING | Queue the missing MessageTemplate mapping or reject the command before linking. |
 | Wrong scope | MessageTemplate·B01 | Do not attach another church’s MessageTemplate without a supported exchange and local authority. |
 | Target rename | Rename MessageTemplate·A01 after linking | The existing template_id keeps the same identity and historic documents retain their original wording. |

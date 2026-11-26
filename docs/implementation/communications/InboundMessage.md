@@ -33,7 +33,7 @@ The target is [ReplyThread](ReplyThread.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ReplyThread·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ReplyThread·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ReplyThread·MISSING | Queue the missing ReplyThread mapping or reject the command before linking. |
 | Wrong scope | ReplyThread·B01 | Do not attach another church’s ReplyThread without a supported exchange and local authority. |
 | Target rename | Rename ReplyThread·A01 after linking | The existing thread_id keeps the same identity and historic documents retain their original wording. |
@@ -42,6 +42,7 @@ The target is [ReplyThread](ReplyThread.md). Resolve the identifier in the appro
 ### sender_endpoint_ref
 
 Use scoped or external reference for `InboundMessage.sender_endpoint_ref`. Resolve against the permitted kind, owning namespace and purpose.
+Field access: enforce the declared protection on reads, search, previews, exports and audit evidence as well as the underlying resource value.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
@@ -107,6 +108,7 @@ Use human-readable text for `InboundMessage.body_restricted`. Preserve the meani
 ### attachments_manifest
 
 Use ordered collection or mathematical set for `InboundMessage.attachments_manifest`. Preserve ordering when meaningful; enforce uniqueness when the declaration is a set.
+Field access: enforce the declared protection on reads, search, previews, exports and audit evidence as well as the underlying list value.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |

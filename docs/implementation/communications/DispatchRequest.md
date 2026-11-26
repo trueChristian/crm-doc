@@ -24,7 +24,7 @@ Exactly one audience snapshot or channel publication target. Unique organization
 | `audience_id` | AudienceSnapshot ref? | Optional under owner conditions | [relation](../value-conventions.md#relation) |
 | `publication_target_id` | ChannelPublicationTarget ref? | Optional under owner conditions | [relation](../value-conventions.md#relation) |
 | `source_template_id` | MessageTemplate ref | Required when the record reaches its applicable state | [relation](../value-conventions.md#relation) |
-| `release_manifest` | approved editions | Required when the record reaches its applicable state | [structured](../value-conventions.md#structured) |
+| `release_manifest` | approved editions | Required when the record reaches its applicable state | [list](../value-conventions.md#list) |
 | `due_at` | instant | Required when the record reaches its applicable state | [instant](../value-conventions.md#instant) |
 | `deadline_at` | instant? | Optional under owner conditions | [instant](../value-conventions.md#instant) |
 | `priority` | code | Required when the record reaches its applicable state | [vocab](../value-conventions.md#vocab) |
@@ -42,7 +42,7 @@ The target is [Organization](../foundation/Organization.md). Resolve the identif
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Organization·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Organization·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Organization·MISSING | Queue the missing Organization mapping or reject the command before linking. |
 | Wrong scope | Organization·B01 | Do not attach another church’s Organization without a supported exchange and local authority. |
 | Target rename | Rename Organization·A01 after linking | The existing organization_id keeps the same identity and historic documents retain their original wording. |
@@ -55,7 +55,7 @@ The target is [Campaign](Campaign.md). Resolve the identifier in the approved sc
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Campaign·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Campaign·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Campaign·MISSING | Queue the missing Campaign mapping or reject the command before linking. |
 | Wrong scope | Campaign·B01 | Do not attach another church’s Campaign without a supported exchange and local authority. |
 | Target rename | Rename Campaign·A01 after linking | The existing campaign_id keeps the same identity and historic documents retain their original wording. |
@@ -68,7 +68,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing owner_id keeps the same identity and historic documents retain their original wording. |
@@ -94,7 +94,7 @@ The target is [CommunicationPurpose](CommunicationPurpose.md). Resolve the ident
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | CommunicationPurpose·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | CommunicationPurpose·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | CommunicationPurpose·MISSING | Queue the missing CommunicationPurpose mapping or reject the command before linking. |
 | Wrong scope | CommunicationPurpose·B01 | Do not attach another church’s CommunicationPurpose without a supported exchange and local authority. |
 | Target rename | Rename CommunicationPurpose·A01 after linking | The existing purpose_id keeps the same identity and historic documents retain their original wording. |
@@ -159,7 +159,7 @@ The target is [AudienceSnapshot](AudienceSnapshot.md). Resolve the identifier in
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | AudienceSnapshot·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | AudienceSnapshot·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | AudienceSnapshot·MISSING | Queue the missing AudienceSnapshot mapping or reject the command before linking. |
 | Wrong scope | AudienceSnapshot·B01 | Do not attach another church’s AudienceSnapshot without a supported exchange and local authority. |
 | Target rename | Rename AudienceSnapshot·A01 after linking | The existing audience_id keeps the same identity and historic documents retain their original wording. |
@@ -172,7 +172,7 @@ The target is [ChannelPublicationTarget](ChannelPublicationTarget.md). Resolve t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ChannelPublicationTarget·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ChannelPublicationTarget·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ChannelPublicationTarget·MISSING | Queue the missing ChannelPublicationTarget mapping or reject the command before linking. |
 | Wrong scope | ChannelPublicationTarget·B01 | Do not attach another church’s ChannelPublicationTarget without a supported exchange and local authority. |
 | Target rename | Rename ChannelPublicationTarget·A01 after linking | The existing publication_target_id keeps the same identity and historic documents retain their original wording. |
@@ -185,7 +185,7 @@ The target is [MessageTemplate](MessageTemplate.md). Resolve the identifier in t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | MessageTemplate·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | MessageTemplate·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | MessageTemplate·MISSING | Queue the missing MessageTemplate mapping or reject the command before linking. |
 | Wrong scope | MessageTemplate·B01 | Do not attach another church’s MessageTemplate without a supported exchange and local authority. |
 | Target rename | Rename MessageTemplate·A01 after linking | The existing source_template_id keeps the same identity and historic documents retain their original wording. |
@@ -193,15 +193,15 @@ The target is [MessageTemplate](MessageTemplate.md). Resolve the identifier in t
 
 ### release_manifest
 
-Use typed value or bounded compound record for `DispatchRequest.release_manifest`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use ordered collection or mathematical set for `DispatchRequest.release_manifest`. Preserve ordering when meaningful; enforce uniqueness when the declaration is a set.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of release_manifest matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for release_manifest | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | permitted members A and B | Preserve ordering when meaningful; enforce uniqueness when the declaration is a set. |
+| Malformed or unmapped | an element outside the declared domain | Reject the affected collection or stage its invalid item under the import policy. |
+| Same element appears twice | A, A, B | Apply declared sequence/set multiplicity without doubling financial or voting effects. |
+| Empty collection versus unknown collection | empty collection and missing collection | Preserve the distinction where the rule requires evidence. |
+| One element later becomes restricted | authorization for member B withdrawn before export | Recompute permitted projection before export or display. |
 | Incomplete record | No release_manifest at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### due_at

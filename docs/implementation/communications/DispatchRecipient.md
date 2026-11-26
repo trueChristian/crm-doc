@@ -34,7 +34,7 @@ The target is [DispatchRequest](DispatchRequest.md). Resolve the identifier in t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | DispatchRequest·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | DispatchRequest·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | DispatchRequest·MISSING | Queue the missing DispatchRequest mapping or reject the command before linking. |
 | Wrong scope | DispatchRequest·B01 | Do not attach another church’s DispatchRequest without a supported exchange and local authority. |
 | Target rename | Rename DispatchRequest·A01 after linking | The existing dispatch_id keeps the same identity and historic documents retain their original wording. |
@@ -47,7 +47,7 @@ The target is [AudienceEntry](AudienceEntry.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | AudienceEntry·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | AudienceEntry·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | AudienceEntry·MISSING | Queue the missing AudienceEntry mapping or reject the command before linking. |
 | Wrong scope | AudienceEntry·B01 | Do not attach another church’s AudienceEntry without a supported exchange and local authority. |
 | Target rename | Rename AudienceEntry·A01 after linking | The existing entry_id keeps the same identity and historic documents retain their original wording. |
@@ -60,7 +60,7 @@ The target is [DeliveryEndpoint](DeliveryEndpoint.md). Resolve the identifier in
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | DeliveryEndpoint·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | DeliveryEndpoint·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | DeliveryEndpoint·MISSING | Queue the missing DeliveryEndpoint mapping or reject the command before linking. |
 | Wrong scope | DeliveryEndpoint·B01 | Do not attach another church’s DeliveryEndpoint without a supported exchange and local authority. |
 | Target rename | Rename DeliveryEndpoint·A01 after linking | The existing endpoint_id keeps the same identity and historic documents retain their original wording. |
@@ -73,7 +73,7 @@ The target is [TemplateEdition](TemplateEdition.md). Resolve the identifier in t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | TemplateEdition·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | TemplateEdition·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | TemplateEdition·MISSING | Queue the missing TemplateEdition mapping or reject the command before linking. |
 | Wrong scope | TemplateEdition·B01 | Do not attach another church’s TemplateEdition without a supported exchange and local authority. |
 | Target rename | Rename TemplateEdition·A01 after linking | The existing template_edition_id keeps the same identity and historic documents retain their original wording. |
@@ -151,7 +151,7 @@ The target is [RepresentationAuthority](../people/RepresentationAuthority.md). R
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | RepresentationAuthority·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | RepresentationAuthority·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | RepresentationAuthority·MISSING | Queue the missing RepresentationAuthority mapping or reject the command before linking. |
 | Wrong scope | RepresentationAuthority·B01 | Do not attach another church’s RepresentationAuthority without a supported exchange and local authority. |
 | Target rename | Rename RepresentationAuthority·A01 after linking | The existing representation_id keeps the same identity and historic documents retain their original wording. |

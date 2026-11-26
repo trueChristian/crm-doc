@@ -38,7 +38,7 @@ The target is [Organization](../foundation/Organization.md). Resolve the identif
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Organization·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Organization·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Organization·MISSING | Queue the missing Organization mapping or reject the command before linking. |
 | Wrong scope | Organization·B01 | Do not attach another church’s Organization without a supported exchange and local authority. |
 | Target rename | Rename Organization·A01 after linking | The existing organization_id keeps the same identity and historic documents retain their original wording. |
@@ -51,7 +51,7 @@ The target is [Person](../people/Person.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Person·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Person·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Person·MISSING | Queue the missing Person mapping or reject the command before linking. |
 | Wrong scope | Person·B01 | Do not attach another church’s Person without a supported exchange and local authority. |
 | Target rename | Rename Person·A01 after linking | The existing person_id keeps the same identity and historic documents retain their original wording. |
@@ -64,7 +64,7 @@ The target is [PersonContactPoint](../people/PersonContactPoint.md). Resolve the
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | PersonContactPoint·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | PersonContactPoint·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | PersonContactPoint·MISSING | Queue the missing PersonContactPoint mapping or reject the command before linking. |
 | Wrong scope | PersonContactPoint·B01 | Do not attach another church’s PersonContactPoint without a supported exchange and local authority. |
 | Target rename | Rename PersonContactPoint·A01 after linking | The existing person_contact_point_id keeps the same identity and historic documents retain their original wording. |
@@ -77,7 +77,7 @@ The target is [HouseholdAddress](../people/HouseholdAddress.md). Resolve the ide
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | HouseholdAddress·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | HouseholdAddress·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | HouseholdAddress·MISSING | Queue the missing HouseholdAddress mapping or reject the command before linking. |
 | Wrong scope | HouseholdAddress·B01 | Do not attach another church’s HouseholdAddress without a supported exchange and local authority. |
 | Target rename | Rename HouseholdAddress·A01 after linking | The existing household_address_id keeps the same identity and historic documents retain their original wording. |
@@ -90,7 +90,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing owner_account_id keeps the same identity and historic documents retain their original wording. |
