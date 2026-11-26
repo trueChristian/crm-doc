@@ -21,7 +21,7 @@ A denied purpose or class blocks processing before retrieval or transfer. A disa
 | `processing_boundary` | code | Required when the record reaches its applicable state | [vocab](../value-conventions.md#vocab) |
 | `retention_class` | code | Required when the record reaches its applicable state | [vocab](../value-conventions.md#vocab) |
 | `reviewer_role_ref` | Ref(AccessRole) | Required when the record reaches its applicable state | [relation](../value-conventions.md#relation) |
-| `edition` | integer | Required when the record reaches its applicable state | [integer](../value-conventions.md#integer) |
+| `edition` | integer | Required when the record reaches its applicable state | [version](../value-conventions.md#version) |
 
 ## Input, storage and exchange cases
 
@@ -73,7 +73,7 @@ The target is [DataPurpose](DataPurpose.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | DataPurpose·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | DataPurpose·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | DataPurpose·MISSING | Queue the missing DataPurpose mapping or reject the command before linking. |
 | Wrong scope | DataPurpose·B01 | Do not attach another church’s DataPurpose without a supported exchange and local authority. |
 | Target rename | Rename DataPurpose·A01 after linking | The existing purpose_id keeps the same identity and historic documents retain their original wording. |
@@ -138,7 +138,7 @@ The target is [AccessRole](AccessRole.md). Resolve the identifier in the approve
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | AccessRole·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | AccessRole·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | AccessRole·MISSING | Queue the missing AccessRole mapping or reject the command before linking. |
 | Wrong scope | AccessRole·B01 | Do not attach another church’s AccessRole without a supported exchange and local authority. |
 | Target rename | Rename AccessRole·A01 after linking | The existing reviewer_role_ref keeps the same identity and historic documents retain their original wording. |
@@ -146,15 +146,15 @@ The target is [AccessRole](AccessRole.md). Resolve the identifier in the approve
 
 ### edition
 
-Use whole-number measure for `AssistancePolicy.edition`. Preserve integer precision and enforce the specific field bounds.
+Use revision number or opaque revision token for `AssistancePolicy.edition`. Compare under the declared revision scheme. Require the expected version for conflicting work.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | 2 subject to field bounds | Preserve integer precision and enforce the specific field bounds. |
-| Malformed or unmapped | 2.5 | Reject fractional input without rounding it into a whole person, place or sequence. |
-| Value equals the configured upper bound | value exactly equal to the applicable maximum | Apply its inclusive or exclusive rule explicitly. |
-| Value exceeds the bound by one | applicable maximum plus one | Return a range error before changing dependent totals. |
-| Missing count versus measured zero | observed 0 and omitted value | Keep absence distinct from an observed zero. |
+| Admissible representation | the current revision returned by the owner | Compare under the declared revision scheme. Require the expected version for conflicting work. |
+| Malformed or unmapped | superseded version presented for a new approval | Reject or reopen review against the current contents. |
+| Two operators begin at revision seven | two edits both cite baseline 7 | Commit the first change once and re-evaluate the second; never overwrite an unreviewed difference. |
+| Re-read an already approved revision | re-open issued revision 4 after revision 6 | Return the frozen value and evidence for that edition. |
+| Replay of an earlier result | same business operation observed at two revisions | Correlate by the business operation identity; a newer version does not create a second effect. |
 | Incomplete record | No edition at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ## Incoming references

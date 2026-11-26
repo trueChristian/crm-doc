@@ -30,7 +30,7 @@ The target is [ApprovalRequest](ApprovalRequest.md). Resolve the identifier in t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ApprovalRequest·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ApprovalRequest·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ApprovalRequest·MISSING | Queue the missing ApprovalRequest mapping or reject the command before linking. |
 | Wrong scope | ApprovalRequest·B01 | Do not attach another church’s ApprovalRequest without a supported exchange and local authority. |
 | Target rename | Rename ApprovalRequest·A01 after linking | The existing request_id keeps the same identity and historic documents retain their original wording. |
@@ -43,7 +43,7 @@ The target is [UserAccount](UserAccount.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing voter_ref keeps the same identity and historic documents retain their original wording. |

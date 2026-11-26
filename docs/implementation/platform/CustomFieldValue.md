@@ -31,7 +31,7 @@ The target is [CustomFieldDefinition](CustomFieldDefinition.md). Resolve the ide
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | CustomFieldDefinition·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | CustomFieldDefinition·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | CustomFieldDefinition·MISSING | Queue the missing CustomFieldDefinition mapping or reject the command before linking. |
 | Wrong scope | CustomFieldDefinition·B01 | Do not attach another church’s CustomFieldDefinition without a supported exchange and local authority. |
 | Target rename | Rename CustomFieldDefinition·A01 after linking | The existing field_id keeps the same identity and historic documents retain their original wording. |
@@ -109,7 +109,7 @@ The target is [UserAccount](UserAccount.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing recorded_by keeps the same identity and historic documents retain their original wording. |

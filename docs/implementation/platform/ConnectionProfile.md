@@ -32,7 +32,7 @@ The target is [IntegrationPrincipal](IntegrationPrincipal.md). Resolve the ident
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | IntegrationPrincipal·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | IntegrationPrincipal·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | IntegrationPrincipal·MISSING | Queue the missing IntegrationPrincipal mapping or reject the command before linking. |
 | Wrong scope | IntegrationPrincipal·B01 | Do not attach another church’s IntegrationPrincipal without a supported exchange and local authority. |
 | Target rename | Rename IntegrationPrincipal·A01 after linking | The existing principal_id keeps the same identity and historic documents retain their original wording. |
@@ -54,6 +54,7 @@ Use versioned classification or status code for `ConnectionProfile.provider_kind
 ### destination_ref
 
 Use scoped or external reference for `ConnectionProfile.destination_ref`. Resolve against the permitted kind, owning namespace and purpose.
+Field access: enforce the declared protection on reads, search, previews, exports and audit evidence as well as the underlying resource value.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |

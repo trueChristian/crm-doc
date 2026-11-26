@@ -34,7 +34,7 @@ The target is [AssistancePolicy](AssistancePolicy.md). Resolve the identifier in
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | AssistancePolicy·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | AssistancePolicy·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | AssistancePolicy·MISSING | Queue the missing AssistancePolicy mapping or reject the command before linking. |
 | Wrong scope | AssistancePolicy·B01 | Do not attach another church’s AssistancePolicy without a supported exchange and local authority. |
 | Target rename | Rename AssistancePolicy·A01 after linking | The existing policy_id keeps the same identity and historic documents retain their original wording. |
@@ -47,7 +47,7 @@ The target is [AssistantEdition](AssistantEdition.md). Resolve the identifier in
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | AssistantEdition·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | AssistantEdition·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | AssistantEdition·MISSING | Queue the missing AssistantEdition mapping or reject the command before linking. |
 | Wrong scope | AssistantEdition·B01 | Do not attach another church’s AssistantEdition without a supported exchange and local authority. |
 | Target rename | Rename AssistantEdition·A01 after linking | The existing edition_id keeps the same identity and historic documents retain their original wording. |
@@ -60,7 +60,7 @@ The target is [UserAccount](UserAccount.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing actor_id keeps the same identity and historic documents retain their original wording. |

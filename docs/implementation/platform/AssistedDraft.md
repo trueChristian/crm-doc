@@ -31,7 +31,7 @@ The target is [AssistanceRun](AssistanceRun.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | AssistanceRun·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | AssistanceRun·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | AssistanceRun·MISSING | Queue the missing AssistanceRun mapping or reject the command before linking. |
 | Wrong scope | AssistanceRun·B01 | Do not attach another church’s AssistanceRun without a supported exchange and local authority. |
 | Target rename | Rename AssistanceRun·A01 after linking | The existing run_id keeps the same identity and historic documents retain their original wording. |
@@ -109,7 +109,7 @@ The target is [AssistedDraft](AssistedDraft.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | AssistedDraft·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | AssistedDraft·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | AssistedDraft·MISSING | Queue the missing AssistedDraft mapping or reject the command before linking. |
 | Wrong scope | AssistedDraft·B01 | Do not attach another church’s AssistedDraft without a supported exchange and local authority. |
 | Target rename | Rename AssistedDraft·A01 after linking | The existing supersedes_ref keeps the same identity and historic documents retain their original wording. |

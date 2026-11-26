@@ -37,7 +37,7 @@ The target is [Person](../people/Person.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Person·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Person·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Person·MISSING | Queue the missing Person mapping or reject the command before linking. |
 | Wrong scope | Person·B01 | Do not attach another church’s Person without a supported exchange and local authority. |
 | Target rename | Rename Person·A01 after linking | The existing subject_id keeps the same identity and historic documents retain their original wording. |
@@ -50,7 +50,7 @@ The target is [DataPurpose](DataPurpose.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | DataPurpose·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | DataPurpose·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | DataPurpose·MISSING | Queue the missing DataPurpose mapping or reject the command before linking. |
 | Wrong scope | DataPurpose·B01 | Do not attach another church’s DataPurpose without a supported exchange and local authority. |
 | Target rename | Rename DataPurpose·A01 after linking | The existing purpose_id keeps the same identity and historic documents retain their original wording. |
@@ -63,7 +63,7 @@ The target is [NoticeEdition](NoticeEdition.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | NoticeEdition·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | NoticeEdition·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | NoticeEdition·MISSING | Queue the missing NoticeEdition mapping or reject the command before linking. |
 | Wrong scope | NoticeEdition·B01 | Do not attach another church’s NoticeEdition without a supported exchange and local authority. |
 | Target rename | Rename NoticeEdition·A01 after linking | The existing notice_id keeps the same identity and historic documents retain their original wording. |
@@ -167,7 +167,7 @@ The target is [RepresentationGrant](RepresentationGrant.md). Resolve the identif
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | RepresentationGrant·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | RepresentationGrant·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | RepresentationGrant·MISSING | Queue the missing RepresentationGrant mapping or reject the command before linking. |
 | Wrong scope | RepresentationGrant·B01 | Do not attach another church’s RepresentationGrant without a supported exchange and local authority. |
 | Target rename | Rename RepresentationGrant·A01 after linking | The existing representation_id keeps the same identity and historic documents retain their original wording. |
@@ -193,7 +193,7 @@ The target is [ConsentDecision](ConsentDecision.md). Resolve the identifier in t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ConsentDecision·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ConsentDecision·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ConsentDecision·MISSING | Queue the missing ConsentDecision mapping or reject the command before linking. |
 | Wrong scope | ConsentDecision·B01 | Do not attach another church’s ConsentDecision without a supported exchange and local authority. |
 | Target rename | Rename ConsentDecision·A01 after linking | The existing replaces_id keeps the same identity and historic documents retain their original wording. |
