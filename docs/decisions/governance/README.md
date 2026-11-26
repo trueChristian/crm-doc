@@ -1,10 +1,10 @@
 # Governance and communications decision cases
 
-Use these 21,737 finite examples with the [clerk's procedural manuals](../../handbook/governance/README.md). Choose the family first and then a charter, calendar or channel profile. Pages contain up to 325 cases each. Each row is an independent acceptance test unless the row itself specifies an ordered history. These are explicit example policy choices. Each church still adopts its own charter, privacy restrictions, authorities and operational settings.
+Use these 21,745 finite examples with the [clerk's procedural manuals](../../handbook/governance/README.md). Choose the family first and then a charter, calendar or channel profile. Pages contain up to 325 cases each. Each row is an independent acceptance test unless the row itself specifies an ordered history. These are explicit example policy choices. Each church still adopts its own charter, privacy restrictions, authorities and operational settings.
 
 | Decision family | Cases | What varies |
 | --- | ---: | --- |
-| [Motion majorities and denominator choices](motion-thresholds/README.md) | 3,360 | Votes, abstentions, absences and four denominator/threshold combinations. |
+| [Motion majorities and denominator choices](motion-thresholds/README.md) | 3,368 | Votes, abstentions, absences, zero denominators, single decisive votes and charter-specific thresholds. |
 | [Quorum under vacancies, recusals and representation minima](quorum-checkpoints/README.md) | 3,058 | Vacancies, proxy inclusion, recusals, district minima and quorum boundaries. |
 | [Formal notice windows and deemed service](notice-deadlines/README.md) | 3,040 | Meeting dates, notice periods, weekends, holidays and postal deemed service. |
 | [Proxy conflicts, personal arrival and consumed rights](proxy-entitlements/README.md) | 1,680 | Holder caps, timing of direct attendance, revocation, conflicts and preceding ballot use. |
