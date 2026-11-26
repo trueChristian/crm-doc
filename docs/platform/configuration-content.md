@@ -1,0 +1,35 @@
+# Configuration, reusable forms and document custody
+
+A church chooses its local terminology, ministries, registers, languages, branding and approval routes. A small congregation can run the register with a few required fields; a network of campuses can add locally approved fields and workflows while still reporting consistently. Each configurable field or rule has an owner, purpose, type, audience, retention class and tested publication process.
+
+## Logical records
+
+| Entity | Fields | Relationship and constraint |
+|---|---|---|
+| SettingDefinition | setting_key code, value_type code, allowed_scopes set(code), default_value typed value?, validation structured rule, risk_class code, owner_id Ref(UserAccount) | A setting key has one meaning. Sensitive credentials use secret references only. |
+| SettingEdition | definition_id Ref(SettingDefinition), scope_ref ResourceRef, value typed value, revision integer, effective_at instant, expires_at instant?, approved_by Ref(UserAccount)?, change_reason text | One effective value at the same scope/instant. Each definition states inheritance and whether lower scopes may override it. |
+| VocabularyTerm | vocabulary_key code, term_key code, parent_id Ref(VocabularyTerm)?, display_order integer, enabled_from date, retired_on date?, replacement_id Ref(VocabularyTerm)? | Unique vocabulary and term key. Retired terms remain resolvable in historic reports. No cycles in hierarchy or replacements. |
+| CustomFieldDefinition | entity_type code, field_key code, value_type code, option_vocabulary code?, cardinality code, rule structured expression?, sensitivity code, purpose_id Ref(DataPurpose), visibility_rule structured rule, effective_revision integer, retired_at instant? | Stable meaning and key; changing type or meaning requires a controlled migration. Limit free-text storage on sensitive forms. |
+| CustomFieldValue | field_id Ref(CustomFieldDefinition), subject_ref ResourceRef, ordinal integer, value typed value?, effective_at instant, source_ref ResourceRef?, recorded_by Ref(UserAccount) | Validate type, cardinality, classification, purpose and allowed subject. Distinguish explicitly unknown from unanswered. |
+| FormEdition | form_key code, revision integer, scope_ref ResourceRef, title text, intended_purpose Ref(DataPurpose), pages ordered structure, validation_rules structured rules, opens_at instant?, closes_at instant?, state code | A published edition is frozen. Version each question's stable key and visibility/required conditions. |
+| FormSubmission | form_id Ref(FormEdition), subject_ref ResourceRef?, submitted_by ResourceRef?, answers_ref ResourceRef, received_at instant, review_state code, target_ref ResourceRef?, receipt_key opaque | Map only approved fields into domain records after validation. One receipt per logical submission. Restricted answers retain their own permissions. |
+| DocumentRecord | owner_ref ResourceRef, title text, classification code, retention_class code, purpose_id Ref(DataPurpose), current_revision_id Ref(DocumentRevision)?, state code | A document may have many revisions and explicitly permitted associations. Discoverability and previews follow underlying permissions. |
+| DocumentRevision | document_id Ref(DocumentRecord), revision integer, file_ref protected content, display_filename text, declared_format code, verified_format code?, size_bytes integer, content_digest text, inspection_state code, uploaded_by Ref(UserAccount), uploaded_at instant, approved_at instant? | Positive revision, nonnegative length. Immutable content within a revision. A quarantined upload stays unavailable. |
+| DocumentAssociation | document_id Ref(DocumentRecord), parent_ref ResourceRef, use_kind code, access_ceiling code, added_at instant | One document can support several records. Opening an association requires both document and parent context authority. |
+| ChangeProposal | area_key code, scope_ref ResourceRef, before_edition text, proposed_edition text, rationale text, affected_counts structured map, requested_by Ref(UserAccount), reviewer_id Ref(UserAccount)?, state code, applied_at instant? | Compare editions, preview affected records and rehearse rollback. Irreversible effects require separately approved remediation. |
+
+## Authoring and rollout
+
+Draft changes in an isolated preview using fictitious or approved redacted examples. Identify who gains or loses access, new required questions, broken smart groups, queued reminders, reporting changes and translated content needing approval. Require independent approval when the rule affects financial processing, rights to children, public disclosure or permission elevation. Publish atomically with its effective time. Roll back by activating a superseding edition. Do not reinterpret historical consent, posted reports, issued receipts or minutes automatically after a change.
+
+Configurable validations may compare fields and dates, constrain choices, declare dependencies, calculate derived display values and route for review. Detect cyclic dependencies and impossible conditions. A concealed or inaccessible field cannot become an insurmountable required question. Server and assisted-entry checks agree. Form labels, helper text, status messages and error text carry translation editions. Attach a form to an event, group, care intake, volunteer application or membership application through an explicit owner reference and review workflow. Anonymous form receipts must not expose whether the submitted name already belongs to the church.
+
+File intake states are uploaded, inspecting, approved, quarantined, superseded and disposed. Check verified type, size, content safety and organization-specific policy before generating thumbnails, indexing, publishing or distributing files. Keep original evidence separate from redacted or translated copies. Resolve storage references through an authorized retrieval path. On replacement, preserve the edition referenced by a historical decision and invalidate obsolete public links under the media rights policy. A cross-record association cannot widen a protected document's audience.
+
+## Acceptance
+
+- A secretary retires a membership classification. New records offer the replacement; the annual register for the previous year displays the original classification at that date.
+- A church adds a required translated field visible only to ministry leaders. A public member form cannot be published until the required-field rule is satisfiable in public view.
+- A user uploads a file labeled as a photograph whose verified type conflicts. It is quarantined before preview, search, email attachment, export or publishing.
+- Two forms simultaneously amend a profile. Each preserves its original submission; field conflicts are routed to review against the current profile revision.
+- An organization tests a new approval path on a sample registration. Actual recipients receive no notice. Activation records the current edition and fallback; rollback preserves completed actions and identifies in-flight cases needing review.

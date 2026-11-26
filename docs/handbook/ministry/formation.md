@@ -1,0 +1,33 @@
+# Arrange a class move, mentoring and preparation review
+
+The class coordinator arranges participation, the mentor arranges a private meeting and the registrar decides what belongs in the church register. A family can complete church-side arrangements at the desk or through an authorized app.
+
+## Build and close a term roster
+
+1. The coordinator defines group, term dates, number of places, age assessment date, review and entry requirements, waiting rules and which leaders may see it. A term can begin mid-calendar year. A confidential cohort hides its existence from ordinary group search and public aggregates.
+2. Determine age in whole years by comparing the birthday in the assessment year with the assessment date. Subtract one when the birthday has not occurred. For a 29 February birthday in a year without that day, store the church's chosen effective date for this administrative age band; use the rule of the relevant authority where a regulated decision requires one. A year-only or approximate birth date produces a range, never a fabricated first of January.
+3. If all plausible ages satisfy the configured band, the age condition alone may clear where policy permits this precision. If plausible ages straddle a threshold, route for review. If none qualify, show the authorized alternative. A parent, volunteer or general attendee cannot read private birth details from a rejected request.
+4. A transfer begins as a request against the destination term and its capacity. While awaiting approval, retain the original class place if the policy promises continuity. On acceptance, end the source participation at its effective boundary and open the destination spell as one approved change. Prior attendance and decisions about class places retain their original occurrence and class.
+5. When closing a term, list unresolved attendance, unresolved contact requests, proposed renewals and superseded roles. Rollover creates invitations or proposals, not unexamined access to the next term. Recalculate current age, eligibility, consent, accommodation requests and leadership access before final acceptance.
+
+**Age fixture.** A class admits people aged 12 through 14 inclusive on 1 September 2027. A child born 1 September 2015 turns 12 that day and meets the age condition; a birth date of 2 September 2015 yields 11. A year-only 2014 gives age 12 or 13 and satisfies the age condition if this church permits a guaranteed range. A year-only 2015 gives 11 or 12 and needs review. A missing day is not a reason to expose the child's file to the whole planning team.
+
+## A visitor transfers between classes
+
+Noa visits a class at North Campus for two Sundays. Record two visits under their actual occurrences. Noa then requests a place in the South Campus group. The South coordinator verifies identity, authority, capacity and the MinistryGroup's age and access rules. If Noa already holds a North place and continuity was promised, keep it until South accepts. Include the effective date in both notifications. Noa counts twice in visits and once in an organization-wide distinct-person count across those two visits. Their first South meeting counts only on an actual observation.
+
+At the next session a grandparent brings Noa to South. Check attendance and any permitted emergency contact, and run supervised check-in and verified collection under the destination's service. A listing at North, responsibility for travel or a learning referral cannot authorize collection. A former North helper cannot retrieve the South roster through a saved link. If a room becomes unavailable after check-in, reconcile actual movements before releasing a child or reporting the receiving room's headcount.
+
+## Accept evidence for a church decision
+
+1. The person requests a mentoring introduction, role eligibility decision or preparation review. Verify who can make this request and agree the permitted follow-up route. Where a mentor is appropriate, assign one local worker, a due date and the scope of the contact. Store pastoral disclosures with their restricted record owner.
+2. Look up the particular church requirement. For a ceremony use the pending CeremonyRequirement. For a serving role use the relevant PositionRequirement and VolunteerCredential. Membership and attendance may have different eligibility rules. Select a manual evidence check or an authorized external issuer.
+3. For an external result, match the connection, church scope, subject mapping, requirement, issuer and validity window. Compare the issuer revision with the last accepted revision. A missing mapping or unclear purpose creates a private work item. The reviewer may request clarification using the person's approved route.
+4. Record the church decision, reviewer, decision time and reference to the evidence. Store only a restricted reference to the issuer attestation where that suffices. A coordinator checking the rota sees the applicable status and dates. Whether the person may serve depends on every requirement for that shift.
+5. A later correction or expiry puts the affected requirement before its reviewer again. Identify imminent assignments, flag an uncovered position and notify the responsible coordinator. Retain the original church decision and historical service. A registrar independently considers a correction if the evidence was used in a formal review.
+
+**Volunteer fixture.** Leila has valid clearance and a pending first-aid requirement. She asks the coordinator to verify an external certificate. The issuing service confirms her scoped identity, qualification and validity to 30 June inclusive under the local policy. An authorized reviewer accepts it for the named role. A shift on 29 June may pass this requirement. A shift extending into 1 July needs renewed evidence or another eligible worker. A safeguarding suspension still blocks either shift. A retry of the original confirmation records no second qualification or invitation.
+
+**Mentoring fixture.** A prospective member asks for two private conversations and permits messages to a personal phone. The mentor can see the agreed contact details during their assignment. After the first conversation the person defers the second and withdraws optional messages. Record the deferral, stop the pending reminder and return the case to the responsible worker at the agreed review time. Leave directory visibility and formal membership under their existing authorities.
+
+[Groups and participation](../../ministry/groups.md) · [Classes and LMS exchange](../../ministry/learning.md) · [Local register and milestones](../../people/rites-and-milestones.md) · [Coordinator acceptance fixture](../../acceptance/ministry/learning-register.md)

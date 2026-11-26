@@ -1,0 +1,38 @@
+# Pastoral care, prayer and continuity
+
+A pastor or assigned care worker can receive a request, agree what may be shared, arrange care and close or hand off the work. A member can ask for a meal after a bereavement without sharing a counselling note with the meal volunteers. Keep pastoral work separate from a safeguarding concern, a contact list and a welfare payment.
+
+## Logical records
+
+| Record | Fields | Integrity and use |
+|---|---|---|
+| CareRequest | id ID, congregation_id → Congregation, requester_person_id → Person?, subject_person_id → Person?, received_at instant, source code, category code, safe_contact_method code?, safe_contact_ref ID?, requested_visibility code, summary restricted text, owner_id → UserAccount?, status enum(received, triage, accepted, referred, declined, withdrawn, closed), reviewed_at instant? | A confidential or anonymous approach may omit a person link; agreement to public prayer must be explicit. Third-party requests initiate a permission review. |
+| CareCase | id ID, request_id → CareRequest?, congregation_id → Congregation, case_type code, severity code, priority code, access_class code, coordinating_account_id → UserAccount, opened_at instant, next_review_on date?, state enum(open, waiting, transferred, closed, reopened), closed_at instant?, outcome_code code?, hold_ref ID? | One request can be divided into separately scoped cases. Keep only necessary sensitive details. Record restricted notes separately from existence and appointment logistics. |
+| CareParticipant | id ID, case_id → CareCase, person_id → Person?, external_label restricted text?, role code, sharing_authority_ref ID?, valid_from date, until_date date? | Multiple people may participate; consent for one party cannot authorize publication about another. Authorized case access follows restricted assignments rather than kinship. |
+| CareAssignment | id ID, case_id → CareCase, user_account_id → UserAccount, role enum(coordinator, visitor, supervisor, specialist), permitted_actions code set, from_at instant, until_at instant?, assigned_by → UserAccount | Scope each assignment to the case, duty and time. A visitor may need timing and safe contact, without counselling narrative. Reassign on leave and review all open cases on staff departure. |
+| CareContact | id ID, case_id → CareCase, assigned_to → UserAccount, contact_kind enum(visit, call, meeting, meal, message, other), scheduled_at instant?, completed_at instant?, state enum(planned, attempted, completed, cancelled), location_ref protected ID?, outcome code?, public_calendar_visibility code | A calendar may display a busy block only; contact narrative, home/hospital details and person identity remain under care controls. A missed visit creates a follow-up option, never a public absence label. |
+| CareNote | id ID, case_id → CareCase, author_id → UserAccount, recorded_at instant, effective_on date, classification code, text restricted text, permitted_purpose code, supersedes_id → CareNote? | Signed case notes are amended with a linked correction. Access, print and export are audited with purpose. Irrelevant details should not enter the church record. |
+| CarePlanAction | id ID, case_id → CareCase, description restricted text, assigned_to → UserAccount?, due_on date, dependency_id → CarePlanAction?, state enum(proposed, agreed, in_progress, completed, cancelled), completed_at instant?, review_on date? | Distinguish agreed visits, meal support, accessibility accommodations and external referrals. Minimize shared task payload. Reject cyclic dependencies. |
+| CareDisclosure | id ID, case_id → CareCase, subject_person_id → Person?, audience code, approved_wording text, purpose code, allowed_channels code set, evidence_ref ID, begins_at instant, expires_at instant?, revoked_at instant?, authorized_by → UserAccount | A public prayer list, prayer chain, bulletin and named referral are distinct audiences and purposes. Grant applies only to the approved wording. Require appropriate authority for all identifiable subjects or redact. |
+| CareReferral | id ID, case_id → CareCase, receiving_party_label restricted text, scope_summary restricted text, disclosure_id → CareDisclosure?, alternative_authority_ref ID?, sent_at instant?, acknowledged_at instant?, state enum(proposed, authorized, sent, acknowledged, declined, withdrawn, closed) | At least one verified authority before dispatch. The receiving party gets only the approved minimum. Keep track of open handovers and service outcomes without copying external case files. |
+
+## Work and access
+
+At intake, ask how and when it is safe to respond, whether others may hear about the request and what help is desired. A current immediate-danger concern follows the locally configured urgent response and safeguarding process. A general task records handoff status only. Restricted information may be provided solely to staff appointed for that purpose. A pastor should be able to open a care case for a guest without requiring membership or a login.
+
+A coordinator assigns an appropriate worker, agrees the actions and next review date, and records attempts separately from completed care. A confidential appointment reminder can use neutral wording if the person has approved the channel. Allow an interpreter or accessibility arrangement under a defined disclosure, with minimal case detail. When the worker is unavailable, transfer their open tasks, record acknowledgment and end prior access. A case can be reopened with a reason and a fresh access review.
+
+For district assignments, consent to routine home contact, attendance-based reviews and how to calculate visit coverage, use [pastoral visiting districts](visiting-districts.md).
+
+For prayer publication, preview the exact audience, channels, wording, publish time and expiry. Check authority again at dispatch. Staff may offer a version without names. Accept a withdrawal through an accessible route, stop future publication and remove live items according to policy. External copies already received cannot be silently recalled. For recurring care such as home communion or bereavement visits, agree recurrence, opt-out, backup owner and a final review; never auto-create indefinite outreach.
+
+## Reports and verification
+
+| Case | Expected result |
+|---|---|
+| Secretary searches for a member with an open counselling case | The general search reveals neither case existence nor its priority; calendar may show the worker as busy. |
+| A parent submits a request naming an adult child for a public prayer list | Publication waits for appropriate authority or an approved version with identifying details removed. |
+| A member approves a private prayer group and later withdraws before the bulletin is sent | No bulletin permission exists; live listings are updated and queued publication is cancelled. |
+| A volunteer accepts a meal delivery | The volunteer sees delivery instructions and a safe contact route authorized for this task. Counselling notes, financial and protective records stay inaccessible. |
+| A caseload exceeds a team's capacity | Coordinator sees overdue reviews, unassigned requests and appointment completion. Shared reports show aggregated workload with configured minimum cohort sizes and no narrative. |
+| A local service asks for a complete history following a basic referral | An assigned reviewer checks the authority and minimum scope. The ordinary referral operation cannot disclose the case file. |
