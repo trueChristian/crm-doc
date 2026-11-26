@@ -33,7 +33,7 @@ The target is [SharingAgreement](SharingAgreement.md). Resolve the identifier in
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | SharingAgreement·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | SharingAgreement·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | SharingAgreement·MISSING | Queue the missing SharingAgreement mapping or reject the command before linking. |
 | Wrong scope | SharingAgreement·B01 | Do not attach another church’s SharingAgreement without a supported exchange and local authority. |
 | Target rename | Rename SharingAgreement·A01 after linking | The existing agreement_id keeps the same identity and historic documents retain their original wording. |

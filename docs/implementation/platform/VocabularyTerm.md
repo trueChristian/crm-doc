@@ -57,7 +57,7 @@ The target is [VocabularyTerm](VocabularyTerm.md). Resolve the identifier in the
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | VocabularyTerm·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | VocabularyTerm·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | VocabularyTerm·MISSING | Queue the missing VocabularyTerm mapping or reject the command before linking. |
 | Wrong scope | VocabularyTerm·B01 | Do not attach another church’s VocabularyTerm without a supported exchange and local authority. |
 | Target rename | Rename VocabularyTerm·A01 after linking | The existing parent_id keeps the same identity and historic documents retain their original wording. |
@@ -109,7 +109,7 @@ The target is [VocabularyTerm](VocabularyTerm.md). Resolve the identifier in the
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | VocabularyTerm·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | VocabularyTerm·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | VocabularyTerm·MISSING | Queue the missing VocabularyTerm mapping or reject the command before linking. |
 | Wrong scope | VocabularyTerm·B01 | Do not attach another church’s VocabularyTerm without a supported exchange and local authority. |
 | Target rename | Rename VocabularyTerm·A01 after linking | The existing replacement_id keeps the same identity and historic documents retain their original wording. |

@@ -27,7 +27,7 @@ The target is [WorkItem](WorkItem.md). Resolve the identifier in the approved sc
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | WorkItem·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | WorkItem·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | WorkItem·MISSING | Queue the missing WorkItem mapping or reject the command before linking. |
 | Wrong scope | WorkItem·B01 | Do not attach another church’s WorkItem without a supported exchange and local authority. |
 | Target rename | Rename WorkItem·A01 after linking | The existing predecessor_id keeps the same identity and historic documents retain their original wording. |
@@ -40,7 +40,7 @@ The target is [WorkItem](WorkItem.md). Resolve the identifier in the approved sc
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | WorkItem·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | WorkItem·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | WorkItem·MISSING | Queue the missing WorkItem mapping or reject the command before linking. |
 | Wrong scope | WorkItem·B01 | Do not attach another church’s WorkItem without a supported exchange and local authority. |
 | Target rename | Rename WorkItem·A01 after linking | The existing successor_id keeps the same identity and historic documents retain their original wording. |

@@ -13,7 +13,7 @@ Uniquely track each action and attempt. Business effects must have a separately 
 | Field | Logical declaration | Presence at the applicable step | Validation family |
 | --- | --- | --- | --- |
 | `instance_id` | Ref(WorkflowInstance) | Required when the record reaches its applicable state | [relation](../value-conventions.md#relation) |
-| `operation_key` | text | Required when the record reaches its applicable state | [text](../value-conventions.md#text) |
+| `operation_key` | text | Required when the record reaches its applicable state | [operation](../value-conventions.md#operation) |
 | `attempt_no` | integer | Required when the record reaches its applicable state | [integer](../value-conventions.md#integer) |
 | `input_revision` | integer | Required when the record reaches its applicable state | [integer](../value-conventions.md#integer) |
 | `result_code` | code | Required when the record reaches its applicable state | [vocab](../value-conventions.md#vocab) |
@@ -32,7 +32,7 @@ The target is [WorkflowInstance](WorkflowInstance.md). Resolve the identifier in
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | WorkflowInstance·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | WorkflowInstance·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | WorkflowInstance·MISSING | Queue the missing WorkflowInstance mapping or reject the command before linking. |
 | Wrong scope | WorkflowInstance·B01 | Do not attach another church’s WorkflowInstance without a supported exchange and local authority. |
 | Target rename | Rename WorkflowInstance·A01 after linking | The existing instance_id keeps the same identity and historic documents retain their original wording. |
@@ -40,15 +40,15 @@ The target is [WorkflowInstance](WorkflowInstance.md). Resolve the identifier in
 
 ### operation_key
 
-Use human-readable text for `WorkflowStepResult.operation_key`. Preserve the meaningful spelling, script and structure; derive separate search forms.
+Use operation identity for exactly-once business effects for `WorkflowStepResult.operation_key`. Bind the key to the original material inputs and outcome; retain it throughout the replay window.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | entered operation_key in the original script | Preserve the meaningful spelling, script and structure; derive separate search forms. |
-| Malformed or unmapped | invalid text encoding | Return a field-level validation issue without silently changing meaning. |
-| Accented and non-Latin characters | Zoë and ǂNū-khoen in the original script | Preserve and display their original spelling. |
-| Label changes after formal issue | approved edition before a spelling correction | Keep the authorized original rendering in the issued edition. |
-| Bidirectional or multiline input | mixed-direction or multiline entered text | Render in the field’s declared context and respect accessibility and disclosure rules. |
+| Admissible representation | KEY-007 with original inputs | Bind the key to the original material inputs and outcome; retain it throughout the replay window. |
+| Malformed or unmapped | KEY-007 with changed material inputs | Reject conflicting reuse and reconcile against the first accepted or in-flight operation. |
+| Duplicate after successful commit | two equivalent submissions using KEY-007 | Return the original business receipt with no second payment, membership change, booking or notice. |
+| Timeout before outcome is known | provider accepted work but acknowledgement delayed | Look up or reconcile the pending operation before issuing a replacement. |
+| A genuine correction has a new key | COR-008 points to original KEY-007 | Link the correction to the original effect and apply its ordinary authorization and reversal rules. |
 | Incomplete record | No operation_key at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### attempt_no

@@ -38,7 +38,7 @@ The target is [WorkflowInstance](WorkflowInstance.md). Resolve the identifier in
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | WorkflowInstance·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | WorkflowInstance·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | WorkflowInstance·MISSING | Queue the missing WorkflowInstance mapping or reject the command before linking. |
 | Wrong scope | WorkflowInstance·B01 | Do not attach another church’s WorkflowInstance without a supported exchange and local authority. |
 | Target rename | Rename WorkflowInstance·A01 after linking | The existing instance_id keeps the same identity and historic documents retain their original wording. |

@@ -33,7 +33,7 @@ The target is [WorkflowEdition](WorkflowEdition.md). Resolve the identifier in t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | WorkflowEdition·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | WorkflowEdition·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | WorkflowEdition·MISSING | Queue the missing WorkflowEdition mapping or reject the command before linking. |
 | Wrong scope | WorkflowEdition·B01 | Do not attach another church’s WorkflowEdition without a supported exchange and local authority. |
 | Target rename | Rename WorkflowEdition·A01 after linking | The existing edition_id keeps the same identity and historic documents retain their original wording. |
@@ -85,7 +85,7 @@ The target is [WorkCalendar](WorkCalendar.md). Resolve the identifier in the app
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | WorkCalendar·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | WorkCalendar·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | WorkCalendar·MISSING | Queue the missing WorkCalendar mapping or reject the command before linking. |
 | Wrong scope | WorkCalendar·B01 | Do not attach another church’s WorkCalendar without a supported exchange and local authority. |
 | Target rename | Rename WorkCalendar·A01 after linking | The existing business_calendar_ref keeps the same identity and historic documents retain their original wording. |
