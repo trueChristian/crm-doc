@@ -34,7 +34,7 @@ The target is [MinistryProgramme](MinistryProgramme.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | MinistryProgramme·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | MinistryProgramme·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | MinistryProgramme·MISSING | Queue the missing MinistryProgramme mapping or reject the command before linking. |
 | Wrong scope | MinistryProgramme·B01 | Do not attach another church’s MinistryProgramme without a supported exchange and local authority. |
 | Target rename | Rename MinistryProgramme·A01 after linking | The existing programme_id keeps the same identity and historic documents retain their original wording. |
@@ -47,7 +47,7 @@ The target is [ProgrammeSession](ProgrammeSession.md). Resolve the identifier in
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ProgrammeSession·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ProgrammeSession·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ProgrammeSession·MISSING | Queue the missing ProgrammeSession mapping or reject the command before linking. |
 | Wrong scope | ProgrammeSession·B01 | Do not attach another church’s ProgrammeSession without a supported exchange and local authority. |
 | Target rename | Rename ProgrammeSession·A01 after linking | The existing session_id keeps the same identity and historic documents retain their original wording. |
@@ -138,7 +138,7 @@ The target is [Person](../people/Person.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Person·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Person·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Person·MISSING | Queue the missing Person mapping or reject the command before linking. |
 | Wrong scope | Person·B01 | Do not attach another church’s Person without a supported exchange and local authority. |
 | Target rename | Rename Person·A01 after linking | The existing steward_id keeps the same identity and historic documents retain their original wording. |

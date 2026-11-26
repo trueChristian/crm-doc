@@ -34,7 +34,7 @@ The target is [MusicWork](MusicWork.md). Resolve the identifier in the approved 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | MusicWork·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | MusicWork·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | MusicWork·MISSING | Queue the missing MusicWork mapping or reject the command before linking. |
 | Wrong scope | MusicWork·B01 | Do not attach another church’s MusicWork without a supported exchange and local authority. |
 | Target rename | Rename MusicWork·A01 after linking | The existing work_id keeps the same identity and historic documents retain their original wording. |

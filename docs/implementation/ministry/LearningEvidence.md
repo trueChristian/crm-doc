@@ -33,7 +33,7 @@ The target is [LearningEnrolment](LearningEnrolment.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | LearningEnrolment·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | LearningEnrolment·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | LearningEnrolment·MISSING | Queue the missing LearningEnrolment mapping or reject the command before linking. |
 | Wrong scope | LearningEnrolment·B01 | Do not attach another church’s LearningEnrolment without a supported exchange and local authority. |
 | Target rename | Rename LearningEnrolment·A01 after linking | The existing enrolment_id keeps the same identity and historic documents retain their original wording. |
@@ -46,7 +46,7 @@ The target is [LearningUnit](LearningUnit.md). Resolve the identifier in the app
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | LearningUnit·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | LearningUnit·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | LearningUnit·MISSING | Queue the missing LearningUnit mapping or reject the command before linking. |
 | Wrong scope | LearningUnit·B01 | Do not attach another church’s LearningUnit without a supported exchange and local authority. |
 | Target rename | Rename LearningUnit·A01 after linking | The existing unit_id keeps the same identity and historic documents retain their original wording. |
@@ -98,7 +98,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing attested_by keeps the same identity and historic documents retain their original wording. |
@@ -137,7 +137,7 @@ The target is [LearningEvidence](LearningEvidence.md). Resolve the identifier in
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | LearningEvidence·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | LearningEvidence·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | LearningEvidence·MISSING | Queue the missing LearningEvidence mapping or reject the command before linking. |
 | Wrong scope | LearningEvidence·B01 | Do not attach another church’s LearningEvidence without a supported exchange and local authority. |
 | Target rename | Rename LearningEvidence·A01 after linking | The existing supersedes_id keeps the same identity and historic documents retain their original wording. |

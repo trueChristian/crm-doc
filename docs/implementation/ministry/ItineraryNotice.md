@@ -30,7 +30,7 @@ The target is [ProgrammeSelection](ProgrammeSelection.md). Resolve the identifie
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ProgrammeSelection·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ProgrammeSelection·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ProgrammeSelection·MISSING | Queue the missing ProgrammeSelection mapping or reject the command before linking. |
 | Wrong scope | ProgrammeSelection·B01 | Do not attach another church’s ProgrammeSelection without a supported exchange and local authority. |
 | Target rename | Rename ProgrammeSelection·A01 after linking | The existing selection_id keeps the same identity and historic documents retain their original wording. |

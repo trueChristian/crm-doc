@@ -33,7 +33,7 @@ The target is [Curriculum](Curriculum.md). Resolve the identifier in the approve
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Curriculum·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Curriculum·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Curriculum·MISSING | Queue the missing Curriculum mapping or reject the command before linking. |
 | Wrong scope | Curriculum·B01 | Do not attach another church’s Curriculum without a supported exchange and local authority. |
 | Target rename | Rename Curriculum·A01 after linking | The existing curriculum_id keeps the same identity and historic documents retain their original wording. |
@@ -46,7 +46,7 @@ The target is [LearningUnit](LearningUnit.md). Resolve the identifier in the app
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | LearningUnit·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | LearningUnit·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | LearningUnit·MISSING | Queue the missing LearningUnit mapping or reject the command before linking. |
 | Wrong scope | LearningUnit·B01 | Do not attach another church’s LearningUnit without a supported exchange and local authority. |
 | Target rename | Rename LearningUnit·A01 after linking | The existing parent_id keeps the same identity and historic documents retain their original wording. |

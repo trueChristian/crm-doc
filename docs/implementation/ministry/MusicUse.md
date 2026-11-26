@@ -31,7 +31,7 @@ The target is [ServicePlanItem](ServicePlanItem.md). Resolve the identifier in t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ServicePlanItem·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ServicePlanItem·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ServicePlanItem·MISSING | Queue the missing ServicePlanItem mapping or reject the command before linking. |
 | Wrong scope | ServicePlanItem·B01 | Do not attach another church’s ServicePlanItem without a supported exchange and local authority. |
 | Target rename | Rename ServicePlanItem·A01 after linking | The existing item_id keeps the same identity and historic documents retain their original wording. |
@@ -44,7 +44,7 @@ The target is [MusicArrangement](MusicArrangement.md). Resolve the identifier in
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | MusicArrangement·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | MusicArrangement·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | MusicArrangement·MISSING | Queue the missing MusicArrangement mapping or reject the command before linking. |
 | Wrong scope | MusicArrangement·B01 | Do not attach another church’s MusicArrangement without a supported exchange and local authority. |
 | Target rename | Rename MusicArrangement·A01 after linking | The existing arrangement_id keeps the same identity and historic documents retain their original wording. |

@@ -33,7 +33,7 @@ The target is [MusicWork](MusicWork.md). Resolve the identifier in the approved 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | MusicWork·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | MusicWork·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | MusicWork·MISSING | Queue the missing MusicWork mapping or reject the command before linking. |
 | Wrong scope | MusicWork·B01 | Do not attach another church’s MusicWork without a supported exchange and local authority. |
 | Target rename | Rename MusicWork·A01 after linking | The existing work_id keeps the same identity and historic documents retain their original wording. |
@@ -46,7 +46,7 @@ The target is [MusicArrangement](MusicArrangement.md). Resolve the identifier in
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | MusicArrangement·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | MusicArrangement·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | MusicArrangement·MISSING | Queue the missing MusicArrangement mapping or reject the command before linking. |
 | Wrong scope | MusicArrangement·B01 | Do not attach another church’s MusicArrangement without a supported exchange and local authority. |
 | Target rename | Rename MusicArrangement·A01 after linking | The existing arrangement_id keeps the same identity and historic documents retain their original wording. |
@@ -111,7 +111,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing reviewed_by keeps the same identity and historic documents retain their original wording. |
