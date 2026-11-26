@@ -46,7 +46,7 @@ The target is [Congregation](../foundation/Congregation.md). Resolve the identif
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Congregation·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Congregation·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Congregation·MISSING | Queue the missing Congregation mapping or reject the command before linking. |
 | Wrong scope | Congregation·B01 | Do not attach another church’s Congregation without a supported exchange and local authority. |
 | Target rename | Rename Congregation·A01 after linking | The existing congregation_id keeps the same identity and historic documents retain their original wording. |

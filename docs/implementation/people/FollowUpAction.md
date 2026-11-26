@@ -49,7 +49,7 @@ The target is [FollowUpEnrollment](FollowUpEnrollment.md). Resolve the identifie
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | FollowUpEnrollment·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | FollowUpEnrollment·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | FollowUpEnrollment·MISSING | Queue the missing FollowUpEnrollment mapping or reject the command before linking. |
 | Wrong scope | FollowUpEnrollment·B01 | Do not attach another church’s FollowUpEnrollment without a supported exchange and local authority. |
 | Target rename | Rename FollowUpEnrollment·A01 after linking | The existing enrollment_id keeps the same identity and historic documents retain their original wording. |
@@ -62,7 +62,7 @@ The target is [FollowUpStep](FollowUpStep.md). Resolve the identifier in the app
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | FollowUpStep·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | FollowUpStep·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | FollowUpStep·MISSING | Queue the missing FollowUpStep mapping or reject the command before linking. |
 | Wrong scope | FollowUpStep·B01 | Do not attach another church’s FollowUpStep without a supported exchange and local authority. |
 | Target rename | Rename FollowUpStep·A01 after linking | The existing step_id keeps the same identity and historic documents retain their original wording. |
@@ -75,7 +75,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing assigned_to keeps the same identity and historic documents retain their original wording. |
@@ -179,7 +179,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing handoff_recipient_id keeps the same identity and historic documents retain their original wording. |

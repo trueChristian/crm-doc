@@ -51,7 +51,7 @@ The target is [Household](Household.md). Resolve the identifier in the approved 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Household·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Household·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Household·MISSING | Queue the missing Household mapping or reject the command before linking. |
 | Wrong scope | Household·B01 | Do not attach another church’s Household without a supported exchange and local authority. |
 | Target rename | Rename Household·A01 after linking | The existing household_id keeps the same identity and historic documents retain their original wording. |

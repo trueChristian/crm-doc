@@ -49,7 +49,7 @@ The target is [DirectoryEdition](DirectoryEdition.md). Resolve the identifier in
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | DirectoryEdition·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | DirectoryEdition·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | DirectoryEdition·MISSING | Queue the missing DirectoryEdition mapping or reject the command before linking. |
 | Wrong scope | DirectoryEdition·B01 | Do not attach another church’s DirectoryEdition without a supported exchange and local authority. |
 | Target rename | Rename DirectoryEdition·A01 after linking | The existing edition_id keeps the same identity and historic documents retain their original wording. |
@@ -62,7 +62,7 @@ The target is [Person](Person.md). Resolve the identifier in the approved scope 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Person·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Person·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Person·MISSING | Queue the missing Person mapping or reject the command before linking. |
 | Wrong scope | Person·B01 | Do not attach another church’s Person without a supported exchange and local authority. |
 | Target rename | Rename Person·A01 after linking | The existing person_id keeps the same identity and historic documents retain their original wording. |
@@ -114,7 +114,7 @@ The target is [RepresentationAuthority](RepresentationAuthority.md). Resolve the
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | RepresentationAuthority·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | RepresentationAuthority·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | RepresentationAuthority·MISSING | Queue the missing RepresentationAuthority mapping or reject the command before linking. |
 | Wrong scope | RepresentationAuthority·B01 | Do not attach another church’s RepresentationAuthority without a supported exchange and local authority. |
 | Target rename | Rename RepresentationAuthority·A01 after linking | The existing authority_id keeps the same identity and historic documents retain their original wording. |
@@ -127,7 +127,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing decided_by keeps the same identity and historic documents retain their original wording. |
@@ -140,7 +140,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing recorded_by keeps the same identity and historic documents retain their original wording. |

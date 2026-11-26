@@ -47,7 +47,7 @@ The target is [Person](Person.md). Resolve the identifier in the approved scope 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Person·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Person·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Person·MISSING | Queue the missing Person mapping or reject the command before linking. |
 | Wrong scope | Person·B01 | Do not attach another church’s Person without a supported exchange and local authority. |
 | Target rename | Rename Person·A01 after linking | The existing person_id keeps the same identity and historic documents retain their original wording. |
@@ -60,7 +60,7 @@ The target is [Congregation](../foundation/Congregation.md). Resolve the identif
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Congregation·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Congregation·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Congregation·MISSING | Queue the missing Congregation mapping or reject the command before linking. |
 | Wrong scope | Congregation·B01 | Do not attach another church’s Congregation without a supported exchange and local authority. |
 | Target rename | Rename Congregation·A01 after linking | The existing congregation_id keeps the same identity and historic documents retain their original wording. |
@@ -86,7 +86,7 @@ The target is [MembershipApplication](MembershipApplication.md). Resolve the ide
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | MembershipApplication·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | MembershipApplication·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | MembershipApplication·MISSING | Queue the missing MembershipApplication mapping or reject the command before linking. |
 | Wrong scope | MembershipApplication·B01 | Do not attach another church’s MembershipApplication without a supported exchange and local authority. |
 | Target rename | Rename MembershipApplication·A01 after linking | The existing originating_application_id keeps the same identity and historic documents retain their original wording. |
@@ -125,7 +125,7 @@ The target is [Membership](Membership.md). Resolve the identifier in the approve
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Membership·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Membership·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Membership·MISSING | Queue the missing Membership mapping or reject the command before linking. |
 | Wrong scope | Membership·B01 | Do not attach another church’s Membership without a supported exchange and local authority. |
 | Target rename | Rename Membership·A01 after linking | The existing supersedes_membership_id keeps the same identity and historic documents retain their original wording. |

@@ -47,7 +47,7 @@ The target is [FollowUpPath](FollowUpPath.md). Resolve the identifier in the app
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | FollowUpPath·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | FollowUpPath·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | FollowUpPath·MISSING | Queue the missing FollowUpPath mapping or reject the command before linking. |
 | Wrong scope | FollowUpPath·B01 | Do not attach another church’s FollowUpPath without a supported exchange and local authority. |
 | Target rename | Rename FollowUpPath·A01 after linking | The existing path_id keeps the same identity and historic documents retain their original wording. |

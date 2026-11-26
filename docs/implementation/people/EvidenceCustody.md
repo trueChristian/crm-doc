@@ -48,7 +48,7 @@ The target is [ProtectionCase](ProtectionCase.md). Resolve the identifier in the
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ProtectionCase·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ProtectionCase·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ProtectionCase·MISSING | Queue the missing ProtectionCase mapping or reject the command before linking. |
 | Wrong scope | ProtectionCase·B01 | Do not attach another church’s ProtectionCase without a supported exchange and local authority. |
 | Target rename | Rename ProtectionCase·A01 after linking | The existing case_id keeps the same identity and historic documents retain their original wording. |
@@ -57,6 +57,7 @@ The target is [ProtectionCase](ProtectionCase.md). Resolve the identifier in the
 ### evidence_ref
 
 Use scoped or external reference for `EvidenceCustody.evidence_ref`. Resolve against the permitted kind, owning namespace and purpose.
+Field access: enforce the declared protection on reads, search, previews, exports and audit evidence as well as the underlying resource value.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
@@ -113,7 +114,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing custodian_id keeps the same identity and historic documents retain their original wording. |
@@ -152,7 +153,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing next_custodian_id keeps the same identity and historic documents retain their original wording. |
