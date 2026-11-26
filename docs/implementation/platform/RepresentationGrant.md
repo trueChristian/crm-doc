@@ -33,7 +33,7 @@ The target is [Person](../people/Person.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Person·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Person·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Person·MISSING | Queue the missing Person mapping or reject the command before linking. |
 | Wrong scope | Person·B01 | Do not attach another church’s Person without a supported exchange and local authority. |
 | Target rename | Rename Person·A01 after linking | The existing actor_person_id keeps the same identity and historic documents retain their original wording. |
@@ -46,7 +46,7 @@ The target is [Person](../people/Person.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Person·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Person·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Person·MISSING | Queue the missing Person mapping or reject the command before linking. |
 | Wrong scope | Person·B01 | Do not attach another church’s Person without a supported exchange and local authority. |
 | Target rename | Rename Person·A01 after linking | The existing subject_person_id keeps the same identity and historic documents retain their original wording. |
@@ -72,7 +72,7 @@ The target is [RepresentationAuthority](../people/RepresentationAuthority.md). R
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | RepresentationAuthority·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | RepresentationAuthority·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | RepresentationAuthority·MISSING | Queue the missing RepresentationAuthority mapping or reject the command before linking. |
 | Wrong scope | RepresentationAuthority·B01 | Do not attach another church’s RepresentationAuthority without a supported exchange and local authority. |
 | Target rename | Rename RepresentationAuthority·A01 after linking | The existing authority_id keeps the same identity and historic documents retain their original wording. |

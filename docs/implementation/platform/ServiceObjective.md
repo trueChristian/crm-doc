@@ -16,7 +16,7 @@ Define the user-visible transaction, measured population, exclusions and hours. 
 | `scope_ref` | ResourceRef | Required when the record reaches its applicable state | [resource](../value-conventions.md#resource) |
 | `owner_id` | Ref(UserAccount) | Required when the record reaches its applicable state | [relation](../value-conventions.md#relation) |
 | `measurement_window` | duration | Required when the record reaches its applicable state | [duration](../value-conventions.md#duration) |
-| `availability_target` | percent | Required when the record reaches its applicable state | [structured](../value-conventions.md#structured) |
+| `availability_target` | percent | Required when the record reaches its applicable state | [percentage](../value-conventions.md#percentage) |
 | `response_target` | duration? | Optional under owner conditions | [duration](../value-conventions.md#duration) |
 | `allowed_data_loss` | duration | Required when the record reaches its applicable state | [duration](../value-conventions.md#duration) |
 | `recovery_target` | duration | Required when the record reaches its applicable state | [duration](../value-conventions.md#duration) |
@@ -59,7 +59,7 @@ The target is [UserAccount](UserAccount.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing owner_id keeps the same identity and historic documents retain their original wording. |
@@ -80,15 +80,15 @@ Use elapsed interval or named calendar duration for `ServiceObjective.measuremen
 
 ### availability_target
 
-Use typed value or bounded compound record for `ServiceObjective.availability_target`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use percentage with declared scale for `ServiceObjective.availability_target`. Carry the percent unit, denominator and reporting precision.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of availability_target matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for availability_target | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | 12.5 percent under the stated convention | Carry the percent unit, denominator and reporting precision. |
+| Malformed or unmapped | joining fractional and percentage scales without conversion | Require unambiguous scale and denominator. |
+| 0.125 represented as a fraction | 12.5 percent versus 0.125 fraction | Interpret as 12.5 percent only under the explicit fraction convention. |
+| Zero denominator | numerator 0, denominator 0 | Represent rate as unavailable, never as an observed zero. |
+| Aggregate across groups | one group with 1/2 and another with 5/10 | Recompute from underlying eligible numerators and denominators when required. |
 | Incomplete record | No availability_target at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### response_target

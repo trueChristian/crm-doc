@@ -34,7 +34,7 @@ The target is [BackupSet](BackupSet.md). Resolve the identifier in the approved 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | BackupSet·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | BackupSet·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | BackupSet·MISSING | Queue the missing BackupSet mapping or reject the command before linking. |
 | Wrong scope | BackupSet·B01 | Do not attach another church’s BackupSet without a supported exchange and local authority. |
 | Target rename | Rename BackupSet·A01 after linking | The existing backup_id keeps the same identity and historic documents retain their original wording. |
@@ -125,7 +125,7 @@ The target is [UserAccount](UserAccount.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing coordinator keeps the same identity and historic documents retain their original wording. |

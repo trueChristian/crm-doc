@@ -15,7 +15,7 @@ Each published edition retains metric editions. Include labels, totals and drill
 | `report_key` | code | Required when the record reaches its applicable state | [vocab](../value-conventions.md#vocab) |
 | `title` | text | Required when the record reaches its applicable state | [text](../value-conventions.md#text) |
 | `owner_id` | Ref(UserAccount) | Required when the record reaches its applicable state | [relation](../value-conventions.md#relation) |
-| `metric_refs` | set(Ref(MetricDefinition)) | Required when the record reaches its applicable state | [relation](../value-conventions.md#relation) |
+| `metric_refs` | set(Ref(MetricDefinition)) | Required when the record reaches its applicable state | [references](../value-conventions.md#references) |
 | `parameter_schema` | structured rule | Required when the record reaches its applicable state | [rule](../value-conventions.md#rule) |
 | `allowed_views` | set(code) | Required when the record reaches its applicable state | [list](../value-conventions.md#list) |
 | `revision` | integer | Required when the record reaches its applicable state | [version](../value-conventions.md#version) |
@@ -58,7 +58,7 @@ The target is [UserAccount](UserAccount.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing owner_id keeps the same identity and historic documents retain their original wording. |
@@ -70,11 +70,11 @@ The target is [MetricDefinition](MetricDefinition.md). Resolve the identifier in
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | MetricDefinition·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | MetricDefinition·MISSING | Return a type mismatch without changing the link. |
-| Unresolved target | MetricDefinition·MISSING | Queue the missing MetricDefinition mapping or reject the command before linking. |
-| Wrong scope | MetricDefinition·B01 | Do not attach another church’s MetricDefinition without a supported exchange and local authority. |
-| Target rename | Rename MetricDefinition·A01 after linking | The existing metric_refs keeps the same identity and historic documents retain their original wording. |
+| Admissible representation | MetricDefinition·A01, MetricDefinition·A02 | Resolve every element separately by type, identity and scope; preserve order only when the source defines it. |
+| Malformed or unmapped | collection containing MetricDefinition·MISSING | Isolate the invalid relationship or reject the atomic collection edit as the owning operation requires. |
+| Duplicate member | A01, A01 and A02 | For a set, link the target once; preserve explicitly meaningful order or role/quantity on a child record. |
+| One target later becomes inaccessible | one of two targets loses disclosure authority | Re-evaluate that element and prevent disclosure via counts or joins outside authorized scope. |
+| Reissue an old manifest | compare earlier and current permitted membership | Read the original target edition or frozen membership according to the owner. |
 | Incomplete record | No metric_refs at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### parameter_schema
