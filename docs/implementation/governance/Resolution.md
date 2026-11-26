@@ -36,7 +36,7 @@ The target is [GoverningBody](GoverningBody.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | GoverningBody·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | GoverningBody·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | GoverningBody·MISSING | Queue the missing GoverningBody mapping or reject the command before linking. |
 | Wrong scope | GoverningBody·B01 | Do not attach another church’s GoverningBody without a supported exchange and local authority. |
 | Target rename | Rename GoverningBody·A01 after linking | The existing body_id keeps the same identity and historic documents retain their original wording. |
@@ -49,7 +49,7 @@ The target is [MinuteItem](MinuteItem.md). Resolve the identifier in the approve
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | MinuteItem·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | MinuteItem·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | MinuteItem·MISSING | Queue the missing MinuteItem mapping or reject the command before linking. |
 | Wrong scope | MinuteItem·B01 | Do not attach another church’s MinuteItem without a supported exchange and local authority. |
 | Target rename | Rename MinuteItem·A01 after linking | The existing item_id keeps the same identity and historic documents retain their original wording. |
@@ -62,7 +62,7 @@ The target is [Motion](Motion.md). Resolve the identifier in the approved scope 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Motion·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Motion·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Motion·MISSING | Queue the missing Motion mapping or reject the command before linking. |
 | Wrong scope | Motion·B01 | Do not attach another church’s Motion without a supported exchange and local authority. |
 | Target rename | Rename Motion·A01 after linking | The existing motion_id keeps the same identity and historic documents retain their original wording. |
@@ -179,7 +179,7 @@ The target is [Resolution](Resolution.md). Resolve the identifier in the approve
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Resolution·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Resolution·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Resolution·MISSING | Queue the missing Resolution mapping or reject the command before linking. |
 | Wrong scope | Resolution·B01 | Do not attach another church’s Resolution without a supported exchange and local authority. |
 | Target rename | Rename Resolution·A01 after linking | The existing supersedes_id keeps the same identity and historic documents retain their original wording. |

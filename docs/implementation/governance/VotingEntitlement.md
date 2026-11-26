@@ -32,7 +32,7 @@ The target is [DecisionRound](DecisionRound.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | DecisionRound·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | DecisionRound·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | DecisionRound·MISSING | Queue the missing DecisionRound mapping or reject the command before linking. |
 | Wrong scope | DecisionRound·B01 | Do not attach another church’s DecisionRound without a supported exchange and local authority. |
 | Target rename | Rename DecisionRound·A01 after linking | The existing round_id keeps the same identity and historic documents retain their original wording. |
@@ -45,7 +45,7 @@ The target is [VotingRollEntry](VotingRollEntry.md). Resolve the identifier in t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | VotingRollEntry·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | VotingRollEntry·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | VotingRollEntry·MISSING | Queue the missing VotingRollEntry mapping or reject the command before linking. |
 | Wrong scope | VotingRollEntry·B01 | Do not attach another church’s VotingRollEntry without a supported exchange and local authority. |
 | Target rename | Rename VotingRollEntry·A01 after linking | The existing represented_entry_id keeps the same identity and historic documents retain their original wording. |
@@ -58,7 +58,7 @@ The target is [VotingRollEntry](VotingRollEntry.md). Resolve the identifier in t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | VotingRollEntry·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | VotingRollEntry·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | VotingRollEntry·MISSING | Queue the missing VotingRollEntry mapping or reject the command before linking. |
 | Wrong scope | VotingRollEntry·B01 | Do not attach another church’s VotingRollEntry without a supported exchange and local authority. |
 | Target rename | Rename VotingRollEntry·A01 after linking | The existing exercising_entry_id keeps the same identity and historic documents retain their original wording. |
@@ -71,7 +71,7 @@ The target is [ProxyMandate](ProxyMandate.md). Resolve the identifier in the app
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ProxyMandate·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ProxyMandate·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ProxyMandate·MISSING | Queue the missing ProxyMandate mapping or reject the command before linking. |
 | Wrong scope | ProxyMandate·B01 | Do not attach another church’s ProxyMandate without a supported exchange and local authority. |
 | Target rename | Rename ProxyMandate·A01 after linking | The existing proxy_id keeps the same identity and historic documents retain their original wording. |
