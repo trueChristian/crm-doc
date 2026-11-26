@@ -4,6 +4,7 @@ Start with a church task, then use the record and conformance material to design
 
 | Work to implement | Manual |
 | --- | --- |
+| Front-office screens, staff and records custody, ceremonies, lending and annual returns | [Secretary and administration desk](administration/README.md) |
 | Identity, households, formal membership, casework and independent assurance | [People, care and protection](people/README.md) |
 | Worship, rooms, serving, admissions, teaching and supervised collection | [Ministry operations](ministry/README.md) |
 | Boards, ballots, minutes, official registers, notices and delivery | [Governance and communications](governance/README.md) |
