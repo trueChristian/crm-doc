@@ -32,7 +32,7 @@ If only the 09:38 backup could be verified, the potential loss interval would be
 
 ## Operational instrumentation
 
-Track the time and scope of the oldest unprocessed event, failed auth or privacy refresh, unsettled payment, stale search edition, unreconciled offline pack, consent replay gap and unsatisfied custody charge. Measure latency by transaction and censor private identifiers in traces. For 100 representative sorted roster requests with the 95th value 1.9 seconds, an objective at or below 2.0 seconds passes under the declared nearest-rank method. A mean below two seconds alone cannot establish that. Include timeouts in the denominator under the declared rule.
+Track the time and scope of the oldest unprocessed event, failed auth or privacy refresh, unsettled payment, stale search edition, unreconciled offline pack, consent replay gap and unresolved custody reconciliation. Measure latency by transaction and censor private identifiers in traces. For 100 representative sorted roster requests with the 95th value 1.9 seconds, an objective at or below 2.0 seconds passes under the declared nearest-rank method. A mean below two seconds alone cannot establish that. Include timeouts in the denominator under the declared rule.
 
 Alerts name the impacted service, severity, human owner, fallback route, next update, affected time window and evidence reference. Deduplicate repeated alerts without hiding independent organizations or changed severity. Keep status language factual, for example “registrations saved on desk devices await confirmation” or “some financial receipts are awaiting matching.” Never publish member names, care cases, donor amounts or provider secrets in status notices.
 
