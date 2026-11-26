@@ -29,7 +29,7 @@ The target is [CourseOffering](CourseOffering.md). Resolve the identifier in the
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | CourseOffering·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | CourseOffering·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | CourseOffering·MISSING | Queue the missing CourseOffering mapping or reject the command before linking. |
 | Wrong scope | CourseOffering·B01 | Do not attach another church’s CourseOffering without a supported exchange and local authority. |
 | Target rename | Rename CourseOffering·A01 after linking | The existing offering_id keeps the same identity and historic documents retain their original wording. |
@@ -42,7 +42,7 @@ The target is [EventOccurrence](EventOccurrence.md). Resolve the identifier in t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | EventOccurrence·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | EventOccurrence·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | EventOccurrence·MISSING | Queue the missing EventOccurrence mapping or reject the command before linking. |
 | Wrong scope | EventOccurrence·B01 | Do not attach another church’s EventOccurrence without a supported exchange and local authority. |
 | Target rename | Rename EventOccurrence·A01 after linking | The existing occurrence_id keeps the same identity and historic documents retain their original wording. |
@@ -55,7 +55,7 @@ The target is [LearningUnit](LearningUnit.md). Resolve the identifier in the app
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | LearningUnit·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | LearningUnit·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | LearningUnit·MISSING | Queue the missing LearningUnit mapping or reject the command before linking. |
 | Wrong scope | LearningUnit·B01 | Do not attach another church’s LearningUnit without a supported exchange and local authority. |
 | Target rename | Rename LearningUnit·A01 after linking | The existing unit_id keeps the same identity and historic documents retain their original wording. |
@@ -81,7 +81,7 @@ The target is [Person](../people/Person.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Person·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Person·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Person·MISSING | Queue the missing Person mapping or reject the command before linking. |
 | Wrong scope | Person·B01 | Do not attach another church’s Person without a supported exchange and local authority. |
 | Target rename | Rename Person·A01 after linking | The existing teacher_person_id keeps the same identity and historic documents retain their original wording. |

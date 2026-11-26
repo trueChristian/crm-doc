@@ -29,7 +29,7 @@ The target is [OperationalBriefing](OperationalBriefing.md). Resolve the identif
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | OperationalBriefing·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | OperationalBriefing·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | OperationalBriefing·MISSING | Queue the missing OperationalBriefing mapping or reject the command before linking. |
 | Wrong scope | OperationalBriefing·B01 | Do not attach another church’s OperationalBriefing without a supported exchange and local authority. |
 | Target rename | Rename OperationalBriefing·A01 after linking | The existing briefing_id keeps the same identity and historic documents retain their original wording. |
@@ -42,7 +42,7 @@ The target is [VolunteerAssignment](VolunteerAssignment.md). Resolve the identif
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | VolunteerAssignment·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | VolunteerAssignment·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | VolunteerAssignment·MISSING | Queue the missing VolunteerAssignment mapping or reject the command before linking. |
 | Wrong scope | VolunteerAssignment·B01 | Do not attach another church’s VolunteerAssignment without a supported exchange and local authority. |
 | Target rename | Rename VolunteerAssignment·A01 after linking | The existing assignment_id keeps the same identity and historic documents retain their original wording. |

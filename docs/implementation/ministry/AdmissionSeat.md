@@ -29,7 +29,7 @@ The target is [AdmissionOption](AdmissionOption.md). Resolve the identifier in t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | AdmissionOption·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | AdmissionOption·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | AdmissionOption·MISSING | Queue the missing AdmissionOption mapping or reject the command before linking. |
 | Wrong scope | AdmissionOption·B01 | Do not attach another church’s AdmissionOption without a supported exchange and local authority. |
 | Target rename | Rename AdmissionOption·A01 after linking | The existing option_id keeps the same identity and historic documents retain their original wording. |
@@ -81,7 +81,7 @@ The target is [RegistrationPlace](RegistrationPlace.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | RegistrationPlace·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | RegistrationPlace·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | RegistrationPlace·MISSING | Queue the missing RegistrationPlace mapping or reject the command before linking. |
 | Wrong scope | RegistrationPlace·B01 | Do not attach another church’s RegistrationPlace without a supported exchange and local authority. |
 | Target rename | Rename RegistrationPlace·A01 after linking | The existing place_id keeps the same identity and historic documents retain their original wording. |

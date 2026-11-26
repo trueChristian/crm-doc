@@ -22,7 +22,7 @@ One recipient basis per issue, with policy permitting anonymous collection. Coun
 | `issued_at` | instant | Required when the record reaches its applicable state | [instant](../value-conventions.md#instant) |
 | `issued_by` | → UserAccount | Required when the record reaches its applicable state | [relation](../value-conventions.md#relation) |
 | `stock_movement_ref` | → StockMovement? | Optional under owner conditions | [relation](../value-conventions.md#relation) |
-| `request_key` | text | Required when the record reaches its applicable state | [text](../value-conventions.md#text) |
+| `request_key` | text | Required when the record reaches its applicable state | [operation](../value-conventions.md#operation) |
 
 ## Input, storage and exchange cases
 
@@ -35,7 +35,7 @@ The target is [CommunityDistribution](CommunityDistribution.md). Resolve the ide
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | CommunityDistribution·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | CommunityDistribution·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | CommunityDistribution·MISSING | Queue the missing CommunityDistribution mapping or reject the command before linking. |
 | Wrong scope | CommunityDistribution·B01 | Do not attach another church’s CommunityDistribution without a supported exchange and local authority. |
 | Target rename | Rename CommunityDistribution·A01 after linking | The existing distribution_id keeps the same identity and historic documents retain their original wording. |
@@ -48,7 +48,7 @@ The target is [ProjectSupply](ProjectSupply.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ProjectSupply·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ProjectSupply·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ProjectSupply·MISSING | Queue the missing ProjectSupply mapping or reject the command before linking. |
 | Wrong scope | ProjectSupply·B01 | Do not attach another church’s ProjectSupply without a supported exchange and local authority. |
 | Target rename | Rename ProjectSupply·A01 after linking | The existing supply_id keeps the same identity and historic documents retain their original wording. |
@@ -61,7 +61,7 @@ The target is [Person](../people/Person.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Person·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Person·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Person·MISSING | Queue the missing Person mapping or reject the command before linking. |
 | Wrong scope | Person·B01 | Do not attach another church’s Person without a supported exchange and local authority. |
 | Target rename | Rename Person·A01 after linking | The existing recipient_person_id keeps the same identity and historic documents retain their original wording. |
@@ -74,7 +74,7 @@ The target is [Household](../people/Household.md). Resolve the identifier in the
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Household·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Household·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Household·MISSING | Queue the missing Household mapping or reject the command before linking. |
 | Wrong scope | Household·B01 | Do not attach another church’s Household without a supported exchange and local authority. |
 | Target rename | Rename Household·A01 after linking | The existing recipient_household_id keeps the same identity and historic documents retain their original wording. |
@@ -139,7 +139,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing issued_by keeps the same identity and historic documents retain their original wording. |
@@ -152,7 +152,7 @@ The target is [StockMovement](../commerce/StockMovement.md). Resolve the identif
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | StockMovement·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | StockMovement·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | StockMovement·MISSING | Queue the missing StockMovement mapping or reject the command before linking. |
 | Wrong scope | StockMovement·B01 | Do not attach another church’s StockMovement without a supported exchange and local authority. |
 | Target rename | Rename StockMovement·A01 after linking | The existing stock_movement_ref keeps the same identity and historic documents retain their original wording. |
@@ -160,15 +160,15 @@ The target is [StockMovement](../commerce/StockMovement.md). Resolve the identif
 
 ### request_key
 
-Use human-readable text for `AssistanceIssue.request_key`. Preserve the meaningful spelling, script and structure; derive separate search forms.
+Use operation identity for exactly-once business effects for `AssistanceIssue.request_key`. Bind the key to the original material inputs and outcome; retain it throughout the replay window.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | entered request_key in the original script | Preserve the meaningful spelling, script and structure; derive separate search forms. |
-| Malformed or unmapped | invalid text encoding | Return a field-level validation issue without silently changing meaning. |
-| Accented and non-Latin characters | Zoë and ǂNū-khoen in the original script | Preserve and display their original spelling. |
-| Label changes after formal issue | approved edition before a spelling correction | Keep the authorized original rendering in the issued edition. |
-| Bidirectional or multiline input | mixed-direction or multiline entered text | Render in the field’s declared context and respect accessibility and disclosure rules. |
+| Admissible representation | KEY-007 with original inputs | Bind the key to the original material inputs and outcome; retain it throughout the replay window. |
+| Malformed or unmapped | KEY-007 with changed material inputs | Reject conflicting reuse and reconcile against the first accepted or in-flight operation. |
+| Duplicate after successful commit | two equivalent submissions using KEY-007 | Return the original business receipt with no second payment, membership change, booking or notice. |
+| Timeout before outcome is known | provider accepted work but acknowledgement delayed | Look up or reconcile the pending operation before issuing a replacement. |
+| A genuine correction has a new key | COR-008 points to original KEY-007 | Link the correction to the original effect and apply its ordinary authorization and reversal rules. |
 | Incomplete record | No request_key at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ## Incoming references
@@ -179,4 +179,4 @@ Use human-readable text for `AssistanceIssue.request_key`. Preserve the meaningf
 
 ## Acceptance evidence
 
-Record the owner revision, evaluated values, actor and scope, result, effective time, and any downstream references needed to reproduce a disputed decision. Release only the evidence permitted to the reader. The originating domain page defines the business action and precise historical or transactional effect.
+Use the minimum evidence allowed by the selected anonymous, pseudonymous or identified mode. A permitted operator may be accountable for receiving or reviewing work without collecting the identity of a protected subject. Keep safe-channel, identity and case evidence apart from releasable totals and narratives; apply the original permissions to the verification evidence.

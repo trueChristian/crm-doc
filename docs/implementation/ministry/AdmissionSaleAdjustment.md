@@ -34,7 +34,7 @@ The target is [AdmissionSaleUnit](AdmissionSaleUnit.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | AdmissionSaleUnit·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | AdmissionSaleUnit·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | AdmissionSaleUnit·MISSING | Queue the missing AdmissionSaleUnit mapping or reject the command before linking. |
 | Wrong scope | AdmissionSaleUnit·B01 | Do not attach another church’s AdmissionSaleUnit without a supported exchange and local authority. |
 | Target rename | Rename AdmissionSaleUnit·A01 after linking | The existing unit_id keeps the same identity and historic documents retain their original wording. |
@@ -47,7 +47,7 @@ The target is [OrderAmendment](../commerce/OrderAmendment.md). Resolve the ident
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | OrderAmendment·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | OrderAmendment·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | OrderAmendment·MISSING | Queue the missing OrderAmendment mapping or reject the command before linking. |
 | Wrong scope | OrderAmendment·B01 | Do not attach another church’s OrderAmendment without a supported exchange and local authority. |
 | Target rename | Rename OrderAmendment·A01 after linking | The existing amendment_id keeps the same identity and historic documents retain their original wording. |
@@ -60,7 +60,7 @@ The target is [RefundAllocation](../commerce/RefundAllocation.md). Resolve the i
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | RefundAllocation·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | RefundAllocation·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | RefundAllocation·MISSING | Queue the missing RefundAllocation mapping or reject the command before linking. |
 | Wrong scope | RefundAllocation·B01 | Do not attach another church’s RefundAllocation without a supported exchange and local authority. |
 | Target rename | Rename RefundAllocation·A01 after linking | The existing refund_allocation_id keeps the same identity and historic documents retain their original wording. |
@@ -73,7 +73,7 @@ The target is [OrderHandoff](../commerce/OrderHandoff.md). Resolve the identifie
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | OrderHandoff·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | OrderHandoff·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | OrderHandoff·MISSING | Queue the missing OrderHandoff mapping or reject the command before linking. |
 | Wrong scope | OrderHandoff·B01 | Do not attach another church’s OrderHandoff without a supported exchange and local authority. |
 | Target rename | Rename OrderHandoff·A01 after linking | The existing handoff_id keeps the same identity and historic documents retain their original wording. |

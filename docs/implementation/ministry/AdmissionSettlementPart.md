@@ -29,7 +29,7 @@ The target is [AdmissionSaleUnit](AdmissionSaleUnit.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | AdmissionSaleUnit·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | AdmissionSaleUnit·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | AdmissionSaleUnit·MISSING | Queue the missing AdmissionSaleUnit mapping or reject the command before linking. |
 | Wrong scope | AdmissionSaleUnit·B01 | Do not attach another church’s AdmissionSaleUnit without a supported exchange and local authority. |
 | Target rename | Rename AdmissionSaleUnit·A01 after linking | The existing unit_id keeps the same identity and historic documents retain their original wording. |
@@ -42,7 +42,7 @@ The target is [TenderAllocation](../commerce/TenderAllocation.md). Resolve the i
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | TenderAllocation·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | TenderAllocation·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | TenderAllocation·MISSING | Queue the missing TenderAllocation mapping or reject the command before linking. |
 | Wrong scope | TenderAllocation·B01 | Do not attach another church’s TenderAllocation without a supported exchange and local authority. |
 | Target rename | Rename TenderAllocation·A01 after linking | The existing tender_allocation_id keeps the same identity and historic documents retain their original wording. |
@@ -55,7 +55,7 @@ The target is [OrderHandoff](../commerce/OrderHandoff.md). Resolve the identifie
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | OrderHandoff·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | OrderHandoff·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | OrderHandoff·MISSING | Queue the missing OrderHandoff mapping or reject the command before linking. |
 | Wrong scope | OrderHandoff·B01 | Do not attach another church’s OrderHandoff without a supported exchange and local authority. |
 | Target rename | Rename OrderHandoff·A01 after linking | The existing handoff_id keeps the same identity and historic documents retain their original wording. |
