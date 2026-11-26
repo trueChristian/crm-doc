@@ -45,7 +45,7 @@ The target is [ReturnDefinition](ReturnDefinition.md). Resolve the identifier in
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ReturnDefinition·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ReturnDefinition·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ReturnDefinition·MISSING | Queue the missing ReturnDefinition mapping or reject the command before linking. |
 | Wrong scope | ReturnDefinition·B01 | Do not attach another church’s ReturnDefinition without a supported exchange and local authority. |
 | Target rename | Rename ReturnDefinition·A01 after linking | The existing definition_id keeps the same identity and historic documents retain their original wording. |
@@ -123,7 +123,7 @@ The target is [Organization](../foundation/Organization.md). Resolve the identif
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Organization·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Organization·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Organization·MISSING | Queue the missing Organization mapping or reject the command before linking. |
 | Wrong scope | Organization·B01 | Do not attach another church’s Organization without a supported exchange and local authority. |
 | Target rename | Rename Organization·A01 after linking | The existing receiving_org_id keeps the same identity and historic documents retain their original wording. |

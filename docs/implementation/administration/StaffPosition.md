@@ -17,8 +17,8 @@ A position can be vacant, shared or filled temporarily. Management chains have n
 | `code` | text | Required at applicable lifecycle step | [text](../value-conventions.md#text) |
 | `title` | text | Required at applicable lifecycle step | [text](../value-conventions.md#text) |
 | `department_ref` | scoped unit | Required at applicable lifecycle step | [resource](../value-conventions.md#resource) |
-| `campus_id` | optional Campus | Optional under owner conditions | [resource](../value-conventions.md#resource) |
-| `supervisor_position_id` | optional StaffPosition | Optional under owner conditions | [resource](../value-conventions.md#resource) |
+| `campus_id` | optional Campus | Optional under owner conditions | [relation](../value-conventions.md#relation) |
+| `supervisor_position_id` | optional StaffPosition | Optional under owner conditions | [relation](../value-conventions.md#relation) |
 | `budget_dimension_ref` | → FinanceDimension | Required at applicable lifecycle step | [relation](../value-conventions.md#relation) |
 | `capacity_fte` | decimal | Required at applicable lifecycle step | [decimal](../value-conventions.md#decimal) |
 | `start_on` | dates | Required at applicable lifecycle step | [date](../value-conventions.md#date) |
@@ -48,7 +48,7 @@ The target is [Organization](../foundation/Organization.md). Resolve the identif
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Organization·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Organization·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Organization·MISSING | Queue the missing Organization mapping or reject the command before linking. |
 | Wrong scope | Organization·B01 | Do not attach another church’s Organization without a supported exchange and local authority. |
 | Target rename | Rename Organization·A01 after linking | The existing organization_id keeps the same identity and historic documents retain their original wording. |
@@ -95,28 +95,28 @@ Use scoped or external reference for `StaffPosition.department_ref`. Resolve aga
 
 ### campus_id
 
-Use scoped or external reference for `StaffPosition.campus_id`. Resolve against the permitted kind, owning namespace and purpose.
+The target is [Campus](../foundation/Campus.md). Resolve the identifier in the approved scope before using its fields.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | verified campus_id in the owner namespace | Resolve against the permitted kind, owning namespace and purpose. |
-| Malformed or unmapped | unmapped campus_id | Request clarification or quarantine the mapping. |
-| Same visible code from two sources | issuer A:007 and issuer B:007 | Retain distinct namespace/key pairs. |
-| Referenced evidence is restricted | restricted attachment behind an otherwise visible request | Show a minimal permitted result and check document access independently. |
-| Duplicate delivery of the same mapped reference | same namespace, key and accepted mapping twice | Resolve the same destination record once. |
+| Admissible representation | Campus·A01 | Resolve stable identity in the permitted scope. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
+| Unresolved target | Campus·MISSING | Queue the missing Campus mapping or reject the command before linking. |
+| Wrong scope | Campus·B01 | Do not attach another church’s Campus without a supported exchange and local authority. |
+| Target rename | Rename Campus·A01 after linking | The existing campus_id keeps the same identity and historic documents retain their original wording. |
 | Absent in intake | No campus_id provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
 
 ### supervisor_position_id
 
-Use scoped or external reference for `StaffPosition.supervisor_position_id`. Resolve against the permitted kind, owning namespace and purpose.
+The target is [StaffPosition](StaffPosition.md). Resolve the identifier in the approved scope before using its fields.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | verified supervisor_position_id in the owner namespace | Resolve against the permitted kind, owning namespace and purpose. |
-| Malformed or unmapped | unmapped supervisor_position_id | Request clarification or quarantine the mapping. |
-| Same visible code from two sources | issuer A:007 and issuer B:007 | Retain distinct namespace/key pairs. |
-| Referenced evidence is restricted | restricted attachment behind an otherwise visible request | Show a minimal permitted result and check document access independently. |
-| Duplicate delivery of the same mapped reference | same namespace, key and accepted mapping twice | Resolve the same destination record once. |
+| Admissible representation | StaffPosition·A01 | Resolve stable identity in the permitted scope. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
+| Unresolved target | StaffPosition·MISSING | Queue the missing StaffPosition mapping or reject the command before linking. |
+| Wrong scope | StaffPosition·B01 | Do not attach another church’s StaffPosition without a supported exchange and local authority. |
+| Target rename | Rename StaffPosition·A01 after linking | The existing supervisor_position_id keeps the same identity and historic documents retain their original wording. |
 | Absent in intake | No supervisor_position_id provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
 
 ### budget_dimension_ref
@@ -126,7 +126,7 @@ The target is [FinanceDimension](../finance/FinanceDimension.md). Resolve the id
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | FinanceDimension·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | FinanceDimension·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | FinanceDimension·MISSING | Queue the missing FinanceDimension mapping or reject the command before linking. |
 | Wrong scope | FinanceDimension·B01 | Do not attach another church’s FinanceDimension without a supported exchange and local authority. |
 | Target rename | Rename FinanceDimension·A01 after linking | The existing budget_dimension_ref keeps the same identity and historic documents retain their original wording. |
@@ -177,6 +177,7 @@ Use civil calendar date for `StaffPosition.end_on`. Keep the date without conver
 | --- | --- | --- |
 | [EmploymentEngagement](EmploymentEngagement.md).`position_id` | StaffPosition identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [RecruitmentCase](RecruitmentCase.md).`position_id` | StaffPosition identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
+| [StaffPosition](StaffPosition.md).`supervisor_position_id` | StaffPosition identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 
 ## Acceptance evidence
 

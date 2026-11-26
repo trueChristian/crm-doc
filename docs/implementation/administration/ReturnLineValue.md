@@ -17,10 +17,10 @@ Unique instance and line. Manual override requires authority, reason and origina
 | `line_id` | → ReturnLineDefinition | Required at applicable lifecycle step | [relation](../value-conventions.md#relation) |
 | `computed_value` | typed | Required at applicable lifecycle step | [structured](../value-conventions.md#structured) |
 | `reported_value` | typed | Required at applicable lifecycle step | [structured](../value-conventions.md#structured) |
-| `numerator` | optional | Optional under owner conditions | [structured](../value-conventions.md#structured) |
-| `denominator` | optional | Optional under owner conditions | [structured](../value-conventions.md#structured) |
+| `numerator` | optional | Optional under owner conditions | [decimal](../value-conventions.md#decimal) |
+| `denominator` | optional | Optional under owner conditions | [decimal](../value-conventions.md#decimal) |
 | `quality` | verified, estimate, incomplete, suppressed or unavailable | Required at applicable lifecycle step | [enum](../value-conventions.md#enum) |
-| `variance_explanation` | optional | Optional under owner conditions | [structured](../value-conventions.md#structured) |
+| `variance_explanation` | optional | Optional under owner conditions | [text](../value-conventions.md#text) |
 | `source_snapshot_ref` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [resource](../value-conventions.md#resource) |
 
 ## Input, storage and exchange cases
@@ -47,7 +47,7 @@ The target is [ReturnInstance](ReturnInstance.md). Resolve the identifier in the
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ReturnInstance·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ReturnInstance·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ReturnInstance·MISSING | Queue the missing ReturnInstance mapping or reject the command before linking. |
 | Wrong scope | ReturnInstance·B01 | Do not attach another church’s ReturnInstance without a supported exchange and local authority. |
 | Target rename | Rename ReturnInstance·A01 after linking | The existing instance_id keeps the same identity and historic documents retain their original wording. |
@@ -60,7 +60,7 @@ The target is [ReturnLineDefinition](ReturnLineDefinition.md). Resolve the ident
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ReturnLineDefinition·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ReturnLineDefinition·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ReturnLineDefinition·MISSING | Queue the missing ReturnLineDefinition mapping or reject the command before linking. |
 | Wrong scope | ReturnLineDefinition·B01 | Do not attach another church’s ReturnLineDefinition without a supported exchange and local authority. |
 | Target rename | Rename ReturnLineDefinition·A01 after linking | The existing line_id keeps the same identity and historic documents retain their original wording. |
@@ -94,28 +94,28 @@ Use typed value or bounded compound record for `ReturnLineValue.reported_value`.
 
 ### numerator
 
-Use typed value or bounded compound record for `ReturnLineValue.numerator`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use exact decimal measure for `ReturnLineValue.numerator`. Retain decimal magnitude, unit and precision required by the record.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of numerator matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for numerator | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | 2.50 in the field unit | Retain decimal magnitude, unit and precision required by the record. |
+| Malformed or unmapped | sum across incompatible units | Obtain a unit or verified conversion before aggregating. |
+| 0.1 plus 0.2 with the same unit | 0.1 + 0.2 in identical units | Obtain 0.3 exactly before presentation rounding. |
+| Negative adjustment | a linked negative adjustment | Require the owner’s allowed sign and adjustment reason. |
+| Unit change after recording | two cases of twelve units versus two individual units | Use an effective conversion; preserve earlier observations. |
 | Absent in intake | No numerator provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
 
 ### denominator
 
-Use typed value or bounded compound record for `ReturnLineValue.denominator`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use exact decimal measure for `ReturnLineValue.denominator`. Retain decimal magnitude, unit and precision required by the record.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of denominator matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for denominator | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | 2.50 in the field unit | Retain decimal magnitude, unit and precision required by the record. |
+| Malformed or unmapped | sum across incompatible units | Obtain a unit or verified conversion before aggregating. |
+| 0.1 plus 0.2 with the same unit | 0.1 + 0.2 in identical units | Obtain 0.3 exactly before presentation rounding. |
+| Negative adjustment | a linked negative adjustment | Require the owner’s allowed sign and adjustment reason. |
+| Unit change after recording | two cases of twelve units versus two individual units | Use an effective conversion; preserve earlier observations. |
 | Absent in intake | No denominator provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
 
 ### quality
@@ -133,15 +133,15 @@ Declared alternatives in owner order: `verified`, `estimate`, `incomplete`, `sup
 
 ### variance_explanation
 
-Use typed value or bounded compound record for `ReturnLineValue.variance_explanation`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use human-readable text for `ReturnLineValue.variance_explanation`. Preserve the meaningful spelling, script and structure; derive separate search forms.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of variance_explanation matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for variance_explanation | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | entered variance_explanation in the original script | Preserve the meaningful spelling, script and structure; derive separate search forms. |
+| Malformed or unmapped | invalid text encoding | Return a field-level validation issue without silently changing meaning. |
+| Accented and non-Latin characters | Zoë and ǂNū-khoen in the original script | Preserve and display their original spelling. |
+| Label changes after formal issue | approved edition before a spelling correction | Keep the authorized original rendering in the issued edition. |
+| Bidirectional or multiline input | mixed-direction or multiline entered text | Render in the field’s declared context and respect accessibility and disclosure rules. |
 | Absent in intake | No variance_explanation provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
 
 ### source_snapshot_ref

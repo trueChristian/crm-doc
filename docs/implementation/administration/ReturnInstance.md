@@ -20,7 +20,7 @@ At most one current certified revision per period/perimeter. A replacement retai
 | `owner_actor` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [resource](../value-conventions.md#resource) |
 | `state` | draft, submitted, returned, certified, amended or withdrawn | Required at applicable lifecycle step | [enum](../value-conventions.md#enum) |
 | `source_cutoff_at` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [instant](../value-conventions.md#instant) |
-| `supersedes_id` | optional ReturnInstance | Optional under owner conditions | [resource](../value-conventions.md#resource) |
+| `supersedes_id` | optional ReturnInstance | Optional under owner conditions | [relation](../value-conventions.md#relation) |
 
 ## Input, storage and exchange cases
 
@@ -46,7 +46,7 @@ The target is [ReturnPeriod](ReturnPeriod.md). Resolve the identifier in the app
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ReturnPeriod·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ReturnPeriod·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ReturnPeriod·MISSING | Queue the missing ReturnPeriod mapping or reject the command before linking. |
 | Wrong scope | ReturnPeriod·B01 | Do not attach another church’s ReturnPeriod without a supported exchange and local authority. |
 | Target rename | Rename ReturnPeriod·A01 after linking | The existing period_id keeps the same identity and historic documents retain their original wording. |
@@ -59,7 +59,7 @@ The target is [Organization](../foundation/Organization.md). Resolve the identif
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Organization·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Organization·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Organization·MISSING | Queue the missing Organization mapping or reject the command before linking. |
 | Wrong scope | Organization·B01 | Do not attach another church’s Organization without a supported exchange and local authority. |
 | Target rename | Rename Organization·A01 after linking | The existing reporting_org_id keeps the same identity and historic documents retain their original wording. |
@@ -132,15 +132,15 @@ Use unambiguous point in time for `ReturnInstance.source_cutoff_at`. Compare as 
 
 ### supersedes_id
 
-Use scoped or external reference for `ReturnInstance.supersedes_id`. Resolve against the permitted kind, owning namespace and purpose.
+The target is [ReturnInstance](ReturnInstance.md). Resolve the identifier in the approved scope before using its fields.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | verified supersedes_id in the owner namespace | Resolve against the permitted kind, owning namespace and purpose. |
-| Malformed or unmapped | unmapped supersedes_id | Request clarification or quarantine the mapping. |
-| Same visible code from two sources | issuer A:007 and issuer B:007 | Retain distinct namespace/key pairs. |
-| Referenced evidence is restricted | restricted attachment behind an otherwise visible request | Show a minimal permitted result and check document access independently. |
-| Duplicate delivery of the same mapped reference | same namespace, key and accepted mapping twice | Resolve the same destination record once. |
+| Admissible representation | ReturnInstance·A01 | Resolve stable identity in the permitted scope. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
+| Unresolved target | ReturnInstance·MISSING | Queue the missing ReturnInstance mapping or reject the command before linking. |
+| Wrong scope | ReturnInstance·B01 | Do not attach another church’s ReturnInstance without a supported exchange and local authority. |
+| Target rename | Rename ReturnInstance·A01 after linking | The existing supersedes_id keeps the same identity and historic documents retain their original wording. |
 | Absent in intake | No supersedes_id provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
 
 ## Incoming references
@@ -150,6 +150,7 @@ Use scoped or external reference for `ReturnInstance.supersedes_id`. Resolve aga
 | [AssemblyPaperRequest](../governance/AssemblyPaperRequest.md).`certified_return_id` | ReturnInstance identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [ReturnAttestation](ReturnAttestation.md).`instance_id` | ReturnInstance identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [ReturnExchange](ReturnExchange.md).`instance_id` | ReturnInstance identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
+| [ReturnInstance](ReturnInstance.md).`supersedes_id` | ReturnInstance identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [ReturnLineValue](ReturnLineValue.md).`instance_id` | ReturnInstance identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 
 ## Acceptance evidence

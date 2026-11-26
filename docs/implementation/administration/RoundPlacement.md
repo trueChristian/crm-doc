@@ -46,7 +46,7 @@ The target is [AssistanceRound](AssistanceRound.md). Resolve the identifier in t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | AssistanceRound·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | AssistanceRound·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | AssistanceRound·MISSING | Queue the missing AssistanceRound mapping or reject the command before linking. |
 | Wrong scope | AssistanceRound·B01 | Do not attach another church’s AssistanceRound without a supported exchange and local authority. |
 | Target rename | Rename AssistanceRound·A01 after linking | The existing round_id keeps the same identity and historic documents retain their original wording. |
@@ -59,7 +59,7 @@ The target is [AidApplication](../people/AidApplication.md). Resolve the identif
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | AidApplication·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | AidApplication·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | AidApplication·MISSING | Queue the missing AidApplication mapping or reject the command before linking. |
 | Wrong scope | AidApplication·B01 | Do not attach another church’s AidApplication without a supported exchange and local authority. |
 | Target rename | Rename AidApplication·A01 after linking | The existing application_id keeps the same identity and historic documents retain their original wording. |
@@ -72,7 +72,7 @@ The target is [AidAward](../people/AidAward.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | AidAward·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | AidAward·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | AidAward·MISSING | Queue the missing AidAward mapping or reject the command before linking. |
 | Wrong scope | AidAward·B01 | Do not attach another church’s AidAward without a supported exchange and local authority. |
 | Target rename | Rename AidAward·A01 after linking | The existing award_id keeps the same identity and historic documents retain their original wording. |

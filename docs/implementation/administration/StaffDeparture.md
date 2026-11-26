@@ -15,8 +15,8 @@ Reassign open work, retrieve property, close specific staff grants, notify payro
 | `id` | Owner-scoped business value; see the record rule | Assigned or projected by owner | [key](../value-conventions.md#key) |
 | `engagement_id` | → EmploymentEngagement | Required at applicable lifecycle step | [relation](../value-conventions.md#relation) |
 | `effective_at` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [instant](../value-conventions.md#instant) |
-| `checklist_version` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [structured](../value-conventions.md#structured) |
-| `delegated_work_recipient` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [structured](../value-conventions.md#structured) |
+| `checklist_version` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [version](../value-conventions.md#version) |
+| `delegated_work_recipient` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [resource](../value-conventions.md#resource) |
 | `return_items_ref` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [resource](../value-conventions.md#resource) |
 | `account_review_ref` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [resource](../value-conventions.md#resource) |
 | `final_pay_run_ref` | → PayrollRun | Required at applicable lifecycle step | [relation](../value-conventions.md#relation) |
@@ -46,7 +46,7 @@ The target is [EmploymentEngagement](EmploymentEngagement.md). Resolve the ident
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | EmploymentEngagement·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | EmploymentEngagement·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | EmploymentEngagement·MISSING | Queue the missing EmploymentEngagement mapping or reject the command before linking. |
 | Wrong scope | EmploymentEngagement·B01 | Do not attach another church’s EmploymentEngagement without a supported exchange and local authority. |
 | Target rename | Rename EmploymentEngagement·A01 after linking | The existing engagement_id keeps the same identity and historic documents retain their original wording. |
@@ -67,28 +67,28 @@ Use unambiguous point in time for `StaffDeparture.effective_at`. Compare as the 
 
 ### checklist_version
 
-Use typed value or bounded compound record for `StaffDeparture.checklist_version`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use revision number or opaque revision token for `StaffDeparture.checklist_version`. Compare under the declared revision scheme. Require the expected version for conflicting work.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of checklist_version matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for checklist_version | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | the current revision returned by the owner | Compare under the declared revision scheme. Require the expected version for conflicting work. |
+| Malformed or unmapped | superseded version presented for a new approval | Reject or reopen review against the current contents. |
+| Two operators begin at revision seven | two edits both cite baseline 7 | Commit the first change once and re-evaluate the second; never overwrite an unreviewed difference. |
+| Re-read an already approved revision | re-open issued revision 4 after revision 6 | Return the frozen value and evidence for that edition. |
+| Replay of an earlier result | same business operation observed at two revisions | Correlate by the business operation identity; a newer version does not create a second effect. |
 | Incomplete record | No checklist_version at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### delegated_work_recipient
 
-Use typed value or bounded compound record for `StaffDeparture.delegated_work_recipient`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use scoped or external reference for `StaffDeparture.delegated_work_recipient`. Resolve against the permitted kind, owning namespace and purpose.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of delegated_work_recipient matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for delegated_work_recipient | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | verified delegated_work_recipient in the owner namespace | Resolve against the permitted kind, owning namespace and purpose. |
+| Malformed or unmapped | unmapped delegated_work_recipient | Request clarification or quarantine the mapping. |
+| Same visible code from two sources | issuer A:007 and issuer B:007 | Retain distinct namespace/key pairs. |
+| Referenced evidence is restricted | restricted attachment behind an otherwise visible request | Show a minimal permitted result and check document access independently. |
+| Duplicate delivery of the same mapped reference | same namespace, key and accepted mapping twice | Resolve the same destination record once. |
 | Incomplete record | No delegated_work_recipient at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### return_items_ref
@@ -124,7 +124,7 @@ The target is [PayrollRun](../finance/PayrollRun.md). Resolve the identifier in 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | PayrollRun·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | PayrollRun·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | PayrollRun·MISSING | Queue the missing PayrollRun mapping or reject the command before linking. |
 | Wrong scope | PayrollRun·B01 | Do not attach another church’s PayrollRun without a supported exchange and local authority. |
 | Target rename | Rename PayrollRun·A01 after linking | The existing final_pay_run_ref keeps the same identity and historic documents retain their original wording. |

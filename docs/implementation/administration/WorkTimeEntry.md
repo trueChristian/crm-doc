@@ -16,7 +16,7 @@ Preserve shift across midnight and local time changes. Reject overlaps for a pai
 | `engagement_id` | → EmploymentEngagement | Required at applicable lifecycle step | [relation](../value-conventions.md#relation) |
 | `start_at` | instants | Required at applicable lifecycle step | [instant](../value-conventions.md#instant) |
 | `end_at` | instants | Required at applicable lifecycle step | [instant](../value-conventions.md#instant) |
-| `break_duration` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [structured](../value-conventions.md#structured) |
+| `break_duration` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [duration](../value-conventions.md#duration) |
 | `earning_code` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [vocab](../value-conventions.md#vocab) |
 | `project_or_fund_ref` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [resource](../value-conventions.md#resource) |
 | `period_ref` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [resource](../value-conventions.md#resource) |
@@ -48,7 +48,7 @@ The target is [EmploymentEngagement](EmploymentEngagement.md). Resolve the ident
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | EmploymentEngagement·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | EmploymentEngagement·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | EmploymentEngagement·MISSING | Queue the missing EmploymentEngagement mapping or reject the command before linking. |
 | Wrong scope | EmploymentEngagement·B01 | Do not attach another church’s EmploymentEngagement without a supported exchange and local authority. |
 | Target rename | Rename EmploymentEngagement·A01 after linking | The existing engagement_id keeps the same identity and historic documents retain their original wording. |
@@ -82,15 +82,15 @@ Use unambiguous point in time for `WorkTimeEntry.end_at`. Compare as the same in
 
 ### break_duration
 
-Use typed value or bounded compound record for `WorkTimeEntry.break_duration`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use elapsed interval or named calendar duration for `WorkTimeEntry.break_duration`. Preserve unit and distinguish elapsed minutes from a calendar day or working day.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of break_duration matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for break_duration | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | 30 minutes in elapsed-time profile | Preserve unit and distinguish elapsed minutes from a calendar day or working day. |
+| Malformed or unmapped | duration without resolvable unit | Request an interval unit. |
+| A working-day deadline crosses a closure | a one-workday deadline starting on Friday | Use the named work-calendar edition. |
+| A civil day crosses an offset change | a local civil day covers 23 or 25 elapsed hours | Do not assume 24 elapsed hours. |
+| Zero-length interval | duration of zero units | Apply the owner’s validity or immediate-trigger rule. |
 | Incomplete record | No break_duration at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### earning_code

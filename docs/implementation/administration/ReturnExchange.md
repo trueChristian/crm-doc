@@ -15,13 +15,13 @@ Send only authorized lines. Repeated delivery with same key is one submission. A
 | `id` | Owner-scoped business value; see the record rule | Assigned or projected by owner | [key](../value-conventions.md#key) |
 | `agreement_id` | → SharingAgreement | Required at applicable lifecycle step | [relation](../value-conventions.md#relation) |
 | `instance_id` | → ReturnInstance | Required at applicable lifecycle step | [relation](../value-conventions.md#relation) |
-| `recipient` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [structured](../value-conventions.md#structured) |
-| `permitted_subset` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [structured](../value-conventions.md#structured) |
+| `recipient` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [resource](../value-conventions.md#resource) |
+| `permitted_subset` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [list](../value-conventions.md#list) |
 | `issued_at` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [instant](../value-conventions.md#instant) |
 | `delivery_state` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [vocab](../value-conventions.md#vocab) |
 | `acknowledged_at` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [instant](../value-conventions.md#instant) |
 | `checksum` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [digest](../value-conventions.md#digest) |
-| `operation_key` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [key](../value-conventions.md#key) |
+| `operation_key` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [operation](../value-conventions.md#operation) |
 
 ## Input, storage and exchange cases
 
@@ -47,7 +47,7 @@ The target is [SharingAgreement](../platform/SharingAgreement.md). Resolve the i
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | SharingAgreement·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | SharingAgreement·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | SharingAgreement·MISSING | Queue the missing SharingAgreement mapping or reject the command before linking. |
 | Wrong scope | SharingAgreement·B01 | Do not attach another church’s SharingAgreement without a supported exchange and local authority. |
 | Target rename | Rename SharingAgreement·A01 after linking | The existing agreement_id keeps the same identity and historic documents retain their original wording. |
@@ -60,7 +60,7 @@ The target is [ReturnInstance](ReturnInstance.md). Resolve the identifier in the
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ReturnInstance·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ReturnInstance·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ReturnInstance·MISSING | Queue the missing ReturnInstance mapping or reject the command before linking. |
 | Wrong scope | ReturnInstance·B01 | Do not attach another church’s ReturnInstance without a supported exchange and local authority. |
 | Target rename | Rename ReturnInstance·A01 after linking | The existing instance_id keeps the same identity and historic documents retain their original wording. |
@@ -68,28 +68,28 @@ The target is [ReturnInstance](ReturnInstance.md). Resolve the identifier in the
 
 ### recipient
 
-Use typed value or bounded compound record for `ReturnExchange.recipient`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use scoped or external reference for `ReturnExchange.recipient`. Resolve against the permitted kind, owning namespace and purpose.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of recipient matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for recipient | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | verified recipient in the owner namespace | Resolve against the permitted kind, owning namespace and purpose. |
+| Malformed or unmapped | unmapped recipient | Request clarification or quarantine the mapping. |
+| Same visible code from two sources | issuer A:007 and issuer B:007 | Retain distinct namespace/key pairs. |
+| Referenced evidence is restricted | restricted attachment behind an otherwise visible request | Show a minimal permitted result and check document access independently. |
+| Duplicate delivery of the same mapped reference | same namespace, key and accepted mapping twice | Resolve the same destination record once. |
 | Incomplete record | No recipient at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### permitted_subset
 
-Use typed value or bounded compound record for `ReturnExchange.permitted_subset`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use ordered collection or mathematical set for `ReturnExchange.permitted_subset`. Preserve ordering when meaningful; enforce uniqueness when the declaration is a set.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of permitted_subset matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for permitted_subset | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | permitted members A and B | Preserve ordering when meaningful; enforce uniqueness when the declaration is a set. |
+| Malformed or unmapped | an element outside the declared domain | Reject the affected collection or stage its invalid item under the import policy. |
+| Same element appears twice | A, A, B | Apply declared sequence/set multiplicity without doubling financial or voting effects. |
+| Empty collection versus unknown collection | empty collection and missing collection | Preserve the distinction where the rule requires evidence. |
+| One element later becomes restricted | authorization for member B withdrawn before export | Recompute permitted projection before export or display. |
 | Incomplete record | No permitted_subset at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### issued_at
@@ -146,15 +146,15 @@ Use integrity fingerprint or opaque verifier for `ReturnExchange.checksum`. Bind
 
 ### operation_key
 
-Use opaque identity or token for `ReturnExchange.operation_key`. Compare the opaque value under its issuer rules; preserve leading characters.
+Use operation identity for exactly-once business effects for `ReturnExchange.operation_key`. Bind the key to the original material inputs and outcome; retain it throughout the replay window.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | ReturnExchange·0007 | Compare the opaque value under its issuer rules; preserve leading characters. |
-| Malformed or unmapped | human-readable name passed as the identifier | Request a verified lookup or an explicit mapping. |
-| Renamed display label | update display label; retain stable key | Identity comparisons still use the stable key. |
-| Conflicting claim on an existing key | second owner claims the same issued key | Retain original binding; route conflict for review. |
-| Retried creation with the original operation key | submit original creation receipt twice | Use the owning creation outcome and return the established identity. |
+| Admissible representation | KEY-007 with original inputs | Bind the key to the original material inputs and outcome; retain it throughout the replay window. |
+| Malformed or unmapped | KEY-007 with changed material inputs | Reject conflicting reuse and reconcile against the first accepted or in-flight operation. |
+| Duplicate after successful commit | two equivalent submissions using KEY-007 | Return the original business receipt with no second payment, membership change, booking or notice. |
+| Timeout before outcome is known | provider accepted work but acknowledgement delayed | Look up or reconcile the pending operation before issuing a replacement. |
+| A genuine correction has a new key | COR-008 points to original KEY-007 | Link the correction to the original effect and apply its ordinary authorization and reversal rules. |
 | Incomplete record | No operation_key at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ## Acceptance evidence

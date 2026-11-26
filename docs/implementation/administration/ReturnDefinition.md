@@ -18,7 +18,7 @@ A version has one or more ReturnLineDefinition records. Published wording and ca
 | `owner_role` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [resource](../value-conventions.md#resource) |
 | `frequency` | annual, quarterly or ad_hoc | Required at applicable lifecycle step | [enum](../value-conventions.md#enum) |
 | `version` | integer | Required at applicable lifecycle step | [version](../value-conventions.md#version) |
-| `effective_dates` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [structured](../value-conventions.md#structured) |
+| `effective_dates` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [interval](../value-conventions.md#interval) |
 | `state` | draft, published or retired | Required at applicable lifecycle step | [enum](../value-conventions.md#enum) |
 
 ## Input, storage and exchange cases
@@ -45,7 +45,7 @@ The target is [Organization](../foundation/Organization.md). Resolve the identif
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Organization·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Organization·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Organization·MISSING | Queue the missing Organization mapping or reject the command before linking. |
 | Wrong scope | Organization·B01 | Do not attach another church’s Organization without a supported exchange and local authority. |
 | Target rename | Rename Organization·A01 after linking | The existing authority_org_id keeps the same identity and historic documents retain their original wording. |
@@ -105,15 +105,15 @@ Use revision number or opaque revision token for `ReturnDefinition.version`. Com
 
 ### effective_dates
 
-Use typed value or bounded compound record for `ReturnDefinition.effective_dates`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use effective interval or window for `ReturnDefinition.effective_dates`. Use a date or instant consistently and record whether each endpoint is inclusive.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of effective_dates matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for effective_dates | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | ordered boundaries in the declared temporal scale | Use a date or instant consistently and record whether each endpoint is inclusive. |
+| Malformed or unmapped | end before start | Return an interval error before scheduling or applying a policy. |
+| Adjacent windows | one window ends as the next begins | Select the applicable interval at the common boundary using its stated convention. |
+| Open-ended validity | start known and end unspecified | Accept a missing end only if the owner allows open-ended status. |
+| Time used falls in a gap | instant is between disjoint valid windows | Report no applicable interval; never silently select the nearest future edition. |
 | Incomplete record | No effective_dates at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### state

@@ -19,7 +19,7 @@ An attestation binds the exact values and attachments. Editing invalidates appro
 | `attested_at` | instant | Required at applicable lifecycle step | [instant](../value-conventions.md#instant) |
 | `scope_hash` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [key](../value-conventions.md#key) |
 | `outcome` | submit, accept, query, certify or amend | Required at applicable lifecycle step | [enum](../value-conventions.md#enum) |
-| `reason_or_query` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [structured](../value-conventions.md#structured) |
+| `reason_or_query` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [text](../value-conventions.md#text) |
 
 ## Input, storage and exchange cases
 
@@ -45,7 +45,7 @@ The target is [ReturnInstance](ReturnInstance.md). Resolve the identifier in the
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ReturnInstance·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ReturnInstance·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ReturnInstance·MISSING | Queue the missing ReturnInstance mapping or reject the command before linking. |
 | Wrong scope | ReturnInstance·B01 | Do not attach another church’s ReturnInstance without a supported exchange and local authority. |
 | Target rename | Rename ReturnInstance·A01 after linking | The existing instance_id keeps the same identity and historic documents retain their original wording. |
@@ -118,15 +118,15 @@ Declared alternatives in owner order: `submit`, `accept`, `query`, `certify`, `a
 
 ### reason_or_query
 
-Use typed value or bounded compound record for `ReturnAttestation.reason_or_query`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use human-readable text for `ReturnAttestation.reason_or_query`. Preserve the meaningful spelling, script and structure; derive separate search forms.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of reason_or_query matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for reason_or_query | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | entered reason_or_query in the original script | Preserve the meaningful spelling, script and structure; derive separate search forms. |
+| Malformed or unmapped | invalid text encoding | Return a field-level validation issue without silently changing meaning. |
+| Accented and non-Latin characters | Zoë and ǂNū-khoen in the original script | Preserve and display their original spelling. |
+| Label changes after formal issue | approved edition before a spelling correction | Keep the authorized original rendering in the issued edition. |
+| Bidirectional or multiline input | mixed-direction or multiline entered text | Render in the field’s declared context and respect accessibility and disclosure rules. |
 | Incomplete record | No reason_or_query at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ## Acceptance evidence

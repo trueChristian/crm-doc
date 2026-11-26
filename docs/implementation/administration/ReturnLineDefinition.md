@@ -24,7 +24,7 @@ Define denominator, data quality and whether a blank is allowed. Ratios carry nu
 | `aggregation` | sum, recompute, weighted_rate or narrative | Required at applicable lifecycle step | [enum](../value-conventions.md#enum) |
 | `suppression_rule` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [rule](../value-conventions.md#rule) |
 | `unit` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [vocab](../value-conventions.md#vocab) |
-| `display_order` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [structured](../value-conventions.md#structured) |
+| `display_order` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [integer](../value-conventions.md#integer) |
 
 ## Input, storage and exchange cases
 
@@ -50,7 +50,7 @@ The target is [ReturnDefinition](ReturnDefinition.md). Resolve the identifier in
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ReturnDefinition·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ReturnDefinition·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ReturnDefinition·MISSING | Queue the missing ReturnDefinition mapping or reject the command before linking. |
 | Wrong scope | ReturnDefinition·B01 | Do not attach another church’s ReturnDefinition without a supported exchange and local authority. |
 | Target rename | Rename ReturnDefinition·A01 after linking | The existing definition_id keeps the same identity and historic documents retain their original wording. |
@@ -188,15 +188,15 @@ Use versioned classification or status code for `ReturnLineDefinition.unit`. Che
 
 ### display_order
 
-Use typed value or bounded compound record for `ReturnLineDefinition.display_order`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use whole-number measure for `ReturnLineDefinition.display_order`. Preserve integer precision and enforce the specific field bounds.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of display_order matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for display_order | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | 2 subject to field bounds | Preserve integer precision and enforce the specific field bounds. |
+| Malformed or unmapped | 2.5 | Reject fractional input without rounding it into a whole person, place or sequence. |
+| Value equals the configured upper bound | value exactly equal to the applicable maximum | Apply its inclusive or exclusive rule explicitly. |
+| Value exceeds the bound by one | applicable maximum plus one | Return a range error before changing dependent totals. |
+| Missing count versus measured zero | observed 0 and omitted value | Keep absence distinct from an observed zero. |
 | Incomplete record | No display_order at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ## Incoming references

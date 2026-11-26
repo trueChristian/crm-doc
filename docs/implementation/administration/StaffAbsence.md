@@ -17,7 +17,7 @@ Scheduling sees availability. Personnel staff control reasons. Reversal after pa
 | `local_start` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [structured](../value-conventions.md#structured) |
 | `local_end` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [structured](../value-conventions.md#structured) |
 | `working_schedule_ref` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [resource](../value-conventions.md#resource) |
-| `requested_units` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [structured](../value-conventions.md#structured) |
+| `requested_units` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [decimal](../value-conventions.md#decimal) |
 | `kind` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [vocab](../value-conventions.md#vocab) |
 | `private_reason_ref` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [resource](../value-conventions.md#resource) |
 | `cover_person_id` | → Person? | Optional under owner conditions | [relation](../value-conventions.md#relation) |
@@ -48,7 +48,7 @@ The target is [EmploymentEngagement](EmploymentEngagement.md). Resolve the ident
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | EmploymentEngagement·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | EmploymentEngagement·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | EmploymentEngagement·MISSING | Queue the missing EmploymentEngagement mapping or reject the command before linking. |
 | Wrong scope | EmploymentEngagement·B01 | Do not attach another church’s EmploymentEngagement without a supported exchange and local authority. |
 | Target rename | Rename EmploymentEngagement·A01 after linking | The existing engagement_id keeps the same identity and historic documents retain their original wording. |
@@ -95,15 +95,15 @@ Use scoped or external reference for `StaffAbsence.working_schedule_ref`. Resolv
 
 ### requested_units
 
-Use typed value or bounded compound record for `StaffAbsence.requested_units`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use exact decimal measure for `StaffAbsence.requested_units`. Retain decimal magnitude, unit and precision required by the record.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of requested_units matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for requested_units | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | 2.50 in the field unit | Retain decimal magnitude, unit and precision required by the record. |
+| Malformed or unmapped | sum across incompatible units | Obtain a unit or verified conversion before aggregating. |
+| 0.1 plus 0.2 with the same unit | 0.1 + 0.2 in identical units | Obtain 0.3 exactly before presentation rounding. |
+| Negative adjustment | a linked negative adjustment | Require the owner’s allowed sign and adjustment reason. |
+| Unit change after recording | two cases of twelve units versus two individual units | Use an effective conversion; preserve earlier observations. |
 | Incomplete record | No requested_units at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### kind
@@ -139,7 +139,7 @@ The target is [Person](../people/Person.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Person·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Person·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Person·MISSING | Queue the missing Person mapping or reject the command before linking. |
 | Wrong scope | Person·B01 | Do not attach another church’s Person without a supported exchange and local authority. |
 | Target rename | Rename Person·A01 after linking | The existing cover_person_id keeps the same identity and historic documents retain their original wording. |
