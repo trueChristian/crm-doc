@@ -28,7 +28,7 @@ The target is [AwardDraw](AwardDraw.md). Resolve the identifier in the approved 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | AwardDraw·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | AwardDraw·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | AwardDraw·MISSING | Queue the missing AwardDraw mapping or reject the command before linking. |
 | Wrong scope | AwardDraw·B01 | Do not attach another church’s AwardDraw without a supported exchange and local authority. |
 | Target rename | Rename AwardDraw·A01 after linking | The existing draw_id keeps the same identity and historic documents retain their original wording. |
@@ -41,7 +41,7 @@ The target is [AwardCost](AwardCost.md). Resolve the identifier in the approved 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | AwardCost·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | AwardCost·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | AwardCost·MISSING | Queue the missing AwardCost mapping or reject the command before linking. |
 | Wrong scope | AwardCost·B01 | Do not attach another church’s AwardCost without a supported exchange and local authority. |
 | Target rename | Rename AwardCost·A01 after linking | The existing award_cost_id keeps the same identity and historic documents retain their original wording. |
@@ -54,7 +54,7 @@ The target is [AwardMilestone](AwardMilestone.md). Resolve the identifier in the
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | AwardMilestone·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | AwardMilestone·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | AwardMilestone·MISSING | Queue the missing AwardMilestone mapping or reject the command before linking. |
 | Wrong scope | AwardMilestone·B01 | Do not attach another church’s AwardMilestone without a supported exchange and local authority. |
 | Target rename | Rename AwardMilestone·A01 after linking | The existing milestone_id keeps the same identity and historic documents retain their original wording. |

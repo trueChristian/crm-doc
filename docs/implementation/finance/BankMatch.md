@@ -30,7 +30,7 @@ The target is [BankReconciliation](BankReconciliation.md). Resolve the identifie
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | BankReconciliation·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | BankReconciliation·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | BankReconciliation·MISSING | Queue the missing BankReconciliation mapping or reject the command before linking. |
 | Wrong scope | BankReconciliation·B01 | Do not attach another church’s BankReconciliation without a supported exchange and local authority. |
 | Target rename | Rename BankReconciliation·A01 after linking | The existing reconciliation_id keeps the same identity and historic documents retain their original wording. |

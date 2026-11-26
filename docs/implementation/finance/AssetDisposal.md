@@ -22,7 +22,7 @@ Remove cost and accumulated depreciation for the portion disposed. Prevent dupli
 | `beneficiary_ref` | ? | Optional under owner conditions | [resource](../value-conventions.md#resource) |
 | `sale_ref` | ? | Optional under owner conditions | [resource](../value-conventions.md#resource) |
 | `posting_ref` | ? | Optional under owner conditions | [resource](../value-conventions.md#resource) |
-| `restriction_resolution_evidence` | ? | Optional under owner conditions | [structured](../value-conventions.md#structured) |
+| `restriction_resolution_evidence` | ? | Optional under owner conditions | [resource](../value-conventions.md#resource) |
 
 ## Input, storage and exchange cases
 
@@ -35,7 +35,7 @@ The target is [FixedAsset](FixedAsset.md). Resolve the identifier in the approve
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | FixedAsset·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | FixedAsset·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | FixedAsset·MISSING | Queue the missing FixedAsset mapping or reject the command before linking. |
 | Wrong scope | FixedAsset·B01 | Do not attach another church’s FixedAsset without a supported exchange and local authority. |
 | Target rename | Rename FixedAsset·A01 after linking | The existing asset_id keeps the same identity and historic documents retain their original wording. |
@@ -160,15 +160,15 @@ Use scoped or external reference for `AssetDisposal.posting_ref`. Resolve agains
 
 ### restriction_resolution_evidence
 
-Use typed value or bounded compound record for `AssetDisposal.restriction_resolution_evidence`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use scoped or external reference for `AssetDisposal.restriction_resolution_evidence`. Resolve against the permitted kind, owning namespace and purpose.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of restriction_resolution_evidence matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for restriction_resolution_evidence | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | verified restriction_resolution_evidence in the owner namespace | Resolve against the permitted kind, owning namespace and purpose. |
+| Malformed or unmapped | unmapped restriction_resolution_evidence | Request clarification or quarantine the mapping. |
+| Same visible code from two sources | issuer A:007 and issuer B:007 | Retain distinct namespace/key pairs. |
+| Referenced evidence is restricted | restricted attachment behind an otherwise visible request | Show a minimal permitted result and check document access independently. |
+| Duplicate delivery of the same mapped reference | same namespace, key and accepted mapping twice | Resolve the same destination record once. |
 | Absent in intake | No restriction_resolution_evidence provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
 
 ## Acceptance evidence

@@ -33,7 +33,7 @@ The target is [BankStatement](BankStatement.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | BankStatement·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | BankStatement·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | BankStatement·MISSING | Queue the missing BankStatement mapping or reject the command before linking. |
 | Wrong scope | BankStatement·B01 | Do not attach another church’s BankStatement without a supported exchange and local authority. |
 | Target rename | Rename BankStatement·A01 after linking | The existing statement_id keeps the same identity and historic documents retain their original wording. |

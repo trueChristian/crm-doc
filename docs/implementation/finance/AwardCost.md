@@ -33,7 +33,7 @@ The target is [GrantAward](GrantAward.md). Resolve the identifier in the approve
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | GrantAward·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | GrantAward·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | GrantAward·MISSING | Queue the missing GrantAward mapping or reject the command before linking. |
 | Wrong scope | GrantAward·B01 | Do not attach another church’s GrantAward without a supported exchange and local authority. |
 | Target rename | Rename GrantAward·A01 after linking | The existing award_id keeps the same identity and historic documents retain their original wording. |
@@ -46,7 +46,7 @@ The target is [JournalLine](JournalLine.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | JournalLine·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | JournalLine·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | JournalLine·MISSING | Queue the missing JournalLine mapping or reject the command before linking. |
 | Wrong scope | JournalLine·B01 | Do not attach another church’s JournalLine without a supported exchange and local authority. |
 | Target rename | Rename JournalLine·A01 after linking | The existing journal_line_id keeps the same identity and historic documents retain their original wording. |

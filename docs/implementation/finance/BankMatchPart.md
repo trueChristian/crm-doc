@@ -28,7 +28,7 @@ The target is [BankMatch](BankMatch.md). Resolve the identifier in the approved 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | BankMatch·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | BankMatch·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | BankMatch·MISSING | Queue the missing BankMatch mapping or reject the command before linking. |
 | Wrong scope | BankMatch·B01 | Do not attach another church’s BankMatch without a supported exchange and local authority. |
 | Target rename | Rename BankMatch·A01 after linking | The existing match_id keeps the same identity and historic documents retain their original wording. |
@@ -41,7 +41,7 @@ The target is [BankStatementLine](BankStatementLine.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | BankStatementLine·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | BankStatementLine·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | BankStatementLine·MISSING | Queue the missing BankStatementLine mapping or reject the command before linking. |
 | Wrong scope | BankStatementLine·B01 | Do not attach another church’s BankStatementLine without a supported exchange and local authority. |
 | Target rename | Rename BankStatementLine·A01 after linking | The existing statement_line_id keeps the same identity and historic documents retain their original wording. |
@@ -54,7 +54,7 @@ The target is [JournalLine](JournalLine.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | JournalLine·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | JournalLine·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | JournalLine·MISSING | Queue the missing JournalLine mapping or reject the command before linking. |
 | Wrong scope | JournalLine·B01 | Do not attach another church’s JournalLine without a supported exchange and local authority. |
 | Target rename | Rename JournalLine·A01 after linking | The existing journal_line_id keeps the same identity and historic documents retain their original wording. |

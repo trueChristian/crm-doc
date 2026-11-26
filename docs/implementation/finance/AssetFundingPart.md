@@ -31,7 +31,7 @@ The target is [FixedAsset](FixedAsset.md). Resolve the identifier in the approve
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | FixedAsset·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | FixedAsset·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | FixedAsset·MISSING | Queue the missing FixedAsset mapping or reject the command before linking. |
 | Wrong scope | FixedAsset·B01 | Do not attach another church’s FixedAsset without a supported exchange and local authority. |
 | Target rename | Rename FixedAsset·A01 after linking | The existing asset_id keeps the same identity and historic documents retain their original wording. |
@@ -44,7 +44,7 @@ The target is [Fund](Fund.md). Resolve the identifier in the approved scope befo
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Fund·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Fund·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Fund·MISSING | Queue the missing Fund mapping or reject the command before linking. |
 | Wrong scope | Fund·B01 | Do not attach another church’s Fund without a supported exchange and local authority. |
 | Target rename | Rename Fund·A01 after linking | The existing fund_id keeps the same identity and historic documents retain their original wording. |
@@ -57,7 +57,7 @@ The target is [FundRestriction](FundRestriction.md). Resolve the identifier in t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | FundRestriction·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | FundRestriction·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | FundRestriction·MISSING | Queue the missing FundRestriction mapping or reject the command before linking. |
 | Wrong scope | FundRestriction·B01 | Do not attach another church’s FundRestriction without a supported exchange and local authority. |
 | Target rename | Rename FundRestriction·A01 after linking | The existing restriction_id keeps the same identity and historic documents retain their original wording. |
@@ -96,7 +96,7 @@ The target is [Gift](Gift.md). Resolve the identifier in the approved scope befo
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Gift·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Gift·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Gift·MISSING | Queue the missing Gift mapping or reject the command before linking. |
 | Wrong scope | Gift·B01 | Do not attach another church’s Gift without a supported exchange and local authority. |
 | Target rename | Rename Gift·A01 after linking | The existing gift_ref keeps the same identity and historic documents retain their original wording. |
