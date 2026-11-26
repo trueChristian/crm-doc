@@ -48,7 +48,7 @@ The target is [IncidentReport](IncidentReport.md). Resolve the identifier in the
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | IncidentReport·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | IncidentReport·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | IncidentReport·MISSING | Queue the missing IncidentReport mapping or reject the command before linking. |
 | Wrong scope | IncidentReport·B01 | Do not attach another church’s IncidentReport without a supported exchange and local authority. |
 | Target rename | Rename IncidentReport·A01 after linking | The existing report_id keeps the same identity and historic documents retain their original wording. |
@@ -57,6 +57,7 @@ The target is [IncidentReport](IncidentReport.md). Resolve the identifier in the
 ### artifact_ref
 
 Use scoped or external reference for `IncidentEvidence.artifact_ref`. Resolve against the permitted kind, owning namespace and purpose.
+Field access: enforce the declared protection on reads, search, previews, exports and audit evidence as well as the underlying resource value.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
@@ -87,7 +88,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing submitted_by keeps the same identity and historic documents retain their original wording. |

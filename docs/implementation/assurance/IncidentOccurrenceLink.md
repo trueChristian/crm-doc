@@ -44,7 +44,7 @@ The target is [IncidentOccurrence](IncidentOccurrence.md). Resolve the identifie
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | IncidentOccurrence·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | IncidentOccurrence·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | IncidentOccurrence·MISSING | Queue the missing IncidentOccurrence mapping or reject the command before linking. |
 | Wrong scope | IncidentOccurrence·B01 | Do not attach another church’s IncidentOccurrence without a supported exchange and local authority. |
 | Target rename | Rename IncidentOccurrence·A01 after linking | The existing occurrence_id keeps the same identity and historic documents retain their original wording. |
@@ -57,7 +57,7 @@ The target is [IncidentReport](IncidentReport.md). Resolve the identifier in the
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | IncidentReport·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | IncidentReport·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | IncidentReport·MISSING | Queue the missing IncidentReport mapping or reject the command before linking. |
 | Wrong scope | IncidentReport·B01 | Do not attach another church’s IncidentReport without a supported exchange and local authority. |
 | Target rename | Rename IncidentReport·A01 after linking | The existing report_id keeps the same identity and historic documents retain their original wording. |
@@ -96,7 +96,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing linked_by keeps the same identity and historic documents retain their original wording. |

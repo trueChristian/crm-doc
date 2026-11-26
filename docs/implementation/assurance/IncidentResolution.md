@@ -16,7 +16,7 @@ Resolve open handoffs, or explicitly assign outstanding work with due dates and 
 | `report_id` | → IncidentReport | Required when the record reaches its applicable state | [relation](../value-conventions.md#relation) |
 | `closing_reviewer_id` | → UserAccount | Required when the record reaches its applicable state | [relation](../value-conventions.md#relation) |
 | `rationale` | text | Required when the record reaches its applicable state | [text](../value-conventions.md#text) |
-| `finding_refs` | → AssuranceFinding set | Required when the record reaches its applicable state | [relation](../value-conventions.md#relation) |
+| `finding_refs` | → AssuranceFinding set | Required when the record reaches its applicable state | [references](../value-conventions.md#references) |
 | `open_handoff_summary` | code | Required when the record reaches its applicable state | [vocab](../value-conventions.md#vocab) |
 | `closed_at` | instant | Required when the record reaches its applicable state | [instant](../value-conventions.md#instant) |
 | `residual_risk_ref` | → RiskEntry? | Optional under owner conditions | [relation](../value-conventions.md#relation) |
@@ -46,7 +46,7 @@ The target is [IncidentReport](IncidentReport.md). Resolve the identifier in the
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | IncidentReport·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | IncidentReport·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | IncidentReport·MISSING | Queue the missing IncidentReport mapping or reject the command before linking. |
 | Wrong scope | IncidentReport·B01 | Do not attach another church’s IncidentReport without a supported exchange and local authority. |
 | Target rename | Rename IncidentReport·A01 after linking | The existing report_id keeps the same identity and historic documents retain their original wording. |
@@ -59,7 +59,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing closing_reviewer_id keeps the same identity and historic documents retain their original wording. |
@@ -84,11 +84,11 @@ The target is [AssuranceFinding](AssuranceFinding.md). Resolve the identifier in
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | AssuranceFinding·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | AssuranceFinding·MISSING | Return a type mismatch without changing the link. |
-| Unresolved target | AssuranceFinding·MISSING | Queue the missing AssuranceFinding mapping or reject the command before linking. |
-| Wrong scope | AssuranceFinding·B01 | Do not attach another church’s AssuranceFinding without a supported exchange and local authority. |
-| Target rename | Rename AssuranceFinding·A01 after linking | The existing finding_refs keeps the same identity and historic documents retain their original wording. |
+| Admissible representation | AssuranceFinding·A01, AssuranceFinding·A02 | Resolve every element separately by type, identity and scope; preserve order only when the source defines it. |
+| Malformed or unmapped | collection containing AssuranceFinding·MISSING | Isolate the invalid relationship or reject the atomic collection edit as the owning operation requires. |
+| Duplicate member | A01, A01 and A02 | For a set, link the target once; preserve explicitly meaningful order or role/quantity on a child record. |
+| One target later becomes inaccessible | one of two targets loses disclosure authority | Re-evaluate that element and prevent disclosure via counts or joins outside authorized scope. |
+| Reissue an old manifest | compare earlier and current permitted membership | Read the original target edition or frozen membership according to the owner. |
 | Incomplete record | No finding_refs at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### open_handoff_summary
@@ -124,7 +124,7 @@ The target is [RiskEntry](RiskEntry.md). Resolve the identifier in the approved 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | RiskEntry·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | RiskEntry·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | RiskEntry·MISSING | Queue the missing RiskEntry mapping or reject the command before linking. |
 | Wrong scope | RiskEntry·B01 | Do not attach another church’s RiskEntry without a supported exchange and local authority. |
 | Target rename | Rename RiskEntry·A01 after linking | The existing residual_risk_ref keeps the same identity and historic documents retain their original wording. |
@@ -137,7 +137,7 @@ The target is [IncidentResolution](IncidentResolution.md). Resolve the identifie
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | IncidentResolution·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | IncidentResolution·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | IncidentResolution·MISSING | Queue the missing IncidentResolution mapping or reject the command before linking. |
 | Wrong scope | IncidentResolution·B01 | Do not attach another church’s IncidentResolution without a supported exchange and local authority. |
 | Target rename | Rename IncidentResolution·A01 after linking | The existing supersedes_id keeps the same identity and historic documents retain their original wording. |

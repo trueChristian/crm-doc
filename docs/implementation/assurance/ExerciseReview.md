@@ -21,7 +21,7 @@ Record measured outcomes, limitations, responsible owners, deadlines and retest 
 | `recovery_decision_ref` | ID? | Optional under owner conditions | [resource](../value-conventions.md#resource) |
 | `safe_lessons` | text | Required when the record reaches its applicable state | [text](../value-conventions.md#text) |
 | `protected_appendix_ref` | ID? | Optional under owner conditions | [resource](../value-conventions.md#resource) |
-| `action_refs` | → AssuranceFinding set | Required when the record reaches its applicable state | [relation](../value-conventions.md#relation) |
+| `action_refs` | → AssuranceFinding set | Required when the record reaches its applicable state | [references](../value-conventions.md#references) |
 | `approved_by` | → UserAccount? | Optional under owner conditions | [relation](../value-conventions.md#relation) |
 | `published_at` | instant? | Optional under owner conditions | [instant](../value-conventions.md#instant) |
 
@@ -49,7 +49,7 @@ The target is [ContinuityExercise](ContinuityExercise.md). Resolve the identifie
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ContinuityExercise·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ContinuityExercise·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ContinuityExercise·MISSING | Queue the missing ContinuityExercise mapping or reject the command before linking. |
 | Wrong scope | ContinuityExercise·B01 | Do not attach another church’s ContinuityExercise without a supported exchange and local authority. |
 | Target rename | Rename ContinuityExercise·A01 after linking | The existing exercise_id keeps the same identity and historic documents retain their original wording. |
@@ -75,7 +75,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing facilitator_id keeps the same identity and historic documents retain their original wording. |
@@ -152,11 +152,11 @@ The target is [AssuranceFinding](AssuranceFinding.md). Resolve the identifier in
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | AssuranceFinding·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | AssuranceFinding·MISSING | Return a type mismatch without changing the link. |
-| Unresolved target | AssuranceFinding·MISSING | Queue the missing AssuranceFinding mapping or reject the command before linking. |
-| Wrong scope | AssuranceFinding·B01 | Do not attach another church’s AssuranceFinding without a supported exchange and local authority. |
-| Target rename | Rename AssuranceFinding·A01 after linking | The existing action_refs keeps the same identity and historic documents retain their original wording. |
+| Admissible representation | AssuranceFinding·A01, AssuranceFinding·A02 | Resolve every element separately by type, identity and scope; preserve order only when the source defines it. |
+| Malformed or unmapped | collection containing AssuranceFinding·MISSING | Isolate the invalid relationship or reject the atomic collection edit as the owning operation requires. |
+| Duplicate member | A01, A01 and A02 | For a set, link the target once; preserve explicitly meaningful order or role/quantity on a child record. |
+| One target later becomes inaccessible | one of two targets loses disclosure authority | Re-evaluate that element and prevent disclosure via counts or joins outside authorized scope. |
+| Reissue an old manifest | compare earlier and current permitted membership | Read the original target edition or frozen membership according to the owner. |
 | Incomplete record | No action_refs at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### approved_by
@@ -166,7 +166,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing approved_by keeps the same identity and historic documents retain their original wording. |

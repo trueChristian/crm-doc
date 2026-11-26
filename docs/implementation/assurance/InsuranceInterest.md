@@ -48,7 +48,7 @@ The target is [CoverageSection](CoverageSection.md). Resolve the identifier in t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | CoverageSection·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | CoverageSection·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | CoverageSection·MISSING | Queue the missing CoverageSection mapping or reject the command before linking. |
 | Wrong scope | CoverageSection·B01 | Do not attach another church’s CoverageSection without a supported exchange and local authority. |
 | Target rename | Rename CoverageSection·A01 after linking | The existing section_id keeps the same identity and historic documents retain their original wording. |
