@@ -7,10 +7,14 @@ The treasurer must be able to follow a unit of money from the collection plate, 
 | Task | Specification |
 | --- | --- |
 | Configure a book, balances, dimensions and journal rules | [Ledger and posting](ledger.md) |
+| Open or migrate a book, reconcile opening items, hand over a treasury | [Cutover and handover](cutover.md) |
+| Select a cash or accrual basis and recognize prepayments or accruals | [Recognition and basis bridges](recognition.md) |
 | Count an offering, allocate a gift, settle a pledge, issue a statement | [Giving and collection](giving.md) |
+| Track matching campaigns, estate gifts, securities, endowment draws and benefit dinners | [Specialized giving](special-giving.md) |
 | Administer a restricted award, release a restriction, steward investments | [Funds, grants and investments](stewardship.md) |
 | Pay a supplier, reimburse a worker or recover an advance | [Purchasing and payables](payables.md) |
 | Invoice, collect, refund, handle disputed payments or sell a sermon | [Receivables and commerce](receivables.md) |
+| Value stock, giveaways, donated goods and goods held on consignment | [Inventory accounting](inventory-accounting.md) |
 | Handle cash, bank statements, settlements and foreign currencies | [Treasury and reconciliation](treasury.md) |
 | Pay employees and third parties and correct a prior payroll | [Payroll](payroll.md) |
 | Capitalize, maintain and dispose of assets, service loans and leases | [Assets and financing](assets.md) |
