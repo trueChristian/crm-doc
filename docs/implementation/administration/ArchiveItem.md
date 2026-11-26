@@ -19,12 +19,12 @@ Accession code unique in issuing organization. Uncertain dates display as uncert
 | `description` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [text](../value-conventions.md#text) |
 | `record_kind` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [vocab](../value-conventions.md#vocab) |
 | `date_value` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [structured](../value-conventions.md#structured) |
-| `date_precision` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [structured](../value-conventions.md#structured) |
-| `originator` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [structured](../value-conventions.md#structured) |
+| `date_precision` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [vocab](../value-conventions.md#vocab) |
+| `originator` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [text](../value-conventions.md#text) |
 | `related_record_type` | optional code | Optional under owner conditions | [vocab](../value-conventions.md#vocab) |
 | `related_record_id` | optional reference | Optional under owner conditions | [resource](../value-conventions.md#resource) |
-| `access_class_override` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [structured](../value-conventions.md#structured) |
-| `physical_location` | optional | Optional under owner conditions | [structured](../value-conventions.md#structured) |
+| `access_class_override` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [vocab](../value-conventions.md#vocab) |
+| `physical_location` | optional | Optional under owner conditions | [text](../value-conventions.md#text) |
 | `state` | active, loaned, missing, transferred, disposed | Required at applicable lifecycle step | [enum](../value-conventions.md#enum) |
 
 ## Input, storage and exchange cases
@@ -51,7 +51,7 @@ The target is [ArchiveCollection](ArchiveCollection.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ArchiveCollection·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ArchiveCollection·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ArchiveCollection·MISSING | Queue the missing ArchiveCollection mapping or reject the command before linking. |
 | Wrong scope | ArchiveCollection·B01 | Do not attach another church’s ArchiveCollection without a supported exchange and local authority. |
 | Target rename | Rename ArchiveCollection·A01 after linking | The existing collection_id keeps the same identity and historic documents retain their original wording. |
@@ -124,28 +124,28 @@ Use typed value or bounded compound record for `ArchiveItem.date_value`. Validat
 
 ### date_precision
 
-Use typed value or bounded compound record for `ArchiveItem.date_precision`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use versioned classification or status code for `ArchiveItem.date_precision`. Check the relevant vocabulary and permitted transition before applying.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of date_precision matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for date_precision | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | active date_precision code in the bound vocabulary | Check the relevant vocabulary and permitted transition before applying. |
+| Malformed or unmapped | unmapped date_precision code | Request mapping to an authorized code. |
+| Code retired before a new transaction | new operation after code retirement | Allow historic display; withhold new use unless policy permits. |
+| Same label in two code lists | same display name in two vocabularies | Use record type and field to locate the correct list. |
+| Bulk import requests a state transition | import requests the final approved state | Run ordinary transition guards and approval checks. |
 | Incomplete record | No date_precision at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### originator
 
-Use typed value or bounded compound record for `ArchiveItem.originator`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use human-readable text for `ArchiveItem.originator`. Preserve the meaningful spelling, script and structure; derive separate search forms.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of originator matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for originator | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | entered originator in the original script | Preserve the meaningful spelling, script and structure; derive separate search forms. |
+| Malformed or unmapped | invalid text encoding | Return a field-level validation issue without silently changing meaning. |
+| Accented and non-Latin characters | Zoë and ǂNū-khoen in the original script | Preserve and display their original spelling. |
+| Label changes after formal issue | approved edition before a spelling correction | Keep the authorized original rendering in the issued edition. |
+| Bidirectional or multiline input | mixed-direction or multiline entered text | Render in the field’s declared context and respect accessibility and disclosure rules. |
 | Incomplete record | No originator at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### related_record_type
@@ -176,28 +176,28 @@ Use scoped or external reference for `ArchiveItem.related_record_id`. Resolve ag
 
 ### access_class_override
 
-Use typed value or bounded compound record for `ArchiveItem.access_class_override`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use versioned classification or status code for `ArchiveItem.access_class_override`. Check the relevant vocabulary and permitted transition before applying.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of access_class_override matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for access_class_override | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | active access_class_override code in the bound vocabulary | Check the relevant vocabulary and permitted transition before applying. |
+| Malformed or unmapped | unmapped access_class_override code | Request mapping to an authorized code. |
+| Code retired before a new transaction | new operation after code retirement | Allow historic display; withhold new use unless policy permits. |
+| Same label in two code lists | same display name in two vocabularies | Use record type and field to locate the correct list. |
+| Bulk import requests a state transition | import requests the final approved state | Run ordinary transition guards and approval checks. |
 | Incomplete record | No access_class_override at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### physical_location
 
-Use typed value or bounded compound record for `ArchiveItem.physical_location`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use human-readable text for `ArchiveItem.physical_location`. Preserve the meaningful spelling, script and structure; derive separate search forms.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of physical_location matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for physical_location | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | entered physical_location in the original script | Preserve the meaningful spelling, script and structure; derive separate search forms. |
+| Malformed or unmapped | invalid text encoding | Return a field-level validation issue without silently changing meaning. |
+| Accented and non-Latin characters | Zoë and ǂNū-khoen in the original script | Preserve and display their original spelling. |
+| Label changes after formal issue | approved edition before a spelling correction | Keep the authorized original rendering in the issued edition. |
+| Bidirectional or multiline input | mixed-direction or multiline entered text | Render in the field’s declared context and respect accessibility and disclosure rules. |
 | Absent in intake | No physical_location provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
 
 ### state

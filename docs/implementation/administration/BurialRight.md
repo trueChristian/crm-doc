@@ -16,7 +16,7 @@ Keep an immutable transfer trail. A reservation consumes capacity for its durati
 | `space_id` | → BurialSpace | Required at applicable lifecycle step | [relation](../value-conventions.md#relation) |
 | `holder_person_or_estate_ref` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [resource](../value-conventions.md#resource) |
 | `agreement_ref` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [resource](../value-conventions.md#resource) |
-| `effective_dates` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [structured](../value-conventions.md#structured) |
+| `effective_dates` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [interval](../value-conventions.md#interval) |
 | `reserved_units` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [decimal](../value-conventions.md#decimal) |
 | `right_kind` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [vocab](../value-conventions.md#vocab) |
 | `transfer_from_id` | optional | Optional under owner conditions | [resource](../value-conventions.md#resource) |
@@ -47,7 +47,7 @@ The target is [BurialSpace](BurialSpace.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | BurialSpace·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | BurialSpace·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | BurialSpace·MISSING | Queue the missing BurialSpace mapping or reject the command before linking. |
 | Wrong scope | BurialSpace·B01 | Do not attach another church’s BurialSpace without a supported exchange and local authority. |
 | Target rename | Rename BurialSpace·A01 after linking | The existing space_id keeps the same identity and historic documents retain their original wording. |
@@ -81,15 +81,15 @@ Use scoped or external reference for `BurialRight.agreement_ref`. Resolve agains
 
 ### effective_dates
 
-Use typed value or bounded compound record for `BurialRight.effective_dates`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use effective interval or window for `BurialRight.effective_dates`. Use a date or instant consistently and record whether each endpoint is inclusive.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of effective_dates matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for effective_dates | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | ordered boundaries in the declared temporal scale | Use a date or instant consistently and record whether each endpoint is inclusive. |
+| Malformed or unmapped | end before start | Return an interval error before scheduling or applying a policy. |
+| Adjacent windows | one window ends as the next begins | Select the applicable interval at the common boundary using its stated convention. |
+| Open-ended validity | start known and end unspecified | Accept a missing end only if the owner allows open-ended status. |
+| Time used falls in a gap | instant is between disjoint valid windows | Report no applicable interval; never silently select the nearest future edition. |
 | Incomplete record | No effective_dates at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### reserved_units

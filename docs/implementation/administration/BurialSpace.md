@@ -14,12 +14,12 @@ Unique mapped position within a ground. A memorial panel, an urn niche and a gra
 | --- | --- | --- | --- |
 | `id` | Owner-scoped business value; see the record rule | Assigned or projected by owner | [key](../value-conventions.md#key) |
 | `ground_id` | → BurialGround | Required at applicable lifecycle step | [relation](../value-conventions.md#relation) |
-| `section` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [structured](../value-conventions.md#structured) |
-| `plot_reference` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [structured](../value-conventions.md#structured) |
+| `section` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [text](../value-conventions.md#text) |
+| `plot_reference` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [text](../value-conventions.md#text) |
 | `space_kind` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [vocab](../value-conventions.md#vocab) |
 | `capacity` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [integer](../value-conventions.md#integer) |
 | `accessibility_notes` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [text](../value-conventions.md#text) |
-| `condition` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [structured](../value-conventions.md#structured) |
+| `condition` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [vocab](../value-conventions.md#vocab) |
 
 ## Input, storage and exchange cases
 
@@ -45,7 +45,7 @@ The target is [BurialGround](BurialGround.md). Resolve the identifier in the app
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | BurialGround·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | BurialGround·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | BurialGround·MISSING | Queue the missing BurialGround mapping or reject the command before linking. |
 | Wrong scope | BurialGround·B01 | Do not attach another church’s BurialGround without a supported exchange and local authority. |
 | Target rename | Rename BurialGround·A01 after linking | The existing ground_id keeps the same identity and historic documents retain their original wording. |
@@ -53,28 +53,28 @@ The target is [BurialGround](BurialGround.md). Resolve the identifier in the app
 
 ### section
 
-Use typed value or bounded compound record for `BurialSpace.section`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use human-readable text for `BurialSpace.section`. Preserve the meaningful spelling, script and structure; derive separate search forms.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of section matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for section | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | entered section in the original script | Preserve the meaningful spelling, script and structure; derive separate search forms. |
+| Malformed or unmapped | invalid text encoding | Return a field-level validation issue without silently changing meaning. |
+| Accented and non-Latin characters | Zoë and ǂNū-khoen in the original script | Preserve and display their original spelling. |
+| Label changes after formal issue | approved edition before a spelling correction | Keep the authorized original rendering in the issued edition. |
+| Bidirectional or multiline input | mixed-direction or multiline entered text | Render in the field’s declared context and respect accessibility and disclosure rules. |
 | Incomplete record | No section at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### plot_reference
 
-Use typed value or bounded compound record for `BurialSpace.plot_reference`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use human-readable text for `BurialSpace.plot_reference`. Preserve the meaningful spelling, script and structure; derive separate search forms.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of plot_reference matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for plot_reference | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | entered plot_reference in the original script | Preserve the meaningful spelling, script and structure; derive separate search forms. |
+| Malformed or unmapped | invalid text encoding | Return a field-level validation issue without silently changing meaning. |
+| Accented and non-Latin characters | Zoë and ǂNū-khoen in the original script | Preserve and display their original spelling. |
+| Label changes after formal issue | approved edition before a spelling correction | Keep the authorized original rendering in the issued edition. |
+| Bidirectional or multiline input | mixed-direction or multiline entered text | Render in the field’s declared context and respect accessibility and disclosure rules. |
 | Incomplete record | No plot_reference at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### space_kind
@@ -118,15 +118,15 @@ Use human-readable text for `BurialSpace.accessibility_notes`. Preserve the mean
 
 ### condition
 
-Use typed value or bounded compound record for `BurialSpace.condition`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use versioned classification or status code for `BurialSpace.condition`. Check the relevant vocabulary and permitted transition before applying.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of condition matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for condition | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | active condition code in the bound vocabulary | Check the relevant vocabulary and permitted transition before applying. |
+| Malformed or unmapped | unmapped condition code | Request mapping to an authorized code. |
+| Code retired before a new transaction | new operation after code retirement | Allow historic display; withhold new use unless policy permits. |
+| Same label in two code lists | same display name in two vocabularies | Use record type and field to locate the correct list. |
+| Bulk import requests a state transition | import requests the final approved state | Run ordinary transition guards and approval checks. |
 | Incomplete record | No condition at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ## Incoming references

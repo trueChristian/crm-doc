@@ -18,11 +18,11 @@ At most one open loan per copy. Reissue after return. Reminders check actual ret
 | `issued_by` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [resource](../value-conventions.md#resource) |
 | `checked_out_at` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [instant](../value-conventions.md#instant) |
 | `due_at` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [instant](../value-conventions.md#instant) |
-| `renewals` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [structured](../value-conventions.md#structured) |
+| `renewals` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [integer](../value-conventions.md#integer) |
 | `returned_at` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [instant](../value-conventions.md#instant) |
 | `received_by` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [resource](../value-conventions.md#resource) |
-| `condition_out` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [structured](../value-conventions.md#structured) |
-| `condition_in` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [structured](../value-conventions.md#structured) |
+| `condition_out` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [text](../value-conventions.md#text) |
+| `condition_in` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [text](../value-conventions.md#text) |
 | `damage_assessment_ref` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [resource](../value-conventions.md#resource) |
 | `waiver_ref` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [resource](../value-conventions.md#resource) |
 
@@ -50,7 +50,7 @@ The target is [LoanCopy](LoanCopy.md). Resolve the identifier in the approved sc
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | LoanCopy·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | LoanCopy·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | LoanCopy·MISSING | Queue the missing LoanCopy mapping or reject the command before linking. |
 | Wrong scope | LoanCopy·B01 | Do not attach another church’s LoanCopy without a supported exchange and local authority. |
 | Target rename | Rename LoanCopy·A01 after linking | The existing copy_id keeps the same identity and historic documents retain their original wording. |
@@ -110,15 +110,15 @@ Use unambiguous point in time for `CirculationLoan.due_at`. Compare as the same 
 
 ### renewals
 
-Use typed value or bounded compound record for `CirculationLoan.renewals`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use whole-number measure for `CirculationLoan.renewals`. Preserve integer precision and enforce the specific field bounds.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of renewals matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for renewals | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | 2 subject to field bounds | Preserve integer precision and enforce the specific field bounds. |
+| Malformed or unmapped | 2.5 | Reject fractional input without rounding it into a whole person, place or sequence. |
+| Value equals the configured upper bound | value exactly equal to the applicable maximum | Apply its inclusive or exclusive rule explicitly. |
+| Value exceeds the bound by one | applicable maximum plus one | Return a range error before changing dependent totals. |
+| Missing count versus measured zero | observed 0 and omitted value | Keep absence distinct from an observed zero. |
 | Incomplete record | No renewals at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### returned_at
@@ -149,28 +149,28 @@ Use scoped or external reference for `CirculationLoan.received_by`. Resolve agai
 
 ### condition_out
 
-Use typed value or bounded compound record for `CirculationLoan.condition_out`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use human-readable text for `CirculationLoan.condition_out`. Preserve the meaningful spelling, script and structure; derive separate search forms.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of condition_out matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for condition_out | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | entered condition_out in the original script | Preserve the meaningful spelling, script and structure; derive separate search forms. |
+| Malformed or unmapped | invalid text encoding | Return a field-level validation issue without silently changing meaning. |
+| Accented and non-Latin characters | Zoë and ǂNū-khoen in the original script | Preserve and display their original spelling. |
+| Label changes after formal issue | approved edition before a spelling correction | Keep the authorized original rendering in the issued edition. |
+| Bidirectional or multiline input | mixed-direction or multiline entered text | Render in the field’s declared context and respect accessibility and disclosure rules. |
 | Incomplete record | No condition_out at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### condition_in
 
-Use typed value or bounded compound record for `CirculationLoan.condition_in`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use human-readable text for `CirculationLoan.condition_in`. Preserve the meaningful spelling, script and structure; derive separate search forms.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of condition_in matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for condition_in | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | entered condition_in in the original script | Preserve the meaningful spelling, script and structure; derive separate search forms. |
+| Malformed or unmapped | invalid text encoding | Return a field-level validation issue without silently changing meaning. |
+| Accented and non-Latin characters | Zoë and ǂNū-khoen in the original script | Preserve and display their original spelling. |
+| Label changes after formal issue | approved edition before a spelling correction | Keep the authorized original rendering in the issued edition. |
+| Bidirectional or multiline input | mixed-direction or multiline entered text | Render in the field’s declared context and respect accessibility and disclosure rules. |
 | Incomplete record | No condition_in at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### damage_assessment_ref

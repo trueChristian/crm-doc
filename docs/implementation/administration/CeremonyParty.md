@@ -14,7 +14,7 @@ Offices and relationships belong to this ceremony only. A witness does not gain 
 | --- | --- | --- | --- |
 | `id` | Owner-scoped business value; see the record rule | Assigned or projected by owner | [key](../value-conventions.md#key) |
 | `request_id` | → CeremonyRequest | Required at applicable lifecycle step | [relation](../value-conventions.md#relation) |
-| `person_id` | optional Person | Optional under owner conditions | [resource](../value-conventions.md#resource) |
+| `person_id` | optional Person | Optional under owner conditions | [relation](../value-conventions.md#relation) |
 | `name_as_recorded` | text | Required at applicable lifecycle step | [text](../value-conventions.md#text) |
 | `role` | subject, representative, officiant, witness or contact | Required at applicable lifecycle step | [enum](../value-conventions.md#enum) |
 | `authority_evidence_ref` | optional | Optional under owner conditions | [resource](../value-conventions.md#resource) |
@@ -44,7 +44,7 @@ The target is [CeremonyRequest](CeremonyRequest.md). Resolve the identifier in t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | CeremonyRequest·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | CeremonyRequest·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | CeremonyRequest·MISSING | Queue the missing CeremonyRequest mapping or reject the command before linking. |
 | Wrong scope | CeremonyRequest·B01 | Do not attach another church’s CeremonyRequest without a supported exchange and local authority. |
 | Target rename | Rename CeremonyRequest·A01 after linking | The existing request_id keeps the same identity and historic documents retain their original wording. |
@@ -52,15 +52,15 @@ The target is [CeremonyRequest](CeremonyRequest.md). Resolve the identifier in t
 
 ### person_id
 
-Use scoped or external reference for `CeremonyParty.person_id`. Resolve against the permitted kind, owning namespace and purpose.
+The target is [Person](../people/Person.md). Resolve the identifier in the approved scope before using its fields.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | verified person_id in the owner namespace | Resolve against the permitted kind, owning namespace and purpose. |
-| Malformed or unmapped | unmapped person_id | Request clarification or quarantine the mapping. |
-| Same visible code from two sources | issuer A:007 and issuer B:007 | Retain distinct namespace/key pairs. |
-| Referenced evidence is restricted | restricted attachment behind an otherwise visible request | Show a minimal permitted result and check document access independently. |
-| Duplicate delivery of the same mapped reference | same namespace, key and accepted mapping twice | Resolve the same destination record once. |
+| Admissible representation | Person·A01 | Resolve stable identity in the permitted scope. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
+| Unresolved target | Person·MISSING | Queue the missing Person mapping or reject the command before linking. |
+| Wrong scope | Person·B01 | Do not attach another church’s Person without a supported exchange and local authority. |
+| Target rename | Rename Person·A01 after linking | The existing person_id keeps the same identity and historic documents retain their original wording. |
 | Absent in intake | No person_id provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
 
 ### name_as_recorded

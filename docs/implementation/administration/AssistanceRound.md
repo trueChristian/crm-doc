@@ -20,7 +20,7 @@ One round can accept many applications. Opening, closing intake and completing r
 | `distribution_id` | → CommunityDistribution optional | Optional under owner conditions | [relation](../value-conventions.md#relation) |
 | `unit_kind` | parcel, voucher, visit, scholarship or service | Required at applicable lifecycle step | [enum](../value-conventions.md#enum) |
 | `capacity` | count | Required at applicable lifecycle step | [integer](../value-conventions.md#integer) |
-| `coordinator` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [structured](../value-conventions.md#structured) |
+| `coordinator` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [resource](../value-conventions.md#resource) |
 | `state` | draft, open, paused, closed, reconciled | Required at applicable lifecycle step | [enum](../value-conventions.md#enum) |
 
 ## Input, storage and exchange cases
@@ -47,7 +47,7 @@ The target is [ProgramServiceTerms](ProgramServiceTerms.md). Resolve the identif
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ProgramServiceTerms·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ProgramServiceTerms·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ProgramServiceTerms·MISSING | Queue the missing ProgramServiceTerms mapping or reject the command before linking. |
 | Wrong scope | ProgramServiceTerms·B01 | Do not attach another church’s ProgramServiceTerms without a supported exchange and local authority. |
 | Target rename | Rename ProgramServiceTerms·A01 after linking | The existing terms_id keeps the same identity and historic documents retain their original wording. |
@@ -99,7 +99,7 @@ The target is [CommunityDistribution](../ministry/CommunityDistribution.md). Res
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | CommunityDistribution·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | CommunityDistribution·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | CommunityDistribution·MISSING | Queue the missing CommunityDistribution mapping or reject the command before linking. |
 | Wrong scope | CommunityDistribution·B01 | Do not attach another church’s CommunityDistribution without a supported exchange and local authority. |
 | Target rename | Rename CommunityDistribution·A01 after linking | The existing distribution_id keeps the same identity and historic documents retain their original wording. |
@@ -133,15 +133,15 @@ Use whole-number measure for `AssistanceRound.capacity`. Preserve integer precis
 
 ### coordinator
 
-Use typed value or bounded compound record for `AssistanceRound.coordinator`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use scoped or external reference for `AssistanceRound.coordinator`. Resolve against the permitted kind, owning namespace and purpose.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of coordinator matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for coordinator | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | verified coordinator in the owner namespace | Resolve against the permitted kind, owning namespace and purpose. |
+| Malformed or unmapped | unmapped coordinator | Request clarification or quarantine the mapping. |
+| Same visible code from two sources | issuer A:007 and issuer B:007 | Retain distinct namespace/key pairs. |
+| Referenced evidence is restricted | restricted attachment behind an otherwise visible request | Show a minimal permitted result and check document access independently. |
+| Duplicate delivery of the same mapped reference | same namespace, key and accepted mapping twice | Resolve the same destination record once. |
 | Incomplete record | No coordinator at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### state

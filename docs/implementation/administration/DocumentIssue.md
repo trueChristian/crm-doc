@@ -16,11 +16,11 @@ Serial unique per issuing series. Verification reveals only the minimum validity
 | `item_id` | → ArchiveItem | Required at applicable lifecycle step | [relation](../value-conventions.md#relation) |
 | `revision` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [version](../value-conventions.md#version) |
 | `issue_kind` | original, certified_copy, extract, redaction or replacement | Required at applicable lifecycle step | [enum](../value-conventions.md#enum) |
-| `issuing_officer` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [structured](../value-conventions.md#structured) |
+| `issuing_officer` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [resource](../value-conventions.md#resource) |
 | `issued_at` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [instant](../value-conventions.md#instant) |
 | `recipient_ref_or_label` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [text](../value-conventions.md#text) |
-| `permitted_purpose` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [structured](../value-conventions.md#structured) |
-| `serial` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [structured](../value-conventions.md#structured) |
+| `permitted_purpose` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [vocab](../value-conventions.md#vocab) |
+| `serial` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [key](../value-conventions.md#key) |
 | `verification_token_digest` | optional | Optional under owner conditions | [digest](../value-conventions.md#digest) |
 | `revoked_at` | optional | Optional under owner conditions | [instant](../value-conventions.md#instant) |
 | `revocation_reason` | optional | Optional under owner conditions | [text](../value-conventions.md#text) |
@@ -49,7 +49,7 @@ The target is [ArchiveItem](ArchiveItem.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ArchiveItem·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ArchiveItem·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ArchiveItem·MISSING | Queue the missing ArchiveItem mapping or reject the command before linking. |
 | Wrong scope | ArchiveItem·B01 | Do not attach another church’s ArchiveItem without a supported exchange and local authority. |
 | Target rename | Rename ArchiveItem·A01 after linking | The existing item_id keeps the same identity and historic documents retain their original wording. |
@@ -83,15 +83,15 @@ Declared alternatives in owner order: `original`, `certified_copy`, `extract`, `
 
 ### issuing_officer
 
-Use typed value or bounded compound record for `DocumentIssue.issuing_officer`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use scoped or external reference for `DocumentIssue.issuing_officer`. Resolve against the permitted kind, owning namespace and purpose.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of issuing_officer matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for issuing_officer | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | verified issuing_officer in the owner namespace | Resolve against the permitted kind, owning namespace and purpose. |
+| Malformed or unmapped | unmapped issuing_officer | Request clarification or quarantine the mapping. |
+| Same visible code from two sources | issuer A:007 and issuer B:007 | Retain distinct namespace/key pairs. |
+| Referenced evidence is restricted | restricted attachment behind an otherwise visible request | Show a minimal permitted result and check document access independently. |
+| Duplicate delivery of the same mapped reference | same namespace, key and accepted mapping twice | Resolve the same destination record once. |
 | Incomplete record | No issuing_officer at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### issued_at
@@ -122,28 +122,28 @@ Use human-readable text for `DocumentIssue.recipient_ref_or_label`. Preserve the
 
 ### permitted_purpose
 
-Use typed value or bounded compound record for `DocumentIssue.permitted_purpose`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use versioned classification or status code for `DocumentIssue.permitted_purpose`. Check the relevant vocabulary and permitted transition before applying.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of permitted_purpose matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for permitted_purpose | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | active permitted_purpose code in the bound vocabulary | Check the relevant vocabulary and permitted transition before applying. |
+| Malformed or unmapped | unmapped permitted_purpose code | Request mapping to an authorized code. |
+| Code retired before a new transaction | new operation after code retirement | Allow historic display; withhold new use unless policy permits. |
+| Same label in two code lists | same display name in two vocabularies | Use record type and field to locate the correct list. |
+| Bulk import requests a state transition | import requests the final approved state | Run ordinary transition guards and approval checks. |
 | Incomplete record | No permitted_purpose at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### serial
 
-Use typed value or bounded compound record for `DocumentIssue.serial`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use opaque identity or token for `DocumentIssue.serial`. Compare the opaque value under its issuer rules; preserve leading characters.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of serial matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for serial | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | DocumentIssue·0007 | Compare the opaque value under its issuer rules; preserve leading characters. |
+| Malformed or unmapped | human-readable name passed as the identifier | Request a verified lookup or an explicit mapping. |
+| Renamed display label | update display label; retain stable key | Identity comparisons still use the stable key. |
+| Conflicting claim on an existing key | second owner claims the same issued key | Retain original binding; route conflict for review. |
+| Retried creation with the original operation key | submit original creation receipt twice | Use the owning creation outcome and return the established identity. |
 | Incomplete record | No serial at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### verification_token_digest

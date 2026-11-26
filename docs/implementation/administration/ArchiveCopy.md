@@ -18,7 +18,7 @@ One item may have multiple renditions. A thumbnail, transcription or redacted co
 | `carrier` | paper, image, audio, video or text | Required at applicable lifecycle step | [enum](../value-conventions.md#enum) |
 | `storage_ref` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [resource](../value-conventions.md#resource) |
 | `media_type` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [vocab](../value-conventions.md#vocab) |
-| `byte_length` | optional | Optional under owner conditions | [structured](../value-conventions.md#structured) |
+| `byte_length` | optional | Optional under owner conditions | [filesize](../value-conventions.md#filesize) |
 | `digest` | optional | Optional under owner conditions | [digest](../value-conventions.md#digest) |
 | `format_notes` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [text](../value-conventions.md#text) |
 | `prepared_at` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [instant](../value-conventions.md#instant) |
@@ -50,7 +50,7 @@ The target is [ArchiveItem](ArchiveItem.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ArchiveItem·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ArchiveItem·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ArchiveItem·MISSING | Queue the missing ArchiveItem mapping or reject the command before linking. |
 | Wrong scope | ArchiveItem·B01 | Do not attach another church’s ArchiveItem without a supported exchange and local authority. |
 | Target rename | Rename ArchiveItem·A01 after linking | The existing item_id keeps the same identity and historic documents retain their original wording. |
@@ -110,15 +110,15 @@ Use versioned classification or status code for `ArchiveCopy.media_type`. Check 
 
 ### byte_length
 
-Use typed value or bounded compound record for `ArchiveCopy.byte_length`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use nonnegative whole byte count for `ArchiveCopy.byte_length`. Compare against the inspected payload, configured size limit and verified content reference.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of byte_length matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for byte_length | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | 512 measured bytes | Compare against the inspected payload, configured size limit and verified content reference. |
+| Malformed or unmapped | negative or fractional byte count | Reject impossible measurement. |
+| Empty file | 0 bytes measured | Record zero bytes and apply permitted file-type/content rules. |
+| Reported length differs from stored bytes | 512 reported and 509 measured | Withhold release and require reinspection. |
+| Maximum permitted size | limit L bytes and measured length L + 1 | Check equality and the one-byte-over case at intake. |
 | Absent in intake | No byte_length provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
 
 ### digest

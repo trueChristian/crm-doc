@@ -20,7 +20,7 @@ Binds receipt evidence to the original fulfilment. A recipient may decline a pho
 | `acknowledgement_method` | code | Required at applicable lifecycle step | [vocab](../value-conventions.md#vocab) |
 | `evidence_ref` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [resource](../value-conventions.md#resource) |
 | `recording_actor` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [resource](../value-conventions.md#resource) |
-| `operation_key` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [key](../value-conventions.md#key) |
+| `operation_key` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [operation](../value-conventions.md#operation) |
 
 ## Input, storage and exchange cases
 
@@ -46,7 +46,7 @@ The target is [AidFulfillment](../people/AidFulfillment.md). Resolve the identif
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | AidFulfillment·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | AidFulfillment·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | AidFulfillment·MISSING | Queue the missing AidFulfillment mapping or reject the command before linking. |
 | Wrong scope | AidFulfillment·B01 | Do not attach another church’s AidFulfillment without a supported exchange and local authority. |
 | Target rename | Rename AidFulfillment·A01 after linking | The existing fulfillment_id keeps the same identity and historic documents retain their original wording. |
@@ -59,7 +59,7 @@ The target is [AssistanceIssue](../ministry/AssistanceIssue.md). Resolve the ide
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | AssistanceIssue·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | AssistanceIssue·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | AssistanceIssue·MISSING | Queue the missing AssistanceIssue mapping or reject the command before linking. |
 | Wrong scope | AssistanceIssue·B01 | Do not attach another church’s AssistanceIssue without a supported exchange and local authority. |
 | Target rename | Rename AssistanceIssue·A01 after linking | The existing issue_id keeps the same identity and historic documents retain their original wording. |
@@ -81,6 +81,7 @@ Use unambiguous point in time for `CollectionAcknowledgement.occurred_at`. Compa
 ### receiver_or_delegate_key
 
 Use opaque identity or token for `CollectionAcknowledgement.receiver_or_delegate_key`. Compare the opaque value under its issuer rules; preserve leading characters.
+Field access: enforce the declared protection on reads, search, previews, exports and audit evidence as well as the underlying key value.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
@@ -132,15 +133,15 @@ Use scoped or external reference for `CollectionAcknowledgement.recording_actor`
 
 ### operation_key
 
-Use opaque identity or token for `CollectionAcknowledgement.operation_key`. Compare the opaque value under its issuer rules; preserve leading characters.
+Use operation identity for exactly-once business effects for `CollectionAcknowledgement.operation_key`. Bind the key to the original material inputs and outcome; retain it throughout the replay window.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | CollectionAcknowledgement·0007 | Compare the opaque value under its issuer rules; preserve leading characters. |
-| Malformed or unmapped | human-readable name passed as the identifier | Request a verified lookup or an explicit mapping. |
-| Renamed display label | update display label; retain stable key | Identity comparisons still use the stable key. |
-| Conflicting claim on an existing key | second owner claims the same issued key | Retain original binding; route conflict for review. |
-| Retried creation with the original operation key | submit original creation receipt twice | Use the owning creation outcome and return the established identity. |
+| Admissible representation | KEY-007 with original inputs | Bind the key to the original material inputs and outcome; retain it throughout the replay window. |
+| Malformed or unmapped | KEY-007 with changed material inputs | Reject conflicting reuse and reconcile against the first accepted or in-flight operation. |
+| Duplicate after successful commit | two equivalent submissions using KEY-007 | Return the original business receipt with no second payment, membership change, booking or notice. |
+| Timeout before outcome is known | provider accepted work but acknowledgement delayed | Look up or reconcile the pending operation before issuing a replacement. |
+| A genuine correction has a new key | COR-008 points to original KEY-007 | Link the correction to the original effect and apply its ordinary authorization and reversal rules. |
 | Incomplete record | No operation_key at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ## Acceptance evidence
