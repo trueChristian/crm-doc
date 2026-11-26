@@ -32,7 +32,7 @@ The target is [Order](Order.md). Resolve the identifier in the approved scope be
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Order·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Order·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Order·MISSING | Queue the missing Order mapping or reject the command before linking. |
 | Wrong scope | Order·B01 | Do not attach another church’s Order without a supported exchange and local authority. |
 | Target rename | Rename Order·A01 after linking | The existing order_id keeps the same identity and historic documents retain their original wording. |
@@ -123,7 +123,7 @@ The target is [SalesDocumentLink](SalesDocumentLink.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | SalesDocumentLink·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | SalesDocumentLink·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | SalesDocumentLink·MISSING | Queue the missing SalesDocumentLink mapping or reject the command before linking. |
 | Wrong scope | SalesDocumentLink·B01 | Do not attach another church’s SalesDocumentLink without a supported exchange and local authority. |
 | Target rename | Rename SalesDocumentLink·A01 after linking | The existing replaces_document_id keeps the same identity and historic documents retain their original wording. |

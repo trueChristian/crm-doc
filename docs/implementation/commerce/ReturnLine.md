@@ -35,7 +35,7 @@ The target is [ReturnRequest](ReturnRequest.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ReturnRequest·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ReturnRequest·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ReturnRequest·MISSING | Queue the missing ReturnRequest mapping or reject the command before linking. |
 | Wrong scope | ReturnRequest·B01 | Do not attach another church’s ReturnRequest without a supported exchange and local authority. |
 | Target rename | Rename ReturnRequest·A01 after linking | The existing request_id keeps the same identity and historic documents retain their original wording. |
@@ -48,7 +48,7 @@ The target is [OrderLine](OrderLine.md). Resolve the identifier in the approved 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | OrderLine·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | OrderLine·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | OrderLine·MISSING | Queue the missing OrderLine mapping or reject the command before linking. |
 | Wrong scope | OrderLine·B01 | Do not attach another church’s OrderLine without a supported exchange and local authority. |
 | Target rename | Rename OrderLine·A01 after linking | The existing order_line_id keeps the same identity and historic documents retain their original wording. |
@@ -152,7 +152,7 @@ The target is [StockMovement](StockMovement.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | StockMovement·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | StockMovement·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | StockMovement·MISSING | Queue the missing StockMovement mapping or reject the command before linking. |
 | Wrong scope | StockMovement·B01 | Do not attach another church’s StockMovement without a supported exchange and local authority. |
 | Target rename | Rename StockMovement·A01 after linking | The existing movement_id keeps the same identity and historic documents retain their original wording. |
@@ -165,7 +165,7 @@ The target is [OrderLine](OrderLine.md). Resolve the identifier in the approved 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | OrderLine·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | OrderLine·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | OrderLine·MISSING | Queue the missing OrderLine mapping or reject the command before linking. |
 | Wrong scope | OrderLine·B01 | Do not attach another church’s OrderLine without a supported exchange and local authority. |
 | Target rename | Rename OrderLine·A01 after linking | The existing replacement_order_line_id keeps the same identity and historic documents retain their original wording. |

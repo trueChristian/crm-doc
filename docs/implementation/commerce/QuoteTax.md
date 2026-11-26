@@ -40,7 +40,7 @@ The target is [QuoteLine](QuoteLine.md). Resolve the identifier in the approved 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | QuoteLine·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | QuoteLine·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | QuoteLine·MISSING | Queue the missing QuoteLine mapping or reject the command before linking. |
 | Wrong scope | QuoteLine·B01 | Do not attach another church’s QuoteLine without a supported exchange and local authority. |
 | Target rename | Rename QuoteLine·A01 after linking | The existing quote_line_id keeps the same identity and historic documents retain their original wording. |
@@ -53,7 +53,7 @@ The target is [SalesTaxSelection](SalesTaxSelection.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | SalesTaxSelection·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | SalesTaxSelection·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | SalesTaxSelection·MISSING | Queue the missing SalesTaxSelection mapping or reject the command before linking. |
 | Wrong scope | SalesTaxSelection·B01 | Do not attach another church’s SalesTaxSelection without a supported exchange and local authority. |
 | Target rename | Rename SalesTaxSelection·A01 after linking | The existing selection_id keeps the same identity and historic documents retain their original wording. |
@@ -66,7 +66,7 @@ The target is [TaxRuleVersion](../finance/TaxRuleVersion.md). Resolve the identi
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | TaxRuleVersion·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | TaxRuleVersion·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | TaxRuleVersion·MISSING | Queue the missing TaxRuleVersion mapping or reject the command before linking. |
 | Wrong scope | TaxRuleVersion·B01 | Do not attach another church’s TaxRuleVersion without a supported exchange and local authority. |
 | Target rename | Rename TaxRuleVersion·A01 after linking | The existing tax_rule_version_id keeps the same identity and historic documents retain their original wording. |
@@ -79,7 +79,7 @@ The target is [FinanceTaxComponent](../finance/FinanceTaxComponent.md). Resolve 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | FinanceTaxComponent·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | FinanceTaxComponent·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | FinanceTaxComponent·MISSING | Queue the missing FinanceTaxComponent mapping or reject the command before linking. |
 | Wrong scope | FinanceTaxComponent·B01 | Do not attach another church’s FinanceTaxComponent without a supported exchange and local authority. |
 | Target rename | Rename FinanceTaxComponent·A01 after linking | The existing tax_component_id keeps the same identity and historic documents retain their original wording. |
@@ -235,7 +235,7 @@ The target is [ExemptionEvidence](ExemptionEvidence.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ExemptionEvidence·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ExemptionEvidence·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ExemptionEvidence·MISSING | Queue the missing ExemptionEvidence mapping or reject the command before linking. |
 | Wrong scope | ExemptionEvidence·B01 | Do not attach another church’s ExemptionEvidence without a supported exchange and local authority. |
 | Target rename | Rename ExemptionEvidence·A01 after linking | The existing exemption_id keeps the same identity and historic documents retain their original wording. |

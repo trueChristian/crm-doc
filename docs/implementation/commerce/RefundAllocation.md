@@ -35,7 +35,7 @@ The target is [Refund](Refund.md). Resolve the identifier in the approved scope 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Refund·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Refund·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Refund·MISSING | Queue the missing Refund mapping or reject the command before linking. |
 | Wrong scope | Refund·B01 | Do not attach another church’s Refund without a supported exchange and local authority. |
 | Target rename | Rename Refund·A01 after linking | The existing refund_id keeps the same identity and historic documents retain their original wording. |
@@ -48,7 +48,7 @@ The target is [OrderLine](OrderLine.md). Resolve the identifier in the approved 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | OrderLine·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | OrderLine·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | OrderLine·MISSING | Queue the missing OrderLine mapping or reject the command before linking. |
 | Wrong scope | OrderLine·B01 | Do not attach another church’s OrderLine without a supported exchange and local authority. |
 | Target rename | Rename OrderLine·A01 after linking | The existing order_line_id keeps the same identity and historic documents retain their original wording. |
@@ -61,7 +61,7 @@ The target is [TenderAllocation](TenderAllocation.md). Resolve the identifier in
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | TenderAllocation·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | TenderAllocation·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | TenderAllocation·MISSING | Queue the missing TenderAllocation mapping or reject the command before linking. |
 | Wrong scope | TenderAllocation·B01 | Do not attach another church’s TenderAllocation without a supported exchange and local authority. |
 | Target rename | Rename TenderAllocation·A01 after linking | The existing tender_allocation_id keeps the same identity and historic documents retain their original wording. |

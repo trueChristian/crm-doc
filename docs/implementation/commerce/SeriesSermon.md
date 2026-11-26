@@ -28,7 +28,7 @@ The target is [SermonSeries](SermonSeries.md). Resolve the identifier in the app
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | SermonSeries·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | SermonSeries·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | SermonSeries·MISSING | Queue the missing SermonSeries mapping or reject the command before linking. |
 | Wrong scope | SermonSeries·B01 | Do not attach another church’s SermonSeries without a supported exchange and local authority. |
 | Target rename | Rename SermonSeries·A01 after linking | The existing series_id keeps the same identity and historic documents retain their original wording. |
@@ -41,7 +41,7 @@ The target is [Sermon](Sermon.md). Resolve the identifier in the approved scope 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Sermon·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Sermon·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Sermon·MISSING | Queue the missing Sermon mapping or reject the command before linking. |
 | Wrong scope | Sermon·B01 | Do not attach another church’s Sermon without a supported exchange and local authority. |
 | Target rename | Rename Sermon·A01 after linking | The existing sermon_id keeps the same identity and historic documents retain their original wording. |

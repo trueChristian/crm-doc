@@ -33,7 +33,7 @@ The target is [Order](Order.md). Resolve the identifier in the approved scope be
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Order·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Order·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Order·MISSING | Queue the missing Order mapping or reject the command before linking. |
 | Wrong scope | Order·B01 | Do not attach another church’s Order without a supported exchange and local authority. |
 | Target rename | Rename Order·A01 after linking | The existing order_id keeps the same identity and historic documents retain their original wording. |
@@ -46,7 +46,7 @@ The target is [ReturnRequest](ReturnRequest.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ReturnRequest·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ReturnRequest·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ReturnRequest·MISSING | Queue the missing ReturnRequest mapping or reject the command before linking. |
 | Wrong scope | ReturnRequest·B01 | Do not attach another church’s ReturnRequest without a supported exchange and local authority. |
 | Target rename | Rename ReturnRequest·A01 after linking | The existing return_request_id keeps the same identity and historic documents retain their original wording. |
@@ -98,7 +98,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing approved_by keeps the same identity and historic documents retain their original wording. |

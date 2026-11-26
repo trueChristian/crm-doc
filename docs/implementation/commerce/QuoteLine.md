@@ -21,7 +21,7 @@ Every line has one charge purpose. Keep the list of eligibility/pricing decision
 | `net_amount` | money | Required when the record reaches its applicable state | [money](../value-conventions.md#money) |
 | `tax_amount` | money | Required when the record reaches its applicable state | [money](../value-conventions.md#money) |
 | `gross_amount` | money | Required when the record reaches its applicable state | [money](../value-conventions.md#money) |
-| `promotion_ids` | set of ref Promotion | Required when the record reaches its applicable state | [relation](../value-conventions.md#relation) |
+| `promotion_ids` | set of ref Promotion | Required when the record reaches its applicable state | [references](../value-conventions.md#references) |
 
 ## Input, storage and exchange cases
 
@@ -34,7 +34,7 @@ The target is [Quote](Quote.md). Resolve the identifier in the approved scope be
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Quote·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Quote·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Quote·MISSING | Queue the missing Quote mapping or reject the command before linking. |
 | Wrong scope | Quote·B01 | Do not attach another church’s Quote without a supported exchange and local authority. |
 | Target rename | Rename Quote·A01 after linking | The existing quote_id keeps the same identity and historic documents retain their original wording. |
@@ -47,7 +47,7 @@ The target is [CartLine](CartLine.md). Resolve the identifier in the approved sc
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | CartLine·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | CartLine·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | CartLine·MISSING | Queue the missing CartLine mapping or reject the command before linking. |
 | Wrong scope | CartLine·B01 | Do not attach another church’s CartLine without a supported exchange and local authority. |
 | Target rename | Rename CartLine·A01 after linking | The existing cart_line_id keeps the same identity and historic documents retain their original wording. |
@@ -150,11 +150,11 @@ The target is [Promotion](Promotion.md). Resolve the identifier in the approved 
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | Promotion·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Promotion·MISSING | Return a type mismatch without changing the link. |
-| Unresolved target | Promotion·MISSING | Queue the missing Promotion mapping or reject the command before linking. |
-| Wrong scope | Promotion·B01 | Do not attach another church’s Promotion without a supported exchange and local authority. |
-| Target rename | Rename Promotion·A01 after linking | The existing promotion_ids keeps the same identity and historic documents retain their original wording. |
+| Admissible representation | Promotion·A01, Promotion·A02 | Resolve every element separately by type, identity and scope; preserve order only when the source defines it. |
+| Malformed or unmapped | collection containing Promotion·MISSING | Isolate the invalid relationship or reject the atomic collection edit as the owning operation requires. |
+| Duplicate member | A01, A01 and A02 | For a set, link the target once; preserve explicitly meaningful order or role/quantity on a child record. |
+| One target later becomes inaccessible | one of two targets loses disclosure authority | Re-evaluate that element and prevent disclosure via counts or joins outside authorized scope. |
+| Reissue an old manifest | compare earlier and current permitted membership | Read the original target edition or frozen membership according to the owner. |
 | Incomplete record | No promotion_ids at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ## Incoming references

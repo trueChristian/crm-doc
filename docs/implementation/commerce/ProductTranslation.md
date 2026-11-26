@@ -13,7 +13,7 @@ One approved translation per product and locale. Fall back to the published base
 | Field | Logical declaration | Presence at the applicable step | Validation family |
 | --- | --- | --- | --- |
 | `product_id` | ref Product | Required when the record reaches its applicable state | [relation](../value-conventions.md#relation) |
-| `locale` | code | Required when the record reaches its applicable state | [vocab](../value-conventions.md#vocab) |
+| `locale` | code | Required when the record reaches its applicable state | [language](../value-conventions.md#language) |
 | `title` | text | Required when the record reaches its applicable state | [text](../value-conventions.md#text) |
 | `description` | text? | Optional under owner conditions | [text](../value-conventions.md#text) |
 | `accessibility_text` | text? | Optional under owner conditions | [text](../value-conventions.md#text) |
@@ -30,7 +30,7 @@ The target is [Product](Product.md). Resolve the identifier in the approved scop
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Product·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Product·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Product·MISSING | Queue the missing Product mapping or reject the command before linking. |
 | Wrong scope | Product·B01 | Do not attach another church’s Product without a supported exchange and local authority. |
 | Target rename | Rename Product·A01 after linking | The existing product_id keeps the same identity and historic documents retain their original wording. |
@@ -38,15 +38,15 @@ The target is [Product](Product.md). Resolve the identifier in the approved scop
 
 ### locale
 
-Use versioned classification or status code for `ProductTranslation.locale`. Check the relevant vocabulary and permitted transition before applying.
+Use language or locale identifier for `ProductTranslation.locale`. Resolve the published language or locale without inferring a person’s nationality.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | active locale code in the bound vocabulary | Check the relevant vocabulary and permitted transition before applying. |
-| Malformed or unmapped | unmapped locale code | Request mapping to an authorized code. |
-| Code retired before a new transaction | new operation after code retirement | Allow historic display; withhold new use unless policy permits. |
-| Same label in two code lists | same display name in two vocabularies | Use record type and field to locate the correct list. |
-| Bulk import requests a state transition | import requests the final approved state | Run ordinary transition guards and approval checks. |
+| Admissible representation | en | Resolve the published language or locale without inferring a person’s nationality. |
+| Malformed or unmapped | unmapped locale display label | Keep the source value for review. |
+| Specific translation unavailable | specific translation missing at delivery time | Apply the declared fallback and identify which language is being displayed. |
+| User changes preferred language | approved letter after preferred-language change | Future communications use the effective preference; issued wording is preserved. |
+| Two regional variants exist | two permitted regional variants in catalogue | Apply the requested locale/version where available. |
 | Incomplete record | No locale at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### title

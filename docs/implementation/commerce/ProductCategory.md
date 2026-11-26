@@ -27,7 +27,7 @@ The target is [Product](Product.md). Resolve the identifier in the approved scop
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Product·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Product·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Product·MISSING | Queue the missing Product mapping or reject the command before linking. |
 | Wrong scope | Product·B01 | Do not attach another church’s Product without a supported exchange and local authority. |
 | Target rename | Rename Product·A01 after linking | The existing product_id keeps the same identity and historic documents retain their original wording. |
@@ -40,7 +40,7 @@ The target is [Category](Category.md). Resolve the identifier in the approved sc
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Category·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Category·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Category·MISSING | Queue the missing Category mapping or reject the command before linking. |
 | Wrong scope | Category·B01 | Do not attach another church’s Category without a supported exchange and local authority. |
 | Target rename | Rename Category·A01 after linking | The existing category_id keeps the same identity and historic documents retain their original wording. |

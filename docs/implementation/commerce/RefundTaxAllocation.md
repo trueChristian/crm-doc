@@ -32,7 +32,7 @@ The target is [RefundAllocation](RefundAllocation.md). Resolve the identifier in
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | RefundAllocation·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | RefundAllocation·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | RefundAllocation·MISSING | Queue the missing RefundAllocation mapping or reject the command before linking. |
 | Wrong scope | RefundAllocation·B01 | Do not attach another church’s RefundAllocation without a supported exchange and local authority. |
 | Target rename | Rename RefundAllocation·A01 after linking | The existing refund_allocation_id keeps the same identity and historic documents retain their original wording. |
@@ -45,7 +45,7 @@ The target is [QuoteTax](QuoteTax.md). Resolve the identifier in the approved sc
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | QuoteTax·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | QuoteTax·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | QuoteTax·MISSING | Queue the missing QuoteTax mapping or reject the command before linking. |
 | Wrong scope | QuoteTax·B01 | Do not attach another church’s QuoteTax without a supported exchange and local authority. |
 | Target rename | Rename QuoteTax·A01 after linking | The existing quote_tax_id keeps the same identity and historic documents retain their original wording. |
@@ -58,7 +58,7 @@ The target is [FinanceAppliedTaxComponent](../finance/FinanceAppliedTaxComponent
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | FinanceAppliedTaxComponent·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | FinanceAppliedTaxComponent·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | FinanceAppliedTaxComponent·MISSING | Queue the missing FinanceAppliedTaxComponent mapping or reject the command before linking. |
 | Wrong scope | FinanceAppliedTaxComponent·B01 | Do not attach another church’s FinanceAppliedTaxComponent without a supported exchange and local authority. |
 | Target rename | Rename FinanceAppliedTaxComponent·A01 after linking | The existing original_applied_component_id keeps the same identity and historic documents retain their original wording. |
@@ -71,7 +71,7 @@ The target is [FinanceAppliedTaxComponent](../finance/FinanceAppliedTaxComponent
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | FinanceAppliedTaxComponent·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | FinanceAppliedTaxComponent·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | FinanceAppliedTaxComponent·MISSING | Queue the missing FinanceAppliedTaxComponent mapping or reject the command before linking. |
 | Wrong scope | FinanceAppliedTaxComponent·B01 | Do not attach another church’s FinanceAppliedTaxComponent without a supported exchange and local authority. |
 | Target rename | Rename FinanceAppliedTaxComponent·A01 after linking | The existing credited_component_id keeps the same identity and historic documents retain their original wording. |
