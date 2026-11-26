@@ -27,7 +27,7 @@ The target is [PathStep](PathStep.md). Resolve the identifier in the approved sc
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | PathStep·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | PathStep·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | PathStep·MISSING | Queue the missing PathStep mapping or reject the command before linking. |
 | Wrong scope | PathStep·B01 | Do not attach another church’s PathStep without a supported exchange and local authority. |
 | Target rename | Rename PathStep·A01 after linking | The existing step_id keeps the same identity and historic documents retain their original wording. |
@@ -40,7 +40,7 @@ The target is [PathStep](PathStep.md). Resolve the identifier in the approved sc
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | PathStep·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | PathStep·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | PathStep·MISSING | Queue the missing PathStep mapping or reject the command before linking. |
 | Wrong scope | PathStep·B01 | Do not attach another church’s PathStep without a supported exchange and local authority. |
 | Target rename | Rename PathStep·A01 after linking | The existing requires_step_id keeps the same identity and historic documents retain their original wording. |

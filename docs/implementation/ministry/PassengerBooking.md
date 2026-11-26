@@ -33,7 +33,7 @@ The target is [TransportJourney](TransportJourney.md). Resolve the identifier in
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | TransportJourney·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | TransportJourney·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | TransportJourney·MISSING | Queue the missing TransportJourney mapping or reject the command before linking. |
 | Wrong scope | TransportJourney·B01 | Do not attach another church’s TransportJourney without a supported exchange and local authority. |
 | Target rename | Rename TransportJourney·A01 after linking | The existing journey_id keeps the same identity and historic documents retain their original wording. |
@@ -46,7 +46,7 @@ The target is [Person](../people/Person.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Person·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Person·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Person·MISSING | Queue the missing Person mapping or reject the command before linking. |
 | Wrong scope | Person·B01 | Do not attach another church’s Person without a supported exchange and local authority. |
 | Target rename | Rename Person·A01 after linking | The existing person_id keeps the same identity and historic documents retain their original wording. |
@@ -59,7 +59,7 @@ The target is [TransportStop](TransportStop.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | TransportStop·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | TransportStop·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | TransportStop·MISSING | Queue the missing TransportStop mapping or reject the command before linking. |
 | Wrong scope | TransportStop·B01 | Do not attach another church’s TransportStop without a supported exchange and local authority. |
 | Target rename | Rename TransportStop·A01 after linking | The existing board_stop_id keeps the same identity and historic documents retain their original wording. |
@@ -72,7 +72,7 @@ The target is [TransportStop](TransportStop.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | TransportStop·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | TransportStop·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | TransportStop·MISSING | Queue the missing TransportStop mapping or reject the command before linking. |
 | Wrong scope | TransportStop·B01 | Do not attach another church’s TransportStop without a supported exchange and local authority. |
 | Target rename | Rename TransportStop·A01 after linking | The existing leave_stop_id keeps the same identity and historic documents retain their original wording. |

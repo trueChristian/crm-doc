@@ -29,7 +29,7 @@ The target is [ServicePlan](ServicePlan.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ServicePlan·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ServicePlan·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ServicePlan·MISSING | Queue the missing ServicePlan mapping or reject the command before linking. |
 | Wrong scope | ServicePlan·B01 | Do not attach another church’s ServicePlan without a supported exchange and local authority. |
 | Target rename | Rename ServicePlan·A01 after linking | The existing plan_id keeps the same identity and historic documents retain their original wording. |
@@ -42,7 +42,7 @@ The target is [EventOccurrence](EventOccurrence.md). Resolve the identifier in t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | EventOccurrence·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | EventOccurrence·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | EventOccurrence·MISSING | Queue the missing EventOccurrence mapping or reject the command before linking. |
 | Wrong scope | EventOccurrence·B01 | Do not attach another church’s EventOccurrence without a supported exchange and local authority. |
 | Target rename | Rename EventOccurrence·A01 after linking | The existing occurrence_id keeps the same identity and historic documents retain their original wording. |
@@ -55,7 +55,7 @@ The target is [MinistryGroup](MinistryGroup.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | MinistryGroup·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | MinistryGroup·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | MinistryGroup·MISSING | Queue the missing MinistryGroup mapping or reject the command before linking. |
 | Wrong scope | MinistryGroup·B01 | Do not attach another church’s MinistryGroup without a supported exchange and local authority. |
 | Target rename | Rename MinistryGroup·A01 after linking | The existing team_id keeps the same identity and historic documents retain their original wording. |

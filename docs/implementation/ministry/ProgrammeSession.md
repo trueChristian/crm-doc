@@ -30,7 +30,7 @@ The target is [MinistryProgramme](MinistryProgramme.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | MinistryProgramme·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | MinistryProgramme·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | MinistryProgramme·MISSING | Queue the missing MinistryProgramme mapping or reject the command before linking. |
 | Wrong scope | MinistryProgramme·B01 | Do not attach another church’s MinistryProgramme without a supported exchange and local authority. |
 | Target rename | Rename MinistryProgramme·A01 after linking | The existing programme_id keeps the same identity and historic documents retain their original wording. |
@@ -43,7 +43,7 @@ The target is [EventOccurrence](EventOccurrence.md). Resolve the identifier in t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | EventOccurrence·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | EventOccurrence·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | EventOccurrence·MISSING | Queue the missing EventOccurrence mapping or reject the command before linking. |
 | Wrong scope | EventOccurrence·B01 | Do not attach another church’s EventOccurrence without a supported exchange and local authority. |
 | Target rename | Rename EventOccurrence·A01 after linking | The existing occurrence_id keeps the same identity and historic documents retain their original wording. |
@@ -56,7 +56,7 @@ The target is [ProgrammeTrack](ProgrammeTrack.md). Resolve the identifier in the
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ProgrammeTrack·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ProgrammeTrack·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ProgrammeTrack·MISSING | Queue the missing ProgrammeTrack mapping or reject the command before linking. |
 | Wrong scope | ProgrammeTrack·B01 | Do not attach another church’s ProgrammeTrack without a supported exchange and local authority. |
 | Target rename | Rename ProgrammeTrack·A01 after linking | The existing track_id keeps the same identity and historic documents retain their original wording. |
@@ -95,7 +95,7 @@ The target is [ProgrammeSession](ProgrammeSession.md). Resolve the identifier in
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ProgrammeSession·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ProgrammeSession·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ProgrammeSession·MISSING | Queue the missing ProgrammeSession mapping or reject the command before linking. |
 | Wrong scope | ProgrammeSession·B01 | Do not attach another church’s ProgrammeSession without a supported exchange and local authority. |
 | Target rename | Rename ProgrammeSession·A01 after linking | The existing prerequisite_session_id keeps the same identity and historic documents retain their original wording. |

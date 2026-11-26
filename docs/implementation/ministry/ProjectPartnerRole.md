@@ -31,7 +31,7 @@ The target is [MissionProject](MissionProject.md). Resolve the identifier in the
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | MissionProject·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | MissionProject·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | MissionProject·MISSING | Queue the missing MissionProject mapping or reject the command before linking. |
 | Wrong scope | MissionProject·B01 | Do not attach another church’s MissionProject without a supported exchange and local authority. |
 | Target rename | Rename MissionProject·A01 after linking | The existing project_id keeps the same identity and historic documents retain their original wording. |
@@ -44,7 +44,7 @@ The target is [MinistryPartner](MinistryPartner.md). Resolve the identifier in t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | MinistryPartner·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | MinistryPartner·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | MinistryPartner·MISSING | Queue the missing MinistryPartner mapping or reject the command before linking. |
 | Wrong scope | MinistryPartner·B01 | Do not attach another church’s MinistryPartner without a supported exchange and local authority. |
 | Target rename | Rename MinistryPartner·A01 after linking | The existing partner_id keeps the same identity and historic documents retain their original wording. |

@@ -32,7 +32,7 @@ The target is [OperationalBriefing](OperationalBriefing.md). Resolve the identif
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | OperationalBriefing·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | OperationalBriefing·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | OperationalBriefing·MISSING | Queue the missing OperationalBriefing mapping or reject the command before linking. |
 | Wrong scope | OperationalBriefing·B01 | Do not attach another church’s OperationalBriefing without a supported exchange and local authority. |
 | Target rename | Rename OperationalBriefing·A01 after linking | The existing briefing_id keeps the same identity and historic documents retain their original wording. |
@@ -45,7 +45,7 @@ The target is [ReadinessCriterion](ReadinessCriterion.md). Resolve the identifie
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ReadinessCriterion·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ReadinessCriterion·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ReadinessCriterion·MISSING | Queue the missing ReadinessCriterion mapping or reject the command before linking. |
 | Wrong scope | ReadinessCriterion·B01 | Do not attach another church’s ReadinessCriterion without a supported exchange and local authority. |
 | Target rename | Rename ReadinessCriterion·A01 after linking | The existing criterion_id keeps the same identity and historic documents retain their original wording. |
@@ -58,7 +58,7 @@ The target is [Person](../people/Person.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Person·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Person·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Person·MISSING | Queue the missing Person mapping or reject the command before linking. |
 | Wrong scope | Person·B01 | Do not attach another church’s Person without a supported exchange and local authority. |
 | Target rename | Rename Person·A01 after linking | The existing owner_id keeps the same identity and historic documents retain their original wording. |
@@ -110,7 +110,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing reviewed_by keeps the same identity and historic documents retain their original wording. |

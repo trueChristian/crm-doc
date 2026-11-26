@@ -18,7 +18,7 @@ One path has many steps. Dependencies use PathDependency. An optional activity c
 | `curriculum_id` | → Curriculum? | Optional under owner conditions | [relation](../value-conventions.md#relation) |
 | `required` | bool | Required when the record reaches its applicable state | [bool](../value-conventions.md#bool) |
 | `approval_role` | code? | Optional under owner conditions | [vocab](../value-conventions.md#vocab) |
-| `completion_evidence` | code | Required when the record reaches its applicable state | [vocab](../value-conventions.md#vocab) |
+| `completion_evidence` | code | Required when the record reaches its applicable state | [resource](../value-conventions.md#resource) |
 
 ## Input, storage and exchange cases
 
@@ -31,7 +31,7 @@ The target is [FormationPath](FormationPath.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | FormationPath·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | FormationPath·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | FormationPath·MISSING | Queue the missing FormationPath mapping or reject the command before linking. |
 | Wrong scope | FormationPath·B01 | Do not attach another church’s FormationPath without a supported exchange and local authority. |
 | Target rename | Rename FormationPath·A01 after linking | The existing path_id keeps the same identity and historic documents retain their original wording. |
@@ -70,7 +70,7 @@ The target is [Curriculum](Curriculum.md). Resolve the identifier in the approve
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Curriculum·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Curriculum·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Curriculum·MISSING | Queue the missing Curriculum mapping or reject the command before linking. |
 | Wrong scope | Curriculum·B01 | Do not attach another church’s Curriculum without a supported exchange and local authority. |
 | Target rename | Rename Curriculum·A01 after linking | The existing curriculum_id keeps the same identity and historic documents retain their original wording. |
@@ -104,15 +104,15 @@ Use versioned classification or status code for `PathStep.approval_role`. Check 
 
 ### completion_evidence
 
-Use versioned classification or status code for `PathStep.completion_evidence`. Check the relevant vocabulary and permitted transition before applying.
+Use scoped or external reference for `PathStep.completion_evidence`. Resolve against the permitted kind, owning namespace and purpose.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | active completion_evidence code in the bound vocabulary | Check the relevant vocabulary and permitted transition before applying. |
-| Malformed or unmapped | unmapped completion_evidence code | Request mapping to an authorized code. |
-| Code retired before a new transaction | new operation after code retirement | Allow historic display; withhold new use unless policy permits. |
-| Same label in two code lists | same display name in two vocabularies | Use record type and field to locate the correct list. |
-| Bulk import requests a state transition | import requests the final approved state | Run ordinary transition guards and approval checks. |
+| Admissible representation | verified completion_evidence in the owner namespace | Resolve against the permitted kind, owning namespace and purpose. |
+| Malformed or unmapped | unmapped completion_evidence | Request clarification or quarantine the mapping. |
+| Same visible code from two sources | issuer A:007 and issuer B:007 | Retain distinct namespace/key pairs. |
+| Referenced evidence is restricted | restricted attachment behind an otherwise visible request | Show a minimal permitted result and check document access independently. |
+| Duplicate delivery of the same mapped reference | same namespace, key and accepted mapping twice | Resolve the same destination record once. |
 | Incomplete record | No completion_evidence at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ## Incoming references

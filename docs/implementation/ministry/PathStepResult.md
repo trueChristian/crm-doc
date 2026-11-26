@@ -31,7 +31,7 @@ The target is [PathParticipation](PathParticipation.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | PathParticipation·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | PathParticipation·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | PathParticipation·MISSING | Queue the missing PathParticipation mapping or reject the command before linking. |
 | Wrong scope | PathParticipation·B01 | Do not attach another church’s PathParticipation without a supported exchange and local authority. |
 | Target rename | Rename PathParticipation·A01 after linking | The existing participation_id keeps the same identity and historic documents retain their original wording. |
@@ -44,7 +44,7 @@ The target is [PathStep](PathStep.md). Resolve the identifier in the approved sc
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | PathStep·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | PathStep·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | PathStep·MISSING | Queue the missing PathStep mapping or reject the command before linking. |
 | Wrong scope | PathStep·B01 | Do not attach another church’s PathStep without a supported exchange and local authority. |
 | Target rename | Rename PathStep·A01 after linking | The existing step_id keeps the same identity and historic documents retain their original wording. |
@@ -57,7 +57,7 @@ The target is [LearningEvidence](LearningEvidence.md). Resolve the identifier in
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | LearningEvidence·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | LearningEvidence·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | LearningEvidence·MISSING | Queue the missing LearningEvidence mapping or reject the command before linking. |
 | Wrong scope | LearningEvidence·B01 | Do not attach another church’s LearningEvidence without a supported exchange and local authority. |
 | Target rename | Rename LearningEvidence·A01 after linking | The existing evidence_id keeps the same identity and historic documents retain their original wording. |
@@ -83,7 +83,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing approved_by keeps the same identity and historic documents retain their original wording. |

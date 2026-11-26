@@ -16,9 +16,9 @@ One active revision per series. Daily, weekly, monthly or yearly repetitions. En
 | `frequency` | code | Required when the record reaches its applicable state | [vocab](../value-conventions.md#vocab) |
 | `interval` | count | Required when the record reaches its applicable state | [integer](../value-conventions.md#integer) |
 | `weekdays` | code_set? | Optional under owner conditions | [list](../value-conventions.md#list) |
-| `month_days` | integer_set? | Optional under owner conditions | [structured](../value-conventions.md#structured) |
+| `month_days` | integer_set? | Optional under owner conditions | [list](../value-conventions.md#list) |
 | `ordinal` | integer? | Optional under owner conditions | [integer](../value-conventions.md#integer) |
-| `months` | integer_set? | Optional under owner conditions | [structured](../value-conventions.md#structured) |
+| `months` | integer_set? | Optional under owner conditions | [list](../value-conventions.md#list) |
 | `until_date` | date? | Optional under owner conditions | [date](../value-conventions.md#date) |
 | `max_occurrences` | count? | Optional under owner conditions | [integer](../value-conventions.md#integer) |
 | `gap_policy` | code | Required when the record reaches its applicable state | [vocab](../value-conventions.md#vocab) |
@@ -35,7 +35,7 @@ The target is [EventSeries](EventSeries.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | EventSeries·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | EventSeries·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | EventSeries·MISSING | Queue the missing EventSeries mapping or reject the command before linking. |
 | Wrong scope | EventSeries·B01 | Do not attach another church’s EventSeries without a supported exchange and local authority. |
 | Target rename | Rename EventSeries·A01 after linking | The existing series_id keeps the same identity and historic documents retain their original wording. |
@@ -82,15 +82,15 @@ Use ordered collection or mathematical set for `RecurrenceRule.weekdays`. Preser
 
 ### month_days
 
-Use typed value or bounded compound record for `RecurrenceRule.month_days`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use ordered collection or mathematical set for `RecurrenceRule.month_days`. Preserve ordering when meaningful; enforce uniqueness when the declaration is a set.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of month_days matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for month_days | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | permitted members A and B | Preserve ordering when meaningful; enforce uniqueness when the declaration is a set. |
+| Malformed or unmapped | an element outside the declared domain | Reject the affected collection or stage its invalid item under the import policy. |
+| Same element appears twice | A, A, B | Apply declared sequence/set multiplicity without doubling financial or voting effects. |
+| Empty collection versus unknown collection | empty collection and missing collection | Preserve the distinction where the rule requires evidence. |
+| One element later becomes restricted | authorization for member B withdrawn before export | Recompute permitted projection before export or display. |
 | Absent in intake | No month_days provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
 
 ### ordinal
@@ -108,15 +108,15 @@ Use whole-number measure for `RecurrenceRule.ordinal`. Preserve integer precisio
 
 ### months
 
-Use typed value or bounded compound record for `RecurrenceRule.months`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use ordered collection or mathematical set for `RecurrenceRule.months`. Preserve ordering when meaningful; enforce uniqueness when the declaration is a set.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of months matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for months | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | permitted members A and B | Preserve ordering when meaningful; enforce uniqueness when the declaration is a set. |
+| Malformed or unmapped | an element outside the declared domain | Reject the affected collection or stage its invalid item under the import policy. |
+| Same element appears twice | A, A, B | Apply declared sequence/set multiplicity without doubling financial or voting effects. |
+| Empty collection versus unknown collection | empty collection and missing collection | Preserve the distinction where the rule requires evidence. |
+| One element later becomes restricted | authorization for member B withdrawn before export | Recompute permitted projection before export or display. |
 | Absent in intake | No months provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
 
 ### until_date

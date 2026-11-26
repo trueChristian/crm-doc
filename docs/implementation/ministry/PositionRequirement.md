@@ -31,7 +31,7 @@ The target is [ServicePosition](ServicePosition.md). Resolve the identifier in t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ServicePosition·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ServicePosition·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ServicePosition·MISSING | Queue the missing ServicePosition mapping or reject the command before linking. |
 | Wrong scope | ServicePosition·B01 | Do not attach another church’s ServicePosition without a supported exchange and local authority. |
 | Target rename | Rename ServicePosition·A01 after linking | The existing position_id keeps the same identity and historic documents retain their original wording. |
