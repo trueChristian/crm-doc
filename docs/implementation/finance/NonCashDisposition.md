@@ -35,7 +35,7 @@ The target is [InKindGift](InKindGift.md). Resolve the identifier in the approve
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | InKindGift·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | InKindGift·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | InKindGift·MISSING | Queue the missing InKindGift mapping or reject the command before linking. |
 | Wrong scope | InKindGift·B01 | Do not attach another church’s InKindGift without a supported exchange and local authority. |
 | Target rename | Rename InKindGift·A01 after linking | The existing in_kind_gift_id keeps the same identity and historic documents retain their original wording. |
@@ -165,7 +165,7 @@ The target is [JournalEntry](JournalEntry.md). Resolve the identifier in the app
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | JournalEntry·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | JournalEntry·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | JournalEntry·MISSING | Queue the missing JournalEntry mapping or reject the command before linking. |
 | Wrong scope | JournalEntry·B01 | Do not attach another church’s JournalEntry without a supported exchange and local authority. |
 | Target rename | Rename JournalEntry·A01 after linking | The existing posted_journal_ref keeps the same identity and historic documents retain their original wording. |

@@ -27,7 +27,7 @@ The target is [PayRemittance](PayRemittance.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | PayRemittance·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | PayRemittance·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | PayRemittance·MISSING | Queue the missing PayRemittance mapping or reject the command before linking. |
 | Wrong scope | PayRemittance·B01 | Do not attach another church’s PayRemittance without a supported exchange and local authority. |
 | Target rename | Rename PayRemittance·A01 after linking | The existing remittance_id keeps the same identity and historic documents retain their original wording. |
@@ -40,7 +40,7 @@ The target is [PaySlipLine](PaySlipLine.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | PaySlipLine·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | PaySlipLine·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | PaySlipLine·MISSING | Queue the missing PaySlipLine mapping or reject the command before linking. |
 | Wrong scope | PaySlipLine·B01 | Do not attach another church’s PaySlipLine without a supported exchange and local authority. |
 | Target rename | Rename PaySlipLine·A01 after linking | The existing slip_line_id keeps the same identity and historic documents retain their original wording. |

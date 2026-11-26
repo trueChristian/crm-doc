@@ -31,7 +31,7 @@ The target is [Disbursement](Disbursement.md). Resolve the identifier in the app
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Disbursement·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Disbursement·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Disbursement·MISSING | Queue the missing Disbursement mapping or reject the command before linking. |
 | Wrong scope | Disbursement·B01 | Do not attach another church’s Disbursement without a supported exchange and local authority. |
 | Target rename | Rename Disbursement·A01 after linking | The existing disbursement_id keeps the same identity and historic documents retain their original wording. |
@@ -44,7 +44,7 @@ The target is [SupplierCredit](SupplierCredit.md). Resolve the identifier in the
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | SupplierCredit·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | SupplierCredit·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | SupplierCredit·MISSING | Queue the missing SupplierCredit mapping or reject the command before linking. |
 | Wrong scope | SupplierCredit·B01 | Do not attach another church’s SupplierCredit without a supported exchange and local authority. |
 | Target rename | Rename SupplierCredit·A01 after linking | The existing supplier_credit_id keeps the same identity and historic documents retain their original wording. |
@@ -57,7 +57,7 @@ The target is [SupplierBill](SupplierBill.md). Resolve the identifier in the app
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | SupplierBill·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | SupplierBill·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | SupplierBill·MISSING | Queue the missing SupplierBill mapping or reject the command before linking. |
 | Wrong scope | SupplierBill·B01 | Do not attach another church’s SupplierBill without a supported exchange and local authority. |
 | Target rename | Rename SupplierBill·A01 after linking | The existing bill_id keeps the same identity and historic documents retain their original wording. |

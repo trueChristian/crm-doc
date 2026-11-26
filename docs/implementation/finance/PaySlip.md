@@ -19,7 +19,7 @@ Unique run/engagement; run can pay many workers. A worker sees only their own re
 | `employee_deductions` | money | Required when the record reaches its applicable state | [money](../value-conventions.md#money) |
 | `net_cash` | money | Required when the record reaches its applicable state | [money](../value-conventions.md#money) |
 | `employer_cost` | money | Required when the record reaches its applicable state | [money](../value-conventions.md#money) |
-| `statement_evidence` | ? | Optional under owner conditions | [structured](../value-conventions.md#structured) |
+| `statement_evidence` | ? | Optional under owner conditions | [resource](../value-conventions.md#resource) |
 | `payment_ref` | ? | Optional under owner conditions | [resource](../value-conventions.md#resource) |
 | `statement_status` | code | Required when the record reaches its applicable state | [vocab](../value-conventions.md#vocab) |
 
@@ -34,7 +34,7 @@ The target is [PayrollRun](PayrollRun.md). Resolve the identifier in the approve
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | PayrollRun·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | PayrollRun·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | PayrollRun·MISSING | Queue the missing PayrollRun mapping or reject the command before linking. |
 | Wrong scope | PayrollRun·B01 | Do not attach another church’s PayrollRun without a supported exchange and local authority. |
 | Target rename | Rename PayrollRun·A01 after linking | The existing run_id keeps the same identity and historic documents retain their original wording. |
@@ -47,7 +47,7 @@ The target is [PayrollEngagement](PayrollEngagement.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | PayrollEngagement·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | PayrollEngagement·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | PayrollEngagement·MISSING | Queue the missing PayrollEngagement mapping or reject the command before linking. |
 | Wrong scope | PayrollEngagement·B01 | Do not attach another church’s PayrollEngagement without a supported exchange and local authority. |
 | Target rename | Rename PayrollEngagement·A01 after linking | The existing engagement_id keeps the same identity and historic documents retain their original wording. |
@@ -120,15 +120,15 @@ Use exact monetary amount with currency for `PaySlip.employer_cost`. Preserve am
 
 ### statement_evidence
 
-Use typed value or bounded compound record for `PaySlip.statement_evidence`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use scoped or external reference for `PaySlip.statement_evidence`. Resolve against the permitted kind, owning namespace and purpose.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of statement_evidence matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for statement_evidence | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | verified statement_evidence in the owner namespace | Resolve against the permitted kind, owning namespace and purpose. |
+| Malformed or unmapped | unmapped statement_evidence | Request clarification or quarantine the mapping. |
+| Same visible code from two sources | issuer A:007 and issuer B:007 | Retain distinct namespace/key pairs. |
+| Referenced evidence is restricted | restricted attachment behind an otherwise visible request | Show a minimal permitted result and check document access independently. |
+| Duplicate delivery of the same mapped reference | same namespace, key and accepted mapping twice | Resolve the same destination record once. |
 | Absent in intake | No statement_evidence provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
 
 ### payment_ref

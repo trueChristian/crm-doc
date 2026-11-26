@@ -35,7 +35,7 @@ The target is [GivingCampaign](GivingCampaign.md). Resolve the identifier in the
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | GivingCampaign·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | GivingCampaign·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | GivingCampaign·MISSING | Queue the missing GivingCampaign mapping or reject the command before linking. |
 | Wrong scope | GivingCampaign·B01 | Do not attach another church’s GivingCampaign without a supported exchange and local authority. |
 | Target rename | Rename GivingCampaign·A01 after linking | The existing campaign_id keeps the same identity and historic documents retain their original wording. |
@@ -48,7 +48,7 @@ The target is [GivingParty](GivingParty.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | GivingParty·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | GivingParty·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | GivingParty·MISSING | Queue the missing GivingParty mapping or reject the command before linking. |
 | Wrong scope | GivingParty·B01 | Do not attach another church’s GivingParty without a supported exchange and local authority. |
 | Target rename | Rename GivingParty·A01 after linking | The existing sponsor_id keeps the same identity and historic documents retain their original wording. |

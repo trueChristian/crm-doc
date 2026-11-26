@@ -34,7 +34,7 @@ The target is [PaySlip](PaySlip.md). Resolve the identifier in the approved scop
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | PaySlip·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | PaySlip·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | PaySlip·MISSING | Queue the missing PaySlip mapping or reject the command before linking. |
 | Wrong scope | PaySlip·B01 | Do not attach another church’s PaySlip without a supported exchange and local authority. |
 | Target rename | Rename PaySlip·A01 after linking | The existing slip_id keeps the same identity and historic documents retain their original wording. |
@@ -47,7 +47,7 @@ The target is [PayComponentRule](PayComponentRule.md). Resolve the identifier in
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | PayComponentRule·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | PayComponentRule·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | PayComponentRule·MISSING | Queue the missing PayComponentRule mapping or reject the command before linking. |
 | Wrong scope | PayComponentRule·B01 | Do not attach another church’s PayComponentRule without a supported exchange and local authority. |
 | Target rename | Rename PayComponentRule·A01 after linking | The existing component_rule_id keeps the same identity and historic documents retain their original wording. |
@@ -125,7 +125,7 @@ The target is [Fund](Fund.md). Resolve the identifier in the approved scope befo
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Fund·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Fund·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Fund·MISSING | Queue the missing Fund mapping or reject the command before linking. |
 | Wrong scope | Fund·B01 | Do not attach another church’s Fund without a supported exchange and local authority. |
 | Target rename | Rename Fund·A01 after linking | The existing fund_id keeps the same identity and historic documents retain their original wording. |
@@ -138,7 +138,7 @@ The target is [FinanceDimension](FinanceDimension.md). Resolve the identifier in
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | FinanceDimension·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | FinanceDimension·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | FinanceDimension·MISSING | Queue the missing FinanceDimension mapping or reject the command before linking. |
 | Wrong scope | FinanceDimension·B01 | Do not attach another church’s FinanceDimension without a supported exchange and local authority. |
 | Target rename | Rename FinanceDimension·A01 after linking | The existing cost_dimension_ref keeps the same identity and historic documents retain their original wording. |
