@@ -1,0 +1,41 @@
+# Personal register and identity resolution
+
+The registrar records people known to the congregation and can tell two people with the same name apart. A person can be a guest, child, member, employee, donor or external contact at the same time. Each role has its own dates, owner and permissions. An anonymous visitor count stays an attendance count. Create a person when someone supplies a legitimate reason and sufficient identifying information for a named record.
+
+## Logical records
+
+The conventions in [People and pastoral records](README.md) apply. One row below describes one logical table.
+
+| Record | Fields | Integrity and use |
+|---|---|---|
+| Person | id ID, organization_id → Organization, display_name text, sort_name text?, birth_date date?, birth_year year?, birth_month integer?, birth_day integer?, birth_precision enum(exact, year, month_year, month_day, unknown), birth_estimated boolean, deceased_on date?, deceased_on_precision enum(day, year, unknown)?, deceased_year year?, life_state enum(living, deceased, unknown), language_tag text?, time_zone text?, accessibility_contact_instructions private text?, record_state enum(active, merged, archived), canonical_person_id → Person?, revision integer | One durable identity per person within the organization's data boundary. Display name may be a single name. Only merged records point to a live canonical record. Archiving ends routine discovery. Death is distinct from archival and from ending membership. |
+| PersonName | id ID, person_id → Person, purpose enum(preferred, register, previous, alternate), full_name text, given_names text?, family_name text?, title text?, suffix text?, script text?, sort_key text?, valid_from date?, valid_until date?, visibility code | Preserve the wording used by the person, including multiple surnames or scripts. At most one current preferred name per person per script. Previous names remain searchable only to authorized roles. |
+| PersonIdentifier | id ID, person_id → Person, issuer text, kind code, value text, issued_on date?, retired_on date?, sensitivity code | Unique organization, issuer, kind and value while active. Use a generated local register identifier for ordinary lookup. External identifiers have purpose-specific visibility and never appear in public directory search. |
+| PersonContactPoint | id ID, person_id → Person, kind enum(email, phone, postal, other), label text?, value text, comparison_value text?, verified_at instant?, verification_method code?, priority integer, valid_from date, valid_until date?, shared boolean, state enum(unverified, verified, unreachable, withdrawn), confidentiality code | Multiple contact points per person. A shared telephone or mailbox is valid on multiple records. Verification establishes reachability, distinct from consent to receive a particular communication. Postal values can reference an effective household address through its identifier where applicable. |
+| DuplicateReview | id ID, candidate_a_id → Person, candidate_b_id → Person, evidence_summary private text, reason_codes code set, state enum(open, distinct, merge_approved, merged, reopened), reviewed_by → UserAccount?, reviewed_at instant?, decision_reason text?, survivor_id → Person? | Unique unordered pair per active review. Preserve a distinct decision and reopen when material evidence changes. No automated merges. |
+| PersonMerge | id ID, review_id → DuplicateReview, surviving_person_id → Person, absorbed_person_id → Person, approved_by → UserAccount, applied_at instant, reversal_state code, reconciliation_summary restricted text | Exactly one applied merge per absorbed identity until an authorized correction. Record incoming references, disagreements, and origin of each retained value. |
+| PersonMergeItem | id ID, merge_id → PersonMerge, owning_domain code, record_type code, record_key ID, action enum(relink, alias, retain, review), prior_person_id → Person, resulting_person_id → Person?, outcome code | One entry per affected reference and domain. Restricted domains return an opaque result without disclosing contents to the registrar. |
+
+## Recording people and age
+
+1. Search by preferred and allowed former names, existing local identifiers, phone or household. Show distinguishing details within the operator's access scope. Membership is searched in its own register.
+2. A visitor may supply a single name, language and a way to contact them. Leave every unprovided field unknown. A phone number, birth date, email, official identifier and login are individually optional. Record a contact purpose separately.
+3. Exact birth dates use only the full date. Partial birth dates use only components supported by the declared precision. Validate the calendar, exclude future birthdays, permit February 29, and reject a known death before birth. A person known to have died may have no known death date. Exact and year-only death information are mutually exclusive. Store the estimate flag when someone reports an approximate year.
+4. Calculate age in completed years on the requested local date. Use the organization's stated leap-day anniversary convention. For incomplete or estimated dates, show an interval or “unknown”; never manufacture a day or treat a possible age as verified eligibility. Birthdays displayed without a year require a separate visibility choice.
+5. A death notification may require staff verification. Suppress future routine direct messages, invitations and birthday publication after confirmation. Preserve historical reports, eligible surviving household contacts and financial records. Review active duties and pastoral follow-up privately. Erroneous death corrections require a named reviewer; cancelled messages stay cancelled.
+
+## Duplicate resolution
+
+Normalize whitespace, phone country context and names for search while retaining the entered forms. Candidate matches are suggestions. Siblings with shared contact details and twins with the same birthday can be distinct. An authorized steward previews references, chooses a survivor and resolves contradictory fields. Keep the narrower publication and contact permissions until explicitly reviewed. An active refusal, safety restriction or protected address survives a merge. Competing active memberships, donor identities and verified account links require the respective owners' review. Prevent cycles and concurrent merges of the same person.
+
+After approval, ordinary lookups resolve an absorbed identifier to its survivor. Historical certificates, issued statements and posted entries preserve their issued names or immutable references. A correction after an erroneous merge restores unambiguous prior references from the item history; staff of each owning domain resolve records created after the merge. Show an incomplete reconciliation status until all owners acknowledge. Replaying the same merge request produces the same result once.
+
+## Verification
+
+| Case | Expected result |
+|---|---|
+| A new guest shares the email of an existing member | Secretary can create a distinct guest. The existing member's login and permissions stay exclusive to that member. |
+| A child born in a known year applies for an age-limited activity near the threshold | Display an age range; a responsible reviewer can gather evidence or apply the event's documented exception. |
+| A former name leads a volunteer to search for a person whose previous name is restricted | The search, suggestions, result count and export reveal no match through the hidden name. |
+| A merge is interrupted after a financial domain has acknowledged the survivor | A retry records the remaining acknowledgements exactly once. The financial posting and giving history remain intact. |
+| A clerk runs a data-quality report | Counts of missing contact routes, unresolved duplicates and incomplete permitted fields are scoped by congregation and purpose. Protected case records never become search hints. |
