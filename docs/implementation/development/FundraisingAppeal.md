@@ -39,7 +39,7 @@ The target is [Organization](../foundation/Organization.md). Resolve the identif
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Organization·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Organization·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Organization·MISSING | Queue the missing Organization mapping or reject the command before linking. |
 | Wrong scope | Organization·B01 | Do not attach another church’s Organization without a supported exchange and local authority. |
 | Target rename | Rename Organization·A01 after linking | The existing organization_id keeps the same identity and historic documents retain their original wording. |
@@ -52,7 +52,7 @@ The target is [Congregation](../foundation/Congregation.md). Resolve the identif
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Congregation·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Congregation·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Congregation·MISSING | Queue the missing Congregation mapping or reject the command before linking. |
 | Wrong scope | Congregation·B01 | Do not attach another church’s Congregation without a supported exchange and local authority. |
 | Target rename | Rename Congregation·A01 after linking | The existing congregation_id keeps the same identity and historic documents retain their original wording. |
@@ -65,7 +65,7 @@ The target is [FundraisingAppeal](FundraisingAppeal.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | FundraisingAppeal·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | FundraisingAppeal·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | FundraisingAppeal·MISSING | Queue the missing FundraisingAppeal mapping or reject the command before linking. |
 | Wrong scope | FundraisingAppeal·B01 | Do not attach another church’s FundraisingAppeal without a supported exchange and local authority. |
 | Target rename | Rename FundraisingAppeal·A01 after linking | The existing parent_appeal_id keeps the same identity and historic documents retain their original wording. |
@@ -78,7 +78,7 @@ The target is [MissionProject](../ministry/MissionProject.md). Resolve the ident
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | MissionProject·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | MissionProject·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | MissionProject·MISSING | Queue the missing MissionProject mapping or reject the command before linking. |
 | Wrong scope | MissionProject·B01 | Do not attach another church’s MissionProject without a supported exchange and local authority. |
 | Target rename | Rename MissionProject·A01 after linking | The existing project_id keeps the same identity and historic documents retain their original wording. |
@@ -130,7 +130,7 @@ The target is [Fund](../finance/Fund.md). Resolve the identifier in the approved
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Fund·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Fund·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Fund·MISSING | Queue the missing Fund mapping or reject the command before linking. |
 | Wrong scope | Fund·B01 | Do not attach another church’s Fund without a supported exchange and local authority. |
 | Target rename | Rename Fund·A01 after linking | The existing finance_fund_id keeps the same identity and historic documents retain their original wording. |
@@ -143,7 +143,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing owner_id keeps the same identity and historic documents retain their original wording. |

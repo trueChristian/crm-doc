@@ -32,7 +32,7 @@ The target is [PartnershipAgreement](PartnershipAgreement.md). Resolve the ident
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | PartnershipAgreement·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | PartnershipAgreement·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | PartnershipAgreement·MISSING | Queue the missing PartnershipAgreement mapping or reject the command before linking. |
 | Wrong scope | PartnershipAgreement·B01 | Do not attach another church’s PartnershipAgreement without a supported exchange and local authority. |
 | Target rename | Rename PartnershipAgreement·A01 after linking | The existing agreement_id keeps the same identity and historic documents retain their original wording. |
@@ -45,7 +45,7 @@ The target is [MinistryPartner](../ministry/MinistryPartner.md). Resolve the ide
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | MinistryPartner·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | MinistryPartner·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | MinistryPartner·MISSING | Queue the missing MinistryPartner mapping or reject the command before linking. |
 | Wrong scope | MinistryPartner·B01 | Do not attach another church’s MinistryPartner without a supported exchange and local authority. |
 | Target rename | Rename MinistryPartner·A01 after linking | The existing partner_id keeps the same identity and historic documents retain their original wording. |
@@ -58,7 +58,7 @@ The target is [Organization](../foundation/Organization.md). Resolve the identif
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Organization·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Organization·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Organization·MISSING | Queue the missing Organization mapping or reject the command before linking. |
 | Wrong scope | Organization·B01 | Do not attach another church’s Organization without a supported exchange and local authority. |
 | Target rename | Rename Organization·A01 after linking | The existing internal_organization_id keeps the same identity and historic documents retain their original wording. |
@@ -71,7 +71,7 @@ The target is [ProjectPartnerRole](../ministry/ProjectPartnerRole.md). Resolve t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ProjectPartnerRole·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ProjectPartnerRole·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ProjectPartnerRole·MISSING | Queue the missing ProjectPartnerRole mapping or reject the command before linking. |
 | Wrong scope | ProjectPartnerRole·B01 | Do not attach another church’s ProjectPartnerRole without a supported exchange and local authority. |
 | Target rename | Rename ProjectPartnerRole·A01 after linking | The existing project_role_id keeps the same identity and historic documents retain their original wording. |
@@ -123,7 +123,7 @@ The target is [Person](../people/Person.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Person·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Person·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Person·MISSING | Queue the missing Person mapping or reject the command before linking. |
 | Wrong scope | Person·B01 | Do not attach another church’s Person without a supported exchange and local authority. |
 | Target rename | Rename Person·A01 after linking | The existing assigned_contact_id keeps the same identity and historic documents retain their original wording. |

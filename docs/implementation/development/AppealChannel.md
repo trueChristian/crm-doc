@@ -33,7 +33,7 @@ The target is [FundraisingAppeal](FundraisingAppeal.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | FundraisingAppeal·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | FundraisingAppeal·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | FundraisingAppeal·MISSING | Queue the missing FundraisingAppeal mapping or reject the command before linking. |
 | Wrong scope | FundraisingAppeal·B01 | Do not attach another church’s FundraisingAppeal without a supported exchange and local authority. |
 | Target rename | Rename FundraisingAppeal·A01 after linking | The existing appeal_id keeps the same identity and historic documents retain their original wording. |
@@ -46,7 +46,7 @@ The target is [Campaign](../communications/Campaign.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Campaign·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Campaign·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Campaign·MISSING | Queue the missing Campaign mapping or reject the command before linking. |
 | Wrong scope | Campaign·B01 | Do not attach another church’s Campaign without a supported exchange and local authority. |
 | Target rename | Rename Campaign·A01 after linking | The existing communication_campaign_id keeps the same identity and historic documents retain their original wording. |
@@ -59,7 +59,7 @@ The target is [EventOccurrence](../ministry/EventOccurrence.md). Resolve the ide
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | EventOccurrence·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | EventOccurrence·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | EventOccurrence·MISSING | Queue the missing EventOccurrence mapping or reject the command before linking. |
 | Wrong scope | EventOccurrence·B01 | Do not attach another church’s EventOccurrence without a supported exchange and local authority. |
 | Target rename | Rename EventOccurrence·A01 after linking | The existing event_id keeps the same identity and historic documents retain their original wording. |
@@ -72,7 +72,7 @@ The target is [Offer](../commerce/Offer.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Offer·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Offer·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Offer·MISSING | Queue the missing Offer mapping or reject the command before linking. |
 | Wrong scope | Offer·B01 | Do not attach another church’s Offer without a supported exchange and local authority. |
 | Target rename | Rename Offer·A01 after linking | The existing shop_offer_id keeps the same identity and historic documents retain their original wording. |
@@ -137,7 +137,7 @@ The target is [AudienceSnapshot](../communications/AudienceSnapshot.md). Resolve
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | AudienceSnapshot·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | AudienceSnapshot·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | AudienceSnapshot·MISSING | Queue the missing AudienceSnapshot mapping or reject the command before linking. |
 | Wrong scope | AudienceSnapshot·B01 | Do not attach another church’s AudienceSnapshot without a supported exchange and local authority. |
 | Target rename | Rename AudienceSnapshot·A01 after linking | The existing audience_ref keeps the same identity and historic documents retain their original wording. |

@@ -33,7 +33,7 @@ The target is [GiftAllocation](../finance/GiftAllocation.md). Resolve the identi
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | GiftAllocation·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | GiftAllocation·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | GiftAllocation·MISSING | Queue the missing GiftAllocation mapping or reject the command before linking. |
 | Wrong scope | GiftAllocation·B01 | Do not attach another church’s GiftAllocation without a supported exchange and local authority. |
 | Target rename | Rename GiftAllocation·A01 after linking | The existing gift_allocation_id keeps the same identity and historic documents retain their original wording. |
@@ -46,7 +46,7 @@ The target is [FundraisingAppeal](FundraisingAppeal.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | FundraisingAppeal·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | FundraisingAppeal·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | FundraisingAppeal·MISSING | Queue the missing FundraisingAppeal mapping or reject the command before linking. |
 | Wrong scope | FundraisingAppeal·B01 | Do not attach another church’s FundraisingAppeal without a supported exchange and local authority. |
 | Target rename | Rename FundraisingAppeal·A01 after linking | The existing appeal_id keeps the same identity and historic documents retain their original wording. |
@@ -59,7 +59,7 @@ The target is [AppealChannel](AppealChannel.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | AppealChannel·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | AppealChannel·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | AppealChannel·MISSING | Queue the missing AppealChannel mapping or reject the command before linking. |
 | Wrong scope | AppealChannel·B01 | Do not attach another church’s AppealChannel without a supported exchange and local authority. |
 | Target rename | Rename AppealChannel·A01 after linking | The existing appeal_channel_id keeps the same identity and historic documents retain their original wording. |
@@ -124,7 +124,7 @@ The target is [AppealAllocationCredit](AppealAllocationCredit.md). Resolve the i
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | AppealAllocationCredit·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | AppealAllocationCredit·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | AppealAllocationCredit·MISSING | Queue the missing AppealAllocationCredit mapping or reject the command before linking. |
 | Wrong scope | AppealAllocationCredit·B01 | Do not attach another church’s AppealAllocationCredit without a supported exchange and local authority. |
 | Target rename | Rename AppealAllocationCredit·A01 after linking | The existing supersedes_id keeps the same identity and historic documents retain their original wording. |
@@ -137,7 +137,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing approved_by keeps the same identity and historic documents retain their original wording. |
