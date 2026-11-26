@@ -21,9 +21,9 @@ Retain contract, approved estimate and service period. Defer only the basis-elig
 | `recognition_account_id` | → LedgerAccount | Required when the record reaches its applicable state | [relation](../value-conventions.md#relation) |
 | `offset_account_id` | → LedgerAccount | Required when the record reaches its applicable state | [relation](../value-conventions.md#relation) |
 | `fund_id` | → Fund | Required when the record reaches its applicable state | [relation](../value-conventions.md#relation) |
-| `dimension_set` | Owner-scoped business value; see the record rule | Required when the record reaches its applicable state | [structured](../value-conventions.md#structured) |
+| `dimension_set` | Owner-scoped business value; see the record rule | Required when the record reaches its applicable state | [list](../value-conventions.md#list) |
 | `method` | {time,units,milestones,estimate} | Required when the record reaches its applicable state | [enum](../value-conventions.md#enum) |
-| `policy_version` | text | Required when the record reaches its applicable state | [text](../value-conventions.md#text) |
+| `policy_version` | text | Required when the record reaches its applicable state | [version](../value-conventions.md#version) |
 | `owner_ref` | Owner-scoped business value; see the record rule | Required when the record reaches its applicable state | [resource](../value-conventions.md#resource) |
 | `status` | {draft,active,revised,ended} | Required when the record reaches its applicable state | [enum](../value-conventions.md#enum) |
 | `predecessor_ref` | ? | Optional under owner conditions | [resource](../value-conventions.md#resource) |
@@ -39,7 +39,7 @@ The target is [FinanceBook](FinanceBook.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | FinanceBook·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | FinanceBook·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | FinanceBook·MISSING | Queue the missing FinanceBook mapping or reject the command before linking. |
 | Wrong scope | FinanceBook·B01 | Do not attach another church’s FinanceBook without a supported exchange and local authority. |
 | Target rename | Rename FinanceBook·A01 after linking | The existing book_id keeps the same identity and historic documents retain their original wording. |
@@ -117,7 +117,7 @@ The target is [LedgerAccount](LedgerAccount.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | LedgerAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | LedgerAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | LedgerAccount·MISSING | Queue the missing LedgerAccount mapping or reject the command before linking. |
 | Wrong scope | LedgerAccount·B01 | Do not attach another church’s LedgerAccount without a supported exchange and local authority. |
 | Target rename | Rename LedgerAccount·A01 after linking | The existing recognition_account_id keeps the same identity and historic documents retain their original wording. |
@@ -130,7 +130,7 @@ The target is [LedgerAccount](LedgerAccount.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | LedgerAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | LedgerAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | LedgerAccount·MISSING | Queue the missing LedgerAccount mapping or reject the command before linking. |
 | Wrong scope | LedgerAccount·B01 | Do not attach another church’s LedgerAccount without a supported exchange and local authority. |
 | Target rename | Rename LedgerAccount·A01 after linking | The existing offset_account_id keeps the same identity and historic documents retain their original wording. |
@@ -143,7 +143,7 @@ The target is [Fund](Fund.md). Resolve the identifier in the approved scope befo
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Fund·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Fund·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Fund·MISSING | Queue the missing Fund mapping or reject the command before linking. |
 | Wrong scope | Fund·B01 | Do not attach another church’s Fund without a supported exchange and local authority. |
 | Target rename | Rename Fund·A01 after linking | The existing fund_id keeps the same identity and historic documents retain their original wording. |
@@ -151,15 +151,15 @@ The target is [Fund](Fund.md). Resolve the identifier in the approved scope befo
 
 ### dimension_set
 
-Use typed value or bounded compound record for `RecognitionSchedule.dimension_set`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use ordered collection or mathematical set for `RecognitionSchedule.dimension_set`. Preserve ordering when meaningful; enforce uniqueness when the declaration is a set.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of dimension_set matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for dimension_set | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | permitted members A and B | Preserve ordering when meaningful; enforce uniqueness when the declaration is a set. |
+| Malformed or unmapped | an element outside the declared domain | Reject the affected collection or stage its invalid item under the import policy. |
+| Same element appears twice | A, A, B | Apply declared sequence/set multiplicity without doubling financial or voting effects. |
+| Empty collection versus unknown collection | empty collection and missing collection | Preserve the distinction where the rule requires evidence. |
+| One element later becomes restricted | authorization for member B withdrawn before export | Recompute permitted projection before export or display. |
 | Incomplete record | No dimension_set at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### method
@@ -177,15 +177,15 @@ Declared alternatives in owner order: `time`, `units`, `milestones`, `estimate`.
 
 ### policy_version
 
-Use human-readable text for `RecognitionSchedule.policy_version`. Preserve the meaningful spelling, script and structure; derive separate search forms.
+Use revision number or opaque revision token for `RecognitionSchedule.policy_version`. Compare under the declared revision scheme. Require the expected version for conflicting work.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | entered policy_version in the original script | Preserve the meaningful spelling, script and structure; derive separate search forms. |
-| Malformed or unmapped | invalid text encoding | Return a field-level validation issue without silently changing meaning. |
-| Accented and non-Latin characters | Zoë and ǂNū-khoen in the original script | Preserve and display their original spelling. |
-| Label changes after formal issue | approved edition before a spelling correction | Keep the authorized original rendering in the issued edition. |
-| Bidirectional or multiline input | mixed-direction or multiline entered text | Render in the field’s declared context and respect accessibility and disclosure rules. |
+| Admissible representation | the current revision returned by the owner | Compare under the declared revision scheme. Require the expected version for conflicting work. |
+| Malformed or unmapped | superseded version presented for a new approval | Reject or reopen review against the current contents. |
+| Two operators begin at revision seven | two edits both cite baseline 7 | Commit the first change once and re-evaluate the second; never overwrite an unreviewed difference. |
+| Re-read an already approved revision | re-open issued revision 4 after revision 6 | Return the frozen value and evidence for that edition. |
+| Replay of an earlier result | same business operation observed at two revisions | Correlate by the business operation identity; a newer version does not create a second effect. |
 | Incomplete record | No policy_version at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### owner_ref

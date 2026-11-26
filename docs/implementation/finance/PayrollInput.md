@@ -33,7 +33,7 @@ The target is [PayrollEngagement](PayrollEngagement.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | PayrollEngagement·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | PayrollEngagement·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | PayrollEngagement·MISSING | Queue the missing PayrollEngagement mapping or reject the command before linking. |
 | Wrong scope | PayrollEngagement·B01 | Do not attach another church’s PayrollEngagement without a supported exchange and local authority. |
 | Target rename | Rename PayrollEngagement·A01 after linking | The existing engagement_id keeps the same identity and historic documents retain their original wording. |

@@ -31,7 +31,7 @@ The target is [TenderReceipt](TenderReceipt.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | TenderReceipt·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | TenderReceipt·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | TenderReceipt·MISSING | Queue the missing TenderReceipt mapping or reject the command before linking. |
 | Wrong scope | TenderReceipt·B01 | Do not attach another church’s TenderReceipt without a supported exchange and local authority. |
 | Target rename | Rename TenderReceipt·A01 after linking | The existing receipt_id keeps the same identity and historic documents retain their original wording. |
@@ -44,7 +44,7 @@ The target is [CustomerCredit](CustomerCredit.md). Resolve the identifier in the
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | CustomerCredit·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | CustomerCredit·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | CustomerCredit·MISSING | Queue the missing CustomerCredit mapping or reject the command before linking. |
 | Wrong scope | CustomerCredit·B01 | Do not attach another church’s CustomerCredit without a supported exchange and local authority. |
 | Target rename | Rename CustomerCredit·A01 after linking | The existing credit_id keeps the same identity and historic documents retain their original wording. |
@@ -57,7 +57,7 @@ The target is [SalesInvoice](SalesInvoice.md). Resolve the identifier in the app
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | SalesInvoice·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | SalesInvoice·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | SalesInvoice·MISSING | Queue the missing SalesInvoice mapping or reject the command before linking. |
 | Wrong scope | SalesInvoice·B01 | Do not attach another church’s SalesInvoice without a supported exchange and local authority. |
 | Target rename | Rename SalesInvoice·A01 after linking | The existing invoice_id keeps the same identity and historic documents retain their original wording. |
@@ -109,7 +109,7 @@ The target is [ReceivableApplication](ReceivableApplication.md). Resolve the ide
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ReceivableApplication·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ReceivableApplication·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ReceivableApplication·MISSING | Queue the missing ReceivableApplication mapping or reject the command before linking. |
 | Wrong scope | ReceivableApplication·B01 | Do not attach another church’s ReceivableApplication without a supported exchange and local authority. |
 | Target rename | Rename ReceivableApplication·A01 after linking | The existing reversal_of keeps the same identity and historic documents retain their original wording. |

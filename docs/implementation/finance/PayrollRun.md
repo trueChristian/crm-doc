@@ -18,7 +18,7 @@ One active regular run per group/period. A correction identifies the prior run/w
 | `cycle_to` | date | Required when the record reaches its applicable state | [date](../value-conventions.md#date) |
 | `pay_on` | date | Required when the record reaches its applicable state | [date](../value-conventions.md#date) |
 | `run_kind` | {regular,off_cycle,termination,correction} | Required when the record reaches its applicable state | [enum](../value-conventions.md#enum) |
-| `policy_version` | text | Required when the record reaches its applicable state | [text](../value-conventions.md#text) |
+| `policy_version` | text | Required when the record reaches its applicable state | [version](../value-conventions.md#version) |
 | `created_by_ref` | Owner-scoped business value; see the record rule | Required when the record reaches its applicable state | [resource](../value-conventions.md#resource) |
 | `approved_by_ref` | ? | Optional under owner conditions | [resource](../value-conventions.md#resource) |
 | `state` | {draft,calculated,reviewed,approved,posted,paid,completed,void} | Required when the record reaches its applicable state | [enum](../value-conventions.md#enum) |
@@ -35,7 +35,7 @@ The target is [FinanceBook](FinanceBook.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | FinanceBook·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | FinanceBook·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | FinanceBook·MISSING | Queue the missing FinanceBook mapping or reject the command before linking. |
 | Wrong scope | FinanceBook·B01 | Do not attach another church’s FinanceBook without a supported exchange and local authority. |
 | Target rename | Rename FinanceBook·A01 after linking | The existing book_id keeps the same identity and historic documents retain their original wording. |
@@ -108,15 +108,15 @@ Declared alternatives in owner order: `regular`, `off_cycle`, `termination`, `co
 
 ### policy_version
 
-Use human-readable text for `PayrollRun.policy_version`. Preserve the meaningful spelling, script and structure; derive separate search forms.
+Use revision number or opaque revision token for `PayrollRun.policy_version`. Compare under the declared revision scheme. Require the expected version for conflicting work.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | entered policy_version in the original script | Preserve the meaningful spelling, script and structure; derive separate search forms. |
-| Malformed or unmapped | invalid text encoding | Return a field-level validation issue without silently changing meaning. |
-| Accented and non-Latin characters | Zoë and ǂNū-khoen in the original script | Preserve and display their original spelling. |
-| Label changes after formal issue | approved edition before a spelling correction | Keep the authorized original rendering in the issued edition. |
-| Bidirectional or multiline input | mixed-direction or multiline entered text | Render in the field’s declared context and respect accessibility and disclosure rules. |
+| Admissible representation | the current revision returned by the owner | Compare under the declared revision scheme. Require the expected version for conflicting work. |
+| Malformed or unmapped | superseded version presented for a new approval | Reject or reopen review against the current contents. |
+| Two operators begin at revision seven | two edits both cite baseline 7 | Commit the first change once and re-evaluate the second; never overwrite an unreviewed difference. |
+| Re-read an already approved revision | re-open issued revision 4 after revision 6 | Return the frozen value and evidence for that edition. |
+| Replay of an earlier result | same business operation observed at two revisions | Correlate by the business operation identity; a newer version does not create a second effect. |
 | Incomplete record | No policy_version at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### created_by_ref
@@ -165,7 +165,7 @@ The target is [JournalEntry](JournalEntry.md). Resolve the identifier in the app
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | JournalEntry·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | JournalEntry·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | JournalEntry·MISSING | Queue the missing JournalEntry mapping or reject the command before linking. |
 | Wrong scope | JournalEntry·B01 | Do not attach another church’s JournalEntry without a supported exchange and local authority. |
 | Target rename | Rename JournalEntry·A01 after linking | The existing journal_ref keeps the same identity and historic documents retain their original wording. |

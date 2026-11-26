@@ -13,7 +13,7 @@ Reopening requires authority, reason and impact review of later reports, tax ret
 | Field | Logical declaration | Presence at the applicable step | Validation family |
 | --- | --- | --- | --- |
 | `cycle_id` | → CloseCycle | Required when the record reaches its applicable state | [relation](../value-conventions.md#relation) |
-| `proposed_source` | Owner-scoped business value; see the record rule | Required when the record reaches its applicable state | [structured](../value-conventions.md#structured) |
+| `proposed_source` | Owner-scoped business value; see the record rule | Required when the record reaches its applicable state | [resource](../value-conventions.md#resource) |
 | `requested_by_ref` | Owner-scoped business value; see the record rule | Required when the record reaches its applicable state | [resource](../value-conventions.md#resource) |
 | `reason` | text | Required when the record reaches its applicable state | [text](../value-conventions.md#text) |
 | `treatment` | {next_period,reopen,restatement} | Required when the record reaches its applicable state | [enum](../value-conventions.md#enum) |
@@ -32,7 +32,7 @@ The target is [CloseCycle](CloseCycle.md). Resolve the identifier in the approve
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | CloseCycle·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | CloseCycle·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | CloseCycle·MISSING | Queue the missing CloseCycle mapping or reject the command before linking. |
 | Wrong scope | CloseCycle·B01 | Do not attach another church’s CloseCycle without a supported exchange and local authority. |
 | Target rename | Rename CloseCycle·A01 after linking | The existing cycle_id keeps the same identity and historic documents retain their original wording. |
@@ -40,15 +40,15 @@ The target is [CloseCycle](CloseCycle.md). Resolve the identifier in the approve
 
 ### proposed_source
 
-Use typed value or bounded compound record for `PeriodAdjustment.proposed_source`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use scoped or external reference for `PeriodAdjustment.proposed_source`. Resolve against the permitted kind, owning namespace and purpose.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of proposed_source matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for proposed_source | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | verified proposed_source in the owner namespace | Resolve against the permitted kind, owning namespace and purpose. |
+| Malformed or unmapped | unmapped proposed_source | Request clarification or quarantine the mapping. |
+| Same visible code from two sources | issuer A:007 and issuer B:007 | Retain distinct namespace/key pairs. |
+| Referenced evidence is restricted | restricted attachment behind an otherwise visible request | Show a minimal permitted result and check document access independently. |
+| Duplicate delivery of the same mapped reference | same namespace, key and accepted mapping twice | Resolve the same destination record once. |
 | Incomplete record | No proposed_source at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### requested_by_ref
@@ -110,7 +110,7 @@ The target is [JournalEntry](JournalEntry.md). Resolve the identifier in the app
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | JournalEntry·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | JournalEntry·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | JournalEntry·MISSING | Queue the missing JournalEntry mapping or reject the command before linking. |
 | Wrong scope | JournalEntry·B01 | Do not attach another church’s JournalEntry without a supported exchange and local authority. |
 | Target rename | Rename JournalEntry·A01 after linking | The existing journal_ref keeps the same identity and historic documents retain their original wording. |
