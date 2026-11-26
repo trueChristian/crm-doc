@@ -34,7 +34,7 @@ The target is [ServicePlan](ServicePlan.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ServicePlan·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ServicePlan·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ServicePlan·MISSING | Queue the missing ServicePlan mapping or reject the command before linking. |
 | Wrong scope | ServicePlan·B01 | Do not attach another church’s ServicePlan without a supported exchange and local authority. |
 | Target rename | Rename ServicePlan·A01 after linking | The existing plan_id keeps the same identity and historic documents retain their original wording. |
@@ -47,7 +47,7 @@ The target is [ServicePlanItem](ServicePlanItem.md). Resolve the identifier in t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ServicePlanItem·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ServicePlanItem·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ServicePlanItem·MISSING | Queue the missing ServicePlanItem mapping or reject the command before linking. |
 | Wrong scope | ServicePlanItem·B01 | Do not attach another church’s ServicePlanItem without a supported exchange and local authority. |
 | Target rename | Rename ServicePlanItem·A01 after linking | The existing parent_id keeps the same identity and historic documents retain their original wording. |
@@ -125,7 +125,7 @@ The target is [Person](../people/Person.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Person·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Person·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Person·MISSING | Queue the missing Person mapping or reject the command before linking. |
 | Wrong scope | Person·B01 | Do not attach another church’s Person without a supported exchange and local authority. |
 | Target rename | Rename Person·A01 after linking | The existing lead_person_id keeps the same identity and historic documents retain their original wording. |

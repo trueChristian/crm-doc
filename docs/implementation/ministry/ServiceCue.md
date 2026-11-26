@@ -31,7 +31,7 @@ The target is [ServicePlanItem](ServicePlanItem.md). Resolve the identifier in t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ServicePlanItem·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ServicePlanItem·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ServicePlanItem·MISSING | Queue the missing ServicePlanItem mapping or reject the command before linking. |
 | Wrong scope | ServicePlanItem·B01 | Do not attach another church’s ServicePlanItem without a supported exchange and local authority. |
 | Target rename | Rename ServicePlanItem·A01 after linking | The existing item_id keeps the same identity and historic documents retain their original wording. |
@@ -96,7 +96,7 @@ The target is [VolunteerAssignment](VolunteerAssignment.md). Resolve the identif
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | VolunteerAssignment·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | VolunteerAssignment·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | VolunteerAssignment·MISSING | Queue the missing VolunteerAssignment mapping or reject the command before linking. |
 | Wrong scope | VolunteerAssignment·B01 | Do not attach another church’s VolunteerAssignment without a supported exchange and local authority. |
 | Target rename | Rename VolunteerAssignment·A01 after linking | The existing responsible_assignment_id keeps the same identity and historic documents retain their original wording. |

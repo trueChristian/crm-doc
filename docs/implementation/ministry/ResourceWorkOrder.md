@@ -35,7 +35,7 @@ The target is [FacilitySpace](FacilitySpace.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | FacilitySpace·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | FacilitySpace·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | FacilitySpace·MISSING | Queue the missing FacilitySpace mapping or reject the command before linking. |
 | Wrong scope | FacilitySpace·B01 | Do not attach another church’s FacilitySpace without a supported exchange and local authority. |
 | Target rename | Rename FacilitySpace·A01 after linking | The existing space_id keeps the same identity and historic documents retain their original wording. |
@@ -48,7 +48,7 @@ The target is [EquipmentItem](EquipmentItem.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | EquipmentItem·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | EquipmentItem·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | EquipmentItem·MISSING | Queue the missing EquipmentItem mapping or reject the command before linking. |
 | Wrong scope | EquipmentItem·B01 | Do not attach another church’s EquipmentItem without a supported exchange and local authority. |
 | Target rename | Rename EquipmentItem·A01 after linking | The existing item_id keeps the same identity and historic documents retain their original wording. |
@@ -61,7 +61,7 @@ The target is [MinistryVehicle](MinistryVehicle.md). Resolve the identifier in t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | MinistryVehicle·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | MinistryVehicle·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | MinistryVehicle·MISSING | Queue the missing MinistryVehicle mapping or reject the command before linking. |
 | Wrong scope | MinistryVehicle·B01 | Do not attach another church’s MinistryVehicle without a supported exchange and local authority. |
 | Target rename | Rename MinistryVehicle·A01 after linking | The existing vehicle_id keeps the same identity and historic documents retain their original wording. |
@@ -113,7 +113,7 @@ The target is [Person](../people/Person.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Person·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Person·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Person·MISSING | Queue the missing Person mapping or reject the command before linking. |
 | Wrong scope | Person·B01 | Do not attach another church’s Person without a supported exchange and local authority. |
 | Target rename | Rename Person·A01 after linking | The existing assigned_to keeps the same identity and historic documents retain their original wording. |
@@ -165,7 +165,7 @@ The target is [ResourceWorkOrder](ResourceWorkOrder.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ResourceWorkOrder·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ResourceWorkOrder·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ResourceWorkOrder·MISSING | Queue the missing ResourceWorkOrder mapping or reject the command before linking. |
 | Wrong scope | ResourceWorkOrder·B01 | Do not attach another church’s ResourceWorkOrder without a supported exchange and local authority. |
 | Target rename | Rename ResourceWorkOrder·A01 after linking | The existing reopened_from_id keeps the same identity and historic documents retain their original wording. |
