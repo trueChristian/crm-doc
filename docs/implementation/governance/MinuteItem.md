@@ -34,7 +34,7 @@ The target is [MinuteEdition](MinuteEdition.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | MinuteEdition·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | MinuteEdition·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | MinuteEdition·MISSING | Queue the missing MinuteEdition mapping or reject the command before linking. |
 | Wrong scope | MinuteEdition·B01 | Do not attach another church’s MinuteEdition without a supported exchange and local authority. |
 | Target rename | Rename MinuteEdition·A01 after linking | The existing edition_id keeps the same identity and historic documents retain their original wording. |
@@ -47,7 +47,7 @@ The target is [AgendaItem](AgendaItem.md). Resolve the identifier in the approve
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | AgendaItem·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | AgendaItem·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | AgendaItem·MISSING | Queue the missing AgendaItem mapping or reject the command before linking. |
 | Wrong scope | AgendaItem·B01 | Do not attach another church’s AgendaItem without a supported exchange and local authority. |
 | Target rename | Rename AgendaItem·A01 after linking | The existing agenda_item_id keeps the same identity and historic documents retain their original wording. |
@@ -138,7 +138,7 @@ The target is [DecisionRound](DecisionRound.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | DecisionRound·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | DecisionRound·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | DecisionRound·MISSING | Queue the missing DecisionRound mapping or reject the command before linking. |
 | Wrong scope | DecisionRound·B01 | Do not attach another church’s DecisionRound without a supported exchange and local authority. |
 | Target rename | Rename DecisionRound·A01 after linking | The existing decision_round_id keeps the same identity and historic documents retain their original wording. |

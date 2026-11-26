@@ -14,7 +14,7 @@ Unique meeting/book/edition and unique issued book/record number. The digest cov
 | --- | --- | --- | --- |
 | `book_id` | MinuteBook ref | Required when the record reaches its applicable state | [relation](../value-conventions.md#relation) |
 | `meeting_id` | GovernanceMeeting ref | Required when the record reaches its applicable state | [relation](../value-conventions.md#relation) |
-| `edition` | integer | Required when the record reaches its applicable state | [integer](../value-conventions.md#integer) |
+| `edition` | integer | Required when the record reaches its applicable state | [version](../value-conventions.md#version) |
 | `record_number` | text? | Optional under owner conditions | [text](../value-conventions.md#text) |
 | `state` | draft/review/approved/superseded | Required when the record reaches its applicable state | [enum](../value-conventions.md#enum) |
 | `prepared_by` | Person ref | Required when the record reaches its applicable state | [relation](../value-conventions.md#relation) |
@@ -36,7 +36,7 @@ The target is [MinuteBook](MinuteBook.md). Resolve the identifier in the approve
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | MinuteBook·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | MinuteBook·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | MinuteBook·MISSING | Queue the missing MinuteBook mapping or reject the command before linking. |
 | Wrong scope | MinuteBook·B01 | Do not attach another church’s MinuteBook without a supported exchange and local authority. |
 | Target rename | Rename MinuteBook·A01 after linking | The existing book_id keeps the same identity and historic documents retain their original wording. |
@@ -49,7 +49,7 @@ The target is [GovernanceMeeting](GovernanceMeeting.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | GovernanceMeeting·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | GovernanceMeeting·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | GovernanceMeeting·MISSING | Queue the missing GovernanceMeeting mapping or reject the command before linking. |
 | Wrong scope | GovernanceMeeting·B01 | Do not attach another church’s GovernanceMeeting without a supported exchange and local authority. |
 | Target rename | Rename GovernanceMeeting·A01 after linking | The existing meeting_id keeps the same identity and historic documents retain their original wording. |
@@ -57,15 +57,15 @@ The target is [GovernanceMeeting](GovernanceMeeting.md). Resolve the identifier 
 
 ### edition
 
-Use whole-number measure for `MinuteEdition.edition`. Preserve integer precision and enforce the specific field bounds.
+Use revision number or opaque revision token for `MinuteEdition.edition`. Compare under the declared revision scheme. Require the expected version for conflicting work.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | 2 subject to field bounds | Preserve integer precision and enforce the specific field bounds. |
-| Malformed or unmapped | 2.5 | Reject fractional input without rounding it into a whole person, place or sequence. |
-| Value equals the configured upper bound | value exactly equal to the applicable maximum | Apply its inclusive or exclusive rule explicitly. |
-| Value exceeds the bound by one | applicable maximum plus one | Return a range error before changing dependent totals. |
-| Missing count versus measured zero | observed 0 and omitted value | Keep absence distinct from an observed zero. |
+| Admissible representation | the current revision returned by the owner | Compare under the declared revision scheme. Require the expected version for conflicting work. |
+| Malformed or unmapped | superseded version presented for a new approval | Reject or reopen review against the current contents. |
+| Two operators begin at revision seven | two edits both cite baseline 7 | Commit the first change once and re-evaluate the second; never overwrite an unreviewed difference. |
+| Re-read an already approved revision | re-open issued revision 4 after revision 6 | Return the frozen value and evidence for that edition. |
+| Replay of an earlier result | same business operation observed at two revisions | Correlate by the business operation identity; a newer version does not create a second effect. |
 | Incomplete record | No edition at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### record_number
@@ -101,7 +101,7 @@ The target is [Person](../people/Person.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Person·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Person·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Person·MISSING | Queue the missing Person mapping or reject the command before linking. |
 | Wrong scope | Person·B01 | Do not attach another church’s Person without a supported exchange and local authority. |
 | Target rename | Rename Person·A01 after linking | The existing prepared_by keeps the same identity and historic documents retain their original wording. |
@@ -127,7 +127,7 @@ The target is [MinuteEdition](MinuteEdition.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | MinuteEdition·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | MinuteEdition·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | MinuteEdition·MISSING | Queue the missing MinuteEdition mapping or reject the command before linking. |
 | Wrong scope | MinuteEdition·B01 | Do not attach another church’s MinuteEdition without a supported exchange and local authority. |
 | Target rename | Rename MinuteEdition·A01 after linking | The existing prior_id keeps the same identity and historic documents retain their original wording. |
@@ -140,7 +140,7 @@ The target is [GovernanceMeeting](GovernanceMeeting.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | GovernanceMeeting·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | GovernanceMeeting·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | GovernanceMeeting·MISSING | Queue the missing GovernanceMeeting mapping or reject the command before linking. |
 | Wrong scope | GovernanceMeeting·B01 | Do not attach another church’s GovernanceMeeting without a supported exchange and local authority. |
 | Target rename | Rename GovernanceMeeting·A01 after linking | The existing confirmed_meeting_id keeps the same identity and historic documents retain their original wording. |

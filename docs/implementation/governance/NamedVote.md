@@ -32,7 +32,7 @@ The target is [VotingEntitlement](VotingEntitlement.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | VotingEntitlement·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | VotingEntitlement·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | VotingEntitlement·MISSING | Queue the missing VotingEntitlement mapping or reject the command before linking. |
 | Wrong scope | VotingEntitlement·B01 | Do not attach another church’s VotingEntitlement without a supported exchange and local authority. |
 | Target rename | Rename VotingEntitlement·A01 after linking | The existing entitlement_id keeps the same identity and historic documents retain their original wording. |
@@ -58,7 +58,7 @@ The target is [Nomination](Nomination.md). Resolve the identifier in the approve
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Nomination·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Nomination·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Nomination·MISSING | Queue the missing Nomination mapping or reject the command before linking. |
 | Wrong scope | Nomination·B01 | Do not attach another church’s Nomination without a supported exchange and local authority. |
 | Target rename | Rename Nomination·A01 after linking | The existing nominee_id keeps the same identity and historic documents retain their original wording. |
@@ -97,7 +97,7 @@ The target is [Person](../people/Person.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Person·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Person·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Person·MISSING | Queue the missing Person mapping or reject the command before linking. |
 | Wrong scope | Person·B01 | Do not attach another church’s Person without a supported exchange and local authority. |
 | Target rename | Rename Person·A01 after linking | The existing recorded_by keeps the same identity and historic documents retain their original wording. |
@@ -110,7 +110,7 @@ The target is [NamedVote](NamedVote.md). Resolve the identifier in the approved 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | NamedVote·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | NamedVote·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | NamedVote·MISSING | Queue the missing NamedVote mapping or reject the command before linking. |
 | Wrong scope | NamedVote·B01 | Do not attach another church’s NamedVote without a supported exchange and local authority. |
 | Target rename | Rename NamedVote·A01 after linking | The existing corrected_from_id keeps the same identity and historic documents retain their original wording. |

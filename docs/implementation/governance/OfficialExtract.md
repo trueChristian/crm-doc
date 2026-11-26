@@ -36,7 +36,7 @@ The target is [DocumentIssue](../administration/DocumentIssue.md). Resolve the i
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | DocumentIssue·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | DocumentIssue·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | DocumentIssue·MISSING | Queue the missing DocumentIssue mapping or reject the command before linking. |
 | Wrong scope | DocumentIssue·B01 | Do not attach another church’s DocumentIssue without a supported exchange and local authority. |
 | Target rename | Rename DocumentIssue·A01 after linking | The existing issued_document_id keeps the same identity and historic documents retain their original wording. |
@@ -49,7 +49,7 @@ The target is [MinuteEdition](MinuteEdition.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | MinuteEdition·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | MinuteEdition·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | MinuteEdition·MISSING | Queue the missing MinuteEdition mapping or reject the command before linking. |
 | Wrong scope | MinuteEdition·B01 | Do not attach another church’s MinuteEdition without a supported exchange and local authority. |
 | Target rename | Rename MinuteEdition·A01 after linking | The existing edition_id keeps the same identity and historic documents retain their original wording. |
@@ -62,7 +62,7 @@ The target is [MinuteItem](MinuteItem.md). Resolve the identifier in the approve
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | MinuteItem·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | MinuteItem·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | MinuteItem·MISSING | Queue the missing MinuteItem mapping or reject the command before linking. |
 | Wrong scope | MinuteItem·B01 | Do not attach another church’s MinuteItem without a supported exchange and local authority. |
 | Target rename | Rename MinuteItem·A01 after linking | The existing item_id keeps the same identity and historic documents retain their original wording. |
@@ -127,7 +127,7 @@ The target is [Person](../people/Person.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Person·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Person·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Person·MISSING | Queue the missing Person mapping or reject the command before linking. |
 | Wrong scope | Person·B01 | Do not attach another church’s Person without a supported exchange and local authority. |
 | Target rename | Rename Person·A01 after linking | The existing issued_by keeps the same identity and historic documents retain their original wording. |
@@ -179,7 +179,7 @@ The target is [OfficialExtract](OfficialExtract.md). Resolve the identifier in t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | OfficialExtract·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | OfficialExtract·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | OfficialExtract·MISSING | Queue the missing OfficialExtract mapping or reject the command before linking. |
 | Wrong scope | OfficialExtract·B01 | Do not attach another church’s OfficialExtract without a supported exchange and local authority. |
 | Target rename | Rename OfficialExtract·A01 after linking | The existing replacement_id keeps the same identity and historic documents retain their original wording. |

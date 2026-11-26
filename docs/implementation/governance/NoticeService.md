@@ -33,7 +33,7 @@ The target is [MeetingNotice](MeetingNotice.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | MeetingNotice·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | MeetingNotice·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | MeetingNotice·MISSING | Queue the missing MeetingNotice mapping or reject the command before linking. |
 | Wrong scope | MeetingNotice·B01 | Do not attach another church’s MeetingNotice without a supported exchange and local authority. |
 | Target rename | Rename MeetingNotice·A01 after linking | The existing notice_id keeps the same identity and historic documents retain their original wording. |
@@ -46,7 +46,7 @@ The target is [VotingRollEntry](VotingRollEntry.md). Resolve the identifier in t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | VotingRollEntry·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | VotingRollEntry·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | VotingRollEntry·MISSING | Queue the missing VotingRollEntry mapping or reject the command before linking. |
 | Wrong scope | VotingRollEntry·B01 | Do not attach another church’s VotingRollEntry without a supported exchange and local authority. |
 | Target rename | Rename VotingRollEntry·A01 after linking | The existing roll_entry_id keeps the same identity and historic documents retain their original wording. |
@@ -72,7 +72,7 @@ The target is [Delivery](../communications/Delivery.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Delivery·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Delivery·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Delivery·MISSING | Queue the missing Delivery mapping or reject the command before linking. |
 | Wrong scope | Delivery·B01 | Do not attach another church’s Delivery without a supported exchange and local authority. |
 | Target rename | Rename Delivery·A01 after linking | The existing delivery_id keeps the same identity and historic documents retain their original wording. |
@@ -137,7 +137,7 @@ The target is [Person](../people/Person.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Person·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Person·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Person·MISSING | Queue the missing Person mapping or reject the command before linking. |
 | Wrong scope | Person·B01 | Do not attach another church’s Person without a supported exchange and local authority. |
 | Target rename | Rename Person·A01 after linking | The existing reviewed_by keeps the same identity and historic documents retain their original wording. |

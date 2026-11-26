@@ -34,7 +34,7 @@ The target is [AgendaItem](AgendaItem.md). Resolve the identifier in the approve
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | AgendaItem·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | AgendaItem·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | AgendaItem·MISSING | Queue the missing AgendaItem mapping or reject the command before linking. |
 | Wrong scope | AgendaItem·B01 | Do not attach another church’s AgendaItem without a supported exchange and local authority. |
 | Target rename | Rename AgendaItem·A01 after linking | The existing item_id keeps the same identity and historic documents retain their original wording. |
@@ -47,7 +47,7 @@ The target is [Person](../people/Person.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Person·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Person·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Person·MISSING | Queue the missing Person mapping or reject the command before linking. |
 | Wrong scope | Person·B01 | Do not attach another church’s Person without a supported exchange and local authority. |
 | Target rename | Rename Person·A01 after linking | The existing person_id keeps the same identity and historic documents retain their original wording. |
@@ -60,7 +60,7 @@ The target is [InterestDeclaration](InterestDeclaration.md). Resolve the identif
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | InterestDeclaration·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | InterestDeclaration·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | InterestDeclaration·MISSING | Queue the missing InterestDeclaration mapping or reject the command before linking. |
 | Wrong scope | InterestDeclaration·B01 | Do not attach another church’s InterestDeclaration without a supported exchange and local authority. |
 | Target rename | Rename InterestDeclaration·A01 after linking | The existing declaration_id keeps the same identity and historic documents retain their original wording. |
@@ -125,7 +125,7 @@ The target is [Person](../people/Person.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Person·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Person·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Person·MISSING | Queue the missing Person mapping or reject the command before linking. |
 | Wrong scope | Person·B01 | Do not attach another church’s Person without a supported exchange and local authority. |
 | Target rename | Rename Person·A01 after linking | The existing presiding_person_id keeps the same identity and historic documents retain their original wording. |
