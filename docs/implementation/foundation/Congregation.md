@@ -16,7 +16,7 @@ Code unique per organization. Closing ends current assignments through reviewed 
 | `organization_id` | → Organization | Required at applicable lifecycle step | [relation](../value-conventions.md#relation) |
 | `code` | text | Required at applicable lifecycle step | [text](../value-conventions.md#text) |
 | `display_name` | text | Required at applicable lifecycle step | [text](../value-conventions.md#text) |
-| `language` | optional tag | Optional under owner conditions | [structured](../value-conventions.md#structured) |
+| `language` | optional tag | Optional under owner conditions | [language](../value-conventions.md#language) |
 | `started_on` | date | Required at applicable lifecycle step | [date](../value-conventions.md#date) |
 | `ended_on` | optional date | Optional under owner conditions | [date](../value-conventions.md#date) |
 | `status` | forming, active, merged or closed | Required at applicable lifecycle step | [enum](../value-conventions.md#enum) |
@@ -45,7 +45,7 @@ The target is [Organization](Organization.md). Resolve the identifier in the app
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Organization·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Organization·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Organization·MISSING | Queue the missing Organization mapping or reject the command before linking. |
 | Wrong scope | Organization·B01 | Do not attach another church’s Organization without a supported exchange and local authority. |
 | Target rename | Rename Organization·A01 after linking | The existing organization_id keeps the same identity and historic documents retain their original wording. |
@@ -79,15 +79,15 @@ Use human-readable text for `Congregation.display_name`. Preserve the meaningful
 
 ### language
 
-Use typed value or bounded compound record for `Congregation.language`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use language or locale identifier for `Congregation.language`. Resolve the published language or locale without inferring a person’s nationality.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of language matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for language | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | en | Resolve the published language or locale without inferring a person’s nationality. |
+| Malformed or unmapped | unmapped locale display label | Keep the source value for review. |
+| Specific translation unavailable | specific translation missing at delivery time | Apply the declared fallback and identify which language is being displayed. |
+| User changes preferred language | approved letter after preferred-language change | Future communications use the effective preference; issued wording is preserved. |
+| Two regional variants exist | two permitted regional variants in catalogue | Apply the requested locale/version where available. |
 | Absent in intake | No language provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
 
 ### started_on

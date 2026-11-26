@@ -46,7 +46,7 @@ The target is [WorkflowEdition](../platform/WorkflowEdition.md). Resolve the ide
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | WorkflowEdition·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | WorkflowEdition·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | WorkflowEdition·MISSING | Queue the missing WorkflowEdition mapping or reject the command before linking. |
 | Wrong scope | WorkflowEdition·B01 | Do not attach another church’s WorkflowEdition without a supported exchange and local authority. |
 | Target rename | Rename WorkflowEdition·A01 after linking | The existing workflow_edition_id keeps the same identity and historic documents retain their original wording. |

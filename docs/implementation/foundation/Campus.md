@@ -19,7 +19,7 @@ One campus can host many rooms or sessions. A sensitive meeting point has separa
 | `kind` | physical, online or itinerant | Required at applicable lifecycle step | [enum](../value-conventions.md#enum) |
 | `location_description` | optional text | Optional under owner conditions | [text](../value-conventions.md#text) |
 | `zone` | zone | Required at applicable lifecycle step | [zone](../value-conventions.md#zone) |
-| `public_contact` | optional contact | Optional under owner conditions | [structured](../value-conventions.md#structured) |
+| `public_contact` | optional contact | Optional under owner conditions | [resource](../value-conventions.md#resource) |
 | `accessibility_summary` | optional text | Optional under owner conditions | [text](../value-conventions.md#text) |
 | `active_from` | dates | Required at applicable lifecycle step | [date](../value-conventions.md#date) |
 | `active_until` | dates | Required at applicable lifecycle step | [date](../value-conventions.md#date) |
@@ -48,7 +48,7 @@ The target is [Organization](Organization.md). Resolve the identifier in the app
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Organization·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Organization·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Organization·MISSING | Queue the missing Organization mapping or reject the command before linking. |
 | Wrong scope | Organization·B01 | Do not attach another church’s Organization without a supported exchange and local authority. |
 | Target rename | Rename Organization·A01 after linking | The existing organization_id keeps the same identity and historic documents retain their original wording. |
@@ -121,15 +121,15 @@ Use time zone with civil-time rules for `Campus.zone`. Preserve zone identity; u
 
 ### public_contact
 
-Use typed value or bounded compound record for `Campus.public_contact`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use scoped or external reference for `Campus.public_contact`. Resolve against the permitted kind, owning namespace and purpose.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of public_contact matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for public_contact | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | verified public_contact in the owner namespace | Resolve against the permitted kind, owning namespace and purpose. |
+| Malformed or unmapped | unmapped public_contact | Request clarification or quarantine the mapping. |
+| Same visible code from two sources | issuer A:007 and issuer B:007 | Retain distinct namespace/key pairs. |
+| Referenced evidence is restricted | restricted attachment behind an otherwise visible request | Show a minimal permitted result and check document access independently. |
+| Duplicate delivery of the same mapped reference | same namespace, key and accepted mapping twice | Resolve the same destination record once. |
 | Absent in intake | No public_contact provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
 
 ### accessibility_summary
@@ -196,6 +196,7 @@ Use civil calendar date for `Campus.active_until`. Keep the date without convert
 | [RiskEntry](../assurance/RiskEntry.md).`campus_id` | Campus identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [SermonDelivery](../commerce/SermonDelivery.md).`campus_id` | Campus identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [ShopChannel](../commerce/ShopChannel.md).`campus_id` | Campus identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
+| [StaffPosition](../administration/StaffPosition.md).`campus_id` | Campus identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [StockLocation](../commerce/StockLocation.md).`campus_id` | Campus identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [VisitorEncounter](../people/VisitorEncounter.md).`campus_id` | Campus identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [VolunteerProfile](../ministry/VolunteerProfile.md).`preferred_campus_id` | Campus identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |

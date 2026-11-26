@@ -17,7 +17,7 @@ Enforce the question's type and cardinality. The question belongs to the submitt
 | `ordinal` | integer | Required at applicable lifecycle step | [integer](../value-conventions.md#integer) |
 | `value` | typed | Required at applicable lifecycle step | [structured](../value-conventions.md#structured) |
 | `classification` | code | Required at applicable lifecycle step | [vocab](../value-conventions.md#vocab) |
-| `source_language` | optional tag | Optional under owner conditions | [structured](../value-conventions.md#structured) |
+| `source_language` | optional tag | Optional under owner conditions | [language](../value-conventions.md#language) |
 
 ## Input, storage and exchange cases
 
@@ -30,7 +30,7 @@ The target is [FormSubmission](../platform/FormSubmission.md). Resolve the ident
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | FormSubmission·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | FormSubmission·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | FormSubmission·MISSING | Queue the missing FormSubmission mapping or reject the command before linking. |
 | Wrong scope | FormSubmission·B01 | Do not attach another church’s FormSubmission without a supported exchange and local authority. |
 | Target rename | Rename FormSubmission·A01 after linking | The existing submission_id keeps the same identity and historic documents retain their original wording. |
@@ -43,7 +43,7 @@ The target is [FormQuestion](FormQuestion.md). Resolve the identifier in the app
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | FormQuestion·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | FormQuestion·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | FormQuestion·MISSING | Queue the missing FormQuestion mapping or reject the command before linking. |
 | Wrong scope | FormQuestion·B01 | Do not attach another church’s FormQuestion without a supported exchange and local authority. |
 | Target rename | Rename FormQuestion·A01 after linking | The existing question_id keeps the same identity and historic documents retain their original wording. |
@@ -90,15 +90,15 @@ Use versioned classification or status code for `FormAnswer.classification`. Che
 
 ### source_language
 
-Use typed value or bounded compound record for `FormAnswer.source_language`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use language or locale identifier for `FormAnswer.source_language`. Resolve the published language or locale without inferring a person’s nationality.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of source_language matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for source_language | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | en | Resolve the published language or locale without inferring a person’s nationality. |
+| Malformed or unmapped | unmapped locale display label | Keep the source value for review. |
+| Specific translation unavailable | specific translation missing at delivery time | Apply the declared fallback and identify which language is being displayed. |
+| User changes preferred language | approved letter after preferred-language change | Future communications use the effective preference; issued wording is preserved. |
+| Two regional variants exist | two permitted regional variants in catalogue | Apply the requested locale/version where available. |
 | Absent in intake | No source_language provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
 
 ## Acceptance evidence
