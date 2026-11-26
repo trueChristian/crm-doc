@@ -60,6 +60,8 @@ These are finite numerical acceptance cases for finance workflows. Each case fix
 
 ### Service Periods
 
+[How to read recognition cutoffs and lifetime projections](service-periods/README.md)
+
 - [Insurance coverage and nonleap February](service-periods/insurance-february.md)
 - [Purchased licence on a leap-year close](service-periods/licence-leap.md)
 - [Facility service contract at year end](service-periods/maintenance-year-end.md)
