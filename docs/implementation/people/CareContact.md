@@ -47,7 +47,7 @@ The target is [CareCase](CareCase.md). Resolve the identifier in the approved sc
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | CareCase·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | CareCase·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | CareCase·MISSING | Queue the missing CareCase mapping or reject the command before linking. |
 | Wrong scope | CareCase·B01 | Do not attach another church’s CareCase without a supported exchange and local authority. |
 | Target rename | Rename CareCase·A01 after linking | The existing case_id keeps the same identity and historic documents retain their original wording. |
@@ -60,7 +60,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing assigned_to keeps the same identity and historic documents retain their original wording. |
@@ -121,6 +121,7 @@ Declared alternatives in owner order: `planned`, `attempted`, `completed`, `canc
 ### location_ref
 
 Use scoped or external reference for `CareContact.location_ref`. Resolve against the permitted kind, owning namespace and purpose.
+Field access: enforce the declared protection on reads, search, previews, exports and audit evidence as well as the underlying resource value.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |

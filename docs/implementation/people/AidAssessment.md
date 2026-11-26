@@ -15,7 +15,7 @@ Retain decision-relevant facts only. Prior assistance and possible duplicates ar
 | `id` | ID | Assigned or projected by owner | [key](../value-conventions.md#key) |
 | `application_id` | → AidApplication | Required when the record reaches its applicable state | [relation](../value-conventions.md#relation) |
 | `assessor_id` | → UserAccount | Required when the record reaches its applicable state | [relation](../value-conventions.md#relation) |
-| `policy_version` | text | Required when the record reaches its applicable state | [text](../value-conventions.md#text) |
+| `policy_version` | text | Required when the record reaches its applicable state | [version](../value-conventions.md#version) |
 | `checked_at` | instant | Required when the record reaches its applicable state | [instant](../value-conventions.md#instant) |
 | `criteria_outcomes` | restricted record | Required when the record reaches its applicable state | [protected](../value-conventions.md#protected) |
 | `evidence_ref` | restricted ID? | Optional under owner conditions | [resource](../value-conventions.md#resource) |
@@ -47,7 +47,7 @@ The target is [AidApplication](AidApplication.md). Resolve the identifier in the
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | AidApplication·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | AidApplication·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | AidApplication·MISSING | Queue the missing AidApplication mapping or reject the command before linking. |
 | Wrong scope | AidApplication·B01 | Do not attach another church’s AidApplication without a supported exchange and local authority. |
 | Target rename | Rename AidApplication·A01 after linking | The existing application_id keeps the same identity and historic documents retain their original wording. |
@@ -60,7 +60,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing assessor_id keeps the same identity and historic documents retain their original wording. |
@@ -68,15 +68,15 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 
 ### policy_version
 
-Use human-readable text for `AidAssessment.policy_version`. Preserve the meaningful spelling, script and structure; derive separate search forms.
+Use revision number or opaque revision token for `AidAssessment.policy_version`. Compare under the declared revision scheme. Require the expected version for conflicting work.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | entered policy_version in the original script | Preserve the meaningful spelling, script and structure; derive separate search forms. |
-| Malformed or unmapped | invalid text encoding | Return a field-level validation issue without silently changing meaning. |
-| Accented and non-Latin characters | Zoë and ǂNū-khoen in the original script | Preserve and display their original spelling. |
-| Label changes after formal issue | approved edition before a spelling correction | Keep the authorized original rendering in the issued edition. |
-| Bidirectional or multiline input | mixed-direction or multiline entered text | Render in the field’s declared context and respect accessibility and disclosure rules. |
+| Admissible representation | the current revision returned by the owner | Compare under the declared revision scheme. Require the expected version for conflicting work. |
+| Malformed or unmapped | superseded version presented for a new approval | Reject or reopen review against the current contents. |
+| Two operators begin at revision seven | two edits both cite baseline 7 | Commit the first change once and re-evaluate the second; never overwrite an unreviewed difference. |
+| Re-read an already approved revision | re-open issued revision 4 after revision 6 | Return the frozen value and evidence for that edition. |
+| Replay of an earlier result | same business operation observed at two revisions | Correlate by the business operation identity; a newer version does not create a second effect. |
 | Incomplete record | No policy_version at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### checked_at
@@ -108,6 +108,7 @@ Use restricted value or protected content reference for `AidAssessment.criteria_
 ### evidence_ref
 
 Use scoped or external reference for `AidAssessment.evidence_ref`. Resolve against the permitted kind, owning namespace and purpose.
+Field access: enforce the declared protection on reads, search, previews, exports and audit evidence as well as the underlying resource value.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |

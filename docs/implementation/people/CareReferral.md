@@ -46,7 +46,7 @@ The target is [CareCase](CareCase.md). Resolve the identifier in the approved sc
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | CareCase·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | CareCase·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | CareCase·MISSING | Queue the missing CareCase mapping or reject the command before linking. |
 | Wrong scope | CareCase·B01 | Do not attach another church’s CareCase without a supported exchange and local authority. |
 | Target rename | Rename CareCase·A01 after linking | The existing case_id keeps the same identity and historic documents retain their original wording. |
@@ -85,7 +85,7 @@ The target is [CareDisclosure](CareDisclosure.md). Resolve the identifier in the
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | CareDisclosure·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | CareDisclosure·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | CareDisclosure·MISSING | Queue the missing CareDisclosure mapping or reject the command before linking. |
 | Wrong scope | CareDisclosure·B01 | Do not attach another church’s CareDisclosure without a supported exchange and local authority. |
 | Target rename | Rename CareDisclosure·A01 after linking | The existing disclosure_id keeps the same identity and historic documents retain their original wording. |

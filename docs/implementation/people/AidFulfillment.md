@@ -22,7 +22,7 @@ One durable execution key per installment. Finance owns payments and postings; s
 | `finance_reference` | ID? | Optional under owner conditions | [resource](../value-conventions.md#resource) |
 | `stock_issue_ref` | ID? | Optional under owner conditions | [resource](../value-conventions.md#resource) |
 | `voucher_ref` | restricted ID? | Optional under owner conditions | [resource](../value-conventions.md#resource) |
-| `idempotency_key` | text | Required when the record reaches its applicable state | [text](../value-conventions.md#text) |
+| `idempotency_key` | text | Required when the record reaches its applicable state | [operation](../value-conventions.md#operation) |
 | `requested_at` | instant | Required when the record reaches its applicable state | [instant](../value-conventions.md#instant) |
 | `delivered_at` | instant? | Optional under owner conditions | [instant](../value-conventions.md#instant) |
 | `acknowledged_at` | instant? | Optional under owner conditions | [instant](../value-conventions.md#instant) |
@@ -52,7 +52,7 @@ The target is [AidAward](AidAward.md). Resolve the identifier in the approved sc
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | AidAward·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | AidAward·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | AidAward·MISSING | Queue the missing AidAward mapping or reject the command before linking. |
 | Wrong scope | AidAward·B01 | Do not attach another church’s AidAward without a supported exchange and local authority. |
 | Target rename | Rename AidAward·A01 after linking | The existing award_id keeps the same identity and historic documents retain their original wording. |
@@ -152,6 +152,7 @@ Use scoped or external reference for `AidFulfillment.stock_issue_ref`. Resolve a
 ### voucher_ref
 
 Use scoped or external reference for `AidFulfillment.voucher_ref`. Resolve against the permitted kind, owning namespace and purpose.
+Field access: enforce the declared protection on reads, search, previews, exports and audit evidence as well as the underlying resource value.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
@@ -164,15 +165,15 @@ Use scoped or external reference for `AidFulfillment.voucher_ref`. Resolve again
 
 ### idempotency_key
 
-Use human-readable text for `AidFulfillment.idempotency_key`. Preserve the meaningful spelling, script and structure; derive separate search forms.
+Use operation identity for exactly-once business effects for `AidFulfillment.idempotency_key`. Bind the key to the original material inputs and outcome; retain it throughout the replay window.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | entered idempotency_key in the original script | Preserve the meaningful spelling, script and structure; derive separate search forms. |
-| Malformed or unmapped | invalid text encoding | Return a field-level validation issue without silently changing meaning. |
-| Accented and non-Latin characters | Zoë and ǂNū-khoen in the original script | Preserve and display their original spelling. |
-| Label changes after formal issue | approved edition before a spelling correction | Keep the authorized original rendering in the issued edition. |
-| Bidirectional or multiline input | mixed-direction or multiline entered text | Render in the field’s declared context and respect accessibility and disclosure rules. |
+| Admissible representation | KEY-007 with original inputs | Bind the key to the original material inputs and outcome; retain it throughout the replay window. |
+| Malformed or unmapped | KEY-007 with changed material inputs | Reject conflicting reuse and reconcile against the first accepted or in-flight operation. |
+| Duplicate after successful commit | two equivalent submissions using KEY-007 | Return the original business receipt with no second payment, membership change, booking or notice. |
+| Timeout before outcome is known | provider accepted work but acknowledgement delayed | Look up or reconcile the pending operation before issuing a replacement. |
+| A genuine correction has a new key | COR-008 points to original KEY-007 | Link the correction to the original effect and apply its ordinary authorization and reversal rules. |
 | Incomplete record | No idempotency_key at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### requested_at
