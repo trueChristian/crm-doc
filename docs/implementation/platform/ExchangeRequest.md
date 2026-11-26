@@ -13,8 +13,8 @@ A repeated mutation with the same key and content returns the original outcome. 
 | Field | Logical declaration | Presence at the applicable step | Validation family |
 | --- | --- | --- | --- |
 | `principal_ref` | ResourceRef | Required when the record reaches its applicable state | [resource](../value-conventions.md#resource) |
-| `operation_key` | code | Required when the record reaches its applicable state | [vocab](../value-conventions.md#vocab) |
-| `idempotency_key` | text | Required when the record reaches its applicable state | [text](../value-conventions.md#text) |
+| `operation_key` | code | Required when the record reaches its applicable state | [operation](../value-conventions.md#operation) |
+| `idempotency_key` | text | Required when the record reaches its applicable state | [operation](../value-conventions.md#operation) |
 | `normalized_digest` | text | Required when the record reaches its applicable state | [digest](../value-conventions.md#digest) |
 | `decision` | code | Required when the record reaches its applicable state | [vocab](../value-conventions.md#vocab) |
 | `completed_at` | instant? | Optional under owner conditions | [instant](../value-conventions.md#instant) |
@@ -39,28 +39,28 @@ Use scoped or external reference for `ExchangeRequest.principal_ref`. Resolve ag
 
 ### operation_key
 
-Use versioned classification or status code for `ExchangeRequest.operation_key`. Check the relevant vocabulary and permitted transition before applying.
+Use operation identity for exactly-once business effects for `ExchangeRequest.operation_key`. Bind the key to the original material inputs and outcome; retain it throughout the replay window.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | active operation_key code in the bound vocabulary | Check the relevant vocabulary and permitted transition before applying. |
-| Malformed or unmapped | unmapped operation_key code | Request mapping to an authorized code. |
-| Code retired before a new transaction | new operation after code retirement | Allow historic display; withhold new use unless policy permits. |
-| Same label in two code lists | same display name in two vocabularies | Use record type and field to locate the correct list. |
-| Bulk import requests a state transition | import requests the final approved state | Run ordinary transition guards and approval checks. |
+| Admissible representation | KEY-007 with original inputs | Bind the key to the original material inputs and outcome; retain it throughout the replay window. |
+| Malformed or unmapped | KEY-007 with changed material inputs | Reject conflicting reuse and reconcile against the first accepted or in-flight operation. |
+| Duplicate after successful commit | two equivalent submissions using KEY-007 | Return the original business receipt with no second payment, membership change, booking or notice. |
+| Timeout before outcome is known | provider accepted work but acknowledgement delayed | Look up or reconcile the pending operation before issuing a replacement. |
+| A genuine correction has a new key | COR-008 points to original KEY-007 | Link the correction to the original effect and apply its ordinary authorization and reversal rules. |
 | Incomplete record | No operation_key at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### idempotency_key
 
-Use human-readable text for `ExchangeRequest.idempotency_key`. Preserve the meaningful spelling, script and structure; derive separate search forms.
+Use operation identity for exactly-once business effects for `ExchangeRequest.idempotency_key`. Bind the key to the original material inputs and outcome; retain it throughout the replay window.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | entered idempotency_key in the original script | Preserve the meaningful spelling, script and structure; derive separate search forms. |
-| Malformed or unmapped | invalid text encoding | Return a field-level validation issue without silently changing meaning. |
-| Accented and non-Latin characters | Zoë and ǂNū-khoen in the original script | Preserve and display their original spelling. |
-| Label changes after formal issue | approved edition before a spelling correction | Keep the authorized original rendering in the issued edition. |
-| Bidirectional or multiline input | mixed-direction or multiline entered text | Render in the field’s declared context and respect accessibility and disclosure rules. |
+| Admissible representation | KEY-007 with original inputs | Bind the key to the original material inputs and outcome; retain it throughout the replay window. |
+| Malformed or unmapped | KEY-007 with changed material inputs | Reject conflicting reuse and reconcile against the first accepted or in-flight operation. |
+| Duplicate after successful commit | two equivalent submissions using KEY-007 | Return the original business receipt with no second payment, membership change, booking or notice. |
+| Timeout before outcome is known | provider accepted work but acknowledgement delayed | Look up or reconcile the pending operation before issuing a replacement. |
+| A genuine correction has a new key | COR-008 points to original KEY-007 | Link the correction to the original effect and apply its ordinary authorization and reversal rules. |
 | Incomplete record | No idempotency_key at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### normalized_digest

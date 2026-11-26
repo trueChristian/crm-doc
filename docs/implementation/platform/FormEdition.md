@@ -86,7 +86,7 @@ The target is [DataPurpose](DataPurpose.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | DataPurpose·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | DataPurpose·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | DataPurpose·MISSING | Queue the missing DataPurpose mapping or reject the command before linking. |
 | Wrong scope | DataPurpose·B01 | Do not attach another church’s DataPurpose without a supported exchange and local authority. |
 | Target rename | Rename DataPurpose·A01 after linking | The existing intended_purpose keeps the same identity and historic documents retain their original wording. |

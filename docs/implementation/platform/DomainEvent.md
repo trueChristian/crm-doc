@@ -48,7 +48,7 @@ The target is [InterfaceEdition](InterfaceEdition.md). Resolve the identifier in
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | InterfaceEdition·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | InterfaceEdition·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | InterfaceEdition·MISSING | Queue the missing InterfaceEdition mapping or reject the command before linking. |
 | Wrong scope | InterfaceEdition·B01 | Do not attach another church’s InterfaceEdition without a supported exchange and local authority. |
 | Target rename | Rename InterfaceEdition·A01 after linking | The existing contract_id keeps the same identity and historic documents retain their original wording. |
