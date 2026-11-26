@@ -15,8 +15,8 @@ Cumulative releases cannot exceed eligible restricted resources. Same event cann
 | `restriction_id` | → FundRestriction | Required when the record reaches its applicable state | [relation](../value-conventions.md#relation) |
 | `released_on` | date | Required when the record reaches its applicable state | [date](../value-conventions.md#date) |
 | `amount` | money | Required when the record reaches its applicable state | [money](../value-conventions.md#money) |
-| `qualifying_event` | source | Required when the record reaches its applicable state | [structured](../value-conventions.md#structured) |
-| `release_evidence` | Owner-scoped business value; see the record rule | Required when the record reaches its applicable state | [structured](../value-conventions.md#structured) |
+| `qualifying_event` | source | Required when the record reaches its applicable state | [resource](../value-conventions.md#resource) |
+| `release_evidence` | Owner-scoped business value; see the record rule | Required when the record reaches its applicable state | [resource](../value-conventions.md#resource) |
 | `authorized_by_ref` | Owner-scoped business value; see the record rule | Required when the record reaches its applicable state | [resource](../value-conventions.md#resource) |
 | `posting_ref` | ? | Optional under owner conditions | [resource](../value-conventions.md#resource) |
 | `reversal_of` | → RestrictionRelease? | Optional under owner conditions | [relation](../value-conventions.md#relation) |
@@ -32,7 +32,7 @@ The target is [FundRestriction](FundRestriction.md). Resolve the identifier in t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | FundRestriction·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | FundRestriction·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | FundRestriction·MISSING | Queue the missing FundRestriction mapping or reject the command before linking. |
 | Wrong scope | FundRestriction·B01 | Do not attach another church’s FundRestriction without a supported exchange and local authority. |
 | Target rename | Rename FundRestriction·A01 after linking | The existing restriction_id keeps the same identity and historic documents retain their original wording. |
@@ -66,28 +66,28 @@ Use exact monetary amount with currency for `RestrictionRelease.amount`. Preserv
 
 ### qualifying_event
 
-Use typed value or bounded compound record for `RestrictionRelease.qualifying_event`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use scoped or external reference for `RestrictionRelease.qualifying_event`. Resolve against the permitted kind, owning namespace and purpose.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of qualifying_event matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for qualifying_event | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | verified qualifying_event in the owner namespace | Resolve against the permitted kind, owning namespace and purpose. |
+| Malformed or unmapped | unmapped qualifying_event | Request clarification or quarantine the mapping. |
+| Same visible code from two sources | issuer A:007 and issuer B:007 | Retain distinct namespace/key pairs. |
+| Referenced evidence is restricted | restricted attachment behind an otherwise visible request | Show a minimal permitted result and check document access independently. |
+| Duplicate delivery of the same mapped reference | same namespace, key and accepted mapping twice | Resolve the same destination record once. |
 | Incomplete record | No qualifying_event at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### release_evidence
 
-Use typed value or bounded compound record for `RestrictionRelease.release_evidence`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use scoped or external reference for `RestrictionRelease.release_evidence`. Resolve against the permitted kind, owning namespace and purpose.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of release_evidence matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for release_evidence | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | verified release_evidence in the owner namespace | Resolve against the permitted kind, owning namespace and purpose. |
+| Malformed or unmapped | unmapped release_evidence | Request clarification or quarantine the mapping. |
+| Same visible code from two sources | issuer A:007 and issuer B:007 | Retain distinct namespace/key pairs. |
+| Referenced evidence is restricted | restricted attachment behind an otherwise visible request | Show a minimal permitted result and check document access independently. |
+| Duplicate delivery of the same mapped reference | same namespace, key and accepted mapping twice | Resolve the same destination record once. |
 | Incomplete record | No release_evidence at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### authorized_by_ref
@@ -123,7 +123,7 @@ The target is [RestrictionRelease](RestrictionRelease.md). Resolve the identifie
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | RestrictionRelease·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | RestrictionRelease·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | RestrictionRelease·MISSING | Queue the missing RestrictionRelease mapping or reject the command before linking. |
 | Wrong scope | RestrictionRelease·B01 | Do not attach another church’s RestrictionRelease without a supported exchange and local authority. |
 | Target rename | Rename RestrictionRelease·A01 after linking | The existing reversal_of keeps the same identity and historic documents retain their original wording. |

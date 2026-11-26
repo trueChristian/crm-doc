@@ -31,7 +31,7 @@ The target is [InventoryValuationEvent](InventoryValuationEvent.md). Resolve the
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | InventoryValuationEvent·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | InventoryValuationEvent·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | InventoryValuationEvent·MISSING | Queue the missing InventoryValuationEvent mapping or reject the command before linking. |
 | Wrong scope | InventoryValuationEvent·B01 | Do not attach another church’s InventoryValuationEvent without a supported exchange and local authority. |
 | Target rename | Rename InventoryValuationEvent·A01 after linking | The existing incoming_id keeps the same identity and historic documents retain their original wording. |

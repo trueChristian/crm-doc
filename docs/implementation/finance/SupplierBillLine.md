@@ -36,7 +36,7 @@ The target is [SupplierBill](SupplierBill.md). Resolve the identifier in the app
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | SupplierBill·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | SupplierBill·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | SupplierBill·MISSING | Queue the missing SupplierBill mapping or reject the command before linking. |
 | Wrong scope | SupplierBill·B01 | Do not attach another church’s SupplierBill without a supported exchange and local authority. |
 | Target rename | Rename SupplierBill·A01 after linking | The existing bill_id keeps the same identity and historic documents retain their original wording. |
@@ -49,7 +49,7 @@ The target is [PurchaseOrderLine](PurchaseOrderLine.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | PurchaseOrderLine·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | PurchaseOrderLine·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | PurchaseOrderLine·MISSING | Queue the missing PurchaseOrderLine mapping or reject the command before linking. |
 | Wrong scope | PurchaseOrderLine·B01 | Do not attach another church’s PurchaseOrderLine without a supported exchange and local authority. |
 | Target rename | Rename PurchaseOrderLine·A01 after linking | The existing order_line_id keeps the same identity and historic documents retain their original wording. |
@@ -62,7 +62,7 @@ The target is [GoodsReceiptLine](GoodsReceiptLine.md). Resolve the identifier in
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | GoodsReceiptLine·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | GoodsReceiptLine·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | GoodsReceiptLine·MISSING | Queue the missing GoodsReceiptLine mapping or reject the command before linking. |
 | Wrong scope | GoodsReceiptLine·B01 | Do not attach another church’s GoodsReceiptLine without a supported exchange and local authority. |
 | Target rename | Rename GoodsReceiptLine·A01 after linking | The existing receipt_line_id keeps the same identity and historic documents retain their original wording. |
@@ -140,7 +140,7 @@ The target is [Fund](Fund.md). Resolve the identifier in the approved scope befo
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Fund·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Fund·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Fund·MISSING | Queue the missing Fund mapping or reject the command before linking. |
 | Wrong scope | Fund·B01 | Do not attach another church’s Fund without a supported exchange and local authority. |
 | Target rename | Rename Fund·A01 after linking | The existing fund_id keeps the same identity and historic documents retain their original wording. |
@@ -153,7 +153,7 @@ The target is [LedgerAccount](LedgerAccount.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | LedgerAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | LedgerAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | LedgerAccount·MISSING | Queue the missing LedgerAccount mapping or reject the command before linking. |
 | Wrong scope | LedgerAccount·B01 | Do not attach another church’s LedgerAccount without a supported exchange and local authority. |
 | Target rename | Rename LedgerAccount·A01 after linking | The existing account_id keeps the same identity and historic documents retain their original wording. |

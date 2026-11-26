@@ -33,7 +33,7 @@ The target is [GivingCampaign](GivingCampaign.md). Resolve the identifier in the
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | GivingCampaign·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | GivingCampaign·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | GivingCampaign·MISSING | Queue the missing GivingCampaign mapping or reject the command before linking. |
 | Wrong scope | GivingCampaign·B01 | Do not attach another church’s GivingCampaign without a supported exchange and local authority. |
 | Target rename | Rename GivingCampaign·A01 after linking | The existing campaign_id keeps the same identity and historic documents retain their original wording. |
@@ -145,4 +145,4 @@ Use whole-number measure for `SolicitationAppeal.response_window_days`. Preserve
 
 ## Acceptance evidence
 
-Record the owner revision, evaluated values, actor and scope, result, effective time, and any downstream references needed to reproduce a disputed decision. Release only the evidence permitted to the reader. The originating domain page defines the business action and precise historical or transactional effect.
+Use the minimum evidence allowed by the selected anonymous, pseudonymous or identified mode. A permitted operator may be accountable for receiving or reviewing work without collecting the identity of a protected subject. Keep safe-channel, identity and case evidence apart from releasable totals and narratives; apply the original permissions to the verification evidence.

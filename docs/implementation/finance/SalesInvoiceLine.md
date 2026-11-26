@@ -23,7 +23,7 @@ Net after discounts plus tax reconciles to total. Model delivery, exempt items, 
 | `supplied_on` | date? | Optional under owner conditions | [date](../value-conventions.md#date) |
 | `account_id` | → LedgerAccount | Required when the record reaches its applicable state | [relation](../value-conventions.md#relation) |
 | `fund_id` | → Fund | Required when the record reaches its applicable state | [relation](../value-conventions.md#relation) |
-| `tax_component_refs` | → FinanceAppliedTaxComponent (zero or more) | Required when the record reaches its applicable state | [relation](../value-conventions.md#relation) |
+| `tax_component_refs` | → FinanceAppliedTaxComponent (zero or more) | Required when the record reaches its applicable state | [references](../value-conventions.md#references) |
 | `obligation_ref` | ? | Optional under owner conditions | [resource](../value-conventions.md#resource) |
 
 ## Input, storage and exchange cases
@@ -37,7 +37,7 @@ The target is [SalesInvoice](SalesInvoice.md). Resolve the identifier in the app
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | SalesInvoice·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | SalesInvoice·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | SalesInvoice·MISSING | Queue the missing SalesInvoice mapping or reject the command before linking. |
 | Wrong scope | SalesInvoice·B01 | Do not attach another church’s SalesInvoice without a supported exchange and local authority. |
 | Target rename | Rename SalesInvoice·A01 after linking | The existing invoice_id keeps the same identity and historic documents retain their original wording. |
@@ -50,7 +50,7 @@ The target is [OrderLine](../commerce/OrderLine.md). Resolve the identifier in t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | OrderLine·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | OrderLine·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | OrderLine·MISSING | Queue the missing OrderLine mapping or reject the command before linking. |
 | Wrong scope | OrderLine·B01 | Do not attach another church’s OrderLine without a supported exchange and local authority. |
 | Target rename | Rename OrderLine·A01 after linking | The existing order_line_ref keeps the same identity and historic documents retain their original wording. |
@@ -154,7 +154,7 @@ The target is [LedgerAccount](LedgerAccount.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | LedgerAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | LedgerAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | LedgerAccount·MISSING | Queue the missing LedgerAccount mapping or reject the command before linking. |
 | Wrong scope | LedgerAccount·B01 | Do not attach another church’s LedgerAccount without a supported exchange and local authority. |
 | Target rename | Rename LedgerAccount·A01 after linking | The existing account_id keeps the same identity and historic documents retain their original wording. |
@@ -167,7 +167,7 @@ The target is [Fund](Fund.md). Resolve the identifier in the approved scope befo
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Fund·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Fund·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Fund·MISSING | Queue the missing Fund mapping or reject the command before linking. |
 | Wrong scope | Fund·B01 | Do not attach another church’s Fund without a supported exchange and local authority. |
 | Target rename | Rename Fund·A01 after linking | The existing fund_id keeps the same identity and historic documents retain their original wording. |
@@ -179,12 +179,12 @@ The target is [FinanceAppliedTaxComponent](FinanceAppliedTaxComponent.md). Resol
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | FinanceAppliedTaxComponent·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | FinanceAppliedTaxComponent·MISSING | Return a type mismatch without changing the link. |
-| Unresolved target | FinanceAppliedTaxComponent·MISSING | Queue the missing FinanceAppliedTaxComponent mapping or reject the command before linking. |
-| Wrong scope | FinanceAppliedTaxComponent·B01 | Do not attach another church’s FinanceAppliedTaxComponent without a supported exchange and local authority. |
-| Target rename | Rename FinanceAppliedTaxComponent·A01 after linking | The existing tax_component_refs keeps the same identity and historic documents retain their original wording. |
-| Incomplete record | No tax_component_refs at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
+| Admissible representation | FinanceAppliedTaxComponent·A01, FinanceAppliedTaxComponent·A02 | Resolve every element separately by type, identity and scope; preserve order only when the source defines it. |
+| Malformed or unmapped | collection containing FinanceAppliedTaxComponent·MISSING | Isolate the invalid relationship or reject the atomic collection edit as the owning operation requires. |
+| Duplicate member | A01, A01 and A02 | For a set, link the target once; preserve explicitly meaningful order or role/quantity on a child record. |
+| One target later becomes inaccessible | one of two targets loses disclosure authority | Re-evaluate that element and prevent disclosure via counts or joins outside authorized scope. |
+| Reissue an old manifest | compare earlier and current permitted membership | Read the original target edition or frozen membership according to the owner. |
+| Absent in intake | No tax_component_refs provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
 
 ### obligation_ref
 

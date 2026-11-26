@@ -15,7 +15,7 @@ One document number per sequence and entity. Official copies preserve original d
 | `book_id` | → FinanceBook | Required when the record reaches its applicable state | [relation](../value-conventions.md#relation) |
 | `customer_id` | → CustomerAccount | Required when the record reaches its applicable state | [relation](../value-conventions.md#relation) |
 | `number` | text | Required when the record reaches its applicable state | [text](../value-conventions.md#text) |
-| `order_source` | ? | Optional under owner conditions | [structured](../value-conventions.md#structured) |
+| `order_source` | ? | Optional under owner conditions | [resource](../value-conventions.md#resource) |
 | `issued_on` | date | Required when the record reaches its applicable state | [date](../value-conventions.md#date) |
 | `due_on` | date | Required when the record reaches its applicable state | [date](../value-conventions.md#date) |
 | `service_period_start` | date? | Optional under owner conditions | [date](../value-conventions.md#date) |
@@ -35,7 +35,7 @@ The target is [FinanceBook](FinanceBook.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | FinanceBook·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | FinanceBook·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | FinanceBook·MISSING | Queue the missing FinanceBook mapping or reject the command before linking. |
 | Wrong scope | FinanceBook·B01 | Do not attach another church’s FinanceBook without a supported exchange and local authority. |
 | Target rename | Rename FinanceBook·A01 after linking | The existing book_id keeps the same identity and historic documents retain their original wording. |
@@ -48,7 +48,7 @@ The target is [CustomerAccount](CustomerAccount.md). Resolve the identifier in t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | CustomerAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | CustomerAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | CustomerAccount·MISSING | Queue the missing CustomerAccount mapping or reject the command before linking. |
 | Wrong scope | CustomerAccount·B01 | Do not attach another church’s CustomerAccount without a supported exchange and local authority. |
 | Target rename | Rename CustomerAccount·A01 after linking | The existing customer_id keeps the same identity and historic documents retain their original wording. |
@@ -69,15 +69,15 @@ Use human-readable text for `SalesInvoice.number`. Preserve the meaningful spell
 
 ### order_source
 
-Use typed value or bounded compound record for `SalesInvoice.order_source`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use scoped or external reference for `SalesInvoice.order_source`. Resolve against the permitted kind, owning namespace and purpose.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of order_source matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for order_source | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | verified order_source in the owner namespace | Resolve against the permitted kind, owning namespace and purpose. |
+| Malformed or unmapped | unmapped order_source | Request clarification or quarantine the mapping. |
+| Same visible code from two sources | issuer A:007 and issuer B:007 | Retain distinct namespace/key pairs. |
+| Referenced evidence is restricted | restricted attachment behind an otherwise visible request | Show a minimal permitted result and check document access independently. |
+| Duplicate delivery of the same mapped reference | same namespace, key and accepted mapping twice | Resolve the same destination record once. |
 | Absent in intake | No order_source provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
 
 ### issued_on

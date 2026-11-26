@@ -33,7 +33,7 @@ The target is [Fund](Fund.md). Resolve the identifier in the approved scope befo
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Fund·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Fund·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Fund·MISSING | Queue the missing Fund mapping or reject the command before linking. |
 | Wrong scope | Fund·B01 | Do not attach another church’s Fund without a supported exchange and local authority. |
 | Target rename | Rename Fund·A01 after linking | The existing fund_id keeps the same identity and historic documents retain their original wording. |
@@ -46,7 +46,7 @@ The target is [FiscalPeriod](FiscalPeriod.md). Resolve the identifier in the app
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | FiscalPeriod·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | FiscalPeriod·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | FiscalPeriod·MISSING | Queue the missing FiscalPeriod mapping or reject the command before linking. |
 | Wrong scope | FiscalPeriod·B01 | Do not attach another church’s FiscalPeriod without a supported exchange and local authority. |
 | Target rename | Rename FiscalPeriod·A01 after linking | The existing period_id keeps the same identity and historic documents retain their original wording. |
