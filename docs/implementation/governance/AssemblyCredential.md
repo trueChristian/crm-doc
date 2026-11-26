@@ -16,7 +16,7 @@ Respect the sending body's quota and replacements. Cross-organization assemblies
 | `sending_body_id` | GoverningBody ref | Required when the record reaches its applicable state | [relation](../value-conventions.md#relation) |
 | `delegate_person_id` | Person ref | Required when the record reaches its applicable state | [relation](../value-conventions.md#relation) |
 | `substitute_for_id` | AssemblyCredential ref? | Optional under owner conditions | [relation](../value-conventions.md#relation) |
-| `appointment_evidence` | text | Required when the record reaches its applicable state | [text](../value-conventions.md#text) |
+| `appointment_evidence` | text | Required when the record reaches its applicable state | [resource](../value-conventions.md#resource) |
 | `class` | voting/observer/adviser | Required when the record reaches its applicable state | [enum](../value-conventions.md#enum) |
 | `capacity_basis` | text | Required when the record reaches its applicable state | [text](../value-conventions.md#text) |
 | `certified_by` | Person ref? | Optional under owner conditions | [relation](../value-conventions.md#relation) |
@@ -35,7 +35,7 @@ The target is [GovernanceMeeting](GovernanceMeeting.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | GovernanceMeeting·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | GovernanceMeeting·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | GovernanceMeeting·MISSING | Queue the missing GovernanceMeeting mapping or reject the command before linking. |
 | Wrong scope | GovernanceMeeting·B01 | Do not attach another church’s GovernanceMeeting without a supported exchange and local authority. |
 | Target rename | Rename GovernanceMeeting·A01 after linking | The existing meeting_id keeps the same identity and historic documents retain their original wording. |
@@ -48,7 +48,7 @@ The target is [GoverningBody](GoverningBody.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | GoverningBody·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | GoverningBody·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | GoverningBody·MISSING | Queue the missing GoverningBody mapping or reject the command before linking. |
 | Wrong scope | GoverningBody·B01 | Do not attach another church’s GoverningBody without a supported exchange and local authority. |
 | Target rename | Rename GoverningBody·A01 after linking | The existing sending_body_id keeps the same identity and historic documents retain their original wording. |
@@ -61,7 +61,7 @@ The target is [Person](../people/Person.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Person·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Person·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Person·MISSING | Queue the missing Person mapping or reject the command before linking. |
 | Wrong scope | Person·B01 | Do not attach another church’s Person without a supported exchange and local authority. |
 | Target rename | Rename Person·A01 after linking | The existing delegate_person_id keeps the same identity and historic documents retain their original wording. |
@@ -74,7 +74,7 @@ The target is [AssemblyCredential](AssemblyCredential.md). Resolve the identifie
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | AssemblyCredential·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | AssemblyCredential·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | AssemblyCredential·MISSING | Queue the missing AssemblyCredential mapping or reject the command before linking. |
 | Wrong scope | AssemblyCredential·B01 | Do not attach another church’s AssemblyCredential without a supported exchange and local authority. |
 | Target rename | Rename AssemblyCredential·A01 after linking | The existing substitute_for_id keeps the same identity and historic documents retain their original wording. |
@@ -82,15 +82,15 @@ The target is [AssemblyCredential](AssemblyCredential.md). Resolve the identifie
 
 ### appointment_evidence
 
-Use human-readable text for `AssemblyCredential.appointment_evidence`. Preserve the meaningful spelling, script and structure; derive separate search forms.
+Use scoped or external reference for `AssemblyCredential.appointment_evidence`. Resolve against the permitted kind, owning namespace and purpose.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | entered appointment_evidence in the original script | Preserve the meaningful spelling, script and structure; derive separate search forms. |
-| Malformed or unmapped | invalid text encoding | Return a field-level validation issue without silently changing meaning. |
-| Accented and non-Latin characters | Zoë and ǂNū-khoen in the original script | Preserve and display their original spelling. |
-| Label changes after formal issue | approved edition before a spelling correction | Keep the authorized original rendering in the issued edition. |
-| Bidirectional or multiline input | mixed-direction or multiline entered text | Render in the field’s declared context and respect accessibility and disclosure rules. |
+| Admissible representation | verified appointment_evidence in the owner namespace | Resolve against the permitted kind, owning namespace and purpose. |
+| Malformed or unmapped | unmapped appointment_evidence | Request clarification or quarantine the mapping. |
+| Same visible code from two sources | issuer A:007 and issuer B:007 | Retain distinct namespace/key pairs. |
+| Referenced evidence is restricted | restricted attachment behind an otherwise visible request | Show a minimal permitted result and check document access independently. |
+| Duplicate delivery of the same mapped reference | same namespace, key and accepted mapping twice | Resolve the same destination record once. |
 | Incomplete record | No appointment_evidence at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### class
@@ -126,7 +126,7 @@ The target is [Person](../people/Person.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Person·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Person·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Person·MISSING | Queue the missing Person mapping or reject the command before linking. |
 | Wrong scope | Person·B01 | Do not attach another church’s Person without a supported exchange and local authority. |
 | Target rename | Rename Person·A01 after linking | The existing certified_by keeps the same identity and historic documents retain their original wording. |
@@ -165,7 +165,7 @@ The target is [VotingRollEntry](VotingRollEntry.md). Resolve the identifier in t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | VotingRollEntry·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | VotingRollEntry·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | VotingRollEntry·MISSING | Queue the missing VotingRollEntry mapping or reject the command before linking. |
 | Wrong scope | VotingRollEntry·B01 | Do not attach another church’s VotingRollEntry without a supported exchange and local authority. |
 | Target rename | Rename VotingRollEntry·A01 after linking | The existing roll_entry_id keeps the same identity and historic documents retain their original wording. |

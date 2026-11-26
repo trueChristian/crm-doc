@@ -35,7 +35,7 @@ The target is [GovernanceCycle](GovernanceCycle.md). Resolve the identifier in t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | GovernanceCycle·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | GovernanceCycle·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | GovernanceCycle·MISSING | Queue the missing GovernanceCycle mapping or reject the command before linking. |
 | Wrong scope | GovernanceCycle·B01 | Do not attach another church’s GovernanceCycle without a supported exchange and local authority. |
 | Target rename | Rename GovernanceCycle·A01 after linking | The existing cycle_id keeps the same identity and historic documents retain their original wording. |
@@ -74,7 +74,7 @@ The target is [OfficeTerm](OfficeTerm.md). Resolve the identifier in the approve
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | OfficeTerm·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | OfficeTerm·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | OfficeTerm·MISSING | Queue the missing OfficeTerm mapping or reject the command before linking. |
 | Wrong scope | OfficeTerm·B01 | Do not attach another church’s OfficeTerm without a supported exchange and local authority. |
 | Target rename | Rename OfficeTerm·A01 after linking | The existing owner_term_id keeps the same identity and historic documents retain their original wording. |
@@ -113,7 +113,7 @@ The target is [ReturnInstance](../administration/ReturnInstance.md). Resolve the
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ReturnInstance·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ReturnInstance·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ReturnInstance·MISSING | Queue the missing ReturnInstance mapping or reject the command before linking. |
 | Wrong scope | ReturnInstance·B01 | Do not attach another church’s ReturnInstance without a supported exchange and local authority. |
 | Target rename | Rename ReturnInstance·A01 after linking | The existing certified_return_id keeps the same identity and historic documents retain their original wording. |
@@ -165,7 +165,7 @@ The target is [GovernanceAttachment](GovernanceAttachment.md). Resolve the ident
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | GovernanceAttachment·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | GovernanceAttachment·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | GovernanceAttachment·MISSING | Queue the missing GovernanceAttachment mapping or reject the command before linking. |
 | Wrong scope | GovernanceAttachment·B01 | Do not attach another church’s GovernanceAttachment without a supported exchange and local authority. |
 | Target rename | Rename GovernanceAttachment·A01 after linking | The existing meeting_attachment_id keeps the same identity and historic documents retain their original wording. |

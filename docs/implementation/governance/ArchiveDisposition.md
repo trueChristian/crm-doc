@@ -35,7 +35,7 @@ The target is [DisposalDecision](../platform/DisposalDecision.md). Resolve the i
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | DisposalDecision·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | DisposalDecision·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | DisposalDecision·MISSING | Queue the missing DisposalDecision mapping or reject the command before linking. |
 | Wrong scope | DisposalDecision·B01 | Do not attach another church’s DisposalDecision without a supported exchange and local authority. |
 | Target rename | Rename DisposalDecision·A01 after linking | The existing disposal_decision_id keeps the same identity and historic documents retain their original wording. |
@@ -48,7 +48,7 @@ The target is [CustodyEvent](../administration/CustodyEvent.md). Resolve the ide
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | CustodyEvent·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | CustodyEvent·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | CustodyEvent·MISSING | Queue the missing CustodyEvent mapping or reject the command before linking. |
 | Wrong scope | CustodyEvent·B01 | Do not attach another church’s CustodyEvent without a supported exchange and local authority. |
 | Target rename | Rename CustodyEvent·A01 after linking | The existing custody_event_id keeps the same identity and historic documents retain their original wording. |
@@ -61,7 +61,7 @@ The target is [MinuteBook](MinuteBook.md). Resolve the identifier in the approve
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | MinuteBook·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | MinuteBook·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | MinuteBook·MISSING | Queue the missing MinuteBook mapping or reject the command before linking. |
 | Wrong scope | MinuteBook·B01 | Do not attach another church’s MinuteBook without a supported exchange and local authority. |
 | Target rename | Rename MinuteBook·A01 after linking | The existing book_id keeps the same identity and historic documents retain their original wording. |
@@ -139,7 +139,7 @@ The target is [Person](../people/Person.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Person·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Person·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Person·MISSING | Queue the missing Person mapping or reject the command before linking. |
 | Wrong scope | Person·B01 | Do not attach another church’s Person without a supported exchange and local authority. |
 | Target rename | Rename Person·A01 after linking | The existing approved_by keeps the same identity and historic documents retain their original wording. |

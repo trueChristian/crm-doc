@@ -32,7 +32,7 @@ The target is [DecisionRound](DecisionRound.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | DecisionRound·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | DecisionRound·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | DecisionRound·MISSING | Queue the missing DecisionRound mapping or reject the command before linking. |
 | Wrong scope | DecisionRound·B01 | Do not attach another church’s DecisionRound without a supported exchange and local authority. |
 | Target rename | Rename DecisionRound·A01 after linking | The existing round_id keeps the same identity and historic documents retain their original wording. |
@@ -97,7 +97,7 @@ The target is [Person](../people/Person.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Person·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Person·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Person·MISSING | Queue the missing Person mapping or reject the command before linking. |
 | Wrong scope | Person·B01 | Do not attach another church’s Person without a supported exchange and local authority. |
 | Target rename | Rename Person·A01 after linking | The existing deciding_person_id keeps the same identity and historic documents retain their original wording. |
@@ -123,7 +123,7 @@ The target is [DecisionRound](DecisionRound.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | DecisionRound·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | DecisionRound·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | DecisionRound·MISSING | Queue the missing DecisionRound mapping or reject the command before linking. |
 | Wrong scope | DecisionRound·B01 | Do not attach another church’s DecisionRound without a supported exchange and local authority. |
 | Target rename | Rename DecisionRound·A01 after linking | The existing replacement_round_id keeps the same identity and historic documents retain their original wording. |

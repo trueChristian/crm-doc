@@ -4,7 +4,7 @@
 
 ## Record invariant
 
-Identity, audit fields, ownership and effective-date notation follow the [shared record envelope](../../foundation/record-conventions.md). A business key or parent-child uniqueness rule below remains enforceable even when an implementation also assigns an opaque identifier.
+The secrecy requirements here override ordinary actor, timestamp and correlation capture. Administrative proof of voting entitlement stays separate from anonymous selections.
 
 No person, entitlement, device, entry sequence, fine-grained casting time, signature or delivery trace. Only use weight classes when they preserve secrecy; otherwise choose another rule-approved process.
 
@@ -29,7 +29,7 @@ The target is [DecisionRound](DecisionRound.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | DecisionRound·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | DecisionRound·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | DecisionRound·MISSING | Queue the missing DecisionRound mapping or reject the command before linking. |
 | Wrong scope | DecisionRound·B01 | Do not attach another church’s DecisionRound without a supported exchange and local authority. |
 | Target rename | Rename DecisionRound·A01 after linking | The existing round_id keeps the same identity and historic documents retain their original wording. |
@@ -89,4 +89,4 @@ Declared alternatives in owner order: `valid`, `blank`, `spoilt`, `challenged`. 
 
 ## Acceptance evidence
 
-Record the owner revision, evaluated values, actor and scope, result, effective time, and any downstream references needed to reproduce a disputed decision. Release only the evidence permitted to the reader. The originating domain page defines the business action and precise historical or transactional effect.
+Retain only permitted round, safe batch, selection, safe weight class and validity evidence. Reconcile aggregate entitlements issued, anonymous ballots received and the certified tally independently. Never record a voter identity, correlation key to that voter, device, fine-grained casting time or arrival sequence together with a ballot. A batch or weight class which would identify a voter must not be released.

@@ -13,7 +13,7 @@ Prevent overlapping effective editions for the same population and policy. Ackno
 | Field | Logical declaration | Presence at the applicable step | Validation family |
 | --- | --- | --- | --- |
 | `policy_id` | GovernancePolicy ref | Required when the record reaches its applicable state | [relation](../value-conventions.md#relation) |
-| `edition` | text | Required when the record reaches its applicable state | [text](../value-conventions.md#text) |
+| `edition` | text | Required when the record reaches its applicable state | [version](../value-conventions.md#version) |
 | `text_version_ref` | text | Required when the record reaches its applicable state | [resource](../value-conventions.md#resource) |
 | `digest` | text | Required when the record reaches its applicable state | [digest](../value-conventions.md#digest) |
 | `authorizing_resolution_id` | Resolution ref? | Optional under owner conditions | [relation](../value-conventions.md#relation) |
@@ -35,7 +35,7 @@ The target is [GovernancePolicy](GovernancePolicy.md). Resolve the identifier in
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | GovernancePolicy·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | GovernancePolicy·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | GovernancePolicy·MISSING | Queue the missing GovernancePolicy mapping or reject the command before linking. |
 | Wrong scope | GovernancePolicy·B01 | Do not attach another church’s GovernancePolicy without a supported exchange and local authority. |
 | Target rename | Rename GovernancePolicy·A01 after linking | The existing policy_id keeps the same identity and historic documents retain their original wording. |
@@ -43,15 +43,15 @@ The target is [GovernancePolicy](GovernancePolicy.md). Resolve the identifier in
 
 ### edition
 
-Use human-readable text for `GovernancePolicyEdition.edition`. Preserve the meaningful spelling, script and structure; derive separate search forms.
+Use revision number or opaque revision token for `GovernancePolicyEdition.edition`. Compare under the declared revision scheme. Require the expected version for conflicting work.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | entered edition in the original script | Preserve the meaningful spelling, script and structure; derive separate search forms. |
-| Malformed or unmapped | invalid text encoding | Return a field-level validation issue without silently changing meaning. |
-| Accented and non-Latin characters | Zoë and ǂNū-khoen in the original script | Preserve and display their original spelling. |
-| Label changes after formal issue | approved edition before a spelling correction | Keep the authorized original rendering in the issued edition. |
-| Bidirectional or multiline input | mixed-direction or multiline entered text | Render in the field’s declared context and respect accessibility and disclosure rules. |
+| Admissible representation | the current revision returned by the owner | Compare under the declared revision scheme. Require the expected version for conflicting work. |
+| Malformed or unmapped | superseded version presented for a new approval | Reject or reopen review against the current contents. |
+| Two operators begin at revision seven | two edits both cite baseline 7 | Commit the first change once and re-evaluate the second; never overwrite an unreviewed difference. |
+| Re-read an already approved revision | re-open issued revision 4 after revision 6 | Return the frozen value and evidence for that edition. |
+| Replay of an earlier result | same business operation observed at two revisions | Correlate by the business operation identity; a newer version does not create a second effect. |
 | Incomplete record | No edition at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### text_version_ref
@@ -87,7 +87,7 @@ The target is [Resolution](Resolution.md). Resolve the identifier in the approve
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Resolution·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Resolution·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Resolution·MISSING | Queue the missing Resolution mapping or reject the command before linking. |
 | Wrong scope | Resolution·B01 | Do not attach another church’s Resolution without a supported exchange and local authority. |
 | Target rename | Rename Resolution·A01 after linking | The existing authorizing_resolution_id keeps the same identity and historic documents retain their original wording. |
@@ -165,7 +165,7 @@ The target is [GovernancePolicyEdition](GovernancePolicyEdition.md). Resolve the
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | GovernancePolicyEdition·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | GovernancePolicyEdition·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | GovernancePolicyEdition·MISSING | Queue the missing GovernancePolicyEdition mapping or reject the command before linking. |
 | Wrong scope | GovernancePolicyEdition·B01 | Do not attach another church’s GovernancePolicyEdition without a supported exchange and local authority. |
 | Target rename | Rename GovernancePolicyEdition·A01 after linking | The existing predecessor_id keeps the same identity and historic documents retain their original wording. |

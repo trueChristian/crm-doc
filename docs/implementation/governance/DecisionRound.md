@@ -37,7 +37,7 @@ The target is [Motion](Motion.md). Resolve the identifier in the approved scope 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Motion·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Motion·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Motion·MISSING | Queue the missing Motion mapping or reject the command before linking. |
 | Wrong scope | Motion·B01 | Do not attach another church’s Motion without a supported exchange and local authority. |
 | Target rename | Rename Motion·A01 after linking | The existing motion_id keeps the same identity and historic documents retain their original wording. |
@@ -50,7 +50,7 @@ The target is [ElectionContest](ElectionContest.md). Resolve the identifier in t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ElectionContest·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ElectionContest·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ElectionContest·MISSING | Queue the missing ElectionContest mapping or reject the command before linking. |
 | Wrong scope | ElectionContest·B01 | Do not attach another church’s ElectionContest without a supported exchange and local authority. |
 | Target rename | Rename ElectionContest·A01 after linking | The existing election_id keeps the same identity and historic documents retain their original wording. |
@@ -63,7 +63,7 @@ The target is [MeetingRoll](MeetingRoll.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | MeetingRoll·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | MeetingRoll·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | MeetingRoll·MISSING | Queue the missing MeetingRoll mapping or reject the command before linking. |
 | Wrong scope | MeetingRoll·B01 | Do not attach another church’s MeetingRoll without a supported exchange and local authority. |
 | Target rename | Rename MeetingRoll·A01 after linking | The existing roll_id keeps the same identity and historic documents retain their original wording. |
@@ -76,7 +76,7 @@ The target is [QuorumCheck](QuorumCheck.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | QuorumCheck·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | QuorumCheck·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | QuorumCheck·MISSING | Queue the missing QuorumCheck mapping or reject the command before linking. |
 | Wrong scope | QuorumCheck·B01 | Do not attach another church’s QuorumCheck without a supported exchange and local authority. |
 | Target rename | Rename QuorumCheck·A01 after linking | The existing quorum_id keeps the same identity and historic documents retain their original wording. |
@@ -111,6 +111,7 @@ Use human-readable text for `DecisionRound.proposal_snapshot`. Preserve the mean
 ### method
 
 Declared alternatives in owner order: `consensus`, `show_of_hands`, `named`, `secret`, `written`. Approval and lifecycle guards still apply to transitions.
+Field access: enforce the declared protection on reads, search, previews, exports and audit evidence as well as the underlying enum value.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |

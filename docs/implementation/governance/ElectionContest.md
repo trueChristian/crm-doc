@@ -35,7 +35,7 @@ The target is [AgendaItem](AgendaItem.md). Resolve the identifier in the approve
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | AgendaItem·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | AgendaItem·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | AgendaItem·MISSING | Queue the missing AgendaItem mapping or reject the command before linking. |
 | Wrong scope | AgendaItem·B01 | Do not attach another church’s AgendaItem without a supported exchange and local authority. |
 | Target rename | Rename AgendaItem·A01 after linking | The existing item_id keeps the same identity and historic documents retain their original wording. |
@@ -48,7 +48,7 @@ The target is [Office](Office.md). Resolve the identifier in the approved scope 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Office·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Office·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Office·MISSING | Queue the missing Office mapping or reject the command before linking. |
 | Wrong scope | Office·B01 | Do not attach another church’s Office without a supported exchange and local authority. |
 | Target rename | Rename Office·A01 after linking | The existing office_id keeps the same identity and historic documents retain their original wording. |

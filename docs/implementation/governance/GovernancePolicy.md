@@ -32,7 +32,7 @@ The target is [GoverningBody](GoverningBody.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | GoverningBody·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | GoverningBody·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | GoverningBody·MISSING | Queue the missing GoverningBody mapping or reject the command before linking. |
 | Wrong scope | GoverningBody·B01 | Do not attach another church’s GoverningBody without a supported exchange and local authority. |
 | Target rename | Rename GoverningBody·A01 after linking | The existing body_id keeps the same identity and historic documents retain their original wording. |
@@ -71,7 +71,7 @@ The target is [OfficeTerm](OfficeTerm.md). Resolve the identifier in the approve
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | OfficeTerm·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | OfficeTerm·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | OfficeTerm·MISSING | Queue the missing OfficeTerm mapping or reject the command before linking. |
 | Wrong scope | OfficeTerm·B01 | Do not attach another church’s OfficeTerm without a supported exchange and local authority. |
 | Target rename | Rename OfficeTerm·A01 after linking | The existing owner_term_id keeps the same identity and historic documents retain their original wording. |
