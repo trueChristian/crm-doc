@@ -26,7 +26,7 @@ Each grant identifies one verifiable beneficiary or pending claim, permissible s
 | `granted_units` | integer | Required when the record reaches its applicable state | [integer](../value-conventions.md#integer) |
 | `state` | awaiting_claim/pending_start/active/suspended/expired/revoked | Required when the record reaches its applicable state | [enum](../value-conventions.md#enum) |
 | `reason` | code? | Optional under owner conditions | [vocab](../value-conventions.md#vocab) |
-| `source_action_key` | text | Required when the record reaches its applicable state | [text](../value-conventions.md#text) |
+| `source_action_key` | text | Required when the record reaches its applicable state | [operation](../value-conventions.md#operation) |
 
 ## Input, storage and exchange cases
 
@@ -39,7 +39,7 @@ The target is [AccessPlan](AccessPlan.md). Resolve the identifier in the approve
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | AccessPlan·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | AccessPlan·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | AccessPlan·MISSING | Queue the missing AccessPlan mapping or reject the command before linking. |
 | Wrong scope | AccessPlan·B01 | Do not attach another church’s AccessPlan without a supported exchange and local authority. |
 | Target rename | Rename AccessPlan·A01 after linking | The existing plan_id keeps the same identity and historic documents retain their original wording. |
@@ -52,7 +52,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing beneficiary_account_id keeps the same identity and historic documents retain their original wording. |
@@ -65,7 +65,7 @@ The target is [Person](../people/Person.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Person·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Person·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Person·MISSING | Queue the missing Person mapping or reject the command before linking. |
 | Wrong scope | Person·B01 | Do not attach another church’s Person without a supported exchange and local authority. |
 | Target rename | Rename Person·A01 after linking | The existing beneficiary_person_id keeps the same identity and historic documents retain their original wording. |
@@ -78,7 +78,7 @@ The target is [GiftClaim](GiftClaim.md). Resolve the identifier in the approved 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | GiftClaim·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | GiftClaim·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | GiftClaim·MISSING | Queue the missing GiftClaim mapping or reject the command before linking. |
 | Wrong scope | GiftClaim·B01 | Do not attach another church’s GiftClaim without a supported exchange and local authority. |
 | Target rename | Rename GiftClaim·A01 after linking | The existing claim_id keeps the same identity and historic documents retain their original wording. |
@@ -91,7 +91,7 @@ The target is [OrderLine](OrderLine.md). Resolve the identifier in the approved 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | OrderLine·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | OrderLine·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | OrderLine·MISSING | Queue the missing OrderLine mapping or reject the command before linking. |
 | Wrong scope | OrderLine·B01 | Do not attach another church’s OrderLine without a supported exchange and local authority. |
 | Target rename | Rename OrderLine·A01 after linking | The existing order_line_id keeps the same identity and historic documents retain their original wording. |
@@ -104,7 +104,7 @@ The target is [SubscriptionTerm](SubscriptionTerm.md). Resolve the identifier in
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | SubscriptionTerm·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | SubscriptionTerm·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | SubscriptionTerm·MISSING | Queue the missing SubscriptionTerm mapping or reject the command before linking. |
 | Wrong scope | SubscriptionTerm·B01 | Do not attach another church’s SubscriptionTerm without a supported exchange and local authority. |
 | Target rename | Rename SubscriptionTerm·A01 after linking | The existing subscription_term_id keeps the same identity and historic documents retain their original wording. |
@@ -216,15 +216,15 @@ Use versioned classification or status code for `AccessGrant.reason`. Check the 
 
 ### source_action_key
 
-Use human-readable text for `AccessGrant.source_action_key`. Preserve the meaningful spelling, script and structure; derive separate search forms.
+Use operation identity for exactly-once business effects for `AccessGrant.source_action_key`. Bind the key to the original material inputs and outcome; retain it throughout the replay window.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | entered source_action_key in the original script | Preserve the meaningful spelling, script and structure; derive separate search forms. |
-| Malformed or unmapped | invalid text encoding | Return a field-level validation issue without silently changing meaning. |
-| Accented and non-Latin characters | Zoë and ǂNū-khoen in the original script | Preserve and display their original spelling. |
-| Label changes after formal issue | approved edition before a spelling correction | Keep the authorized original rendering in the issued edition. |
-| Bidirectional or multiline input | mixed-direction or multiline entered text | Render in the field’s declared context and respect accessibility and disclosure rules. |
+| Admissible representation | KEY-007 with original inputs | Bind the key to the original material inputs and outcome; retain it throughout the replay window. |
+| Malformed or unmapped | KEY-007 with changed material inputs | Reject conflicting reuse and reconcile against the first accepted or in-flight operation. |
+| Duplicate after successful commit | two equivalent submissions using KEY-007 | Return the original business receipt with no second payment, membership change, booking or notice. |
+| Timeout before outcome is known | provider accepted work but acknowledgement delayed | Look up or reconcile the pending operation before issuing a replacement. |
+| A genuine correction has a new key | COR-008 points to original KEY-007 | Link the correction to the original effect and apply its ordinary authorization and reversal rules. |
 | Incomplete record | No source_action_key at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ## Incoming references

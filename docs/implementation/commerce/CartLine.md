@@ -33,7 +33,7 @@ The target is [Cart](Cart.md). Resolve the identifier in the approved scope befo
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Cart·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Cart·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Cart·MISSING | Queue the missing Cart mapping or reject the command before linking. |
 | Wrong scope | Cart·B01 | Do not attach another church’s Cart without a supported exchange and local authority. |
 | Target rename | Rename Cart·A01 after linking | The existing cart_id keeps the same identity and historic documents retain their original wording. |
@@ -46,7 +46,7 @@ The target is [Offer](Offer.md). Resolve the identifier in the approved scope be
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Offer·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Offer·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Offer·MISSING | Queue the missing Offer mapping or reject the command before linking. |
 | Wrong scope | Offer·B01 | Do not attach another church’s Offer without a supported exchange and local authority. |
 | Target rename | Rename Offer·A01 after linking | The existing offer_id keeps the same identity and historic documents retain their original wording. |

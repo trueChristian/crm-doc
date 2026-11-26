@@ -37,7 +37,7 @@ The target is [PaymentDispute](../finance/PaymentDispute.md). Resolve the identi
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | PaymentDispute·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | PaymentDispute·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | PaymentDispute·MISSING | Queue the missing PaymentDispute mapping or reject the command before linking. |
 | Wrong scope | PaymentDispute·B01 | Do not attach another church’s PaymentDispute without a supported exchange and local authority. |
 | Target rename | Rename PaymentDispute·A01 after linking | The existing finance_dispute_id keeps the same identity and historic documents retain their original wording. |
@@ -50,7 +50,7 @@ The target is [PaymentAttempt](PaymentAttempt.md). Resolve the identifier in the
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | PaymentAttempt·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | PaymentAttempt·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | PaymentAttempt·MISSING | Queue the missing PaymentAttempt mapping or reject the command before linking. |
 | Wrong scope | PaymentAttempt·B01 | Do not attach another church’s PaymentAttempt without a supported exchange and local authority. |
 | Target rename | Rename PaymentAttempt·A01 after linking | The existing payment_attempt_id keeps the same identity and historic documents retain their original wording. |

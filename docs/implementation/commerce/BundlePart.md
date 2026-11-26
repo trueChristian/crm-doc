@@ -30,7 +30,7 @@ The target is [ProductVariant](ProductVariant.md). Resolve the identifier in the
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ProductVariant·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ProductVariant·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ProductVariant·MISSING | Queue the missing ProductVariant mapping or reject the command before linking. |
 | Wrong scope | ProductVariant·B01 | Do not attach another church’s ProductVariant without a supported exchange and local authority. |
 | Target rename | Rename ProductVariant·A01 after linking | The existing bundle_variant_id keeps the same identity and historic documents retain their original wording. |
@@ -43,7 +43,7 @@ The target is [ProductVariant](ProductVariant.md). Resolve the identifier in the
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ProductVariant·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ProductVariant·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ProductVariant·MISSING | Queue the missing ProductVariant mapping or reject the command before linking. |
 | Wrong scope | ProductVariant·B01 | Do not attach another church’s ProductVariant without a supported exchange and local authority. |
 | Target rename | Rename ProductVariant·A01 after linking | The existing component_variant_id keeps the same identity and historic documents retain their original wording. |
@@ -86,7 +86,7 @@ Declared alternatives in owner order: `included`, `optional_choice`. Approval an
 | Translated label reused for two choices | localized display label shared by two codes | Require the underlying code. |
 | Display label changes after issue | display wording changes after issue | Keep the original issued rendering and stored code. |
 | Unknown historical source value | unmapped retired legacy code | Retain raw staging evidence; never silently choose the first option. |
-| Absent in intake | No fulfilment_rule provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
+| Incomplete record | No fulfilment_rule at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### choice_group
 

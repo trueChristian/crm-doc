@@ -125,7 +125,7 @@ The target is [JournalEntry](../finance/JournalEntry.md). Resolve the identifier
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | JournalEntry·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | JournalEntry·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | JournalEntry·MISSING | Queue the missing JournalEntry mapping or reject the command before linking. |
 | Wrong scope | JournalEntry·B01 | Do not attach another church’s JournalEntry without a supported exchange and local authority. |
 | Target rename | Rename JournalEntry·A01 after linking | The existing journal_entry_id keeps the same identity and historic documents retain their original wording. |
@@ -138,7 +138,7 @@ The target is [CommercePosting](CommercePosting.md). Resolve the identifier in t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | CommercePosting·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | CommercePosting·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | CommercePosting·MISSING | Queue the missing CommercePosting mapping or reject the command before linking. |
 | Wrong scope | CommercePosting·B01 | Do not attach another church’s CommercePosting without a supported exchange and local authority. |
 | Target rename | Rename CommercePosting·A01 after linking | The existing reversal_of_id keeps the same identity and historic documents retain their original wording. |

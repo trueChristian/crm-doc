@@ -30,7 +30,7 @@ The target is [AccessPlan](AccessPlan.md). Resolve the identifier in the approve
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | AccessPlan·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | AccessPlan·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | AccessPlan·MISSING | Queue the missing AccessPlan mapping or reject the command before linking. |
 | Wrong scope | AccessPlan·B01 | Do not attach another church’s AccessPlan without a supported exchange and local authority. |
 | Target rename | Rename AccessPlan·A01 after linking | The existing plan_id keeps the same identity and historic documents retain their original wording. |
@@ -43,7 +43,7 @@ The target is [MediaRelease](MediaRelease.md). Resolve the identifier in the app
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | MediaRelease·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | MediaRelease·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | MediaRelease·MISSING | Queue the missing MediaRelease mapping or reject the command before linking. |
 | Wrong scope | MediaRelease·B01 | Do not attach another church’s MediaRelease without a supported exchange and local authority. |
 | Target rename | Rename MediaRelease·A01 after linking | The existing release_id keeps the same identity and historic documents retain their original wording. |
@@ -56,7 +56,7 @@ The target is [SermonSeries](SermonSeries.md). Resolve the identifier in the app
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | SermonSeries·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | SermonSeries·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | SermonSeries·MISSING | Queue the missing SermonSeries mapping or reject the command before linking. |
 | Wrong scope | SermonSeries·B01 | Do not attach another church’s SermonSeries without a supported exchange and local authority. |
 | Target rename | Rename SermonSeries·A01 after linking | The existing series_id keeps the same identity and historic documents retain their original wording. |
