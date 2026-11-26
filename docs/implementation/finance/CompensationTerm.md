@@ -20,7 +20,7 @@ Overlapping terms require an explicitly additive earning type. Define eligible c
 | `rate_unit` | code | Required when the record reaches its applicable state | [vocab](../value-conventions.md#vocab) |
 | `normal_hours` | decimal? | Optional under owner conditions | [decimal](../value-conventions.md#decimal) |
 | `earning_code` | text | Required when the record reaches its applicable state | [text](../value-conventions.md#text) |
-| `contract_evidence` | Owner-scoped business value; see the record rule | Required when the record reaches its applicable state | [structured](../value-conventions.md#structured) |
+| `contract_evidence` | Owner-scoped business value; see the record rule | Required when the record reaches its applicable state | [resource](../value-conventions.md#resource) |
 
 ## Input, storage and exchange cases
 
@@ -33,7 +33,7 @@ The target is [PayrollEngagement](PayrollEngagement.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | PayrollEngagement·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | PayrollEngagement·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | PayrollEngagement·MISSING | Queue the missing PayrollEngagement mapping or reject the command before linking. |
 | Wrong scope | PayrollEngagement·B01 | Do not attach another church’s PayrollEngagement without a supported exchange and local authority. |
 | Target rename | Rename PayrollEngagement·A01 after linking | The existing engagement_id keeps the same identity and historic documents retain their original wording. |
@@ -132,15 +132,15 @@ Use human-readable text for `CompensationTerm.earning_code`. Preserve the meanin
 
 ### contract_evidence
 
-Use typed value or bounded compound record for `CompensationTerm.contract_evidence`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use scoped or external reference for `CompensationTerm.contract_evidence`. Resolve against the permitted kind, owning namespace and purpose.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of contract_evidence matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for contract_evidence | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | verified contract_evidence in the owner namespace | Resolve against the permitted kind, owning namespace and purpose. |
+| Malformed or unmapped | unmapped contract_evidence | Request clarification or quarantine the mapping. |
+| Same visible code from two sources | issuer A:007 and issuer B:007 | Retain distinct namespace/key pairs. |
+| Referenced evidence is restricted | restricted attachment behind an otherwise visible request | Show a minimal permitted result and check document access independently. |
+| Duplicate delivery of the same mapped reference | same namespace, key and accepted mapping twice | Resolve the same destination record once. |
 | Incomplete record | No contract_evidence at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ## Acceptance evidence

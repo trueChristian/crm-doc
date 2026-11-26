@@ -19,7 +19,7 @@ Determine who owns stock, recognizes gross sales or commission, collects tax, be
 | `commission_basis` | code | Required when the record reaches its applicable state | [vocab](../value-conventions.md#vocab) |
 | `ownership_rule` | code | Required when the record reaches its applicable state | [vocab](../value-conventions.md#vocab) |
 | `settlement_frequency` | rule | Required when the record reaches its applicable state | [rule](../value-conventions.md#rule) |
-| `terms_evidence` | Owner-scoped business value; see the record rule | Required when the record reaches its applicable state | [structured](../value-conventions.md#structured) |
+| `terms_evidence` | Owner-scoped business value; see the record rule | Required when the record reaches its applicable state | [resource](../value-conventions.md#resource) |
 
 ## Input, storage and exchange cases
 
@@ -118,15 +118,15 @@ Use versioned structured decision or expression for `ConsignmentAgreement.settle
 
 ### terms_evidence
 
-Use typed value or bounded compound record for `ConsignmentAgreement.terms_evidence`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use scoped or external reference for `ConsignmentAgreement.terms_evidence`. Resolve against the permitted kind, owning namespace and purpose.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of terms_evidence matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for terms_evidence | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | verified terms_evidence in the owner namespace | Resolve against the permitted kind, owning namespace and purpose. |
+| Malformed or unmapped | unmapped terms_evidence | Request clarification or quarantine the mapping. |
+| Same visible code from two sources | issuer A:007 and issuer B:007 | Retain distinct namespace/key pairs. |
+| Referenced evidence is restricted | restricted attachment behind an otherwise visible request | Show a minimal permitted result and check document access independently. |
+| Duplicate delivery of the same mapped reference | same namespace, key and accepted mapping twice | Resolve the same destination record once. |
 | Incomplete record | No terms_evidence at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ## Incoming references

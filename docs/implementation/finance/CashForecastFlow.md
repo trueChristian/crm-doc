@@ -33,7 +33,7 @@ The target is [CashForecastVersion](CashForecastVersion.md). Resolve the identif
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | CashForecastVersion·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | CashForecastVersion·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | CashForecastVersion·MISSING | Queue the missing CashForecastVersion mapping or reject the command before linking. |
 | Wrong scope | CashForecastVersion·B01 | Do not attach another church’s CashForecastVersion without a supported exchange and local authority. |
 | Target rename | Rename CashForecastVersion·A01 after linking | The existing version_id keeps the same identity and historic documents retain their original wording. |

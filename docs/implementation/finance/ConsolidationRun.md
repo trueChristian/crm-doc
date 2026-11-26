@@ -31,7 +31,7 @@ The target is [ConsolidationGroup](ConsolidationGroup.md). Resolve the identifie
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ConsolidationGroup·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ConsolidationGroup·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ConsolidationGroup·MISSING | Queue the missing ConsolidationGroup mapping or reject the command before linking. |
 | Wrong scope | ConsolidationGroup·B01 | Do not attach another church’s ConsolidationGroup without a supported exchange and local authority. |
 | Target rename | Rename ConsolidationGroup·A01 after linking | The existing group_id keeps the same identity and historic documents retain their original wording. |
@@ -83,7 +83,7 @@ The target is [FinancialReportLayout](FinancialReportLayout.md). Resolve the ide
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | FinancialReportLayout·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | FinancialReportLayout·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | FinancialReportLayout·MISSING | Queue the missing FinancialReportLayout mapping or reject the command before linking. |
 | Wrong scope | FinancialReportLayout·B01 | Do not attach another church’s FinancialReportLayout without a supported exchange and local authority. |
 | Target rename | Rename FinancialReportLayout·A01 after linking | The existing layout_id keeps the same identity and historic documents retain their original wording. |

@@ -16,7 +16,7 @@ Unique planning grain or explicit line identity for separate initiatives. Monthl
 | `period_id` | → FiscalPeriod | Required when the record reaches its applicable state | [relation](../value-conventions.md#relation) |
 | `account_id` | → LedgerAccount | Required when the record reaches its applicable state | [relation](../value-conventions.md#relation) |
 | `fund_id` | → Fund | Required when the record reaches its applicable state | [relation](../value-conventions.md#relation) |
-| `dimension_set` | Owner-scoped business value; see the record rule | Required when the record reaches its applicable state | [structured](../value-conventions.md#structured) |
+| `dimension_set` | Owner-scoped business value; see the record rule | Required when the record reaches its applicable state | [list](../value-conventions.md#list) |
 | `quantity` | decimal? | Optional under owner conditions | [decimal](../value-conventions.md#decimal) |
 | `unit_cost` | decimal? | Optional under owner conditions | [decimal](../value-conventions.md#decimal) |
 | `amount` | money | Required when the record reaches its applicable state | [money](../value-conventions.md#money) |
@@ -35,7 +35,7 @@ The target is [BudgetVersion](BudgetVersion.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | BudgetVersion·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | BudgetVersion·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | BudgetVersion·MISSING | Queue the missing BudgetVersion mapping or reject the command before linking. |
 | Wrong scope | BudgetVersion·B01 | Do not attach another church’s BudgetVersion without a supported exchange and local authority. |
 | Target rename | Rename BudgetVersion·A01 after linking | The existing version_id keeps the same identity and historic documents retain their original wording. |
@@ -48,7 +48,7 @@ The target is [FiscalPeriod](FiscalPeriod.md). Resolve the identifier in the app
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | FiscalPeriod·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | FiscalPeriod·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | FiscalPeriod·MISSING | Queue the missing FiscalPeriod mapping or reject the command before linking. |
 | Wrong scope | FiscalPeriod·B01 | Do not attach another church’s FiscalPeriod without a supported exchange and local authority. |
 | Target rename | Rename FiscalPeriod·A01 after linking | The existing period_id keeps the same identity and historic documents retain their original wording. |
@@ -61,7 +61,7 @@ The target is [LedgerAccount](LedgerAccount.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | LedgerAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | LedgerAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | LedgerAccount·MISSING | Queue the missing LedgerAccount mapping or reject the command before linking. |
 | Wrong scope | LedgerAccount·B01 | Do not attach another church’s LedgerAccount without a supported exchange and local authority. |
 | Target rename | Rename LedgerAccount·A01 after linking | The existing account_id keeps the same identity and historic documents retain their original wording. |
@@ -74,7 +74,7 @@ The target is [Fund](Fund.md). Resolve the identifier in the approved scope befo
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Fund·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Fund·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Fund·MISSING | Queue the missing Fund mapping or reject the command before linking. |
 | Wrong scope | Fund·B01 | Do not attach another church’s Fund without a supported exchange and local authority. |
 | Target rename | Rename Fund·A01 after linking | The existing fund_id keeps the same identity and historic documents retain their original wording. |
@@ -82,15 +82,15 @@ The target is [Fund](Fund.md). Resolve the identifier in the approved scope befo
 
 ### dimension_set
 
-Use typed value or bounded compound record for `BudgetLine.dimension_set`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use ordered collection or mathematical set for `BudgetLine.dimension_set`. Preserve ordering when meaningful; enforce uniqueness when the declaration is a set.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of dimension_set matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for dimension_set | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | permitted members A and B | Preserve ordering when meaningful; enforce uniqueness when the declaration is a set. |
+| Malformed or unmapped | an element outside the declared domain | Reject the affected collection or stage its invalid item under the import policy. |
+| Same element appears twice | A, A, B | Apply declared sequence/set multiplicity without doubling financial or voting effects. |
+| Empty collection versus unknown collection | empty collection and missing collection | Preserve the distinction where the rule requires evidence. |
+| One element later becomes restricted | authorization for member B withdrawn before export | Recompute permitted projection before export or display. |
 | Incomplete record | No dimension_set at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### quantity

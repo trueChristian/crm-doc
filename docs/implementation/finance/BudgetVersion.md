@@ -32,7 +32,7 @@ The target is [BudgetPlan](BudgetPlan.md). Resolve the identifier in the approve
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | BudgetPlan·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | BudgetPlan·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | BudgetPlan·MISSING | Queue the missing BudgetPlan mapping or reject the command before linking. |
 | Wrong scope | BudgetPlan·B01 | Do not attach another church’s BudgetPlan without a supported exchange and local authority. |
 | Target rename | Rename BudgetPlan·A01 after linking | The existing plan_id keeps the same identity and historic documents retain their original wording. |
@@ -97,7 +97,7 @@ The target is [Resolution](../governance/Resolution.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Resolution·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Resolution·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Resolution·MISSING | Queue the missing Resolution mapping or reject the command before linking. |
 | Wrong scope | Resolution·B01 | Do not attach another church’s Resolution without a supported exchange and local authority. |
 | Target rename | Rename Resolution·A01 after linking | The existing meeting_resolution_ref keeps the same identity and historic documents retain their original wording. |
@@ -123,7 +123,7 @@ The target is [BudgetVersion](BudgetVersion.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | BudgetVersion·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | BudgetVersion·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | BudgetVersion·MISSING | Queue the missing BudgetVersion mapping or reject the command before linking. |
 | Wrong scope | BudgetVersion·B01 | Do not attach another church’s BudgetVersion without a supported exchange and local authority. |
 | Target rename | Rename BudgetVersion·A01 after linking | The existing predecessor_id keeps the same identity and historic documents retain their original wording. |
