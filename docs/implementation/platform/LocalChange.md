@@ -13,7 +13,7 @@ Unique operation key survives retries. Capture sequence separately from untruste
 | Field | Logical declaration | Presence at the applicable step | Validation family |
 | --- | --- | --- | --- |
 | `pack_id` | Ref(OfflinePack) | Required when the record reaches its applicable state | [relation](../value-conventions.md#relation) |
-| `operation_key` | opaque | Required when the record reaches its applicable state | [key](../value-conventions.md#key) |
+| `operation_key` | opaque | Required when the record reaches its applicable state | [operation](../value-conventions.md#operation) |
 | `sequence_no` | integer | Required when the record reaches its applicable state | [integer](../value-conventions.md#integer) |
 | `actor_id` | Ref(UserAccount) | Required when the record reaches its applicable state | [relation](../value-conventions.md#relation) |
 | `target_ref` | ResourceRef? | Optional under owner conditions | [resource](../value-conventions.md#resource) |
@@ -36,7 +36,7 @@ The target is [OfflinePack](OfflinePack.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | OfflinePack·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | OfflinePack·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | OfflinePack·MISSING | Queue the missing OfflinePack mapping or reject the command before linking. |
 | Wrong scope | OfflinePack·B01 | Do not attach another church’s OfflinePack without a supported exchange and local authority. |
 | Target rename | Rename OfflinePack·A01 after linking | The existing pack_id keeps the same identity and historic documents retain their original wording. |
@@ -44,15 +44,15 @@ The target is [OfflinePack](OfflinePack.md). Resolve the identifier in the appro
 
 ### operation_key
 
-Use opaque identity or token for `LocalChange.operation_key`. Compare the opaque value under its issuer rules; preserve leading characters.
+Use operation identity for exactly-once business effects for `LocalChange.operation_key`. Bind the key to the original material inputs and outcome; retain it throughout the replay window.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | LocalChange·0007 | Compare the opaque value under its issuer rules; preserve leading characters. |
-| Malformed or unmapped | human-readable name passed as the identifier | Request a verified lookup or an explicit mapping. |
-| Renamed display label | update display label; retain stable key | Identity comparisons still use the stable key. |
-| Conflicting claim on an existing key | second owner claims the same issued key | Retain original binding; route conflict for review. |
-| Retried creation with the original operation key | submit original creation receipt twice | Use the owning creation outcome and return the established identity. |
+| Admissible representation | KEY-007 with original inputs | Bind the key to the original material inputs and outcome; retain it throughout the replay window. |
+| Malformed or unmapped | KEY-007 with changed material inputs | Reject conflicting reuse and reconcile against the first accepted or in-flight operation. |
+| Duplicate after successful commit | two equivalent submissions using KEY-007 | Return the original business receipt with no second payment, membership change, booking or notice. |
+| Timeout before outcome is known | provider accepted work but acknowledgement delayed | Look up or reconcile the pending operation before issuing a replacement. |
+| A genuine correction has a new key | COR-008 points to original KEY-007 | Link the correction to the original effect and apply its ordinary authorization and reversal rules. |
 | Incomplete record | No operation_key at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### sequence_no
@@ -75,7 +75,7 @@ The target is [UserAccount](UserAccount.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing actor_id keeps the same identity and historic documents retain their original wording. |

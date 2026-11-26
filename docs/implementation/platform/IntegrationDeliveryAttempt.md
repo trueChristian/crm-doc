@@ -33,7 +33,7 @@ The target is [IntegrationSubscription](IntegrationSubscription.md). Resolve the
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | IntegrationSubscription·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | IntegrationSubscription·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | IntegrationSubscription·MISSING | Queue the missing IntegrationSubscription mapping or reject the command before linking. |
 | Wrong scope | IntegrationSubscription·B01 | Do not attach another church’s IntegrationSubscription without a supported exchange and local authority. |
 | Target rename | Rename IntegrationSubscription·A01 after linking | The existing subscription_id keeps the same identity and historic documents retain their original wording. |
@@ -46,7 +46,7 @@ The target is [DomainEvent](DomainEvent.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | DomainEvent·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | DomainEvent·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | DomainEvent·MISSING | Queue the missing DomainEvent mapping or reject the command before linking. |
 | Wrong scope | DomainEvent·B01 | Do not attach another church’s DomainEvent without a supported exchange and local authority. |
 | Target rename | Rename DomainEvent·A01 after linking | The existing event_id keeps the same identity and historic documents retain their original wording. |

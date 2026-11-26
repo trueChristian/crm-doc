@@ -34,7 +34,7 @@ The target is [ImportBatch](ImportBatch.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ImportBatch·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ImportBatch·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ImportBatch·MISSING | Queue the missing ImportBatch mapping or reject the command before linking. |
 | Wrong scope | ImportBatch·B01 | Do not attach another church’s ImportBatch without a supported exchange and local authority. |
 | Target rename | Rename ImportBatch·A01 after linking | The existing batch_id keeps the same identity and historic documents retain their original wording. |

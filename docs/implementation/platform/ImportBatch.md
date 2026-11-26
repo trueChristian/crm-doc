@@ -34,7 +34,7 @@ The target is [DataSource](DataSource.md). Resolve the identifier in the approve
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | DataSource·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | DataSource·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | DataSource·MISSING | Queue the missing DataSource mapping or reject the command before linking. |
 | Wrong scope | DataSource·B01 | Do not attach another church’s DataSource without a supported exchange and local authority. |
 | Target rename | Rename DataSource·A01 after linking | The existing source_id keeps the same identity and historic documents retain their original wording. |
@@ -47,7 +47,7 @@ The target is [MappingEdition](MappingEdition.md). Resolve the identifier in the
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | MappingEdition·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | MappingEdition·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | MappingEdition·MISSING | Queue the missing MappingEdition mapping or reject the command before linking. |
 | Wrong scope | MappingEdition·B01 | Do not attach another church’s MappingEdition without a supported exchange and local authority. |
 | Target rename | Rename MappingEdition·A01 after linking | The existing mapping_id keeps the same identity and historic documents retain their original wording. |
@@ -112,7 +112,7 @@ The target is [UserAccount](UserAccount.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing submitted_by keeps the same identity and historic documents retain their original wording. |

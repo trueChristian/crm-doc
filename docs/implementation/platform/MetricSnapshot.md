@@ -34,7 +34,7 @@ The target is [MetricDefinition](MetricDefinition.md). Resolve the identifier in
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | MetricDefinition·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | MetricDefinition·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | MetricDefinition·MISSING | Queue the missing MetricDefinition mapping or reject the command before linking. |
 | Wrong scope | MetricDefinition·B01 | Do not attach another church’s MetricDefinition without a supported exchange and local authority. |
 | Target rename | Rename MetricDefinition·A01 after linking | The existing metric_id keeps the same identity and historic documents retain their original wording. |
@@ -151,7 +151,7 @@ The target is [ReportRun](ReportRun.md). Resolve the identifier in the approved 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ReportRun·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ReportRun·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ReportRun·MISSING | Queue the missing ReportRun mapping or reject the command before linking. |
 | Wrong scope | ReportRun·B01 | Do not attach another church’s ReportRun without a supported exchange and local authority. |
 | Target rename | Rename ReportRun·A01 after linking | The existing source_run_id keeps the same identity and historic documents retain their original wording. |
