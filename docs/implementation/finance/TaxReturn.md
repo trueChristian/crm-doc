@@ -21,7 +21,7 @@ Preserve draft, reviewed, filed, acknowledged, paid and amended states. Retain c
 | `submitted_on` | date? | Optional under owner conditions | [date](../value-conventions.md#date) |
 | `due_on` | date | Required when the record reaches its applicable state | [date](../value-conventions.md#date) |
 | `payable_signed` | signed_money | Required when the record reaches its applicable state | [money](../value-conventions.md#money) |
-| `filing_evidence` | ? | Optional under owner conditions | [structured](../value-conventions.md#structured) |
+| `filing_evidence` | ? | Optional under owner conditions | [resource](../value-conventions.md#resource) |
 | `payment_ref` | ? | Optional under owner conditions | [resource](../value-conventions.md#resource) |
 | `supersedes_ref` | ? | Optional under owner conditions | [resource](../value-conventions.md#resource) |
 | `state` | code | Required when the record reaches its applicable state | [vocab](../value-conventions.md#vocab) |
@@ -37,7 +37,7 @@ The target is [FinanceBook](FinanceBook.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | FinanceBook·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | FinanceBook·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | FinanceBook·MISSING | Queue the missing FinanceBook mapping or reject the command before linking. |
 | Wrong scope | FinanceBook·B01 | Do not attach another church’s FinanceBook without a supported exchange and local authority. |
 | Target rename | Rename FinanceBook·A01 after linking | The existing book_id keeps the same identity and historic documents retain their original wording. |
@@ -149,15 +149,15 @@ Use exact monetary amount with currency for `TaxReturn.payable_signed`. Preserve
 
 ### filing_evidence
 
-Use typed value or bounded compound record for `TaxReturn.filing_evidence`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use scoped or external reference for `TaxReturn.filing_evidence`. Resolve against the permitted kind, owning namespace and purpose.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of filing_evidence matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for filing_evidence | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | verified filing_evidence in the owner namespace | Resolve against the permitted kind, owning namespace and purpose. |
+| Malformed or unmapped | unmapped filing_evidence | Request clarification or quarantine the mapping. |
+| Same visible code from two sources | issuer A:007 and issuer B:007 | Retain distinct namespace/key pairs. |
+| Referenced evidence is restricted | restricted attachment behind an otherwise visible request | Show a minimal permitted result and check document access independently. |
+| Duplicate delivery of the same mapped reference | same namespace, key and accepted mapping twice | Resolve the same destination record once. |
 | Absent in intake | No filing_evidence provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
 
 ### payment_ref

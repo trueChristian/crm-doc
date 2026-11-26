@@ -31,7 +31,7 @@ The target is [TaxReturn](TaxReturn.md). Resolve the identifier in the approved 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | TaxReturn·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | TaxReturn·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | TaxReturn·MISSING | Queue the missing TaxReturn mapping or reject the command before linking. |
 | Wrong scope | TaxReturn·B01 | Do not attach another church’s TaxReturn without a supported exchange and local authority. |
 | Target rename | Rename TaxReturn·A01 after linking | The existing return_id keeps the same identity and historic documents retain their original wording. |

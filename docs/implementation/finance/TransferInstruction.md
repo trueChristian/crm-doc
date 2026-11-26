@@ -34,7 +34,7 @@ The target is [TreasuryAccount](TreasuryAccount.md). Resolve the identifier in t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | TreasuryAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | TreasuryAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | TreasuryAccount·MISSING | Queue the missing TreasuryAccount mapping or reject the command before linking. |
 | Wrong scope | TreasuryAccount·B01 | Do not attach another church’s TreasuryAccount without a supported exchange and local authority. |
 | Target rename | Rename TreasuryAccount·A01 after linking | The existing source_account_id keeps the same identity and historic documents retain their original wording. |
@@ -47,7 +47,7 @@ The target is [TreasuryAccount](TreasuryAccount.md). Resolve the identifier in t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | TreasuryAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | TreasuryAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | TreasuryAccount·MISSING | Queue the missing TreasuryAccount mapping or reject the command before linking. |
 | Wrong scope | TreasuryAccount·B01 | Do not attach another church’s TreasuryAccount without a supported exchange and local authority. |
 | Target rename | Rename TreasuryAccount·A01 after linking | The existing destination_account_id keeps the same identity and historic documents retain their original wording. |
@@ -99,7 +99,7 @@ The target is [CurrencyRate](CurrencyRate.md). Resolve the identifier in the app
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | CurrencyRate·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | CurrencyRate·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | CurrencyRate·MISSING | Queue the missing CurrencyRate mapping or reject the command before linking. |
 | Wrong scope | CurrencyRate·B01 | Do not attach another church’s CurrencyRate without a supported exchange and local authority. |
 | Target rename | Rename CurrencyRate·A01 after linking | The existing rate_id keeps the same identity and historic documents retain their original wording. |
