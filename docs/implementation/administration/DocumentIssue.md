@@ -1,0 +1,197 @@
+# DocumentIssue
+
+[Documents, archives, certificates and custody](../../administration/archives.md) · [Department records](README.md) · [Value conventions](../value-conventions.md)
+
+## Record invariant
+
+Identity, audit fields, ownership and effective-date notation follow the [shared record envelope](../../foundation/record-conventions.md). A business key or parent-child uniqueness rule below remains enforceable even when an implementation also assigns an opaque identifier.
+
+Serial unique per issuing series. Verification reveals only the minimum validity and identity fields the issuer allows. A later copy does not overwrite an earlier issue.
+
+## Field inventory
+
+| Field | Logical declaration | Presence at the applicable step | Validation family |
+| --- | --- | --- | --- |
+| `id` | Owner-scoped business value; see the record rule | Assigned or projected by owner | [key](../value-conventions.md#key) |
+| `item_id` | → ArchiveItem | Required at applicable lifecycle step | [relation](../value-conventions.md#relation) |
+| `revision` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [version](../value-conventions.md#version) |
+| `issue_kind` | original, certified_copy, extract, redaction or replacement | Required at applicable lifecycle step | [enum](../value-conventions.md#enum) |
+| `issuing_officer` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [resource](../value-conventions.md#resource) |
+| `issued_at` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [instant](../value-conventions.md#instant) |
+| `recipient_ref_or_label` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [text](../value-conventions.md#text) |
+| `permitted_purpose` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [vocab](../value-conventions.md#vocab) |
+| `serial` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [key](../value-conventions.md#key) |
+| `verification_token_digest` | optional | Optional under owner conditions | [digest](../value-conventions.md#digest) |
+| `revoked_at` | optional | Optional under owner conditions | [instant](../value-conventions.md#instant) |
+| `revocation_reason` | optional | Optional under owner conditions | [text](../value-conventions.md#text) |
+
+## Input, storage and exchange cases
+
+Each section targets one field on an otherwise admissible record. The first probe tests its declared representation, not permission to commit the transaction. The owner invariant above can reject an otherwise valid value. A change to a projection is tested at its source.
+
+### id
+
+Use opaque identity or token for `DocumentIssue.id`. Compare the opaque value under its issuer rules; preserve leading characters.
+
+| Probe | Input or observation | Expected result |
+| --- | --- | --- |
+| Admissible representation | DocumentIssue·0007 | Compare the opaque value under its issuer rules; preserve leading characters. |
+| Malformed or unmapped | human-readable name passed as the identifier | Request a verified lookup or an explicit mapping. |
+| Renamed display label | update display label; retain stable key | Identity comparisons still use the stable key. |
+| Conflicting claim on an existing key | second owner claims the same issued key | Retain original binding; route conflict for review. |
+| Retried creation with the original operation key | submit original creation receipt twice | Use the owning creation outcome and return the established identity. |
+| Independent overwrite | Attempt to replace id through an ordinary field edit | Use the identity or projection owner; reject an independent reassignment. |
+
+### item_id
+
+The target is [ArchiveItem](ArchiveItem.md). Resolve the identifier in the approved scope before using its fields.
+
+| Probe | Input or observation | Expected result |
+| --- | --- | --- |
+| Admissible representation | ArchiveItem·A01 | Resolve stable identity in the permitted scope. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
+| Unresolved target | ArchiveItem·MISSING | Queue the missing ArchiveItem mapping or reject the command before linking. |
+| Wrong scope | ArchiveItem·B01 | Do not attach another church’s ArchiveItem without a supported exchange and local authority. |
+| Target rename | Rename ArchiveItem·A01 after linking | The existing item_id keeps the same identity and historic documents retain their original wording. |
+| Incomplete record | No item_id at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
+
+### revision
+
+Use revision number or opaque revision token for `DocumentIssue.revision`. Compare under the declared revision scheme. Require the expected version for conflicting work.
+
+| Probe | Input or observation | Expected result |
+| --- | --- | --- |
+| Admissible representation | the current revision returned by the owner | Compare under the declared revision scheme. Require the expected version for conflicting work. |
+| Malformed or unmapped | superseded version presented for a new approval | Reject or reopen review against the current contents. |
+| Two operators begin at revision seven | two edits both cite baseline 7 | Commit the first change once and re-evaluate the second; never overwrite an unreviewed difference. |
+| Re-read an already approved revision | re-open issued revision 4 after revision 6 | Return the frozen value and evidence for that edition. |
+| Replay of an earlier result | same business operation observed at two revisions | Correlate by the business operation identity; a newer version does not create a second effect. |
+| Incomplete record | No revision at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
+
+### issue_kind
+
+Declared alternatives in owner order: `original`, `certified_copy`, `extract`, `redaction`, `replacement`. Approval and lifecycle guards still apply to transitions.
+
+| Probe | Input or observation | Expected result |
+| --- | --- | --- |
+| Admissible representation | original | Preserve the stable code and resolve its localized label separately. |
+| Malformed or unmapped | outside_issue_kind | Return a choice error or place unmapped historical input in review. |
+| Translated label reused for two choices | localized display label shared by two codes | Require the underlying code. |
+| Display label changes after issue | display wording changes after issue | Keep the original issued rendering and stored code. |
+| Unknown historical source value | unmapped retired legacy code | Retain raw staging evidence; never silently choose the first option. |
+| Incomplete record | No issue_kind at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
+
+### issuing_officer
+
+Use scoped or external reference for `DocumentIssue.issuing_officer`. Resolve against the permitted kind, owning namespace and purpose.
+
+| Probe | Input or observation | Expected result |
+| --- | --- | --- |
+| Admissible representation | verified issuing_officer in the owner namespace | Resolve against the permitted kind, owning namespace and purpose. |
+| Malformed or unmapped | unmapped issuing_officer | Request clarification or quarantine the mapping. |
+| Same visible code from two sources | issuer A:007 and issuer B:007 | Retain distinct namespace/key pairs. |
+| Referenced evidence is restricted | restricted attachment behind an otherwise visible request | Show a minimal permitted result and check document access independently. |
+| Duplicate delivery of the same mapped reference | same namespace, key and accepted mapping twice | Resolve the same destination record once. |
+| Incomplete record | No issuing_officer at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
+
+### issued_at
+
+Use unambiguous point in time for `DocumentIssue.issued_at`. Compare as the same instant as 07:00:00Z on that date; retain needed display context.
+
+| Probe | Input or observation | Expected result |
+| --- | --- | --- |
+| Admissible representation | 2026-11-26T09:00:00+02:00 | Compare as the same instant as 07:00:00Z on that date; retain needed display context. |
+| Malformed or unmapped | ambiguous local time in repeated hour | Request the offset, zone resolution or explicit policy decision. |
+| Two observations with different offsets denoting one instant | 09:00+02:00 and 07:00Z on the same day | Temporal comparison treats them as equal; business identity still uses its own key. |
+| Observation arrives after a later event | event at 09:00 reported after event at 09:05 | Retain occurrence and observation order separately. |
+| Expiry coincides with current instant | observation exactly at expiry | Apply the documented validity interval at the decision point. |
+| Incomplete record | No issued_at at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
+
+### recipient_ref_or_label
+
+Use human-readable text for `DocumentIssue.recipient_ref_or_label`. Preserve the meaningful spelling, script and structure; derive separate search forms.
+
+| Probe | Input or observation | Expected result |
+| --- | --- | --- |
+| Admissible representation | entered recipient_ref_or_label in the original script | Preserve the meaningful spelling, script and structure; derive separate search forms. |
+| Malformed or unmapped | invalid text encoding | Return a field-level validation issue without silently changing meaning. |
+| Accented and non-Latin characters | Zoë and ǂNū-khoen in the original script | Preserve and display their original spelling. |
+| Label changes after formal issue | approved edition before a spelling correction | Keep the authorized original rendering in the issued edition. |
+| Bidirectional or multiline input | mixed-direction or multiline entered text | Render in the field’s declared context and respect accessibility and disclosure rules. |
+| Incomplete record | No recipient_ref_or_label at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
+
+### permitted_purpose
+
+Use versioned classification or status code for `DocumentIssue.permitted_purpose`. Check the relevant vocabulary and permitted transition before applying.
+
+| Probe | Input or observation | Expected result |
+| --- | --- | --- |
+| Admissible representation | active permitted_purpose code in the bound vocabulary | Check the relevant vocabulary and permitted transition before applying. |
+| Malformed or unmapped | unmapped permitted_purpose code | Request mapping to an authorized code. |
+| Code retired before a new transaction | new operation after code retirement | Allow historic display; withhold new use unless policy permits. |
+| Same label in two code lists | same display name in two vocabularies | Use record type and field to locate the correct list. |
+| Bulk import requests a state transition | import requests the final approved state | Run ordinary transition guards and approval checks. |
+| Incomplete record | No permitted_purpose at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
+
+### serial
+
+Use opaque identity or token for `DocumentIssue.serial`. Compare the opaque value under its issuer rules; preserve leading characters.
+
+| Probe | Input or observation | Expected result |
+| --- | --- | --- |
+| Admissible representation | DocumentIssue·0007 | Compare the opaque value under its issuer rules; preserve leading characters. |
+| Malformed or unmapped | human-readable name passed as the identifier | Request a verified lookup or an explicit mapping. |
+| Renamed display label | update display label; retain stable key | Identity comparisons still use the stable key. |
+| Conflicting claim on an existing key | second owner claims the same issued key | Retain original binding; route conflict for review. |
+| Retried creation with the original operation key | submit original creation receipt twice | Use the owning creation outcome and return the established identity. |
+| Incomplete record | No serial at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
+
+### verification_token_digest
+
+Use integrity fingerprint or opaque verifier for `DocumentIssue.verification_token_digest`. Bind the algorithm or verifier scheme and object revision to the evidence.
+
+| Probe | Input or observation | Expected result |
+| --- | --- | --- |
+| Admissible representation | verified fingerprint of edition A | Bind the algorithm or verifier scheme and object revision to the evidence. |
+| Malformed or unmapped | different fingerprint for the same purported bytes | Quarantine the mismatch or deny the claim. |
+| An identical copy is rechecked | compare original bytes with verified copy | Equality confirms the checked bytes or verifier under the same scheme only. |
+| New revision has changed content | different bytes under a new edition | Compute new evidence; preserve the prior verified revision. |
+| A user knows a digest | unprivileged user presents a publicly observed fingerprint | Knowledge alone grants no additional access outside the documented token protocol. |
+| Absent in intake | No verification_token_digest provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
+
+### revoked_at
+
+Use unambiguous point in time for `DocumentIssue.revoked_at`. Compare as the same instant as 07:00:00Z on that date; retain needed display context.
+
+| Probe | Input or observation | Expected result |
+| --- | --- | --- |
+| Admissible representation | 2026-11-26T09:00:00+02:00 | Compare as the same instant as 07:00:00Z on that date; retain needed display context. |
+| Malformed or unmapped | ambiguous local time in repeated hour | Request the offset, zone resolution or explicit policy decision. |
+| Two observations with different offsets denoting one instant | 09:00+02:00 and 07:00Z on the same day | Temporal comparison treats them as equal; business identity still uses its own key. |
+| Observation arrives after a later event | event at 09:00 reported after event at 09:05 | Retain occurrence and observation order separately. |
+| Expiry coincides with current instant | observation exactly at expiry | Apply the documented validity interval at the decision point. |
+| Absent in intake | No revoked_at provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
+
+### revocation_reason
+
+Use human-readable text for `DocumentIssue.revocation_reason`. Preserve the meaningful spelling, script and structure; derive separate search forms.
+
+| Probe | Input or observation | Expected result |
+| --- | --- | --- |
+| Admissible representation | entered revocation_reason in the original script | Preserve the meaningful spelling, script and structure; derive separate search forms. |
+| Malformed or unmapped | invalid text encoding | Return a field-level validation issue without silently changing meaning. |
+| Accented and non-Latin characters | Zoë and ǂNū-khoen in the original script | Preserve and display their original spelling. |
+| Label changes after formal issue | approved edition before a spelling correction | Keep the authorized original rendering in the issued edition. |
+| Bidirectional or multiline input | mixed-direction or multiline entered text | Render in the field’s declared context and respect accessibility and disclosure rules. |
+| Absent in intake | No revocation_reason provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
+
+## Incoming references
+
+| Referencing record and field | Join key | Review when identity changes |
+| --- | --- | --- |
+| [ArchivalRelease](ArchivalRelease.md).`delivered_issue_id` | DocumentIssue identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
+| [OfficialExtract](../governance/OfficialExtract.md).`issued_document_id` | DocumentIssue identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
+
+## Acceptance evidence
+
+Record the owner revision, evaluated values, actor and scope, result, effective time, and any downstream references needed to reproduce a disputed decision. Release only the evidence permitted to the reader. The originating domain page defines the business action and precise historical or transactional effect.
