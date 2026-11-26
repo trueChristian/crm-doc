@@ -2,6 +2,15 @@
 
 This is a product and data specification for a congregation, a church with several campuses, or a network of churches. It describes what each person can accomplish, which records establish the facts, who may see or change them, and how to verify the result. It is written for church staff, members, designers, implementers and reviewers.
 
+## Read at the level of the work
+
+| When you need to… | Open |
+| --- | --- |
+| Understand a whole task, its actors, its exception queue and what gets issued or posted | [Operating and implementation handbook](docs/handbook/README.md) |
+| Build a record, resolve its relationships, or check the meaning of a field and its inputs | [Record-by-record field specifications](docs/implementation/README.md) |
+| Prove your implementation produces the required result for specific inputs and policy choices | [Worked decision tables](docs/decisions/README.md) |
+| Verify that multiple departments agree after a refund, transfer, correction or restore | [Cross-department acceptance journeys](docs/verification/journeys.md) |
+
 ## Find your starting point
 
 | If you are working on… | Start here | A question the section answers |
