@@ -30,7 +30,7 @@ The target is [Promotion](Promotion.md). Resolve the identifier in the approved 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Promotion·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Promotion·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Promotion·MISSING | Queue the missing Promotion mapping or reject the command before linking. |
 | Wrong scope | Promotion·B01 | Do not attach another church’s Promotion without a supported exchange and local authority. |
 | Target rename | Rename Promotion·A01 after linking | The existing promotion_id keeps the same identity and historic documents retain their original wording. |
@@ -82,7 +82,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing issued_to_account_id keeps the same identity and historic documents retain their original wording. |

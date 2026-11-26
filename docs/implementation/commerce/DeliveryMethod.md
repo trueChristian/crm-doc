@@ -33,7 +33,7 @@ The target is [ShopChannel](ShopChannel.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ShopChannel·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ShopChannel·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ShopChannel·MISSING | Queue the missing ShopChannel mapping or reject the command before linking. |
 | Wrong scope | ShopChannel·B01 | Do not attach another church’s ShopChannel without a supported exchange and local authority. |
 | Target rename | Rename ShopChannel·A01 after linking | The existing channel_id keeps the same identity and historic documents retain their original wording. |
@@ -111,7 +111,7 @@ The target is [StockLocation](StockLocation.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | StockLocation·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | StockLocation·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | StockLocation·MISSING | Queue the missing StockLocation mapping or reject the command before linking. |
 | Wrong scope | StockLocation·B01 | Do not attach another church’s StockLocation without a supported exchange and local authority. |
 | Target rename | Rename StockLocation·A01 after linking | The existing pickup_location_id keeps the same identity and historic documents retain their original wording. |

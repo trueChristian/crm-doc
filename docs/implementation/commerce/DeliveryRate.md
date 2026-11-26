@@ -35,7 +35,7 @@ The target is [DeliveryMethod](DeliveryMethod.md). Resolve the identifier in the
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | DeliveryMethod·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | DeliveryMethod·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | DeliveryMethod·MISSING | Queue the missing DeliveryMethod mapping or reject the command before linking. |
 | Wrong scope | DeliveryMethod·B01 | Do not attach another church’s DeliveryMethod without a supported exchange and local authority. |
 | Target rename | Rename DeliveryMethod·A01 after linking | The existing method_id keeps the same identity and historic documents retain their original wording. |

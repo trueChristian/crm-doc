@@ -31,7 +31,7 @@ The target is [Order](Order.md). Resolve the identifier in the approved scope be
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Order·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Order·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Order·MISSING | Queue the missing Order mapping or reject the command before linking. |
 | Wrong scope | Order·B01 | Do not attach another church’s Order without a supported exchange and local authority. |
 | Target rename | Rename Order·A01 after linking | The existing order_id keeps the same identity and historic documents retain their original wording. |
@@ -57,7 +57,7 @@ The target is [DeliveryMethod](DeliveryMethod.md). Resolve the identifier in the
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | DeliveryMethod·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | DeliveryMethod·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | DeliveryMethod·MISSING | Queue the missing DeliveryMethod mapping or reject the command before linking. |
 | Wrong scope | DeliveryMethod·B01 | Do not attach another church’s DeliveryMethod without a supported exchange and local authority. |
 | Target rename | Rename DeliveryMethod·A01 after linking | The existing delivery_method_id keeps the same identity and historic documents retain their original wording. |
@@ -70,7 +70,7 @@ The target is [StockLocation](StockLocation.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | StockLocation·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | StockLocation·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | StockLocation·MISSING | Queue the missing StockLocation mapping or reject the command before linking. |
 | Wrong scope | StockLocation·B01 | Do not attach another church’s StockLocation without a supported exchange and local authority. |
 | Target rename | Rename StockLocation·A01 after linking | The existing assigned_location_id keeps the same identity and historic documents retain their original wording. |

@@ -34,7 +34,7 @@ The target is [SermonDelivery](SermonDelivery.md). Resolve the identifier in the
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | SermonDelivery·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | SermonDelivery·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | SermonDelivery·MISSING | Queue the missing SermonDelivery mapping or reject the command before linking. |
 | Wrong scope | SermonDelivery·B01 | Do not attach another church’s SermonDelivery without a supported exchange and local authority. |
 | Target rename | Rename SermonDelivery·A01 after linking | The existing delivery_id keeps the same identity and historic documents retain their original wording. |
@@ -73,7 +73,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing producer_id keeps the same identity and historic documents retain their original wording. |
@@ -112,7 +112,7 @@ The target is [MediaRights](MediaRights.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | MediaRights·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | MediaRights·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | MediaRights·MISSING | Queue the missing MediaRights mapping or reject the command before linking. |
 | Wrong scope | MediaRights·B01 | Do not attach another church’s MediaRights without a supported exchange and local authority. |
 | Target rename | Rename MediaRights·A01 after linking | The existing live_rights_ref keeps the same identity and historic documents retain their original wording. |
@@ -151,7 +151,7 @@ The target is [MediaAsset](MediaAsset.md). Resolve the identifier in the approve
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | MediaAsset·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | MediaAsset·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | MediaAsset·MISSING | Queue the missing MediaAsset mapping or reject the command before linking. |
 | Wrong scope | MediaAsset·B01 | Do not attach another church’s MediaAsset without a supported exchange and local authority. |
 | Target rename | Rename MediaAsset·A01 after linking | The existing private_recording_ref keeps the same identity and historic documents retain their original wording. |

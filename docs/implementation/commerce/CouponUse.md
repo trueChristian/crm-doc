@@ -31,7 +31,7 @@ The target is [Coupon](Coupon.md). Resolve the identifier in the approved scope 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Coupon·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Coupon·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Coupon·MISSING | Queue the missing Coupon mapping or reject the command before linking. |
 | Wrong scope | Coupon·B01 | Do not attach another church’s Coupon without a supported exchange and local authority. |
 | Target rename | Rename Coupon·A01 after linking | The existing coupon_id keeps the same identity and historic documents retain their original wording. |
@@ -44,7 +44,7 @@ The target is [Cart](Cart.md). Resolve the identifier in the approved scope befo
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Cart·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Cart·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Cart·MISSING | Queue the missing Cart mapping or reject the command before linking. |
 | Wrong scope | Cart·B01 | Do not attach another church’s Cart without a supported exchange and local authority. |
 | Target rename | Rename Cart·A01 after linking | The existing cart_id keeps the same identity and historic documents retain their original wording. |
@@ -57,7 +57,7 @@ The target is [Order](Order.md). Resolve the identifier in the approved scope be
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Order·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Order·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Order·MISSING | Queue the missing Order mapping or reject the command before linking. |
 | Wrong scope | Order·B01 | Do not attach another church’s Order without a supported exchange and local authority. |
 | Target rename | Rename Order·A01 after linking | The existing order_id keeps the same identity and historic documents retain their original wording. |

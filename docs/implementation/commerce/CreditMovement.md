@@ -14,7 +14,7 @@ Unique source action. Positive amount, kind determines sign. Check the remaining
 | --- | --- | --- | --- |
 | `credit_id` | ref StoreCredit | Required when the record reaches its applicable state | [relation](../value-conventions.md#relation) |
 | `attempt_id` | ref PaymentAttempt? | Optional under owner conditions | [relation](../value-conventions.md#relation) |
-| `source_action_key` | text | Required when the record reaches its applicable state | [text](../value-conventions.md#text) |
+| `source_action_key` | text | Required when the record reaches its applicable state | [operation](../value-conventions.md#operation) |
 | `kind` | issue/redeem/reinstate/expire | Required when the record reaches its applicable state | [enum](../value-conventions.md#enum) |
 | `amount` | money | Required when the record reaches its applicable state | [money](../value-conventions.md#money) |
 | `effective_at` | instant | Required when the record reaches its applicable state | [instant](../value-conventions.md#instant) |
@@ -31,7 +31,7 @@ The target is [StoreCredit](StoreCredit.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | StoreCredit·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | StoreCredit·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | StoreCredit·MISSING | Queue the missing StoreCredit mapping or reject the command before linking. |
 | Wrong scope | StoreCredit·B01 | Do not attach another church’s StoreCredit without a supported exchange and local authority. |
 | Target rename | Rename StoreCredit·A01 after linking | The existing credit_id keeps the same identity and historic documents retain their original wording. |
@@ -44,7 +44,7 @@ The target is [PaymentAttempt](PaymentAttempt.md). Resolve the identifier in the
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | PaymentAttempt·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | PaymentAttempt·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | PaymentAttempt·MISSING | Queue the missing PaymentAttempt mapping or reject the command before linking. |
 | Wrong scope | PaymentAttempt·B01 | Do not attach another church’s PaymentAttempt without a supported exchange and local authority. |
 | Target rename | Rename PaymentAttempt·A01 after linking | The existing attempt_id keeps the same identity and historic documents retain their original wording. |
@@ -52,15 +52,15 @@ The target is [PaymentAttempt](PaymentAttempt.md). Resolve the identifier in the
 
 ### source_action_key
 
-Use human-readable text for `CreditMovement.source_action_key`. Preserve the meaningful spelling, script and structure; derive separate search forms.
+Use operation identity for exactly-once business effects for `CreditMovement.source_action_key`. Bind the key to the original material inputs and outcome; retain it throughout the replay window.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | entered source_action_key in the original script | Preserve the meaningful spelling, script and structure; derive separate search forms. |
-| Malformed or unmapped | invalid text encoding | Return a field-level validation issue without silently changing meaning. |
-| Accented and non-Latin characters | Zoë and ǂNū-khoen in the original script | Preserve and display their original spelling. |
-| Label changes after formal issue | approved edition before a spelling correction | Keep the authorized original rendering in the issued edition. |
-| Bidirectional or multiline input | mixed-direction or multiline entered text | Render in the field’s declared context and respect accessibility and disclosure rules. |
+| Admissible representation | KEY-007 with original inputs | Bind the key to the original material inputs and outcome; retain it throughout the replay window. |
+| Malformed or unmapped | KEY-007 with changed material inputs | Reject conflicting reuse and reconcile against the first accepted or in-flight operation. |
+| Duplicate after successful commit | two equivalent submissions using KEY-007 | Return the original business receipt with no second payment, membership change, booking or notice. |
+| Timeout before outcome is known | provider accepted work but acknowledgement delayed | Look up or reconcile the pending operation before issuing a replacement. |
+| A genuine correction has a new key | COR-008 points to original KEY-007 | Link the correction to the original effect and apply its ordinary authorization and reversal rules. |
 | Incomplete record | No source_action_key at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### kind
@@ -109,7 +109,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing approved_by keeps the same identity and historic documents retain their original wording. |

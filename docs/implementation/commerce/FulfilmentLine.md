@@ -32,7 +32,7 @@ The target is [FulfilmentGroup](FulfilmentGroup.md). Resolve the identifier in t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | FulfilmentGroup·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | FulfilmentGroup·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | FulfilmentGroup·MISSING | Queue the missing FulfilmentGroup mapping or reject the command before linking. |
 | Wrong scope | FulfilmentGroup·B01 | Do not attach another church’s FulfilmentGroup without a supported exchange and local authority. |
 | Target rename | Rename FulfilmentGroup·A01 after linking | The existing group_id keeps the same identity and historic documents retain their original wording. |
@@ -45,7 +45,7 @@ The target is [OrderLine](OrderLine.md). Resolve the identifier in the approved 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | OrderLine·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | OrderLine·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | OrderLine·MISSING | Queue the missing OrderLine mapping or reject the command before linking. |
 | Wrong scope | OrderLine·B01 | Do not attach another church’s OrderLine without a supported exchange and local authority. |
 | Target rename | Rename OrderLine·A01 after linking | The existing order_line_id keeps the same identity and historic documents retain their original wording. |
@@ -97,7 +97,7 @@ The target is [StockReservation](StockReservation.md). Resolve the identifier in
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | StockReservation·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | StockReservation·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | StockReservation·MISSING | Queue the missing StockReservation mapping or reject the command before linking. |
 | Wrong scope | StockReservation·B01 | Do not attach another church’s StockReservation without a supported exchange and local authority. |
 | Target rename | Rename StockReservation·A01 after linking | The existing stock_reservation_id keeps the same identity and historic documents retain their original wording. |
@@ -110,7 +110,7 @@ The target is [AccessGrant](AccessGrant.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | AccessGrant·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | AccessGrant·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | AccessGrant·MISSING | Queue the missing AccessGrant mapping or reject the command before linking. |
 | Wrong scope | AccessGrant·B01 | Do not attach another church’s AccessGrant without a supported exchange and local authority. |
 | Target rename | Rename AccessGrant·A01 after linking | The existing access_grant_id keeps the same identity and historic documents retain their original wording. |
