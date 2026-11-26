@@ -6,7 +6,7 @@ Independently compute period earning by summing a constant net price over retain
 
 Four copies sold at 1,000 less 100 per copy and one copy refunded leave 2,700 eligible. A 12.5% contracted royalty rounds 337.5 to 338. With 200 unrecouped, 200 offsets the advance and 138 is newly payable. A later return after settlement requires an authorized adjustment linked to the original accounting period.
 
-[Worked manual](../../../handbook/commerce/publication-and-withdrawal.md) · [All decision suites](../README.md)
+[Worked manual](../../../handbook/commerce/royalty-settlement.md) · [All decision suites](../README.md)
 
 | Range | First input record | Last input record |
 | --- | --- | --- |
