@@ -40,7 +40,7 @@ The target is [Order](Order.md). Resolve the identifier in the approved scope be
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Order·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Order·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Order·MISSING | Queue the missing Order mapping or reject the command before linking. |
 | Wrong scope | Order·B01 | Do not attach another church’s Order without a supported exchange and local authority. |
 | Target rename | Rename Order·A01 after linking | The existing order_id keeps the same identity and historic documents retain their original wording. |
@@ -53,7 +53,7 @@ The target is [QuoteLine](QuoteLine.md). Resolve the identifier in the approved 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | QuoteLine·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | QuoteLine·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | QuoteLine·MISSING | Queue the missing QuoteLine mapping or reject the command before linking. |
 | Wrong scope | QuoteLine·B01 | Do not attach another church’s QuoteLine without a supported exchange and local authority. |
 | Target rename | Rename QuoteLine·A01 after linking | The existing quote_line_id keeps the same identity and historic documents retain their original wording. |
@@ -66,7 +66,7 @@ The target is [ProductVariant](ProductVariant.md). Resolve the identifier in the
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ProductVariant·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ProductVariant·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ProductVariant·MISSING | Queue the missing ProductVariant mapping or reject the command before linking. |
 | Wrong scope | ProductVariant·B01 | Do not attach another church’s ProductVariant without a supported exchange and local authority. |
 | Target rename | Rename ProductVariant·A01 after linking | The existing variant_id keeps the same identity and historic documents retain their original wording. |
@@ -79,7 +79,7 @@ The target is [OrderLine](OrderLine.md). Resolve the identifier in the approved 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | OrderLine·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | OrderLine·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | OrderLine·MISSING | Queue the missing OrderLine mapping or reject the command before linking. |
 | Wrong scope | OrderLine·B01 | Do not attach another church’s OrderLine without a supported exchange and local authority. |
 | Target rename | Rename OrderLine·A01 after linking | The existing parent_line_id keeps the same identity and historic documents retain their original wording. |

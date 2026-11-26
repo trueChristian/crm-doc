@@ -34,7 +34,7 @@ The target is [PaymentAttempt](PaymentAttempt.md). Resolve the identifier in the
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | PaymentAttempt·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | PaymentAttempt·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | PaymentAttempt·MISSING | Queue the missing PaymentAttempt mapping or reject the command before linking. |
 | Wrong scope | PaymentAttempt·B01 | Do not attach another church’s PaymentAttempt without a supported exchange and local authority. |
 | Target rename | Rename PaymentAttempt·A01 after linking | The existing attempt_id keeps the same identity and historic documents retain their original wording. |
@@ -151,7 +151,7 @@ The target is [PaymentEvent](PaymentEvent.md). Resolve the identifier in the app
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | PaymentEvent·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | PaymentEvent·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | PaymentEvent·MISSING | Queue the missing PaymentEvent mapping or reject the command before linking. |
 | Wrong scope | PaymentEvent·B01 | Do not attach another church’s PaymentEvent without a supported exchange and local authority. |
 | Target rename | Rename PaymentEvent·A01 after linking | The existing related_event_id keeps the same identity and historic documents retain their original wording. |
