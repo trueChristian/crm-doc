@@ -38,7 +38,7 @@ The target is [Person](../people/Person.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Person·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Person·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Person·MISSING | Queue the missing Person mapping or reject the command before linking. |
 | Wrong scope | Person·B01 | Do not attach another church’s Person without a supported exchange and local authority. |
 | Target rename | Rename Person·A01 after linking | The existing person_id keeps the same identity and historic documents retain their original wording. |
@@ -51,7 +51,7 @@ The target is [CommunicationPurpose](CommunicationPurpose.md). Resolve the ident
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | CommunicationPurpose·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | CommunicationPurpose·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | CommunicationPurpose·MISSING | Queue the missing CommunicationPurpose mapping or reject the command before linking. |
 | Wrong scope | CommunicationPurpose·B01 | Do not attach another church’s CommunicationPurpose without a supported exchange and local authority. |
 | Target rename | Rename CommunicationPurpose·A01 after linking | The existing purpose_id keeps the same identity and historic documents retain their original wording. |
@@ -77,7 +77,7 @@ The target is [DeliveryEndpoint](DeliveryEndpoint.md). Resolve the identifier in
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | DeliveryEndpoint·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | DeliveryEndpoint·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | DeliveryEndpoint·MISSING | Queue the missing DeliveryEndpoint mapping or reject the command before linking. |
 | Wrong scope | DeliveryEndpoint·B01 | Do not attach another church’s DeliveryEndpoint without a supported exchange and local authority. |
 | Target rename | Rename DeliveryEndpoint·A01 after linking | The existing endpoint_id keeps the same identity and historic documents retain their original wording. |
@@ -103,7 +103,7 @@ The target is [Person](../people/Person.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Person·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Person·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Person·MISSING | Queue the missing Person mapping or reject the command before linking. |
 | Wrong scope | Person·B01 | Do not attach another church’s Person without a supported exchange and local authority. |
 | Target rename | Rename Person·A01 after linking | The existing actor_person_id keeps the same identity and historic documents retain their original wording. |
@@ -116,7 +116,7 @@ The target is [RepresentationAuthority](../people/RepresentationAuthority.md). R
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | RepresentationAuthority·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | RepresentationAuthority·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | RepresentationAuthority·MISSING | Queue the missing RepresentationAuthority mapping or reject the command before linking. |
 | Wrong scope | RepresentationAuthority·B01 | Do not attach another church’s RepresentationAuthority without a supported exchange and local authority. |
 | Target rename | Rename RepresentationAuthority·A01 after linking | The existing authority_ref keeps the same identity and historic documents retain their original wording. |
@@ -129,7 +129,7 @@ The target is [ConsentDecision](../platform/ConsentDecision.md). Resolve the ide
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ConsentDecision·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ConsentDecision·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ConsentDecision·MISSING | Queue the missing ConsentDecision mapping or reject the command before linking. |
 | Wrong scope | ConsentDecision·B01 | Do not attach another church’s ConsentDecision without a supported exchange and local authority. |
 | Target rename | Rename ConsentDecision·A01 after linking | The existing consent_decision_id keeps the same identity and historic documents retain their original wording. |
@@ -164,6 +164,7 @@ Use human-readable text for `ContactDecision.policy_edition`. Preserve the meani
 ### evidence_ref
 
 Use scoped or external reference for `ContactDecision.evidence_ref`. Resolve against the permitted kind, owning namespace and purpose.
+Field access: enforce the declared protection on reads, search, previews, exports and audit evidence as well as the underlying resource value.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |

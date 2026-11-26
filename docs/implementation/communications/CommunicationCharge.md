@@ -32,7 +32,7 @@ The target is [DeliveryAttempt](DeliveryAttempt.md). Resolve the identifier in t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | DeliveryAttempt·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | DeliveryAttempt·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | DeliveryAttempt·MISSING | Queue the missing DeliveryAttempt mapping or reject the command before linking. |
 | Wrong scope | DeliveryAttempt·B01 | Do not attach another church’s DeliveryAttempt without a supported exchange and local authority. |
 | Target rename | Rename DeliveryAttempt·A01 after linking | The existing delivery_attempt_id keeps the same identity and historic documents retain their original wording. |

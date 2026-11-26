@@ -36,7 +36,7 @@ The target is [DataPurpose](../platform/DataPurpose.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | DataPurpose·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | DataPurpose·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | DataPurpose·MISSING | Queue the missing DataPurpose mapping or reject the command before linking. |
 | Wrong scope | DataPurpose·B01 | Do not attach another church’s DataPurpose without a supported exchange and local authority. |
 | Target rename | Rename DataPurpose·A01 after linking | The existing data_purpose_id keeps the same identity and historic documents retain their original wording. |
@@ -49,7 +49,7 @@ The target is [Organization](../foundation/Organization.md). Resolve the identif
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Organization·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Organization·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Organization·MISSING | Queue the missing Organization mapping or reject the command before linking. |
 | Wrong scope | Organization·B01 | Do not attach another church’s Organization without a supported exchange and local authority. |
 | Target rename | Rename Organization·A01 after linking | The existing organization_id keeps the same identity and historic documents retain their original wording. |
@@ -105,7 +105,7 @@ Declared alternatives in owner order: `operational`, `optional`, `emergency`. Ap
 | Translated label reused for two choices | localized display label shared by two codes | Require the underlying code. |
 | Display label changes after issue | display wording changes after issue | Keep the original issued rendering and stored code. |
 | Unknown historical source value | unmapped retired legacy code | Retain raw staging evidence; never silently choose the first option. |
-| Absent in intake | No class provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
+| Incomplete record | No class at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### permitted_content
 

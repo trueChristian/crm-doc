@@ -38,7 +38,7 @@ The target is [DispatchRequest](DispatchRequest.md). Resolve the identifier in t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | DispatchRequest·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | DispatchRequest·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | DispatchRequest·MISSING | Queue the missing DispatchRequest mapping or reject the command before linking. |
 | Wrong scope | DispatchRequest·B01 | Do not attach another church’s DispatchRequest without a supported exchange and local authority. |
 | Target rename | Rename DispatchRequest·A01 after linking | The existing dispatch_id keeps the same identity and historic documents retain their original wording. |
@@ -51,7 +51,7 @@ The target is [DispatchRecipient](DispatchRecipient.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | DispatchRecipient·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | DispatchRecipient·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | DispatchRecipient·MISSING | Queue the missing DispatchRecipient mapping or reject the command before linking. |
 | Wrong scope | DispatchRecipient·B01 | Do not attach another church’s DispatchRecipient without a supported exchange and local authority. |
 | Target rename | Rename DispatchRecipient·A01 after linking | The existing recipient_id keeps the same identity and historic documents retain their original wording. |
@@ -64,7 +64,7 @@ The target is [ChannelPublicationTarget](ChannelPublicationTarget.md). Resolve t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ChannelPublicationTarget·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ChannelPublicationTarget·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ChannelPublicationTarget·MISSING | Queue the missing ChannelPublicationTarget mapping or reject the command before linking. |
 | Wrong scope | ChannelPublicationTarget·B01 | Do not attach another church’s ChannelPublicationTarget without a supported exchange and local authority. |
 | Target rename | Rename ChannelPublicationTarget·A01 after linking | The existing publication_target_id keeps the same identity and historic documents retain their original wording. |
@@ -77,7 +77,7 @@ The target is [DeliveryEndpoint](DeliveryEndpoint.md). Resolve the identifier in
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | DeliveryEndpoint·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | DeliveryEndpoint·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | DeliveryEndpoint·MISSING | Queue the missing DeliveryEndpoint mapping or reject the command before linking. |
 | Wrong scope | DeliveryEndpoint·B01 | Do not attach another church’s DeliveryEndpoint without a supported exchange and local authority. |
 | Target rename | Rename DeliveryEndpoint·A01 after linking | The existing endpoint_id keeps the same identity and historic documents retain their original wording. |
@@ -103,7 +103,7 @@ The target is [SenderIdentity](SenderIdentity.md). Resolve the identifier in the
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | SenderIdentity·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | SenderIdentity·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | SenderIdentity·MISSING | Queue the missing SenderIdentity mapping or reject the command before linking. |
 | Wrong scope | SenderIdentity·B01 | Do not attach another church’s SenderIdentity without a supported exchange and local authority. |
 | Target rename | Rename SenderIdentity·A01 after linking | The existing sender_id keeps the same identity and historic documents retain their original wording. |

@@ -14,7 +14,7 @@ Content requires scope and expiry checks on issue. Titles, names and attachments
 | --- | --- | --- | --- |
 | `bulletin_id` | BulletinEdition ref | Required when the record reaches its applicable state | [relation](../value-conventions.md#relation) |
 | `sequence` | integer | Required when the record reaches its applicable state | [integer](../value-conventions.md#integer) |
-| `source_kind` | typed code | Required when the record reaches its applicable state | [structured](../value-conventions.md#structured) |
+| `source_kind` | typed code | Required when the record reaches its applicable state | [vocab](../value-conventions.md#vocab) |
 | `source_id` | opaque | Required when the record reaches its applicable state | [resource](../value-conventions.md#resource) |
 | `source_revision` | text | Required when the record reaches its applicable state | [version](../value-conventions.md#version) |
 | `headline` | text | Required when the record reaches its applicable state | [text](../value-conventions.md#text) |
@@ -35,7 +35,7 @@ The target is [BulletinEdition](BulletinEdition.md). Resolve the identifier in t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | BulletinEdition·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | BulletinEdition·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | BulletinEdition·MISSING | Queue the missing BulletinEdition mapping or reject the command before linking. |
 | Wrong scope | BulletinEdition·B01 | Do not attach another church’s BulletinEdition without a supported exchange and local authority. |
 | Target rename | Rename BulletinEdition·A01 after linking | The existing bulletin_id keeps the same identity and historic documents retain their original wording. |
@@ -56,15 +56,15 @@ Use whole-number measure for `BulletinItem.sequence`. Preserve integer precision
 
 ### source_kind
 
-Use typed value or bounded compound record for `BulletinItem.source_kind`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use versioned classification or status code for `BulletinItem.source_kind`. Check the relevant vocabulary and permitted transition before applying.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of source_kind matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for source_kind | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | active source_kind code in the bound vocabulary | Check the relevant vocabulary and permitted transition before applying. |
+| Malformed or unmapped | unmapped source_kind code | Request mapping to an authorized code. |
+| Code retired before a new transaction | new operation after code retirement | Allow historic display; withhold new use unless policy permits. |
+| Same label in two code lists | same display name in two vocabularies | Use record type and field to locate the correct list. |
+| Bulk import requests a state transition | import requests the final approved state | Run ordinary transition guards and approval checks. |
 | Incomplete record | No source_kind at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### source_id
@@ -165,7 +165,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing proofed_by keeps the same identity and historic documents retain their original wording. |

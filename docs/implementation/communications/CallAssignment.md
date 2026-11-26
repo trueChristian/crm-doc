@@ -35,7 +35,7 @@ The target is [ContactTree](ContactTree.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ContactTree·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ContactTree·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ContactTree·MISSING | Queue the missing ContactTree mapping or reject the command before linking. |
 | Wrong scope | ContactTree·B01 | Do not attach another church’s ContactTree without a supported exchange and local authority. |
 | Target rename | Rename ContactTree·A01 after linking | The existing tree_id keeps the same identity and historic documents retain their original wording. |
@@ -61,7 +61,7 @@ The target is [Person](../people/Person.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Person·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Person·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Person·MISSING | Queue the missing Person mapping or reject the command before linking. |
 | Wrong scope | Person·B01 | Do not attach another church’s Person without a supported exchange and local authority. |
 | Target rename | Rename Person·A01 after linking | The existing caller_person_id keeps the same identity and historic documents retain their original wording. |
@@ -74,7 +74,7 @@ The target is [Person](../people/Person.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Person·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Person·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Person·MISSING | Queue the missing Person mapping or reject the command before linking. |
 | Wrong scope | Person·B01 | Do not attach another church’s Person without a supported exchange and local authority. |
 | Target rename | Rename Person·A01 after linking | The existing intended_person_id keeps the same identity and historic documents retain their original wording. |
@@ -87,7 +87,7 @@ The target is [DeliveryEndpoint](DeliveryEndpoint.md). Resolve the identifier in
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | DeliveryEndpoint·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | DeliveryEndpoint·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | DeliveryEndpoint·MISSING | Queue the missing DeliveryEndpoint mapping or reject the command before linking. |
 | Wrong scope | DeliveryEndpoint·B01 | Do not attach another church’s DeliveryEndpoint without a supported exchange and local authority. |
 | Target rename | Rename DeliveryEndpoint·A01 after linking | The existing endpoint_id keeps the same identity and historic documents retain their original wording. |
@@ -100,7 +100,7 @@ The target is [CallAssignment](CallAssignment.md). Resolve the identifier in the
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | CallAssignment·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | CallAssignment·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | CallAssignment·MISSING | Queue the missing CallAssignment mapping or reject the command before linking. |
 | Wrong scope | CallAssignment·B01 | Do not attach another church’s CallAssignment without a supported exchange and local authority. |
 | Target rename | Rename CallAssignment·A01 after linking | The existing parent_assignment_id keeps the same identity and historic documents retain their original wording. |
@@ -113,7 +113,7 @@ The target is [Person](../people/Person.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Person·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Person·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Person·MISSING | Queue the missing Person mapping or reject the command before linking. |
 | Wrong scope | Person·B01 | Do not attach another church’s Person without a supported exchange and local authority. |
 | Target rename | Rename Person·A01 after linking | The existing backup_caller_id keeps the same identity and historic documents retain their original wording. |
