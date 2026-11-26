@@ -38,7 +38,7 @@ The target is [AssetClass](AssetClass.md). Resolve the identifier in the approve
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | AssetClass·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | AssetClass·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | AssetClass·MISSING | Queue the missing AssetClass mapping or reject the command before linking. |
 | Wrong scope | AssetClass·B01 | Do not attach another church’s AssetClass without a supported exchange and local authority. |
 | Target rename | Rename AssetClass·A01 after linking | The existing class_id keeps the same identity and historic documents retain their original wording. |
@@ -51,7 +51,7 @@ The target is [FixedAsset](FixedAsset.md). Resolve the identifier in the approve
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | FixedAsset·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | FixedAsset·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | FixedAsset·MISSING | Queue the missing FixedAsset mapping or reject the command before linking. |
 | Wrong scope | FixedAsset·B01 | Do not attach another church’s FixedAsset without a supported exchange and local authority. |
 | Target rename | Rename FixedAsset·A01 after linking | The existing parent_asset_id keeps the same identity and historic documents retain their original wording. |

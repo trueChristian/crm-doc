@@ -16,7 +16,7 @@ Transfer custody, authority, inventory, bank signing changes and pending tasks e
 | `as_of` | date | Required when the record reaches its applicable state | [date](../value-conventions.md#date) |
 | `outgoing_role_ref` | ? | Optional under owner conditions | [resource](../value-conventions.md#resource) |
 | `incoming_role_ref` | Owner-scoped business value; see the record rule | Required when the record reaches its applicable state | [resource](../value-conventions.md#resource) |
-| `open_periods` | Owner-scoped business value; see the record rule | Required when the record reaches its applicable state | [structured](../value-conventions.md#structured) |
+| `open_periods` | Owner-scoped business value; see the record rule | Required when the record reaches its applicable state | [list](../value-conventions.md#list) |
 | `outstanding_control_refs` | Owner-scoped business value; see the record rule | Required when the record reaches its applicable state | [list](../value-conventions.md#list) |
 | `unresolved_exception_refs` | Owner-scoped business value; see the record rule | Required when the record reaches its applicable state | [list](../value-conventions.md#list) |
 | `upcoming_due_items` | Owner-scoped business value; see the record rule | Required when the record reaches its applicable state | [structured](../value-conventions.md#structured) |
@@ -35,7 +35,7 @@ The target is [FinanceBook](FinanceBook.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | FinanceBook·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | FinanceBook·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | FinanceBook·MISSING | Queue the missing FinanceBook mapping or reject the command before linking. |
 | Wrong scope | FinanceBook·B01 | Do not attach another church’s FinanceBook without a supported exchange and local authority. |
 | Target rename | Rename FinanceBook·A01 after linking | The existing book_id keeps the same identity and historic documents retain their original wording. |
@@ -82,15 +82,15 @@ Use scoped or external reference for `FinanceHandover.incoming_role_ref`. Resolv
 
 ### open_periods
 
-Use typed value or bounded compound record for `FinanceHandover.open_periods`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use ordered collection or mathematical set for `FinanceHandover.open_periods`. Preserve ordering when meaningful; enforce uniqueness when the declaration is a set.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of open_periods matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for open_periods | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | permitted members A and B | Preserve ordering when meaningful; enforce uniqueness when the declaration is a set. |
+| Malformed or unmapped | an element outside the declared domain | Reject the affected collection or stage its invalid item under the import policy. |
+| Same element appears twice | A, A, B | Apply declared sequence/set multiplicity without doubling financial or voting effects. |
+| Empty collection versus unknown collection | empty collection and missing collection | Preserve the distinction where the rule requires evidence. |
+| One element later becomes restricted | authorization for member B withdrawn before export | Recompute permitted projection before export or display. |
 | Incomplete record | No open_periods at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### outstanding_control_refs

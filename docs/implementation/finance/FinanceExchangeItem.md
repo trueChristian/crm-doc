@@ -17,7 +17,7 @@ One explicit outcome per source row. Error export masks sensitive content; repla
 | `row_number` | integer | Required when the record reaches its applicable state | [integer](../value-conventions.md#integer) |
 | `validation_result` | code | Required when the record reaches its applicable state | [vocab](../value-conventions.md#vocab) |
 | `target_ref` | ? | Optional under owner conditions | [resource](../value-conventions.md#resource) |
-| `error_detail` | ? | Optional under owner conditions | [structured](../value-conventions.md#structured) |
+| `error_detail` | ? | Optional under owner conditions | [text](../value-conventions.md#text) |
 | `previous_item_ref` | ? | Optional under owner conditions | [resource](../value-conventions.md#resource) |
 
 ## Input, storage and exchange cases
@@ -31,7 +31,7 @@ The target is [FinanceExchangeBatch](FinanceExchangeBatch.md). Resolve the ident
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | FinanceExchangeBatch·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | FinanceExchangeBatch·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | FinanceExchangeBatch·MISSING | Queue the missing FinanceExchangeBatch mapping or reject the command before linking. |
 | Wrong scope | FinanceExchangeBatch·B01 | Do not attach another church’s FinanceExchangeBatch without a supported exchange and local authority. |
 | Target rename | Rename FinanceExchangeBatch·A01 after linking | The existing batch_id keeps the same identity and historic documents retain their original wording. |
@@ -91,15 +91,15 @@ Use scoped or external reference for `FinanceExchangeItem.target_ref`. Resolve a
 
 ### error_detail
 
-Use typed value or bounded compound record for `FinanceExchangeItem.error_detail`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use human-readable text for `FinanceExchangeItem.error_detail`. Preserve the meaningful spelling, script and structure; derive separate search forms.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of error_detail matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for error_detail | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | entered error_detail in the original script | Preserve the meaningful spelling, script and structure; derive separate search forms. |
+| Malformed or unmapped | invalid text encoding | Return a field-level validation issue without silently changing meaning. |
+| Accented and non-Latin characters | Zoë and ǂNū-khoen in the original script | Preserve and display their original spelling. |
+| Label changes after formal issue | approved edition before a spelling correction | Keep the authorized original rendering in the issued edition. |
+| Bidirectional or multiline input | mixed-direction or multiline entered text | Render in the field’s declared context and respect accessibility and disclosure rules. |
 | Absent in intake | No error_detail provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
 
 ### previous_item_ref
