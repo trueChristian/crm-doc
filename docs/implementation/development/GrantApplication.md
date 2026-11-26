@@ -36,7 +36,7 @@ The target is [FundingOpportunity](FundingOpportunity.md). Resolve the identifie
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | FundingOpportunity·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | FundingOpportunity·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | FundingOpportunity·MISSING | Queue the missing FundingOpportunity mapping or reject the command before linking. |
 | Wrong scope | FundingOpportunity·B01 | Do not attach another church’s FundingOpportunity without a supported exchange and local authority. |
 | Target rename | Rename FundingOpportunity·A01 after linking | The existing opportunity_id keeps the same identity and historic documents retain their original wording. |
@@ -49,7 +49,7 @@ The target is [MissionProject](../ministry/MissionProject.md). Resolve the ident
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | MissionProject·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | MissionProject·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | MissionProject·MISSING | Queue the missing MissionProject mapping or reject the command before linking. |
 | Wrong scope | MissionProject·B01 | Do not attach another church’s MissionProject without a supported exchange and local authority. |
 | Target rename | Rename MissionProject·A01 after linking | The existing project_id keeps the same identity and historic documents retain their original wording. |
@@ -127,7 +127,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing coordinator_id keeps the same identity and historic documents retain their original wording. |
@@ -140,7 +140,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing signatory_id keeps the same identity and historic documents retain their original wording. |
@@ -179,7 +179,7 @@ The target is [GrantAward](../finance/GrantAward.md). Resolve the identifier in 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | GrantAward·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | GrantAward·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | GrantAward·MISSING | Queue the missing GrantAward mapping or reject the command before linking. |
 | Wrong scope | GrantAward·B01 | Do not attach another church’s GrantAward without a supported exchange and local authority. |
 | Target rename | Rename GrantAward·A01 after linking | The existing award_id keeps the same identity and historic documents retain their original wording. |

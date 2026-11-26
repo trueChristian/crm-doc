@@ -35,7 +35,7 @@ The target is [PartnershipAgreement](PartnershipAgreement.md). Resolve the ident
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | PartnershipAgreement·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | PartnershipAgreement·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | PartnershipAgreement·MISSING | Queue the missing PartnershipAgreement mapping or reject the command before linking. |
 | Wrong scope | PartnershipAgreement·B01 | Do not attach another church’s PartnershipAgreement without a supported exchange and local authority. |
 | Target rename | Rename PartnershipAgreement·A01 after linking | The existing agreement_id keeps the same identity and historic documents retain their original wording. |
@@ -48,7 +48,7 @@ The target is [AgreementParty](AgreementParty.md). Resolve the identifier in the
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | AgreementParty·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | AgreementParty·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | AgreementParty·MISSING | Queue the missing AgreementParty mapping or reject the command before linking. |
 | Wrong scope | AgreementParty·B01 | Do not attach another church’s AgreementParty without a supported exchange and local authority. |
 | Target rename | Rename AgreementParty·A01 after linking | The existing delivering_party_id keeps the same identity and historic documents retain their original wording. |
@@ -61,7 +61,7 @@ The target is [AgreementParty](AgreementParty.md). Resolve the identifier in the
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | AgreementParty·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | AgreementParty·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | AgreementParty·MISSING | Queue the missing AgreementParty mapping or reject the command before linking. |
 | Wrong scope | AgreementParty·B01 | Do not attach another church’s AgreementParty without a supported exchange and local authority. |
 | Target rename | Rename AgreementParty·A01 after linking | The existing receiving_party_id keeps the same identity and historic documents retain their original wording. |

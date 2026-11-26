@@ -36,7 +36,7 @@ The target is [PartnershipAgreement](PartnershipAgreement.md). Resolve the ident
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | PartnershipAgreement·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | PartnershipAgreement·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | PartnershipAgreement·MISSING | Queue the missing PartnershipAgreement mapping or reject the command before linking. |
 | Wrong scope | PartnershipAgreement·B01 | Do not attach another church’s PartnershipAgreement without a supported exchange and local authority. |
 | Target rename | Rename PartnershipAgreement·A01 after linking | The existing agreement_id keeps the same identity and historic documents retain their original wording. |
@@ -49,7 +49,7 @@ The target is [FundraisingAppeal](FundraisingAppeal.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | FundraisingAppeal·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | FundraisingAppeal·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | FundraisingAppeal·MISSING | Queue the missing FundraisingAppeal mapping or reject the command before linking. |
 | Wrong scope | FundraisingAppeal·B01 | Do not attach another church’s FundraisingAppeal without a supported exchange and local authority. |
 | Target rename | Rename FundraisingAppeal·A01 after linking | The existing appeal_id keeps the same identity and historic documents retain their original wording. |
@@ -127,7 +127,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing reviewed_by keeps the same identity and historic documents retain their original wording. |
@@ -179,7 +179,7 @@ The target is [ImpactPublication](ImpactPublication.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ImpactPublication·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ImpactPublication·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ImpactPublication·MISSING | Queue the missing ImpactPublication mapping or reject the command before linking. |
 | Wrong scope | ImpactPublication·B01 | Do not attach another church’s ImpactPublication without a supported exchange and local authority. |
 | Target rename | Rename ImpactPublication·A01 after linking | The existing replaces_id keeps the same identity and historic documents retain their original wording. |

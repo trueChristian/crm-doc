@@ -33,7 +33,7 @@ The target is [GrantAward](../finance/GrantAward.md). Resolve the identifier in 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | GrantAward·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | GrantAward·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | GrantAward·MISSING | Queue the missing GrantAward mapping or reject the command before linking. |
 | Wrong scope | GrantAward·B01 | Do not attach another church’s GrantAward without a supported exchange and local authority. |
 | Target rename | Rename GrantAward·A01 after linking | The existing award_id keeps the same identity and historic documents retain their original wording. |
@@ -46,7 +46,7 @@ The target is [AwardMilestone](../finance/AwardMilestone.md). Resolve the identi
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | AwardMilestone·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | AwardMilestone·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | AwardMilestone·MISSING | Queue the missing AwardMilestone mapping or reject the command before linking. |
 | Wrong scope | AwardMilestone·B01 | Do not attach another church’s AwardMilestone without a supported exchange and local authority. |
 | Target rename | Rename AwardMilestone·A01 after linking | The existing milestone_id keeps the same identity and historic documents retain their original wording. |
@@ -124,7 +124,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing owner_id keeps the same identity and historic documents retain their original wording. |

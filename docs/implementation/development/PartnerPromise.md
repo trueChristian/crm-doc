@@ -37,7 +37,7 @@ The target is [PartnershipAgreement](PartnershipAgreement.md). Resolve the ident
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | PartnershipAgreement·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | PartnershipAgreement·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | PartnershipAgreement·MISSING | Queue the missing PartnershipAgreement mapping or reject the command before linking. |
 | Wrong scope | PartnershipAgreement·B01 | Do not attach another church’s PartnershipAgreement without a supported exchange and local authority. |
 | Target rename | Rename PartnershipAgreement·A01 after linking | The existing agreement_id keeps the same identity and historic documents retain their original wording. |
@@ -50,7 +50,7 @@ The target is [AgreementParty](AgreementParty.md). Resolve the identifier in the
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | AgreementParty·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | AgreementParty·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | AgreementParty·MISSING | Queue the missing AgreementParty mapping or reject the command before linking. |
 | Wrong scope | AgreementParty·B01 | Do not attach another church’s AgreementParty without a supported exchange and local authority. |
 | Target rename | Rename AgreementParty·A01 after linking | The existing party_id keeps the same identity and historic documents retain their original wording. |
@@ -63,7 +63,7 @@ The target is [ProjectMilestone](../ministry/ProjectMilestone.md). Resolve the i
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ProjectMilestone·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ProjectMilestone·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ProjectMilestone·MISSING | Queue the missing ProjectMilestone mapping or reject the command before linking. |
 | Wrong scope | ProjectMilestone·B01 | Do not attach another church’s ProjectMilestone without a supported exchange and local authority. |
 | Target rename | Rename ProjectMilestone·A01 after linking | The existing project_milestone_id keeps the same identity and historic documents retain their original wording. |
@@ -154,7 +154,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing accountable_owner_id keeps the same identity and historic documents retain their original wording. |
@@ -167,7 +167,7 @@ The target is [Pledge](../finance/Pledge.md). Resolve the identifier in the appr
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Pledge·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Pledge·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Pledge·MISSING | Queue the missing Pledge mapping or reject the command before linking. |
 | Wrong scope | Pledge·B01 | Do not attach another church’s Pledge without a supported exchange and local authority. |
 | Target rename | Rename Pledge·A01 after linking | The existing finance_pledge_id keeps the same identity and historic documents retain their original wording. |
@@ -180,7 +180,7 @@ The target is [GrantAward](../finance/GrantAward.md). Resolve the identifier in 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | GrantAward·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | GrantAward·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | GrantAward·MISSING | Queue the missing GrantAward mapping or reject the command before linking. |
 | Wrong scope | GrantAward·B01 | Do not attach another church’s GrantAward without a supported exchange and local authority. |
 | Target rename | Rename GrantAward·A01 after linking | The existing finance_award_id keeps the same identity and historic documents retain their original wording. |

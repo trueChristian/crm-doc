@@ -37,7 +37,7 @@ The target is [PartnerPromise](PartnerPromise.md). Resolve the identifier in the
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | PartnerPromise·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | PartnerPromise·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | PartnerPromise·MISSING | Queue the missing PartnerPromise mapping or reject the command before linking. |
 | Wrong scope | PartnerPromise·B01 | Do not attach another church’s PartnerPromise without a supported exchange and local authority. |
 | Target rename | Rename PartnerPromise·A01 after linking | The existing promise_id keeps the same identity and historic documents retain their original wording. |
@@ -102,7 +102,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing verified_by keeps the same identity and historic documents retain their original wording. |
@@ -115,7 +115,7 @@ The target is [GiftAllocation](../finance/GiftAllocation.md). Resolve the identi
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | GiftAllocation·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | GiftAllocation·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | GiftAllocation·MISSING | Queue the missing GiftAllocation mapping or reject the command before linking. |
 | Wrong scope | GiftAllocation·B01 | Do not attach another church’s GiftAllocation without a supported exchange and local authority. |
 | Target rename | Rename GiftAllocation·A01 after linking | The existing gift_allocation_id keeps the same identity and historic documents retain their original wording. |
@@ -128,7 +128,7 @@ The target is [InKindGift](../finance/InKindGift.md). Resolve the identifier in 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | InKindGift·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | InKindGift·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | InKindGift·MISSING | Queue the missing InKindGift mapping or reject the command before linking. |
 | Wrong scope | InKindGift·B01 | Do not attach another church’s InKindGift without a supported exchange and local authority. |
 | Target rename | Rename InKindGift·A01 after linking | The existing in_kind_gift_id keeps the same identity and historic documents retain their original wording. |
@@ -141,7 +141,7 @@ The target is [SalesInvoiceLine](../finance/SalesInvoiceLine.md). Resolve the id
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | SalesInvoiceLine·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | SalesInvoiceLine·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | SalesInvoiceLine·MISSING | Queue the missing SalesInvoiceLine mapping or reject the command before linking. |
 | Wrong scope | SalesInvoiceLine·B01 | Do not attach another church’s SalesInvoiceLine without a supported exchange and local authority. |
 | Target rename | Rename SalesInvoiceLine·A01 after linking | The existing invoice_line_id keeps the same identity and historic documents retain their original wording. |
@@ -154,7 +154,7 @@ The target is [ServiceTimeEntry](../ministry/ServiceTimeEntry.md). Resolve the i
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ServiceTimeEntry·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ServiceTimeEntry·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ServiceTimeEntry·MISSING | Queue the missing ServiceTimeEntry mapping or reject the command before linking. |
 | Wrong scope | ServiceTimeEntry·B01 | Do not attach another church’s ServiceTimeEntry without a supported exchange and local authority. |
 | Target rename | Rename ServiceTimeEntry·A01 after linking | The existing service_entry_id keeps the same identity and historic documents retain their original wording. |
@@ -193,7 +193,7 @@ The target is [PartnershipDelivery](PartnershipDelivery.md). Resolve the identif
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | PartnershipDelivery·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | PartnershipDelivery·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | PartnershipDelivery·MISSING | Queue the missing PartnershipDelivery mapping or reject the command before linking. |
 | Wrong scope | PartnershipDelivery·B01 | Do not attach another church’s PartnershipDelivery without a supported exchange and local authority. |
 | Target rename | Rename PartnershipDelivery·A01 after linking | The existing reversal_of_id keeps the same identity and historic documents retain their original wording. |

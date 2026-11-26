@@ -36,7 +36,7 @@ The target is [FundraisingAppeal](FundraisingAppeal.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | FundraisingAppeal·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | FundraisingAppeal·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | FundraisingAppeal·MISSING | Queue the missing FundraisingAppeal mapping or reject the command before linking. |
 | Wrong scope | FundraisingAppeal·B01 | Do not attach another church’s FundraisingAppeal without a supported exchange and local authority. |
 | Target rename | Rename FundraisingAppeal·A01 after linking | The existing appeal_id keeps the same identity and historic documents retain their original wording. |
@@ -49,7 +49,7 @@ The target is [GivingParty](../finance/GivingParty.md). Resolve the identifier i
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | GivingParty·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | GivingParty·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | GivingParty·MISSING | Queue the missing GivingParty mapping or reject the command before linking. |
 | Wrong scope | GivingParty·B01 | Do not attach another church’s GivingParty without a supported exchange and local authority. |
 | Target rename | Rename GivingParty·A01 after linking | The existing matching_party_id keeps the same identity and historic documents retain their original wording. |
@@ -62,7 +62,7 @@ The target is [Pledge](../finance/Pledge.md). Resolve the identifier in the appr
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Pledge·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Pledge·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Pledge·MISSING | Queue the missing Pledge mapping or reject the command before linking. |
 | Wrong scope | Pledge·B01 | Do not attach another church’s Pledge without a supported exchange and local authority. |
 | Target rename | Rename Pledge·A01 after linking | The existing pledge_id keeps the same identity and historic documents retain their original wording. |

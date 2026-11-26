@@ -32,7 +32,7 @@ The target is [SponsorReport](SponsorReport.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | SponsorReport·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | SponsorReport·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | SponsorReport·MISSING | Queue the missing SponsorReport mapping or reject the command before linking. |
 | Wrong scope | SponsorReport·B01 | Do not attach another church’s SponsorReport without a supported exchange and local authority. |
 | Target rename | Rename SponsorReport·A01 after linking | The existing report_id keeps the same identity and historic documents retain their original wording. |
@@ -45,7 +45,7 @@ The target is [ProjectOutcome](../ministry/ProjectOutcome.md). Resolve the ident
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ProjectOutcome·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ProjectOutcome·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ProjectOutcome·MISSING | Queue the missing ProjectOutcome mapping or reject the command before linking. |
 | Wrong scope | ProjectOutcome·B01 | Do not attach another church’s ProjectOutcome without a supported exchange and local authority. |
 | Target rename | Rename ProjectOutcome·A01 after linking | The existing outcome_id keeps the same identity and historic documents retain their original wording. |
@@ -58,7 +58,7 @@ The target is [AwardCost](../finance/AwardCost.md). Resolve the identifier in th
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | AwardCost·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | AwardCost·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | AwardCost·MISSING | Queue the missing AwardCost mapping or reject the command before linking. |
 | Wrong scope | AwardCost·B01 | Do not attach another church’s AwardCost without a supported exchange and local authority. |
 | Target rename | Rename AwardCost·A01 after linking | The existing award_cost_id keeps the same identity and historic documents retain their original wording. |
@@ -71,7 +71,7 @@ The target is [ReportSnapshot](../finance/ReportSnapshot.md). Resolve the identi
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ReportSnapshot·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ReportSnapshot·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ReportSnapshot·MISSING | Queue the missing ReportSnapshot mapping or reject the command before linking. |
 | Wrong scope | ReportSnapshot·B01 | Do not attach another church’s ReportSnapshot without a supported exchange and local authority. |
 | Target rename | Rename ReportSnapshot·A01 after linking | The existing finance_snapshot_id keeps the same identity and historic documents retain their original wording. |

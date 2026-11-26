@@ -36,7 +36,7 @@ The target is [GrantApplication](GrantApplication.md). Resolve the identifier in
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | GrantApplication·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | GrantApplication·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | GrantApplication·MISSING | Queue the missing GrantApplication mapping or reject the command before linking. |
 | Wrong scope | GrantApplication·B01 | Do not attach another church’s GrantApplication without a supported exchange and local authority. |
 | Target rename | Rename GrantApplication·A01 after linking | The existing application_id keeps the same identity and historic documents retain their original wording. |
@@ -49,7 +49,7 @@ The target is [MissionProject](../ministry/MissionProject.md). Resolve the ident
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | MissionProject·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | MissionProject·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | MissionProject·MISSING | Queue the missing MissionProject mapping or reject the command before linking. |
 | Wrong scope | MissionProject·B01 | Do not attach another church’s MissionProject without a supported exchange and local authority. |
 | Target rename | Rename MissionProject·A01 after linking | The existing project_id keeps the same identity and historic documents retain their original wording. |
@@ -62,7 +62,7 @@ The target is [BudgetLine](../finance/BudgetLine.md). Resolve the identifier in 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | BudgetLine·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | BudgetLine·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | BudgetLine·MISSING | Queue the missing BudgetLine mapping or reject the command before linking. |
 | Wrong scope | BudgetLine·B01 | Do not attach another church’s BudgetLine without a supported exchange and local authority. |
 | Target rename | Rename BudgetLine·A01 after linking | The existing finance_budget_line_id keeps the same identity and historic documents retain their original wording. |

@@ -33,7 +33,7 @@ The target is [MatchOffer](MatchOffer.md). Resolve the identifier in the approve
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | MatchOffer·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | MatchOffer·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | MatchOffer·MISSING | Queue the missing MatchOffer mapping or reject the command before linking. |
 | Wrong scope | MatchOffer·B01 | Do not attach another church’s MatchOffer without a supported exchange and local authority. |
 | Target rename | Rename MatchOffer·A01 after linking | The existing offer_id keeps the same identity and historic documents retain their original wording. |
@@ -46,7 +46,7 @@ The target is [GiftAllocation](../finance/GiftAllocation.md). Resolve the identi
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | GiftAllocation·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | GiftAllocation·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | GiftAllocation·MISSING | Queue the missing GiftAllocation mapping or reject the command before linking. |
 | Wrong scope | GiftAllocation·B01 | Do not attach another church’s GiftAllocation without a supported exchange and local authority. |
 | Target rename | Rename GiftAllocation·A01 after linking | The existing qualifying_allocation_id keeps the same identity and historic documents retain their original wording. |
@@ -124,7 +124,7 @@ The target is [GiftAllocation](../finance/GiftAllocation.md). Resolve the identi
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | GiftAllocation·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | GiftAllocation·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | GiftAllocation·MISSING | Queue the missing GiftAllocation mapping or reject the command before linking. |
 | Wrong scope | GiftAllocation·B01 | Do not attach another church’s GiftAllocation without a supported exchange and local authority. |
 | Target rename | Rename GiftAllocation·A01 after linking | The existing match_allocation_id keeps the same identity and historic documents retain their original wording. |

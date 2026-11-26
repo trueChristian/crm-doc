@@ -36,7 +36,7 @@ The target is [GivingParty](../finance/GivingParty.md). Resolve the identifier i
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | GivingParty·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | GivingParty·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | GivingParty·MISSING | Queue the missing GivingParty mapping or reject the command before linking. |
 | Wrong scope | GivingParty·B01 | Do not attach another church’s GivingParty without a supported exchange and local authority. |
 | Target rename | Rename GivingParty·A01 after linking | The existing giving_party_id keeps the same identity and historic documents retain their original wording. |
@@ -62,7 +62,7 @@ The target is [GiftOfferAssessment](GiftOfferAssessment.md). Resolve the identif
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | GiftOfferAssessment·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | GiftOfferAssessment·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | GiftOfferAssessment·MISSING | Queue the missing GiftOfferAssessment mapping or reject the command before linking. |
 | Wrong scope | GiftOfferAssessment·B01 | Do not attach another church’s GiftOfferAssessment without a supported exchange and local authority. |
 | Target rename | Rename GiftOfferAssessment·A01 after linking | The existing assessment_id keeps the same identity and historic documents retain their original wording. |
@@ -179,7 +179,7 @@ The target is [Gift](../finance/Gift.md). Resolve the identifier in the approved
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Gift·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Gift·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Gift·MISSING | Queue the missing Gift mapping or reject the command before linking. |
 | Wrong scope | Gift·B01 | Do not attach another church’s Gift without a supported exchange and local authority. |
 | Target rename | Rename Gift·A01 after linking | The existing received_gift_id keeps the same identity and historic documents retain their original wording. |

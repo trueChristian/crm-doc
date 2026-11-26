@@ -36,7 +36,7 @@ The target is [ImpactPublication](ImpactPublication.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ImpactPublication·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ImpactPublication·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ImpactPublication·MISSING | Queue the missing ImpactPublication mapping or reject the command before linking. |
 | Wrong scope | ImpactPublication·B01 | Do not attach another church’s ImpactPublication without a supported exchange and local authority. |
 | Target rename | Rename ImpactPublication·A01 after linking | The existing publication_id keeps the same identity and historic documents retain their original wording. |
@@ -49,7 +49,7 @@ The target is [ProjectOutcome](../ministry/ProjectOutcome.md). Resolve the ident
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ProjectOutcome·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ProjectOutcome·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ProjectOutcome·MISSING | Queue the missing ProjectOutcome mapping or reject the command before linking. |
 | Wrong scope | ProjectOutcome·B01 | Do not attach another church’s ProjectOutcome without a supported exchange and local authority. |
 | Target rename | Rename ProjectOutcome·A01 after linking | The existing outcome_id keeps the same identity and historic documents retain their original wording. |
@@ -62,7 +62,7 @@ The target is [AppealGoal](AppealGoal.md). Resolve the identifier in the approve
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | AppealGoal·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | AppealGoal·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | AppealGoal·MISSING | Queue the missing AppealGoal mapping or reject the command before linking. |
 | Wrong scope | AppealGoal·B01 | Do not attach another church’s AppealGoal without a supported exchange and local authority. |
 | Target rename | Rename AppealGoal·A01 after linking | The existing goal_id keeps the same identity and historic documents retain their original wording. |
@@ -75,7 +75,7 @@ The target is [AppealSnapshot](AppealSnapshot.md). Resolve the identifier in the
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | AppealSnapshot·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | AppealSnapshot·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | AppealSnapshot·MISSING | Queue the missing AppealSnapshot mapping or reject the command before linking. |
 | Wrong scope | AppealSnapshot·B01 | Do not attach another church’s AppealSnapshot without a supported exchange and local authority. |
 | Target rename | Rename AppealSnapshot·A01 after linking | The existing source_snapshot_id keeps the same identity and historic documents retain their original wording. |
@@ -187,4 +187,4 @@ Declared alternatives in owner order: `draft`, `verified`, `withheld`. Approval 
 
 ## Acceptance evidence
 
-Record the owner revision, evaluated values, actor and scope, result, effective time, and any downstream references needed to reproduce a disputed decision. Release only the evidence permitted to the reader. The originating domain page defines the business action and precise historical or transactional effect.
+Use the minimum evidence allowed by the selected anonymous, pseudonymous or identified mode. A permitted operator may be accountable for receiving or reviewing work without collecting the identity of a protected subject. Keep safe-channel, identity and case evidence apart from releasable totals and narratives; apply the original permissions to the verification evidence.
