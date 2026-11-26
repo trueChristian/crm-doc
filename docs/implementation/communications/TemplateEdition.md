@@ -19,7 +19,7 @@ Unique template/revision/language/channel. After approval freeze wording, links,
 | `subject` | text? | Optional under owner conditions | [text](../value-conventions.md#text) |
 | `body` | text | Required when the record reaches its applicable state | [text](../value-conventions.md#text) |
 | `accessible_alternative` | text? | Optional under owner conditions | [text](../value-conventions.md#text) |
-| `attachments` | manifest? | Optional under owner conditions | [structured](../value-conventions.md#structured) |
+| `attachments` | manifest? | Optional under owner conditions | [list](../value-conventions.md#list) |
 | `field_contract` | typed list | Required when the record reaches its applicable state | [list](../value-conventions.md#list) |
 | `state` | draft/review/approved/withdrawn | Required when the record reaches its applicable state | [enum](../value-conventions.md#enum) |
 | `approved_by` | UserAccount ref? | Optional under owner conditions | [relation](../value-conventions.md#relation) |
@@ -37,7 +37,7 @@ The target is [MessageTemplate](MessageTemplate.md). Resolve the identifier in t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | MessageTemplate·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | MessageTemplate·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | MessageTemplate·MISSING | Queue the missing MessageTemplate mapping or reject the command before linking. |
 | Wrong scope | MessageTemplate·B01 | Do not attach another church’s MessageTemplate without a supported exchange and local authority. |
 | Target rename | Rename MessageTemplate·A01 after linking | The existing template_id keeps the same identity and historic documents retain their original wording. |
@@ -123,15 +123,15 @@ Use human-readable text for `TemplateEdition.accessible_alternative`. Preserve t
 
 ### attachments
 
-Use typed value or bounded compound record for `TemplateEdition.attachments`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use ordered collection or mathematical set for `TemplateEdition.attachments`. Preserve ordering when meaningful; enforce uniqueness when the declaration is a set.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of attachments matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for attachments | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | permitted members A and B | Preserve ordering when meaningful; enforce uniqueness when the declaration is a set. |
+| Malformed or unmapped | an element outside the declared domain | Reject the affected collection or stage its invalid item under the import policy. |
+| Same element appears twice | A, A, B | Apply declared sequence/set multiplicity without doubling financial or voting effects. |
+| Empty collection versus unknown collection | empty collection and missing collection | Preserve the distinction where the rule requires evidence. |
+| One element later becomes restricted | authorization for member B withdrawn before export | Recompute permitted projection before export or display. |
 | Absent in intake | No attachments provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
 
 ### field_contract
@@ -167,7 +167,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing approved_by keeps the same identity and historic documents retain their original wording. |
