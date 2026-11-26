@@ -8,12 +8,15 @@ A secretary can start with a group, a date or a person's assignment. A ministry 
 | Recruit helpers, renew clearance, fill a vacancy, swap a shift or count service hours | [Volunteers and rotas](volunteers.md) | Volunteer coordinator |
 | Publish a local or online event, change a repeated date or display it across time zones | [Calendars and occurrences](calendar.md) | Calendar editor |
 | Book several places, admit walk-ins, transfer a ticket or manage a waiting list | [Registration and attendance](registration.md) | Registration desk |
+| Coordinate retreat workshops, meal sittings, guest accommodation and individual itineraries | [Programmes and hospitality](programmes.md) | Programme coordinator |
 | Check a child into a room, coordinate a transfer or verify collection | [Children and handover](child-check-in.md) | Authorized room and release staff |
 | Prepare a service order, music set, rehearsal, accessible worship or technical cue | [Worship and music](worship.md) | Service planner |
 | Offer a class, assign a lesson, track progress or issue a completion record | [Learning and formation](learning.md) | Education coordinator |
 | Arrange a mission trip, partner project, pantry distribution or community outcome report | [Missions and community service](missions.md) | Outreach coordinator |
 | Reserve space and equipment, arrange transport or return an item for maintenance | [Facilities, equipment and fleet](resources.md) | Facilities or transport steward |
 | Run an event briefing, handle an interruption or document an after-action review | [Operational readiness](readiness.md) | Duty lead |
+
+[Rehearse one Sunday](service-rehearsal.md) to follow a visiting household, a staffing interruption, a music change, a waiting-list offer and a verified child handover across departments. The rehearsal also defines measurable limits for optional planning assistants.
 
 ## Shared reading rules
 
