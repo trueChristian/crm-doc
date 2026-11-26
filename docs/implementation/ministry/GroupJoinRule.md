@@ -30,7 +30,7 @@ The target is [GroupTerm](GroupTerm.md). Resolve the identifier in the approved 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | GroupTerm·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | GroupTerm·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | GroupTerm·MISSING | Queue the missing GroupTerm mapping or reject the command before linking. |
 | Wrong scope | GroupTerm·B01 | Do not attach another church’s GroupTerm without a supported exchange and local authority. |
 | Target rename | Rename GroupTerm·A01 after linking | The existing term_id keeps the same identity and historic documents retain their original wording. |

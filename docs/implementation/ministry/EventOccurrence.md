@@ -36,7 +36,7 @@ The target is [EventSeries](EventSeries.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | EventSeries·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | EventSeries·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | EventSeries·MISSING | Queue the missing EventSeries mapping or reject the command before linking. |
 | Wrong scope | EventSeries·B01 | Do not attach another church’s EventSeries without a supported exchange and local authority. |
 | Target rename | Rename EventSeries·A01 after linking | The existing series_id keeps the same identity and historic documents retain their original wording. |
@@ -127,7 +127,7 @@ The target is [Campus](../foundation/Campus.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Campus·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Campus·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Campus·MISSING | Queue the missing Campus mapping or reject the command before linking. |
 | Wrong scope | Campus·B01 | Do not attach another church’s Campus without a supported exchange and local authority. |
 | Target rename | Rename Campus·A01 after linking | The existing campus_id keeps the same identity and historic documents retain their original wording. |

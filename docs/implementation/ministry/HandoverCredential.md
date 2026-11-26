@@ -31,7 +31,7 @@ The target is [ChildCheckIn](ChildCheckIn.md). Resolve the identifier in the app
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ChildCheckIn·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ChildCheckIn·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ChildCheckIn·MISSING | Queue the missing ChildCheckIn mapping or reject the command before linking. |
 | Wrong scope | ChildCheckIn·B01 | Do not attach another church’s ChildCheckIn without a supported exchange and local authority. |
 | Target rename | Rename ChildCheckIn·A01 after linking | The existing check_in_id keeps the same identity and historic documents retain their original wording. |
@@ -109,7 +109,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing reissued_by keeps the same identity and historic documents retain their original wording. |

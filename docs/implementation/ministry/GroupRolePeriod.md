@@ -30,7 +30,7 @@ The target is [GroupParticipation](GroupParticipation.md). Resolve the identifie
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | GroupParticipation·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | GroupParticipation·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | GroupParticipation·MISSING | Queue the missing GroupParticipation mapping or reject the command before linking. |
 | Wrong scope | GroupParticipation·B01 | Do not attach another church’s GroupParticipation without a supported exchange and local authority. |
 | Target rename | Rename GroupParticipation·A01 after linking | The existing participation_id keeps the same identity and historic documents retain their original wording. |
@@ -43,7 +43,7 @@ The target is [GroupRole](GroupRole.md). Resolve the identifier in the approved 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | GroupRole·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | GroupRole·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | GroupRole·MISSING | Queue the missing GroupRole mapping or reject the command before linking. |
 | Wrong scope | GroupRole·B01 | Do not attach another church’s GroupRole without a supported exchange and local authority. |
 | Target rename | Rename GroupRole·A01 after linking | The existing role_id keeps the same identity and historic documents retain their original wording. |
@@ -82,7 +82,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing appointed_by keeps the same identity and historic documents retain their original wording. |

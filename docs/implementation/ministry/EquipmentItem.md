@@ -14,7 +14,7 @@ One physical unit with an organization-unique tag. Asset reference ties equipmen
 | --- | --- | --- | --- |
 | `class_id` | → EquipmentClass | Required when the record reaches its applicable state | [relation](../value-conventions.md#relation) |
 | `tag` | text | Required when the record reaches its applicable state | [text](../value-conventions.md#text) |
-| `serial` | text? | Optional under owner conditions | [text](../value-conventions.md#text) |
+| `serial` | text? | Optional under owner conditions | [key](../value-conventions.md#key) |
 | `home_space_id` | → FacilitySpace? | Optional under owner conditions | [relation](../value-conventions.md#relation) |
 | `asset_ref` | id? | Optional under owner conditions | [resource](../value-conventions.md#resource) |
 | `condition` | code | Required when the record reaches its applicable state | [vocab](../value-conventions.md#vocab) |
@@ -32,7 +32,7 @@ The target is [EquipmentClass](EquipmentClass.md). Resolve the identifier in the
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | EquipmentClass·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | EquipmentClass·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | EquipmentClass·MISSING | Queue the missing EquipmentClass mapping or reject the command before linking. |
 | Wrong scope | EquipmentClass·B01 | Do not attach another church’s EquipmentClass without a supported exchange and local authority. |
 | Target rename | Rename EquipmentClass·A01 after linking | The existing class_id keeps the same identity and historic documents retain their original wording. |
@@ -53,15 +53,15 @@ Use human-readable text for `EquipmentItem.tag`. Preserve the meaningful spellin
 
 ### serial
 
-Use human-readable text for `EquipmentItem.serial`. Preserve the meaningful spelling, script and structure; derive separate search forms.
+Use opaque identity or token for `EquipmentItem.serial`. Compare the opaque value under its issuer rules; preserve leading characters.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | entered serial in the original script | Preserve the meaningful spelling, script and structure; derive separate search forms. |
-| Malformed or unmapped | invalid text encoding | Return a field-level validation issue without silently changing meaning. |
-| Accented and non-Latin characters | Zoë and ǂNū-khoen in the original script | Preserve and display their original spelling. |
-| Label changes after formal issue | approved edition before a spelling correction | Keep the authorized original rendering in the issued edition. |
-| Bidirectional or multiline input | mixed-direction or multiline entered text | Render in the field’s declared context and respect accessibility and disclosure rules. |
+| Admissible representation | EquipmentItem·0007 | Compare the opaque value under its issuer rules; preserve leading characters. |
+| Malformed or unmapped | human-readable name passed as the identifier | Request a verified lookup or an explicit mapping. |
+| Renamed display label | update display label; retain stable key | Identity comparisons still use the stable key. |
+| Conflicting claim on an existing key | second owner claims the same issued key | Retain original binding; route conflict for review. |
+| Retried creation with the original operation key | submit original creation receipt twice | Use the owning creation outcome and return the established identity. |
 | Absent in intake | No serial provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
 
 ### home_space_id
@@ -71,7 +71,7 @@ The target is [FacilitySpace](FacilitySpace.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | FacilitySpace·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | FacilitySpace·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | FacilitySpace·MISSING | Queue the missing FacilitySpace mapping or reject the command before linking. |
 | Wrong scope | FacilitySpace·B01 | Do not attach another church’s FacilitySpace without a supported exchange and local authority. |
 | Target rename | Rename FacilitySpace·A01 after linking | The existing home_space_id keeps the same identity and historic documents retain their original wording. |

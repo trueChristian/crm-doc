@@ -18,7 +18,7 @@ One occurrence has many registrations. Require a responsible person or restricte
 | `group_id` | → MinistryGroup? | Optional under owner conditions | [relation](../value-conventions.md#relation) |
 | `submitted_at` | instant | Required when the record reaches its applicable state | [instant](../value-conventions.md#instant) |
 | `state` | code | Required when the record reaches its applicable state | [vocab](../value-conventions.md#vocab) |
-| `request_key` | text | Required when the record reaches its applicable state | [text](../value-conventions.md#text) |
+| `request_key` | text | Required when the record reaches its applicable state | [operation](../value-conventions.md#operation) |
 | `order_ref` | id? | Optional under owner conditions | [resource](../value-conventions.md#resource) |
 | `terms_revision` | text? | Optional under owner conditions | [text](../value-conventions.md#text) |
 
@@ -33,7 +33,7 @@ The target is [EventOccurrence](EventOccurrence.md). Resolve the identifier in t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | EventOccurrence·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | EventOccurrence·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | EventOccurrence·MISSING | Queue the missing EventOccurrence mapping or reject the command before linking. |
 | Wrong scope | EventOccurrence·B01 | Do not attach another church’s EventOccurrence without a supported exchange and local authority. |
 | Target rename | Rename EventOccurrence·A01 after linking | The existing occurrence_id keeps the same identity and historic documents retain their original wording. |
@@ -46,7 +46,7 @@ The target is [Person](../people/Person.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Person·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Person·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Person·MISSING | Queue the missing Person mapping or reject the command before linking. |
 | Wrong scope | Person·B01 | Do not attach another church’s Person without a supported exchange and local authority. |
 | Target rename | Rename Person·A01 after linking | The existing booked_by_person_id keeps the same identity and historic documents retain their original wording. |
@@ -72,7 +72,7 @@ The target is [MinistryGroup](MinistryGroup.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | MinistryGroup·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | MinistryGroup·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | MinistryGroup·MISSING | Queue the missing MinistryGroup mapping or reject the command before linking. |
 | Wrong scope | MinistryGroup·B01 | Do not attach another church’s MinistryGroup without a supported exchange and local authority. |
 | Target rename | Rename MinistryGroup·A01 after linking | The existing group_id keeps the same identity and historic documents retain their original wording. |
@@ -106,15 +106,15 @@ Use versioned classification or status code for `EventRegistration.state`. Check
 
 ### request_key
 
-Use human-readable text for `EventRegistration.request_key`. Preserve the meaningful spelling, script and structure; derive separate search forms.
+Use operation identity for exactly-once business effects for `EventRegistration.request_key`. Bind the key to the original material inputs and outcome; retain it throughout the replay window.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | entered request_key in the original script | Preserve the meaningful spelling, script and structure; derive separate search forms. |
-| Malformed or unmapped | invalid text encoding | Return a field-level validation issue without silently changing meaning. |
-| Accented and non-Latin characters | Zoë and ǂNū-khoen in the original script | Preserve and display their original spelling. |
-| Label changes after formal issue | approved edition before a spelling correction | Keep the authorized original rendering in the issued edition. |
-| Bidirectional or multiline input | mixed-direction or multiline entered text | Render in the field’s declared context and respect accessibility and disclosure rules. |
+| Admissible representation | KEY-007 with original inputs | Bind the key to the original material inputs and outcome; retain it throughout the replay window. |
+| Malformed or unmapped | KEY-007 with changed material inputs | Reject conflicting reuse and reconcile against the first accepted or in-flight operation. |
+| Duplicate after successful commit | two equivalent submissions using KEY-007 | Return the original business receipt with no second payment, membership change, booking or notice. |
+| Timeout before outcome is known | provider accepted work but acknowledgement delayed | Look up or reconcile the pending operation before issuing a replacement. |
+| A genuine correction has a new key | COR-008 points to original KEY-007 | Link the correction to the original effect and apply its ordinary authorization and reversal rules. |
 | Incomplete record | No request_key at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### order_ref

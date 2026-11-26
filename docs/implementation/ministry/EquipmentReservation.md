@@ -33,7 +33,7 @@ The target is [EquipmentItem](EquipmentItem.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | EquipmentItem·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | EquipmentItem·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | EquipmentItem·MISSING | Queue the missing EquipmentItem mapping or reject the command before linking. |
 | Wrong scope | EquipmentItem·B01 | Do not attach another church’s EquipmentItem without a supported exchange and local authority. |
 | Target rename | Rename EquipmentItem·A01 after linking | The existing item_id keeps the same identity and historic documents retain their original wording. |
@@ -46,7 +46,7 @@ The target is [EquipmentPool](EquipmentPool.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | EquipmentPool·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | EquipmentPool·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | EquipmentPool·MISSING | Queue the missing EquipmentPool mapping or reject the command before linking. |
 | Wrong scope | EquipmentPool·B01 | Do not attach another church’s EquipmentPool without a supported exchange and local authority. |
 | Target rename | Rename EquipmentPool·A01 after linking | The existing pool_id keeps the same identity and historic documents retain their original wording. |
@@ -59,7 +59,7 @@ The target is [EventOccurrence](EventOccurrence.md). Resolve the identifier in t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | EventOccurrence·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | EventOccurrence·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | EventOccurrence·MISSING | Queue the missing EventOccurrence mapping or reject the command before linking. |
 | Wrong scope | EventOccurrence·B01 | Do not attach another church’s EventOccurrence without a supported exchange and local authority. |
 | Target rename | Rename EventOccurrence·A01 after linking | The existing occurrence_id keeps the same identity and historic documents retain their original wording. |
@@ -72,7 +72,7 @@ The target is [RoomBooking](RoomBooking.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | RoomBooking·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | RoomBooking·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | RoomBooking·MISSING | Queue the missing RoomBooking mapping or reject the command before linking. |
 | Wrong scope | RoomBooking·B01 | Do not attach another church’s RoomBooking without a supported exchange and local authority. |
 | Target rename | Rename RoomBooking·A01 after linking | The existing booking_id keeps the same identity and historic documents retain their original wording. |
@@ -85,7 +85,7 @@ The target is [Person](../people/Person.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Person·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Person·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Person·MISSING | Queue the missing Person mapping or reject the command before linking. |
 | Wrong scope | Person·B01 | Do not attach another church’s Person without a supported exchange and local authority. |
 | Target rename | Rename Person·A01 after linking | The existing custodian_id keeps the same identity and historic documents retain their original wording. |

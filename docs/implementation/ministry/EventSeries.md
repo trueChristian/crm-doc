@@ -38,7 +38,7 @@ The target is [MinistryCalendar](MinistryCalendar.md). Resolve the identifier in
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | MinistryCalendar·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | MinistryCalendar·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | MinistryCalendar·MISSING | Queue the missing MinistryCalendar mapping or reject the command before linking. |
 | Wrong scope | MinistryCalendar·B01 | Do not attach another church’s MinistryCalendar without a supported exchange and local authority. |
 | Target rename | Rename MinistryCalendar·A01 after linking | The existing calendar_id keeps the same identity and historic documents retain their original wording. |
@@ -51,7 +51,7 @@ The target is [Person](../people/Person.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Person·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Person·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Person·MISSING | Queue the missing Person mapping or reject the command before linking. |
 | Wrong scope | Person·B01 | Do not attach another church’s Person without a supported exchange and local authority. |
 | Target rename | Rename Person·A01 after linking | The existing organizer_id keeps the same identity and historic documents retain their original wording. |
@@ -64,7 +64,7 @@ The target is [MinistryGroup](MinistryGroup.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | MinistryGroup·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | MinistryGroup·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | MinistryGroup·MISSING | Queue the missing MinistryGroup mapping or reject the command before linking. |
 | Wrong scope | MinistryGroup·B01 | Do not attach another church’s MinistryGroup without a supported exchange and local authority. |
 | Target rename | Rename MinistryGroup·A01 after linking | The existing host_group_id keeps the same identity and historic documents retain their original wording. |
