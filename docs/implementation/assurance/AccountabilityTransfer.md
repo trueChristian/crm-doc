@@ -22,7 +22,7 @@ Two distinct cohorts in one activation. Dispatch changes the current disposition
 | `acknowledged_by` | → UserAccount? | Optional under owner conditions | [relation](../value-conventions.md#relation) |
 | `acknowledged_at` | instant? | Optional under owner conditions | [instant](../value-conventions.md#instant) |
 | `status` | enum(dispatched, acknowledged, discrepancy, corrected) | Required when the record reaches its applicable state | [enum](../value-conventions.md#enum) |
-| `operation_key` | text | Required when the record reaches its applicable state | [text](../value-conventions.md#text) |
+| `operation_key` | text | Required when the record reaches its applicable state | [operation](../value-conventions.md#operation) |
 
 ## Input, storage and exchange cases
 
@@ -48,7 +48,7 @@ The target is [ContinuityExercise](ContinuityExercise.md). Resolve the identifie
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ContinuityExercise·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ContinuityExercise·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ContinuityExercise·MISSING | Queue the missing ContinuityExercise mapping or reject the command before linking. |
 | Wrong scope | ContinuityExercise·B01 | Do not attach another church’s ContinuityExercise without a supported exchange and local authority. |
 | Target rename | Rename ContinuityExercise·A01 after linking | The existing exercise_id keeps the same identity and historic documents retain their original wording. |
@@ -61,7 +61,7 @@ The target is [AccountabilityEntry](AccountabilityEntry.md). Resolve the identif
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | AccountabilityEntry·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | AccountabilityEntry·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | AccountabilityEntry·MISSING | Queue the missing AccountabilityEntry mapping or reject the command before linking. |
 | Wrong scope | AccountabilityEntry·B01 | Do not attach another church’s AccountabilityEntry without a supported exchange and local authority. |
 | Target rename | Rename AccountabilityEntry·A01 after linking | The existing subject_entry_id keeps the same identity and historic documents retain their original wording. |
@@ -74,7 +74,7 @@ The target is [AccountabilityCohort](AccountabilityCohort.md). Resolve the ident
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | AccountabilityCohort·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | AccountabilityCohort·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | AccountabilityCohort·MISSING | Queue the missing AccountabilityCohort mapping or reject the command before linking. |
 | Wrong scope | AccountabilityCohort·B01 | Do not attach another church’s AccountabilityCohort without a supported exchange and local authority. |
 | Target rename | Rename AccountabilityCohort·A01 after linking | The existing source_cohort_id keeps the same identity and historic documents retain their original wording. |
@@ -87,7 +87,7 @@ The target is [AccountabilityCohort](AccountabilityCohort.md). Resolve the ident
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | AccountabilityCohort·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | AccountabilityCohort·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | AccountabilityCohort·MISSING | Queue the missing AccountabilityCohort mapping or reject the command before linking. |
 | Wrong scope | AccountabilityCohort·B01 | Do not attach another church’s AccountabilityCohort without a supported exchange and local authority. |
 | Target rename | Rename AccountabilityCohort·A01 after linking | The existing destination_cohort_id keeps the same identity and historic documents retain their original wording. |
@@ -100,7 +100,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing dispatched_by keeps the same identity and historic documents retain their original wording. |
@@ -126,7 +126,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing acknowledged_by keeps the same identity and historic documents retain their original wording. |
@@ -160,15 +160,15 @@ Declared alternatives in owner order: `dispatched`, `acknowledged`, `discrepancy
 
 ### operation_key
 
-Use human-readable text for `AccountabilityTransfer.operation_key`. Preserve the meaningful spelling, script and structure; derive separate search forms.
+Use operation identity for exactly-once business effects for `AccountabilityTransfer.operation_key`. Bind the key to the original material inputs and outcome; retain it throughout the replay window.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | entered operation_key in the original script | Preserve the meaningful spelling, script and structure; derive separate search forms. |
-| Malformed or unmapped | invalid text encoding | Return a field-level validation issue without silently changing meaning. |
-| Accented and non-Latin characters | Zoë and ǂNū-khoen in the original script | Preserve and display their original spelling. |
-| Label changes after formal issue | approved edition before a spelling correction | Keep the authorized original rendering in the issued edition. |
-| Bidirectional or multiline input | mixed-direction or multiline entered text | Render in the field’s declared context and respect accessibility and disclosure rules. |
+| Admissible representation | KEY-007 with original inputs | Bind the key to the original material inputs and outcome; retain it throughout the replay window. |
+| Malformed or unmapped | KEY-007 with changed material inputs | Reject conflicting reuse and reconcile against the first accepted or in-flight operation. |
+| Duplicate after successful commit | two equivalent submissions using KEY-007 | Return the original business receipt with no second payment, membership change, booking or notice. |
+| Timeout before outcome is known | provider accepted work but acknowledgement delayed | Look up or reconcile the pending operation before issuing a replacement. |
+| A genuine correction has a new key | COR-008 points to original KEY-007 | Link the correction to the original effect and apply its ordinary authorization and reversal rules. |
 | Incomplete record | No operation_key at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ## Acceptance evidence

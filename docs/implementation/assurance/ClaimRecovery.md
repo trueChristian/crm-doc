@@ -46,7 +46,7 @@ The target is [ClaimSettlement](ClaimSettlement.md). Resolve the identifier in t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ClaimSettlement·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ClaimSettlement·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ClaimSettlement·MISSING | Queue the missing ClaimSettlement mapping or reject the command before linking. |
 | Wrong scope | ClaimSettlement·B01 | Do not attach another church’s ClaimSettlement without a supported exchange and local authority. |
 | Target rename | Rename ClaimSettlement·A01 after linking | The existing settlement_id keeps the same identity and historic documents retain their original wording. |

@@ -46,7 +46,7 @@ The target is [AccountabilityCohort](AccountabilityCohort.md). Resolve the ident
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | AccountabilityCohort·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | AccountabilityCohort·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | AccountabilityCohort·MISSING | Queue the missing AccountabilityCohort mapping or reject the command before linking. |
 | Wrong scope | AccountabilityCohort·B01 | Do not attach another church’s AccountabilityCohort without a supported exchange and local authority. |
 | Target rename | Rename AccountabilityCohort·A01 after linking | The existing cohort_id keeps the same identity and historic documents retain their original wording. |
@@ -59,7 +59,7 @@ The target is [Person](../people/Person.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Person·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Person·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Person·MISSING | Queue the missing Person mapping or reject the command before linking. |
 | Wrong scope | Person·B01 | Do not attach another church’s Person without a supported exchange and local authority. |
 | Target rename | Rename Person·A01 after linking | The existing person_id keeps the same identity and historic documents retain their original wording. |
@@ -111,7 +111,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing verified_by keeps the same identity and historic documents retain their original wording. |
@@ -120,6 +120,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 ### destination_ref
 
 Use scoped or external reference for `AccountabilityEntry.destination_ref`. Resolve against the permitted kind, owning namespace and purpose.
+Field access: enforce the declared protection on reads, search, previews, exports and audit evidence as well as the underlying resource value.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
@@ -137,7 +138,7 @@ The target is [AccountabilityEntry](AccountabilityEntry.md). Resolve the identif
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | AccountabilityEntry·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | AccountabilityEntry·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | AccountabilityEntry·MISSING | Queue the missing AccountabilityEntry mapping or reject the command before linking. |
 | Wrong scope | AccountabilityEntry·B01 | Do not attach another church’s AccountabilityEntry without a supported exchange and local authority. |
 | Target rename | Rename AccountabilityEntry·A01 after linking | The existing supersedes_id keeps the same identity and historic documents retain their original wording. |

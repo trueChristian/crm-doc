@@ -48,7 +48,7 @@ The target is [InsuranceClaim](InsuranceClaim.md). Resolve the identifier in the
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | InsuranceClaim·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | InsuranceClaim·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | InsuranceClaim·MISSING | Queue the missing InsuranceClaim mapping or reject the command before linking. |
 | Wrong scope | InsuranceClaim·B01 | Do not attach another church’s InsuranceClaim without a supported exchange and local authority. |
 | Target rename | Rename InsuranceClaim·A01 after linking | The existing claim_id keeps the same identity and historic documents retain their original wording. |
@@ -61,7 +61,7 @@ The target is [InsuranceInterest](InsuranceInterest.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | InsuranceInterest·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | InsuranceInterest·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | InsuranceInterest·MISSING | Queue the missing InsuranceInterest mapping or reject the command before linking. |
 | Wrong scope | InsuranceInterest·B01 | Do not attach another church’s InsuranceInterest without a supported exchange and local authority. |
 | Target rename | Rename InsuranceInterest·A01 after linking | The existing interest_id keeps the same identity and historic documents retain their original wording. |

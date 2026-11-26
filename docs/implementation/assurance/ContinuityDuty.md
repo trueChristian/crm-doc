@@ -17,7 +17,7 @@ Assign lead, participant accountability, family liaison, accessibility, communic
 | `responsibility` | code | Required when the record reaches its applicable state | [vocab](../value-conventions.md#vocab) |
 | `primary_account_id` | → UserAccount? | Optional under owner conditions | [relation](../value-conventions.md#relation) |
 | `deputy_account_id` | → UserAccount? | Optional under owner conditions | [relation](../value-conventions.md#relation) |
-| `coverage_interval` | interval? | Optional under owner conditions | [structured](../value-conventions.md#structured) |
+| `coverage_interval` | interval? | Optional under owner conditions | [interval](../value-conventions.md#interval) |
 | `resource_or_partner_ref` | ID? | Optional under owner conditions | [resource](../value-conventions.md#resource) |
 | `instruction_ref` | protected ID | Required when the record reaches its applicable state | [resource](../value-conventions.md#resource) |
 | `acknowledgment_at` | instant? | Optional under owner conditions | [instant](../value-conventions.md#instant) |
@@ -46,7 +46,7 @@ The target is [ContinuityPlan](ContinuityPlan.md). Resolve the identifier in the
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ContinuityPlan·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ContinuityPlan·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ContinuityPlan·MISSING | Queue the missing ContinuityPlan mapping or reject the command before linking. |
 | Wrong scope | ContinuityPlan·B01 | Do not attach another church’s ContinuityPlan without a supported exchange and local authority. |
 | Target rename | Rename ContinuityPlan·A01 after linking | The existing plan_id keeps the same identity and historic documents retain their original wording. |
@@ -72,7 +72,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing primary_account_id keeps the same identity and historic documents retain their original wording. |
@@ -85,7 +85,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing deputy_account_id keeps the same identity and historic documents retain their original wording. |
@@ -93,15 +93,15 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 
 ### coverage_interval
 
-Use typed value or bounded compound record for `ContinuityDuty.coverage_interval`. Validate allowed keys, element types and cardinality; preserve its definition revision.
+Use effective interval or window for `ContinuityDuty.coverage_interval`. Use a date or instant consistently and record whether each endpoint is inclusive.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | value of coverage_interval matching its owner definition | Validate allowed keys, element types and cardinality; preserve its definition revision. |
-| Malformed or unmapped | incompatible shape for coverage_interval | Return a version or shape error. |
-| One mandatory child missing | one mandatory child absent | Identify the child to an authorized operator before committing effects. |
-| Unknown imported extension | a new unrecognized child from historic import | Isolate for mapping; do not discard data silently. |
-| Historic re-render | display selection made under a retired form edition | Use the original definition and approved vocabulary. |
+| Admissible representation | ordered boundaries in the declared temporal scale | Use a date or instant consistently and record whether each endpoint is inclusive. |
+| Malformed or unmapped | end before start | Return an interval error before scheduling or applying a policy. |
+| Adjacent windows | one window ends as the next begins | Select the applicable interval at the common boundary using its stated convention. |
+| Open-ended validity | start known and end unspecified | Accept a missing end only if the owner allows open-ended status. |
+| Time used falls in a gap | instant is between disjoint valid windows | Report no applicable interval; never silently select the nearest future edition. |
 | Absent in intake | No coverage_interval provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
 
 ### resource_or_partner_ref
@@ -120,6 +120,7 @@ Use scoped or external reference for `ContinuityDuty.resource_or_partner_ref`. R
 ### instruction_ref
 
 Use scoped or external reference for `ContinuityDuty.instruction_ref`. Resolve against the permitted kind, owning namespace and purpose.
+Field access: enforce the declared protection on reads, search, previews, exports and audit evidence as well as the underlying resource value.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
