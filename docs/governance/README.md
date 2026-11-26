@@ -8,6 +8,7 @@ Start here when a secretary, board chair, returning officer or archivist needs t
 | Call, postpone or reconvene a meeting | [Meetings and notice](meetings-and-notice.md) | A dated notice, attendance intervals and reproducible quorum |
 | Put a proposal, amendment, election or ballot to the body | [Deliberation and voting](deliberation-and-voting.md) | A decision on an exact text or a certified election |
 | Confirm minutes, issue an extract or chase decisions | [Minutes and resolutions](minutes-and-resolutions.md) | Approved minutes, tracked actions and authorized disclosure |
+| Plan an assembly, credential delegates or hear an appeal | [Annual cycle and policy](annual-cycle-and-policy.md) | A release-ready packet, valid mandates and an accountable ruling |
 
 A governing body carries formal authority granted by a church. A ministry group can furnish its roster, but appointing officers, publishing to members and authorizing expenditure are separate decisions. Congregations choose their own rule editions. A local policy decision must be recorded before a workflow depending on that decision is enabled.
 
