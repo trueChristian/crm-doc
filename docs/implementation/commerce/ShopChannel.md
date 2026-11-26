@@ -18,7 +18,7 @@ A channel belongs to one organization and can serve several congregations by con
 | `name` | text | Required when the record reaches its applicable state | [text](../value-conventions.md#text) |
 | `kind` | storefront/counter/internal | Required when the record reaches its applicable state | [enum](../value-conventions.md#enum) |
 | `currency` | code | Required when the record reaches its applicable state | [currency](../value-conventions.md#currency) |
-| `locale` | code | Required when the record reaches its applicable state | [vocab](../value-conventions.md#vocab) |
+| `locale` | code | Required when the record reaches its applicable state | [language](../value-conventions.md#language) |
 | `time_zone` | text | Required when the record reaches its applicable state | [zone](../value-conventions.md#zone) |
 | `active` | boolean | Required when the record reaches its applicable state | [bool](../value-conventions.md#bool) |
 
@@ -33,7 +33,7 @@ The target is [Organization](../foundation/Organization.md). Resolve the identif
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Organization·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Organization·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Organization·MISSING | Queue the missing Organization mapping or reject the command before linking. |
 | Wrong scope | Organization·B01 | Do not attach another church’s Organization without a supported exchange and local authority. |
 | Target rename | Rename Organization·A01 after linking | The existing organization_id keeps the same identity and historic documents retain their original wording. |
@@ -46,7 +46,7 @@ The target is [Campus](../foundation/Campus.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Campus·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Campus·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Campus·MISSING | Queue the missing Campus mapping or reject the command before linking. |
 | Wrong scope | Campus·B01 | Do not attach another church’s Campus without a supported exchange and local authority. |
 | Target rename | Rename Campus·A01 after linking | The existing campus_id keeps the same identity and historic documents retain their original wording. |
@@ -106,15 +106,15 @@ Use monetary unit code for `ShopChannel.currency`. Resolve the code and its prec
 
 ### locale
 
-Use versioned classification or status code for `ShopChannel.locale`. Check the relevant vocabulary and permitted transition before applying.
+Use language or locale identifier for `ShopChannel.locale`. Resolve the published language or locale without inferring a person’s nationality.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | active locale code in the bound vocabulary | Check the relevant vocabulary and permitted transition before applying. |
-| Malformed or unmapped | unmapped locale code | Request mapping to an authorized code. |
-| Code retired before a new transaction | new operation after code retirement | Allow historic display; withhold new use unless policy permits. |
-| Same label in two code lists | same display name in two vocabularies | Use record type and field to locate the correct list. |
-| Bulk import requests a state transition | import requests the final approved state | Run ordinary transition guards and approval checks. |
+| Admissible representation | en | Resolve the published language or locale without inferring a person’s nationality. |
+| Malformed or unmapped | unmapped locale display label | Keep the source value for review. |
+| Specific translation unavailable | specific translation missing at delivery time | Apply the declared fallback and identify which language is being displayed. |
+| User changes preferred language | approved letter after preferred-language change | Future communications use the effective preference; issued wording is preserved. |
+| Two regional variants exist | two permitted regional variants in catalogue | Apply the requested locale/version where available. |
 | Incomplete record | No locale at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### time_zone

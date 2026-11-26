@@ -31,7 +31,7 @@ The target is [Sermon](Sermon.md). Resolve the identifier in the approved scope 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Sermon·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Sermon·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Sermon·MISSING | Queue the missing Sermon mapping or reject the command before linking. |
 | Wrong scope | Sermon·B01 | Do not attach another church’s Sermon without a supported exchange and local authority. |
 | Target rename | Rename Sermon·A01 after linking | The existing sermon_id keeps the same identity and historic documents retain their original wording. |
@@ -57,7 +57,7 @@ The target is [Campus](../foundation/Campus.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Campus·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Campus·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Campus·MISSING | Queue the missing Campus mapping or reject the command before linking. |
 | Wrong scope | Campus·B01 | Do not attach another church’s Campus without a supported exchange and local authority. |
 | Target rename | Rename Campus·A01 after linking | The existing campus_id keeps the same identity and historic documents retain their original wording. |

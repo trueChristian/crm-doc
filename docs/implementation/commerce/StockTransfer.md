@@ -32,7 +32,7 @@ The target is [StockLocation](StockLocation.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | StockLocation·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | StockLocation·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | StockLocation·MISSING | Queue the missing StockLocation mapping or reject the command before linking. |
 | Wrong scope | StockLocation·B01 | Do not attach another church’s StockLocation without a supported exchange and local authority. |
 | Target rename | Rename StockLocation·A01 after linking | The existing from_location_id keeps the same identity and historic documents retain their original wording. |
@@ -45,7 +45,7 @@ The target is [StockLocation](StockLocation.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | StockLocation·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | StockLocation·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | StockLocation·MISSING | Queue the missing StockLocation mapping or reject the command before linking. |
 | Wrong scope | StockLocation·B01 | Do not attach another church’s StockLocation without a supported exchange and local authority. |
 | Target rename | Rename StockLocation·A01 after linking | The existing to_location_id keeps the same identity and historic documents retain their original wording. |
@@ -58,7 +58,7 @@ The target is [StockLocation](StockLocation.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | StockLocation·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | StockLocation·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | StockLocation·MISSING | Queue the missing StockLocation mapping or reject the command before linking. |
 | Wrong scope | StockLocation·B01 | Do not attach another church’s StockLocation without a supported exchange and local authority. |
 | Target rename | Rename StockLocation·A01 after linking | The existing transit_location_id keeps the same identity and historic documents retain their original wording. |
@@ -71,7 +71,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing requested_by keeps the same identity and historic documents retain their original wording. |
@@ -84,7 +84,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing approved_by keeps the same identity and historic documents retain their original wording. |

@@ -34,7 +34,7 @@ The target is [Subscription](Subscription.md). Resolve the identifier in the app
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Subscription·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Subscription·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Subscription·MISSING | Queue the missing Subscription mapping or reject the command before linking. |
 | Wrong scope | Subscription·B01 | Do not attach another church’s Subscription without a supported exchange and local authority. |
 | Target rename | Rename Subscription·A01 after linking | The existing subscription_id keeps the same identity and historic documents retain their original wording. |
@@ -47,7 +47,7 @@ The target is [AccessPlan](AccessPlan.md). Resolve the identifier in the approve
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | AccessPlan·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | AccessPlan·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | AccessPlan·MISSING | Queue the missing AccessPlan mapping or reject the command before linking. |
 | Wrong scope | AccessPlan·B01 | Do not attach another church’s AccessPlan without a supported exchange and local authority. |
 | Target rename | Rename AccessPlan·A01 after linking | The existing plan_version_id keeps the same identity and historic documents retain their original wording. |
@@ -138,7 +138,7 @@ The target is [Order](Order.md). Resolve the identifier in the approved scope be
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Order·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Order·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Order·MISSING | Queue the missing Order mapping or reject the command before linking. |
 | Wrong scope | Order·B01 | Do not attach another church’s Order without a supported exchange and local authority. |
 | Target rename | Rename Order·A01 after linking | The existing renewal_order_id keeps the same identity and historic documents retain their original wording. |

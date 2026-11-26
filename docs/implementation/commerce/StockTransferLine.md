@@ -31,7 +31,7 @@ The target is [StockTransfer](StockTransfer.md). Resolve the identifier in the a
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | StockTransfer·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | StockTransfer·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | StockTransfer·MISSING | Queue the missing StockTransfer mapping or reject the command before linking. |
 | Wrong scope | StockTransfer·B01 | Do not attach another church’s StockTransfer without a supported exchange and local authority. |
 | Target rename | Rename StockTransfer·A01 after linking | The existing transfer_id keeps the same identity and historic documents retain their original wording. |
@@ -44,7 +44,7 @@ The target is [ProductVariant](ProductVariant.md). Resolve the identifier in the
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ProductVariant·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ProductVariant·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ProductVariant·MISSING | Queue the missing ProductVariant mapping or reject the command before linking. |
 | Wrong scope | ProductVariant·B01 | Do not attach another church’s ProductVariant without a supported exchange and local authority. |
 | Target rename | Rename ProductVariant·A01 after linking | The existing variant_id keeps the same identity and historic documents retain their original wording. |
@@ -57,7 +57,7 @@ The target is [StockLot](StockLot.md). Resolve the identifier in the approved sc
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | StockLot·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | StockLot·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | StockLot·MISSING | Queue the missing StockLot mapping or reject the command before linking. |
 | Wrong scope | StockLot·B01 | Do not attach another church’s StockLot without a supported exchange and local authority. |
 | Target rename | Rename StockLot·A01 after linking | The existing lot_id keeps the same identity and historic documents retain their original wording. |
