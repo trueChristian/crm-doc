@@ -1,0 +1,27 @@
+# Capability selection, migration and first use
+
+Use this sequence to choose a scope and prove it works for the church. The specification describes the full product. Operational activation is a separate church decision. A campus can run a paper-assisted register, a full accounting book, a bookstall, or paid media only when its responsible officer has accepted the relevant controls.
+
+| Capability | Decisions and prerequisites | Evidence before opening to live users |
+| --- | --- | --- |
+| Organization, access and operating policies | Define the controlling organization, responsible officers, congregations, campus zones, languages, authority boundaries, account recovery and delegated support. | Independently verified first administrators; help route; tested access matrix; tenant switch cannot expose another church's records. |
+| People, households and official roll | Choose membership classes, rites and required evidence. Agree import mapping, merge review, safe contact instructions and minimum fields. | Sample guest, nonmember child in member household, separated parents, non-household guardian, transferred and deceased members. Reconcile per-class and as-of totals. |
+| Communication and front office | Select purposes, channels, sender identities, translation and suppression rules. Verify consent migration, failed deliveries and who approves church-wide posts. | Private rehearsals for email, SMS, Telegram direct and channel, in-app and paper. Route a bounced or partially delivered campaign to the right owner. |
+| Groups, services, children and facilities | Define group leaders, room capacities, checked credentials, accessibility and safeguarding authority; configure roster cover and event cancellation. | Run a full child handover and outstanding-child reconciliation, including a stale device. Prove a shared room cannot be booked twice across ministries. |
+| Governance and official documents | Adopt charters, policy versions, eligible seats, vote and quorum rules, custody, disclosure audiences and approval procedures. | Rehearse notice, resolution, restricted minutes, correction and public extract. Confirm an abstention, recusal and expired proxy have the configured effect. |
+| Finance and giving | Choose book, accounting basis, periods, chart, funds, dimensions, rules for taxes/benefits, segregation, currencies, and independent bank reconciliation. Accept beginning balances and subledger ageing. | Opening balance bridge, restricted fund reconciliation, one pay run, one gift run, one AP run, worked month, budget variance and signed close. |
+| Store and paid media | Enable the payment and settlement routes, stock source, tax rules, returns and dispute handling. Establish publishing rights, paid access terms and expiry. | Complete a sale, split capture, partial return, fee, chargeback, digital withdrawal and a second delivery of each receipt or callback. |
+| Staffing, aid, fundraising and assurance | Choose custodians, independent reviewers, partner responsibilities, funding restrictions, safe contact routes, incident and referral responsibilities. | Trace staff departure, a grant disbursement, two partial aid collections, a protected complaint and a claim to separate authorized outcomes. |
+| Optional assistants and more advanced work | Choose supported languages, permitted sources, review owner, fallback, evaluation fixture, stop criteria and retention. | Test a retracted record, a user lacking permission, an unsupported language and a failed suggestion. The responsible human can complete the task unaided. |
+
+## Move from an existing system
+
+1. Inventory each source, legal/organizational owner, extracts, date ranges, keys and authoritative totals. Assign a custodian and a deletion or return plan for the staging copies.
+2. Trial-map names, household links, active and historic membership, permissions, donor anonymity, outstanding balances, source currencies and open work. Missing evidence becomes a visible review item. Unknown birth dates stay unknown. Suppressed contact and do-not-publish instructions survive the move.
+3. Use source keys and a versioned transformation. Compare input rows, accepted rows, rejected rows and merged identities by type. Rehearse twice from the same input; review printed samples, role-limited searches and the bank/subledger control totals.
+4. Select a cutoff and capture late changes. Agree which system may send notifications, charge cards, redeem vouchers or post to the book at each stage. Disable duplicate production senders and reconcile in-flight transactions before opening the new writer.
+5. Authorized owners sign the accepted balances, permissions, sample records, tested recovery and outstanding exception list. Record source hashes and the local and universal cutoff times.
+6. If a critical mismatch occurs, stop affected writes and isolate external effects. The rollback procedure names the last authoritative version and how any messages, cash movements or physical handovers made after the cutoff are reconciled. Restoring a snapshot alone cannot undo those events.
+7. After launch, compare daily totals and outstanding work against the expected counts for an agreed observation period. Transfer ownership and recovery instructions to permanent church staff and verify they can perform one scenario unaided.
+
+See [migration and data quality](../platform/migration-data-quality.md), [finance](../finance/README.md) and [privacy and records](../platform/privacy-records.md).
