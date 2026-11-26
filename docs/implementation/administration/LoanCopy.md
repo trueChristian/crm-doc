@@ -6,7 +6,7 @@
 
 Identity, audit fields, ownership and effective-date notation follow the [shared record envelope](../../foundation/record-conventions.md). A business key or parent-child uniqueness rule below remains enforceable even when an implementation also assigns an opaque identifier.
 
-Unique accession code, separate from product SKU. Stock for sale is transferred into lending stock using approved movements where applicable.
+Unique accession code, separate from product SKU. Capture the physical handover once and retain an optional reference to the external asset register.
 
 ## Field inventory
 
@@ -20,7 +20,7 @@ Unique accession code, separate from product SKU. Stock for sale is transferred 
 | `contents_list` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [list](../value-conventions.md#list) |
 | `condition` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [vocab](../value-conventions.md#vocab) |
 | `status` | available, held, on_loan, missing, repair or withdrawn | Required at applicable lifecycle step | [enum](../value-conventions.md#enum) |
-| `linked_asset_ref` | → FixedAsset? | Optional under owner conditions | [relation](../value-conventions.md#relation) |
+| `linked_asset_ref` | opaque_ref? | Optional under the authorized exchange | [resource](../value-conventions.md#resource) |
 
 ## Input, storage and exchange cases
 
@@ -132,16 +132,13 @@ Declared alternatives in owner order: `available`, `held`, `on_loan`, `missing`,
 
 ### linked_asset_ref
 
-The target is [FixedAsset](../finance/FixedAsset.md). Resolve the identifier in the approved scope before using its fields.
+The church tracks the physical lending copy and its custodian. The optional asset-register reference identifies the valuation record at the accounting provider. Store the issuer, owning church, opaque identifier and, for versioned evidence, the edition used. Resolving this reference requires separate authority at the issuer.
 
-| Probe | Input or observation | Expected result |
-| --- | --- | --- |
-| Admissible representation | FixedAsset·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
-| Unresolved target | FixedAsset·MISSING | Queue the missing FixedAsset mapping or reject the command before linking. |
-| Wrong scope | FixedAsset·B01 | Do not attach another church’s FixedAsset without a supported exchange and local authority. |
-| Target rename | Rename FixedAsset·A01 after linking | The existing linked_asset_ref keeps the same identity and historic documents retain their original wording. |
-| Absent in intake | No linked_asset_ref provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
+| Probe | Expected result |
+| --- | --- |
+| No connected service | Keep the reference empty. The church workflow can proceed using its local evidence and authorization. |
+| Same identifier from another church or issuer | Preserve the separate namespace and deny cross-church lookup. |
+| Late or corrected reference | Keep the earlier edition and the reason for replacement. Replaying an acknowledged revision preserves one link. |
 
 ## Incoming references
 

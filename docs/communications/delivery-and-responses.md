@@ -36,3 +36,16 @@ The operator's totals distinguish intended people, eligible routes, exclusions, 
 3. A staff member cancels a dispatch halfway through 100 recipients. Already issued deliveries retain their evidence; remaining unsent deliveries record cancellation. An in-flight submission can still return a receipt.
 4. A two-language campaign has an individual audience of 50. Two have withdrawn and three have no permitted route, 40 have provider-confirmed delivery and five have acceptance only. There are 45 attempted individuals, 40 confirmed and 5 accepted-only. A separate Telegram channel post changes none of these figures.
 5. An operator restoring an old queue after disaster pauses delivery, reconciles external receipts and current withdrawals, then reactivates only permitted, unexpired pending work. An old backup cannot re-enable a withdrawn route.
+
+## A shared inbox after a phone number changes hands
+
+A reply to a church message may come from the intended recipient, a spouse using the same handset, or the new holder of a recycled number. Bind the provider event to the correct church, sender identity and original delivery if known. If two recipients used the same destination, the inbound sender remains unverified until independently resolved. The operator can quarantine the reply in a limited triage thread without placing its contents on either person's timeline.
+
+| What arrives | Apply | Subsequent contact |
+| --- | --- | --- |
+| A supported stop instruction on a shared number | Suppress the affected destination, sender and applicable scope promptly. Process duplicate events idempotently. Keep the provider’s suppression scope distinct from an individual’s wider contact preferences. | Both adults' pending sends through that blocked route are reevaluated. Do not cancel distinct permitted endpoints or enrol either adult elsewhere. |
+| “This is a new phone, who is this for?” | Classify as reassigned or under review and suppress personal sends to the destination. | A neutral response can identify the church when policy permits. No member names, children's details, group affiliation or message history are disclosed. |
+| A member confirms a new number at the office | Verify the person, ownership of the new route and purpose-specific authority. Record the effective time and retain the previous delivery evidence. | New messages may use the authorized route. Uncertain submissions to the old route go to reconciliation before any duplicate personal message is sent. |
+| A visitor replies with a request for two forms of help | Record one inbound message, restrict its body, and offer separately authorized handoffs. | The office can see whether each handoff was accepted. Personal details of a pastoral referral are kept in its restricted service. |
+
+When an operator changes teams, re-evaluate access to open threads and previously delivered attachments. Give urgent unanswered messages a named duty queue, due time and safe fallback. A dashboard can distinguish total inbound messages, distinct unresolved threads and accepted referrals. See [visitors and referral ownership](../people/visitors-and-follow-up.md).

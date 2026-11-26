@@ -7,8 +7,8 @@ These tables give concrete inputs and expected outcomes under named, fictional c
 | Who was a formal member on this date? Which household authority applies? What can be disclosed? How much assistance remains after reversal? | [People and care](people/README.md) |
 | Can the last seats be allocated, can this child be handed over, and does a moved room, clock change or rota conflict change the result? | [Ministry operations](ministry/README.md) |
 | Did the meeting have quorum, did the motion carry, and may a reminder or channel post go out at this time? | [Governance and communications](governance/README.md) |
-| What is the journal, fund, payroll, settlement or service-period amount, including rounding and later corrections? | [Accounting](finance/README.md) |
-| How are order discounts, tax credits, stock, paid access, royalties, grants and sponsorship commitments allocated? | [Commerce and development](commerce/README.md) |
+| Which gifts or designations can be acknowledged, and how is a duplicate or corrected accounting handoff resolved? | [Giving and accounting exchange](finance/README.md) |
+| Which event fee or church desk request needs review, and when may a sermon be released or withdrawn? | [Church desk and media](commerce/README.md) |
 | What changes after delegation expiry, duplicate delivery, conflicting offline work, migration, restore or review of an AI draft? | [Platform](platform/README.md) |
 
 ## How to use a case

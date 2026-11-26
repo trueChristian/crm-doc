@@ -2,19 +2,19 @@
 
 A church may have one paid administrator who is also the treasurer and a volunteer choir member. These roles have different sources of authority. The employment dossier, payroll input, meeting appointment and volunteer roster can share a verified Person identifier. Ending one role changes only the outcomes justified by that role.
 
-## Appointment and payroll boundary
+## Appointment, cover and approved time
 
-| Step | Owner and evidence | Output and invariant |
+| Step | Church officer's action | Result to check |
 | --- | --- | --- |
-| Create or fill position | Church officer verifies appointment, budget dimension, supervisor, dates and authorized rate policy. | StaffPosition can remain vacant. Multiple appointments may share its capacity under an approved arrangement. |
-| Agree terms | HR records signed terms, legal employer, effective date, hours/FTE convention, pay frequency and applicable component. | CompensationTerm is effective-dated. Payable rates are visible only to authorized duties. |
-| Approve time and leave | Supervisor approves time within engagement and leave authorization; a second approver is used for a conflict. | Payroll receives the approved units, earning code, cost dimensions, revision and original source key. |
-| Run payroll | Payroll verifies applicable term, rate, work calendar, approved absences, deductions policy and control totals. | A time entry appears once in one relevant input. Separate instructions cover reversal or later adjustment. |
-| Exit employment | HR records actual last duties and pay date; responsible officers reassign work, recover equipment and revoke employment-derived access. | The final pay run, physical returns and time-limited access review have separately acknowledged results. |
+| Open a position | Identify employing church, campus, supervisor, effectivity, expected hours and appointment authority. | A vacant or shared position appears in the staffing plan. |
+| Agree the appointment | Link the signed terms and approved amendment editions under personnel access. | A schedule coordinator can resolve the role, availability and credential status without opening personnel files. |
+| Approve time and absence | Check engagement dates, shift overlap, breaks, conflicts and replacements. A conflicted approver routes the matter to an authorized alternate. | The church retains dates, units, approval and revision. The provider receives only approved inputs for its purpose. |
+| Correct an input | Reference the original engagement, time entry and accepted revision. | The original and replacement remain recoverable. Delivery can be acknowledged, rejected with a reason, or awaiting confirmation. |
+| Exit employment | Reassign protected duties, retrieve property, revoke employment-derived access and notify the payroll office under local policy. | An external acknowledgement and each physical handoff are tracked independently. |
 
-**Worked mid-period rate change.** A salaried term with day-proration uses its published calendar and denominator. An hourly term uses approved hours at the rate effective when the service occurred. For the hourly fixture, 12 approved hours at 80 and 8 approved hours at 90 produce gross earnings of 1,680 before locally determined adjustments. If two of the eight later prove duplicated, reduce by 180 through a linked correction; net approved earnings become 1,500. A second delivery of that correction returns the same payroll input. Changing all 20 hours to the new rate, or reversing two hours at the old rate, fails the fixture.
+**Worked time correction.** The administrator worked 12 approved hours before an appointment amendment and eight after it. A reviewer discovers that two of the latter hours duplicated another approved shift. Preserve the original 12 and eight and send the approved revision for six in the latter interval. The two accepted inputs now represent 18 hours in all. Submitting the same revision again leaves 18 hours. The receiving payroll office decides how to apply the term and any closed-period pay adjustment. Staff can track the outcome of the handoff under its external reference.
 
-A late correction to hours already in a paid, closed period follows the approved subsequent-run process. Preserve original payslip evidence and show why a new adjustment exists. A staff member who remains a member can still obtain their church-member profile. Access to former staff payslips depends on a separately agreed former-worker delivery route. A personal account still active for choir membership cannot revive payroll access.
+When the same person leaves employment but continues to sing in the choir, withdraw staff permissions on the effective instant. Check assigned work, open payroll handoffs and equipment independently. A continuing church account can still access its authorized member and choir activity.
 
 ## Physical and digital custody
 

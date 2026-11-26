@@ -1,6 +1,6 @@
 # Finding records and reporting
 
-A secretary searches for a member remembered by an earlier surname, a minister checks outstanding follow-ups, a treasurer compares restricted fund balances and a member finds last month's approved minutes. Every result must explain what it represents and which date or period it covers. Each department owns business definitions and exclusions for its measures; this chapter owns their reuse and publication.
+A secretary searches for a member remembered by an earlier surname, a minister checks outstanding follow-ups, a treasurer checks which designated gifts await external acknowledgement and a member finds last month's approved minutes. Every result must explain what it represents and which date or period it covers. Each department owns business definitions and exclusions for its measures; this chapter owns their reuse and publication.
 
 ## Logical records
 
@@ -29,7 +29,7 @@ Return “no matching accessible records” consistently for missing and protect
 | Guests returning | Distinct qualifying first-time guests in a cohort with a later eligible attendance within a defined window. | Cohort dates, follow-up window, denominator and exclusions for anonymous headcounts. |
 | Attendance | Named unique people per occurrence and anonymous headcount reported separately with the counter's declared counting method. | Whether headcount includes named attendees, no combined total if overlap is unknown, cancelled occurrences excluded. |
 | Volunteer coverage | Filled eligible required slots divided by required slots on active rosters. | State whether invited or confirmed assignments qualify; identify overlapping slots and unmet requirements. |
-| Giving and budget | Financial definition approved by the treasurer, tied to posting status, report basis, currency, restriction and fiscal period. | Distinguish cash gifts, pledges and revenue; fund balance equals opening balance plus movement under the accounting policy. |
+| Giving and stewardship | Use approved church gift, pledge, designation, currency, correction and handoff status as of the report cutoff. | Distinguish commitments from received gifts. Attribute each allocation once. Display any provider-supplied financial figure with its source, period and reconciliation state. |
 | Meeting actions | Open or overdue actions assigned from approved decisions as of the report cutoff. | Distinguish pending minutes, waived tasks and revised due dates. |
 
 Support period comparisons using equivalent date windows, and show the effect of partial periods, late entries and corrected facts. A missing value is distinct from zero. Totals use authoritative underlying facts and appropriate precision, particularly for money and ratios. Cross-campus totals deduplicate people if the definition counts people. Require explicit treatment of campus transfers. Record a note against an issued report explaining a material restatement.

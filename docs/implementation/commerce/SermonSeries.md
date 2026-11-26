@@ -6,7 +6,7 @@
 
 Identity, audit fields, ownership and effective-date notation follow the [shared record envelope](../../foundation/record-conventions.md). A business key or parent-child uniqueness rule below remains enforceable even when an implementation also assigns an opaque identifier.
 
-Group works by teaching series or course. Discoverability of the series and each item is checked individually.
+Group works by sermon series or preaching theme. Discoverability of the series and each item is checked individually.
 
 ## Field inventory
 
@@ -119,7 +119,6 @@ Use scoped or external reference for `SermonSeries.visibility_policy_ref`. Resol
 
 | Referencing record and field | Join key | Review when identity changes |
 | --- | --- | --- |
-| [AccessScope](AccessScope.md).`series_id` | SermonSeries identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [SeriesSermon](SeriesSermon.md).`series_id` | SermonSeries identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 
 ## Acceptance evidence

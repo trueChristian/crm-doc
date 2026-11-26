@@ -6,7 +6,7 @@
 
 Identity, audit fields, ownership and effective-date notation follow the [shared record envelope](../../foundation/record-conventions.md). A business key or parent-child uniqueness rule below remains enforceable even when an implementation also assigns an opaque identifier.
 
-One durable execution key per installment. Finance owns payments and postings; stock control owns the issue. An award can have several fulfillments up to its authorized amount/quantity and currency/unit.
+One durable execution key per installment. The payment service confirms any transfer. The distribution steward records the physical issue. Each returns its own execution reference. An award can have several fulfillments up to its authorized amount/quantity and currency/unit.
 
 ## Field inventory
 
@@ -94,7 +94,7 @@ Use monetary unit code for `AidFulfillment.currency`. Resolve the code and its p
 | Malformed or unmapped | ambiguous $ | Request the unambiguous currency. |
 | Two amounts have different currencies | 24.50 NAD and 24.50 USD | Report separate totals or translate using recorded rates. |
 | Catalog changes after document issue | document issued before currency-profile revision | The stored document keeps its currency. |
-| Unrecognized imported code | unmapped monetary unit in staged transaction | Stage unmapped currency; block financial posting. |
+| Unrecognized imported code | unmapped monetary unit in staged transaction | Hold the row for currency mapping before an amount-dependent approval or exchange. |
 | Absent in intake | No currency provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
 
 ### quantity

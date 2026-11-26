@@ -6,7 +6,7 @@
 
 Identity, audit fields, ownership and effective-date notation follow the [shared record envelope](../../foundation/record-conventions.md). A business key or parent-child uniqueness rule below remains enforceable even when an implementation also assigns an opaque identifier.
 
-Stable work identity. Retirement preserves order references, cataloguing and rights evidence. Public discovery depends on the release.
+Stable work identity. Retirement preserves delivery references, cataloguing and rights evidence. Public discovery depends on the release.
 
 ## Field inventory
 

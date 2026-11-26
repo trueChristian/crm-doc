@@ -2,6 +2,8 @@
 
 Every interface publishes a human-readable contract specifying the authoritative producer, record scope, required capabilities, allowed purposes, validation, success receipt, retry behavior, correction and reconciliation. A congregation can change a messaging, accounting or payment provider without changing the historic meaning of records. Only stable business identifiers cross domains. Integration data is subject to the same organization and field permissions as a staff request.
 
+For the church-facing operations, provider catalogue and acceptance run, see [Church apps, the API and MCP](church-apps-and-integrations.md).
+
 ## Logical records
 
 | Entity | Fields | Relationship and constraint |
@@ -20,9 +22,9 @@ Every interface publishes a human-readable contract specifying the authoritative
 
 Support list, detail and changes-since access where applicable. Use an opaque continuation tied to a stable sort key, snapshot, authorization and organization. A stale or expired cursor requests a fresh snapshot; an incremental feed includes deletion markers and a replay floor. Treat timestamps alone as insufficient tie breakers. Reject unknown required codes with field-level errors. Preserve supported optional fields through round trips. Include schema edition and character encoding in downloadable data. Provide a portable package with entity files, relationship keys, attachment manifest and a data dictionary.
 
-Classify responses as accepted, committed, conflict, temporarily unavailable, permanent rejection or awaiting human review. Supply correlation and safe field-level reason without including private payloads. A receipt that acknowledges transport leaves the business operation pending until an explicit outcome arrives. Authenticate a callback, bind it to a connection and recipient, and validate freshness and prior receipts before it can change domain state. Out-of-order or missing aggregate revisions wait, reconcile against the authoritative current state or open a discrepancy. Payment notifications require the finance or commerce reconciliation specified by the owner.
+Classify responses as accepted, committed, conflict, temporarily unavailable, permanent rejection or awaiting human review. Supply correlation and safe field-level reason without including private payloads. A receipt that acknowledges transport leaves the business operation pending until an explicit outcome arrives. Authenticate a callback, bind it to a connection and recipient, and validate freshness and prior receipts before it can change domain state. Out-of-order or missing aggregate revisions wait, reconcile against the authoritative current state or open a discrepancy. A payment notification needs an authenticated provider reference, amount, currency and verified match to a church gift or fee before the CRM records a confirmed outcome. The external accounting provider supplies its own business acknowledgement.
 
-Retry transient failures with bounded attempts, increasing delays and a ceiling. Pause on persistent recipient failure and alert the connection owner; record unprocessed events without blocking other subscribers. An operator can inspect redacted reasons, repair configuration and replay a stated interval. Replays must not duplicate gifts, stock depletion, receipts, notices or access grants. A manual acknowledgement references independent evidence. Record delivery and processing separately.
+Retry transient failures with bounded attempts, increasing delays and a ceiling. Pause on persistent recipient failure and alert the connection owner; record unprocessed events without blocking other subscribers. An operator can inspect redacted reasons, repair configuration and replay a stated interval. Replays must not duplicate gifts, registrations, receipts, notices or access grants. A manual acknowledgement references independent evidence. Record delivery and processing separately.
 
 ## Export workflow
 
@@ -30,8 +32,8 @@ A data steward selects a permitted purpose, scope and data dictionary edition, p
 
 ## Acceptance
 
-- Sending the same provider settlement receipt three times generates one application outcome and three delivery observations. A reused message key with a different total raises a discrepancy without posting.
+- Sending the same provider settlement receipt three times generates one application outcome and three delivery observations. A reused message key with a different total raises a discrepancy and leaves the accepted gift and its handoff unchanged.
 - Two people updated in the same instant appear once each during snapshot pagination. Resuming after a deleted record uses the stable continuation.
 - Expiring an integration credential pauses processing under that principal. Updating the credential and resuming drains the backlog once; another congregation's subscription proceeds throughout.
 - An applicant is absent from an integration principal's scope. A direct request, bulk file and event subscription all omit the applicant and their attachments.
-- A data steward exports ledger entries with localized labels. A different system can still reconstruct stable account keys, exact amounts, original currencies, entry-line joins and period dates.
+- A data steward exports approved gift allocations with localized labels. The church's accounting system can resolve the agreed designation keys, source item revisions, amounts and currencies, and return the external recognition or rejection reference.

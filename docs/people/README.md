@@ -14,6 +14,7 @@ Start with the question the church needs to answer. A register entry, a place in
 | Invite a member, verify a delegate, update a household contact or publish a directory | Member, approved delegate and directory editor | [Directory publication and member self-service](directory-and-self-service.md) |
 | Welcome a visitor, hand over a request or stop a follow-up | Welcome coordinator and assigned worker | [Visitors, outreach and follow-up](visitors-and-follow-up.md) |
 | Arrange a pastoral visit or distribute an approved prayer request | Assigned care coordinator | [Pastoral care, prayer and continuity](pastoral-care.md) |
+| Plan home visits, hand responsibility to another elder or review a gap in contact | Visiting coordinator and assigned elder or deacon | [Pastoral visiting districts and home contact](visiting-districts.md) |
 | Receive a concern, restrict an activity or make a protected disclosure | Designated safeguarding lead or independent alternate | [Safeguarding concerns and protected disclosure](safeguarding-and-disclosure.md) |
 | Approve food, vouchers or financial assistance and reconcile delivery | Welfare assessor, independent approver and treasury | [Benevolence and community aid](benevolence-and-community-aid.md) |
 
@@ -31,9 +32,9 @@ Ownership follows the referenced Organization, Congregation or parent record and
 | Membership clerk | Meetings and reporting | Eligible roll or membership as of a cited policy/date. A meeting can freeze the roll it used. |
 | Household and safeguarding verifier | Child check-in/out and enrollment | Allow, deny or refer for specific actor, child, action, time and activity. Case narrative and private addresses remain with their owners. |
 | People and directory | Communications | Permitted contact endpoint, scope and effective dates. The communications service evaluates purpose-specific subscriptions, withdrawals and delivery outcomes. Directory publication consent is a separate decision. |
-| Care and aid | Finance or inventory | Approved value or quantity, fund, payee and an opaque award reference. Reconciled execution returns to the award. |
-| Identity steward | Accounting, commerce, service history and archive | Person alias/merge decision, acknowledgment and exception status. A posted payment, issued certificate or immutable meeting roll keeps its original facts. |
-| Current member | Their own portal | Only entitled documents, event and volunteering records, messages, statements, orders and authorized family actions. Each authoritative domain checks current permissions at use. |
+| Care and aid | External accounting service or stock custodian | Authorized amount or quantity, resource mapping, minimum payee details and an opaque award reference. The CRM tracks confirmed fulfillment, returns and pending installments. |
+| Identity steward | External accounting and church service history, event registrations and archive | Person alias/merge decision, acknowledgment and exception status. A posted payment, issued certificate or immutable meeting roll keeps its original facts. |
+| Current member | Their own portal | Only entitled documents, event and volunteering records, messages, authorized giving acknowledgments, event fee status and delegated family actions. Each authoritative domain checks current permissions at use. |
 
 ## Reference journey
 

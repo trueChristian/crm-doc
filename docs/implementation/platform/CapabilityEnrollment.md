@@ -6,7 +6,7 @@
 
 Identity, audit fields, ownership and effective-date notation follow the [shared record envelope](../../foundation/record-conventions.md). A business key or parent-child uniqueness rule below remains enforceable even when an implementation also assigns an opaque identifier.
 
-Explicitly enable optional features such as storefronts, paid media and assistance. Validate dependencies before activation and plan data access after disabling.
+Explicitly enable optional features such as event registration, media publication and assistance. Validate dependencies before activation and plan data access after disabling.
 
 ## Field inventory
 

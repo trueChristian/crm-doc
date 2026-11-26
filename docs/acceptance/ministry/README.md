@@ -1,14 +1,14 @@
 # Ministry acceptance across department boundaries
 
-Use the following fixtures when a ministry operation must hand evidence to a second owner. Each manual states the local policy under test, the initial records, precisely what changes and how a reviewer can establish the result. Identities, dates, times and media are synthetic. A church can select different local rules while retaining the distinction between the owners of learning, worship, broadcasting, publication and the formal register.
+Use the following fixtures when a ministry operation must hand evidence to a second owner. Each manual states the local policy under test, the initial records, precisely what changes and how a reviewer can establish the result. Identities, dates, times and media are synthetic. A church can select different local rules while retaining the distinction between the external owners of learning or delivery and the church owners of worship, publication and the register.
 
 | A team needs to verify | Run |
 | --- | --- |
 | The church viewer, an optional public relay and a second private service remain independent during an outage or withdrawal | [Run two services on selectable live destinations](live-destinations.md) |
 | A capture can move to church storage without widening access, and a partial copy cannot become the released master | [Reconcile the archive handover, edit and withdrawal](archive-handover.md) |
-| Editors preserve the surviving media timeline and withhold the text associated with removed passages | [Check 120 caption boundaries](caption-boundaries.md) |
+| A church editor verifies the accessible public edition and withholds text associated with a private testimony | [Check accessible captions and audience restrictions](caption-boundaries.md) |
 | An issued order changes after rehearsal and two workers share one required position | [Revise the service and reconcile observed hours](service-handover.md) |
-| Teaching evidence leads to a review under one church's rules and stays within education under another | [Follow formation, register entry, issue and correction](learning-register.md) |
+| An external attestation informs an authorized local review and remains private to that church | [Follow preparation, register entry, issue and correction](learning-register.md) |
 
 ## Evidence from a run
 

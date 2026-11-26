@@ -161,11 +161,8 @@ Declared alternatives in owner order: `proposed`, `active`, `leave`, `ended`. Ap
 
 | Referencing record and field | Join key | Review when identity changes |
 | --- | --- | --- |
-| [LeaveMovement](LeaveMovement.md).`engagement_id` | EmploymentEngagement identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [PayrollEngagement](../finance/PayrollEngagement.md).`employment_ref` | EmploymentEngagement identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [PersonnelCase](PersonnelCase.md).`engagement_id` | EmploymentEngagement identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [StaffAbsence](StaffAbsence.md).`engagement_id` | EmploymentEngagement identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [StaffCompensationTerm](StaffCompensationTerm.md).`engagement_id` | EmploymentEngagement identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [StaffDeparture](StaffDeparture.md).`engagement_id` | EmploymentEngagement identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [WorkTimeEntry](WorkTimeEntry.md).`engagement_id` | EmploymentEngagement identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 

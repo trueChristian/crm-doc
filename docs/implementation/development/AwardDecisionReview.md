@@ -6,7 +6,7 @@
 
 Identity, audit fields, ownership and effective-date notation follow the [shared record envelope](../../foundation/record-conventions.md). A business key or parent-child uniqueness rule below remains enforceable even when an implementation also assigns an opaque identifier.
 
-Receiving an offer triggers terms review. Acceptance plus finance acknowledgement creates one authoritative incoming award. Rejecting a partial offer cannot post the requested amount or mark it earned.
+Receiving an offer triggers terms review. Authorized acceptance establishes one church award. Any requested accounting setup has its own acknowledgement. A declined offer contributes zero to accepted awards and received gifts.
 
 ## Field inventory
 
@@ -63,7 +63,7 @@ Use monetary unit code for `AwardDecisionReview.currency`. Resolve the code and 
 | Malformed or unmapped | ambiguous $ | Request the unambiguous currency. |
 | Two amounts have different currencies | 24.50 NAD and 24.50 USD | Report separate totals or translate using recorded rates. |
 | Catalog changes after document issue | document issued before currency-profile revision | The stored document keeps its currency. |
-| Unrecognized imported code | unmapped monetary unit in staged transaction | Stage unmapped currency; block financial posting. |
+| Unrecognized imported code | unmapped monetary unit in staged transaction | Hold the row for currency mapping before an amount-dependent approval or exchange. |
 | Incomplete record | No currency at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### received_at

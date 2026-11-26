@@ -134,7 +134,7 @@ Use monetary unit code for `GiftOfferAssessment.currency`. Resolve the code and 
 | Malformed or unmapped | ambiguous $ | Request the unambiguous currency. |
 | Two amounts have different currencies | 24.50 NAD and 24.50 USD | Report separate totals or translate using recorded rates. |
 | Catalog changes after document issue | document issued before currency-profile revision | The stored document keeps its currency. |
-| Unrecognized imported code | unmapped monetary unit in staged transaction | Stage unmapped currency; block financial posting. |
+| Unrecognized imported code | unmapped monetary unit in staged transaction | Hold the row for currency mapping before an amount-dependent approval or exchange. |
 | Absent in intake | No currency provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
 
 ### intended_fund_id
@@ -246,6 +246,7 @@ Use scoped or external reference for `GiftOfferAssessment.decision_evidence_ref`
 | Referencing record and field | Join key | Review when identity changes |
 | --- | --- | --- |
 | [AcceptedGiftLink](AcceptedGiftLink.md).`assessment_id` | GiftOfferAssessment identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
+| [InKindGift](../finance/InKindGift.md).`assessment_id` | GiftOfferAssessment identity | Reconcile the reference in the source record and preserve its correction history. |
 | [LegacyNotice](LegacyNotice.md).`assessment_id` | GiftOfferAssessment identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 
 ## Acceptance evidence

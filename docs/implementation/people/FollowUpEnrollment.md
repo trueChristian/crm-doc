@@ -6,7 +6,7 @@
 
 Identity, audit fields, ownership and effective-date notation follow the [shared record envelope](../../foundation/record-conventions.md). A business key or parent-child uniqueness rule below remains enforceable even when an implementation also assigns an opaque identifier.
 
-Unique person, path version and triggering source. Re-entering later is a new episode with an independently valid purpose. Membership and regular attendance are independent.
+Unique person, path version and triggering source. For an expressed interest, use its stable interest identity as the trigger so two purposes recorded on one card can have independent episodes. Re-entering later is a new episode with an independently valid purpose. Membership and regular attendance are independent.
 
 ## Field inventory
 

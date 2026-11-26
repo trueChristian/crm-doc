@@ -6,15 +6,15 @@ Each record has a separate page. The field inventory preserves its business decl
 
 | Department | Logical records | Field positions |
 | --- | ---: | ---: |
-| [Administration](administration/README.md) | 49 | 489 |
+| [Administration](administration/README.md) | 46 | 466 |
 | [Assurance](assurance/README.md) | 45 | 507 |
-| [Commerce](commerce/README.md) | 100 | 897 |
+| [Church desk and media](commerce/README.md) | 16 | 133 |
 | [Communications](communications/README.md) | 39 | 414 |
 | [Development](development/README.md) | 37 | 388 |
-| [Finance](finance/README.md) | 160 | 1478 |
+| [Giving and accounting exchange](finance/README.md) | 21 | 197 |
 | [Foundation](foundation/README.md) | 10 | 82 |
 | [Governance](governance/README.md) | 46 | 453 |
-| [Ministry](ministry/README.md) | 116 | 928 |
-| [People](people/README.md) | 73 | 807 |
+| [Ministry](ministry/README.md) | 103 | 825 |
+| [People](people/README.md) | 73 | 809 |
 | [Platform](platform/README.md) | 106 | 888 |
 | [Verification](verification/README.md) | 3 | 32 |

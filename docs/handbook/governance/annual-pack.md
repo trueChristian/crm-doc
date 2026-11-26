@@ -1,6 +1,6 @@
 # Year-end reporting and the annual meeting pack
 
-The secretary assembles a packet from accountable records. People owns the membership history; finance owns the signed statements; ministry owns attendance; the secretary owns collection, reconciliation notes, presentation, attestation and distribution of the compiled return. The [return register](../../administration/annual-returns.md), [board packet](../../governance/annual-cycle-and-policy.md) and [financial close](../../finance/reporting.md) keep their distinct authorities.
+The secretary assembles a packet from accountable records. People owns the membership history; finance owns the signed statements; ministry owns attendance; the secretary owns collection, reconciliation notes, presentation, attestation and distribution of the compiled return. The [return register](../../administration/annual-returns.md), [board packet](../../governance/annual-cycle-and-policy.md) and [exchange of approved accounting evidence](../../finance/accounting-exchange.md) keep their distinct authorities.
 
 ## Freeze the basis before requesting figures
 
@@ -18,9 +18,9 @@ Ten January records later show that an already counted outgoing transfer was eff
 
 ## Resource and finance pack
 
-Require authorized finance to release the approved statement revision for the same book perimeter and reporting period. Check statement equations supplied, approval, permitted audience and material disclosure before including it. Example values in the [worked accounting month](../../finance/worked-month.md) yield assets 1,291, liabilities 43 and net assets 1,248. A public packet may show this aggregate and an authorized budget comparison; it must exclude donor and payroll identities, bank numbers and sensitive operations. No clerk adjustment in the return can change a journal. A disagreement goes back to finance and a corrected finance release becomes a new attachment revision.
+Request an accountant-approved release for the agreed reporting perimeter and period. Record the issuing organization, period, basis, currency, approval, publication audience and source revision. A member pack can carry an authorized aggregate; supporting donor and payroll records stay restricted. Return a discrepancy to the accountant. A corrected release becomes a new attachment revision, and the clerk can reproduce the old issue.
 
-Present annual results alongside approved budget, revised budget if any and comparatives labeled with their basis. For expense budget 600 and actual 648, the chosen “favorable positive” convention gives −48, or 8% unfavorable. A zero budget with actual 20 yields −20 variance and an unavailable percentage. If only nine of twelve required ministry reports have arrived, label coverage 9/12 and distinguish undisclosed or suppressed lines from missing.
+If the accountant supplies budget and actual figures, retain the stated basis and comparison convention. An unavailable percentage must display as unavailable. If only nine of twelve ministry reports have arrived, label coverage 9/12 and distinguish missing submissions from suppressed lines.
 
 ## Issue, correct and reissue
 

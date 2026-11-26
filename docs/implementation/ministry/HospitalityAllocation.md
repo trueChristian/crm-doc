@@ -19,7 +19,7 @@ One active request per person and offer unless policy allows multiple units. Use
 | `preference_ref` | id? | Optional under owner conditions | [resource](../value-conventions.md#resource) |
 | `reviewer_id` | → UserAccount? | Optional under owner conditions | [relation](../value-conventions.md#relation) |
 | `fulfilled_at` | instant? | Optional under owner conditions | [instant](../value-conventions.md#instant) |
-| `stock_movement_ref` | → StockMovement? | Optional under owner conditions | [relation](../value-conventions.md#relation) |
+| `stock_movement_ref` | id? | Optional under owner conditions | [resource](../value-conventions.md#resource) |
 
 ## Input, storage and exchange cases
 
@@ -118,16 +118,7 @@ Use unambiguous point in time for `HospitalityAllocation.fulfilled_at`. Compare 
 
 ### stock_movement_ref
 
-The target is [StockMovement](../commerce/StockMovement.md). Resolve the identifier in the approved scope before using its fields.
-
-| Probe | Input or observation | Expected result |
-| --- | --- | --- |
-| Admissible representation | StockMovement·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
-| Unresolved target | StockMovement·MISSING | Queue the missing StockMovement mapping or reject the command before linking. |
-| Wrong scope | StockMovement·B01 | Do not attach another church’s StockMovement without a supported exchange and local authority. |
-| Target rename | Rename StockMovement·A01 after linking | The existing stock_movement_ref keeps the same identity and historic documents retain their original wording. |
-| Absent in intake | No stock_movement_ref provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
+Optional scoped reference to an agreed inventory movement in the issuing system. Resolve the source, organization and permitted purpose before displaying any details. Keep the local service record when the provider is unavailable. A failed or contradictory mapping requires staff review.
 
 ## Acceptance evidence
 

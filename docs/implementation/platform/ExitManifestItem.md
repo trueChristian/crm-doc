@@ -6,7 +6,7 @@
 
 Identity, audit fields, ownership and effective-date notation follow the [shared record envelope](../../foundation/record-conventions.md). A business key or parent-child uniqueness rule below remains enforceable even when an implementation also assigns an opaque identifier.
 
-Include attachments, joins, stable keys, permissions, restrictions, account attribution, balances, receipt evidence and known exclusions.
+Include attachments, joins, stable keys, permissions, restrictions, actor attribution, designation totals, receipt evidence and known exclusions.
 
 ## Field inventory
 

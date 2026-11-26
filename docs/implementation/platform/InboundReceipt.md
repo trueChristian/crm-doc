@@ -143,6 +143,12 @@ Use versioned classification or status code for `InboundReceipt.failure_key`. Ch
 | Bulk import requests a state transition | import requests the final approved state | Run ordinary transition guards and approval checks. |
 | Absent in intake | No failure_key provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
 
+## Incoming references
+
+| Referencing record and field | Join key | Review when identity changes |
+| --- | --- | --- |
+| [AdmissionPaymentNotice](../ministry/AdmissionPaymentNotice.md).`receipt_id` | InboundReceipt identity | Reconcile the reference in the source record and preserve its correction history. |
+
 ## Acceptance evidence
 
 Record the owner revision, evaluated values, actor and scope, result, effective time, and any downstream references needed to reproduce a disputed decision. Release only the evidence permitted to the reader. The originating domain page defines the business action and precise historical or transactional effect.

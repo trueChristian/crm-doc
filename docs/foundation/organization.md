@@ -17,7 +17,7 @@ The organization is the boundary that controls its records. A congregation is a 
 
 ## Opening, moving and closing
 
-A secretary sets up the church name, language, time zone and public contact. A second authorized person confirms the first administrator recovery route. Finance selects the accounting entity and periods independently. The secretary previews sample calendars, directory visibility and how notices display in local time. Activation records who accepted the settings. A site coordinator may edit that campus's directions without gaining access to private pastoral notes.
+A secretary sets up the church name, language, time zone and public contact. A second authorized person confirms the first administrator recovery route. An organization connecting to accounting identifies its external entity, reporting period and authorized exchange owner separately. The secretary previews sample calendars, directory visibility and how notices display in local time. Activation records who accepted the settings. A site coordinator may edit that campus's directions without gaining access to private pastoral notes.
 
 For a campus move, update the campus assignment from a specified date, preview affected future occurrences and send only approved changes to registrants. A congregation merger establishes predecessor and successor links and an effective date. Produce counts for proposed membership transfers, outstanding commitments and unreconciled balances. The responsible leaders confirm transfers individually or in an audited batch. Previously signed minutes and posted entries retain their original unit.
 

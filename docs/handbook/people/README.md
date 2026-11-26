@@ -9,6 +9,7 @@ Use these chapters when implementing an operation or rehearsing it with staff. E
 | Certify a meeting roll and explain a late admission, transfer or difference from last year | [Certifying the roll](certifying-the-roll.md) | Secretary, authorizing body, returning officer |
 | Transcribe a register and issue a limited extract without revealing adjacent families | [Register book and extract](register-book-and-extract.md) | Minister, archivist, registrar |
 | Coordinate a visit, prayer request or meal while honoring exactly what may be shared | [Consent, care and handover](consent-care-and-handover.md) | Care lead, volunteer, communications editor |
+| Allocate visiting districts, review an apparent absence and hand over an unfinished visit | [Pastoral visiting districts](../../people/visiting-districts.md) | Visiting coordinator, elder, deacon or other appointed worker |
 | Receive a concern, assign an independent lead, disclose evidence or review a measure | [Handling a protected concern](handling-a-protected-concern.md) | Safeguarding lead, independent reviewer |
 | Assess assistance, reconcile a vendor return and decide a partial-award appeal | [Aid, payment and appeal](aid-payment-and-appeal.md) | Intake worker, welfare assessor, treasurer |
 | Triage wrongdoing and retaliation, resolve a grievance or remit part of a decision | [Independent review and remedy](independent-review-and-remedy.md) | Independent custodian, investigator, adjudicator |

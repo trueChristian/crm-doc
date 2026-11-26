@@ -6,7 +6,7 @@
 
 Identity, audit fields, ownership and effective-date notation follow the [shared record envelope](../../foundation/record-conventions.md). A business key or parent-child uniqueness rule below remains enforceable even when an implementation also assigns an opaque identifier.
 
-A project partner, community organization, missionary or sponsor. A partner relationship confers no access to church records. Finance owns the separate supplier, customer or payee identity.
+A project partner, community organization, missionary or sponsor. A partner relationship confers no access to church records. The external accounting system owns its supplier, customer or payee identity.
 
 ## Field inventory
 

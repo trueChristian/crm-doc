@@ -219,10 +219,8 @@ The target is [Person](../people/Person.md). Resolve the identifier in the appro
 | --- | --- | --- |
 | [AccountabilityCheck](AccountabilityCheck.md).`group_id` | MinistryGroup identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [AttendanceRecord](AttendanceRecord.md).`group_id` | MinistryGroup identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [Curriculum](Curriculum.md).`owner_group_id` | MinistryGroup identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [EventRegistration](EventRegistration.md).`group_id` | MinistryGroup identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [EventSeries](EventSeries.md).`host_group_id` | MinistryGroup identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [FormationPath](FormationPath.md).`owner_group_id` | MinistryGroup identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [GoverningBody](../governance/GoverningBody.md).`roster_group_id` | MinistryGroup identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [GroupLink](GroupLink.md).`child_id` | MinistryGroup identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [GroupLink](GroupLink.md).`parent_id` | MinistryGroup identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |

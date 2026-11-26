@@ -33,4 +33,4 @@ On 15 October the steward discovers a mistaken merge on a different pair. Freeze
 
 ## Completion checks
 
-Run a same-name search as a welcome worker and a steward; compare only authorized differences. Verify that shared guardians, phone numbers, birthdays and household membership alone never establish an identity. Rehearse a merge with a finance acknowledgment followed by a timeout: the retry completes pending acknowledgments and preserves one ledger reference. Confirm that “appears on a guest list,” “qualifies by age,” “may contact by telephone,” and “may sign in” can each have different answers for the same person.
+Run a same-name search as a welcome worker and a steward; compare only authorized differences. Verify that shared guardians, phone numbers, birthdays and household membership alone never establish an identity. Rehearse a merge with a finance acknowledgment followed by a timeout: the retry completes pending acknowledgments and preserves the accounting system’s original transaction reference. Confirm that “appears on a guest list,” “qualifies by age,” “may contact by telephone,” and “may sign in” can each have different answers for the same person.

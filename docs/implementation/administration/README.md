@@ -1,6 +1,6 @@
 # Administration implementation records
 
-49 record definitions with 489 declared field positions. Use the ownership rule before applying any value-level test.
+46 record definitions with 466 declared field positions. Use the ownership rule before applying any value-level test.
 
 [All implementation records](../README.md) · [Department guide](../../administration/README.md)
 
@@ -26,8 +26,6 @@
 | [EmploymentEngagement](EmploymentEngagement.md) | 10 | [Staff, clergy and employment administration](../../administration/workforce.md) |
 | [GroundsWork](GroundsWork.md) | 10 | [Weddings, funerals, memorials and cemetery administration](../../administration/life-events.md) |
 | [IntermentRecord](IntermentRecord.md) | 12 | [Weddings, funerals, memorials and cemetery administration](../../administration/life-events.md) |
-| [LeaveMovement](LeaveMovement.md) | 7 | [Staff, clergy and employment administration](../../administration/workforce.md) |
-| [LeavePlan](LeavePlan.md) | 7 | [Staff, clergy and employment administration](../../administration/workforce.md) |
 | [LoanCopy](LoanCopy.md) | 9 | [Front office, public information and lending](../../administration/office-services.md) |
 | [LoanReservation](LoanReservation.md) | 8 | [Front office, public information and lending](../../administration/office-services.md) |
 | [LoanTitle](LoanTitle.md) | 10 | [Front office, public information and lending](../../administration/office-services.md) |
@@ -51,7 +49,6 @@
 | [ReturnPeriod](ReturnPeriod.md) | 8 | [Dated rolls, denominational returns and annual reports](../../administration/annual-returns.md) |
 | [RoundPlacement](RoundPlacement.md) | 9 | [Agreements, service rounds and relief distribution](../../administration/community-programs.md) |
 | [StaffAbsence](StaffAbsence.md) | 11 | [Staff, clergy and employment administration](../../administration/workforce.md) |
-| [StaffCompensationTerm](StaffCompensationTerm.md) | 9 | [Staff, clergy and employment administration](../../administration/workforce.md) |
 | [StaffDeparture](StaffDeparture.md) | 9 | [Staff, clergy and employment administration](../../administration/workforce.md) |
 | [StaffPosition](StaffPosition.md) | 11 | [Staff, clergy and employment administration](../../administration/workforce.md) |
 | [WorkTimeEntry](WorkTimeEntry.md) | 11 | [Staff, clergy and employment administration](../../administration/workforce.md) |

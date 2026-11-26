@@ -7,5 +7,6 @@
 | Answer enquiries safely, control a callback queue or return an incomplete lending kit | [Front office and lending](front-office-work-queue.md) |
 | Administer a mid-period staff change, a departing officer or an original register | [Workforce and archival custody](workforce-and-archives.md) |
 | Design a person's intake screen, ambiguous match queue or church report | [Secretary screens and report contracts](screens-and-reports.md) |
+| Coordinate a site closure, relocation and reopening | [Site disruption and service continuity](site-disruption.md) |
 
 The [administration domain](../../administration/README.md) names the original records. The [field-by-field inventory](../../implementation/administration/README.md) gives the inputs and relationships. The [handbook index](../README.md) links to the operational rules of the departments receiving office work.

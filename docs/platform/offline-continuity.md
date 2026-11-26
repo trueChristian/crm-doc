@@ -21,7 +21,7 @@ Rural campuses, temporary venues and home visits may lose connectivity during an
 | Attendance and headcount | Record provisional arrival with group, occurrence and observer. Show locally observed, awaiting sync and confirmed as distinct states. | Dedupe by occurrence, attendee and attendance type. Two observations can support one attendance fact. |
 | New visitor or contact correction | Capture the minimum volunteered fields and notice edition. Queue same-device dependent facts under a temporary key. | Revalidate purpose, person match, current field rights and later edits. Queue unresolved matches for a steward. |
 | Volunteer roster | View the permitted snapshot with “as of” time and accept a provisional response. | Confirm role, slot capacity, eligibility and overlap against current assignments. |
-| Privileged access, financial posting or creating paid rights | Display staff fallback instructions only. | Online review must authorize and commit the official operation. No silent acceptance from queued input. |
+| Privileged access, authorizing a financial handoff or changing publication rights | Display staff fallback instructions only. | Online review must authorize and commit the official operation. No silent acceptance from queued input. |
 | Child release or emergency restriction | Offline viewing cannot verify newly changed clearance. Staff use the church's documented supervised fallback and record evidence through the authorized procedure. | Record actual decision and time with source, reviewer and incident linkage. A stale pack cannot authorize release. |
 
 ## Synchronization rules

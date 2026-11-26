@@ -6,7 +6,7 @@
 
 Identity, audit fields, ownership and effective-date notation follow the [shared record envelope](../../foundation/record-conventions.md). A business key or parent-child uniqueness rule below remains enforceable even when an implementation also assigns an opaque identifier.
 
-Define the tangible benefit, permitted placement, territory, time and brand use. Finance reviews exchange value, eligible contribution amount, invoice and receipt treatment.
+Define the tangible benefit, permitted placement, territory, time and brand use. The external accounting officer supplies any required valuation or invoice decision. The giving desk links the separately verified gift portion.
 
 ## Field inventory
 
@@ -142,7 +142,7 @@ Use monetary unit code for `SponsorshipBenefit.currency`. Resolve the code and i
 | Malformed or unmapped | ambiguous $ | Request the unambiguous currency. |
 | Two amounts have different currencies | 24.50 NAD and 24.50 USD | Report separate totals or translate using recorded rates. |
 | Catalog changes after document issue | document issued before currency-profile revision | The stored document keeps its currency. |
-| Unrecognized imported code | unmapped monetary unit in staged transaction | Stage unmapped currency; block financial posting. |
+| Unrecognized imported code | unmapped monetary unit in staged transaction | Hold the row for currency mapping before an amount-dependent approval or exchange. |
 | Absent in intake | No currency provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
 
 ### valuation_evidence_ref

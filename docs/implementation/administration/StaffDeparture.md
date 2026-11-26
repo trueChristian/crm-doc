@@ -19,7 +19,7 @@ Reassign open work, retrieve property, close specific staff grants, notify payro
 | `delegated_work_recipient` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [resource](../value-conventions.md#resource) |
 | `return_items_ref` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [resource](../value-conventions.md#resource) |
 | `account_review_ref` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [resource](../value-conventions.md#resource) |
-| `final_pay_run_ref` | → PayrollRun | Required at applicable lifecycle step | [relation](../value-conventions.md#relation) |
+| `payroll_exit_ack_ref` | opaque_ref? | Optional under the authorized exchange | [resource](../value-conventions.md#resource) |
 | `closed_by` | Owner-scoped business value; see the record rule | Required at applicable lifecycle step | [resource](../value-conventions.md#resource) |
 
 ## Input, storage and exchange cases
@@ -117,18 +117,15 @@ Use scoped or external reference for `StaffDeparture.account_review_ref`. Resolv
 | Duplicate delivery of the same mapped reference | same namespace, key and accepted mapping twice | Resolve the same destination record once. |
 | Incomplete record | No account_review_ref at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
-### final_pay_run_ref
+### payroll_exit_ack_ref
 
-The target is [PayrollRun](../finance/PayrollRun.md). Resolve the identifier in the approved scope before using its fields.
+When required, record a restricted acknowledgement from the payroll office for the final-pay handoff. Access revocation follows the end of duties even if that acknowledgement is outstanding. Store the issuer, owning church, opaque identifier and, for versioned evidence, the edition used. Resolving this reference requires separate authority at the issuer.
 
-| Probe | Input or observation | Expected result |
-| --- | --- | --- |
-| Admissible representation | PayrollRun·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
-| Unresolved target | PayrollRun·MISSING | Queue the missing PayrollRun mapping or reject the command before linking. |
-| Wrong scope | PayrollRun·B01 | Do not attach another church’s PayrollRun without a supported exchange and local authority. |
-| Target rename | Rename PayrollRun·A01 after linking | The existing final_pay_run_ref keeps the same identity and historic documents retain their original wording. |
-| Incomplete record | No final_pay_run_ref at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
+| Probe | Expected result |
+| --- | --- |
+| No connected service | Keep the reference empty. The church workflow can proceed using its local evidence and authorization. |
+| Same identifier from another church or issuer | Preserve the separate namespace and deny cross-church lookup. |
+| Late or corrected reference | Keep the earlier edition and the reason for replacement. Replaying an acknowledged revision preserves one link. |
 
 ### closed_by
 

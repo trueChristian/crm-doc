@@ -19,7 +19,7 @@ Define who can receive help, assessment period, currency/units, repeated request
 | `eligibility_policy_version` | text | Required when the record reaches its applicable state | [text](../value-conventions.md#text) |
 | `approval_rule_ref` | ID | Required when the record reaches its applicable state | [resource](../value-conventions.md#resource) |
 | `allowed_support_types` | code set | Required when the record reaches its applicable state | [list](../value-conventions.md#list) |
-| `fund_ref` | → Fund? | Optional under owner conditions | [relation](../value-conventions.md#relation) |
+| `fund_ref` | ID? | Optional under owner conditions | [resource](../value-conventions.md#resource) |
 | `inventory_location_ref` | ID? | Optional under owner conditions | [resource](../value-conventions.md#resource) |
 | `from_date` | date | Required when the record reaches its applicable state | [date](../value-conventions.md#date) |
 | `until_date` | date? | Optional under owner conditions | [date](../value-conventions.md#date) |
@@ -122,16 +122,14 @@ Use ordered collection or mathematical set for `AidProgram.allowed_support_types
 
 ### fund_ref
 
-The target is [Fund](../finance/Fund.md). Resolve the identifier in the approved scope before using its fields.
+This reference identifies the authorized funding source for the aid program or award. Resolve the church's mapping to the accounting provider and entity before requesting a financial commitment. A church designation can supply the ministry purpose. It cannot establish that funds are available. See [accounting exchange](../../finance/accounting-exchange.md).
 
-| Probe | Input or observation | Expected result |
-| --- | --- | --- |
-| Admissible representation | Fund·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
-| Unresolved target | Fund·MISSING | Queue the missing Fund mapping or reject the command before linking. |
-| Wrong scope | Fund·B01 | Do not attach another church’s Fund without a supported exchange and local authority. |
-| Target rename | Rename Fund·A01 after linking | The existing fund_ref keeps the same identity and historic documents retain their original wording. |
-| Absent in intake | No fund_ref provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
+| Probe | Expected result |
+| --- | --- |
+| The local source maps to one active source for this church and period. | Accept the mapping and retain its version with the request. |
+| A key belongs to another church or has two possible destinations. | Hold the financial handoff for a treasurer without exposing another organization's funding details. |
+| The provider retires a code after a confirmed payment. | Preserve the original confirmation. Future installments require a currently approved mapping. |
+| No source is available during intake. | Keep the optional field absent. The aid application can proceed to review, and a disbursement that requires a funding source waits. |
 
 ### inventory_location_ref
 

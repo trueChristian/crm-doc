@@ -1,32 +1,18 @@
-# Finance and stewardship
+# Giving, stewardship and accounting exchange
 
-The treasurer must be able to follow a unit of money from the collection plate, online checkout or grant letter into the bank, a fund, the general ledger and a signed report. Someone reviewing that report must be able to travel the same path in reverse, within their permissions. This domain owns accounting recognition, posting, allocation, reconciliation and period close. Operational systems own their original documents.
+An offering clerk must be able to explain who gave, what the church accepted, which purpose the donor specified, who held the collection and what the donor was told. A church can answer those questions with the giving register alone. If the church connects an accounting service, the clerk can also see exactly which facts were handed over and which the accountant accepted.
 
-## Find a task
-
-| Task | Specification |
+| Church question | Responsible role and reading path |
 | --- | --- |
-| Configure a book, balances, dimensions and journal rules | [Ledger and posting](ledger.md) |
-| Open or migrate a book, reconcile opening items, hand over a treasury | [Cutover and handover](cutover.md) |
-| Select a cash or accrual basis and recognize prepayments or accruals | [Recognition and basis bridges](recognition.md) |
-| Count an offering, allocate a gift, settle a pledge, issue a statement | [Giving and collection](giving.md) |
-| Track matching campaigns, estate gifts, securities, endowment draws and benefit dinners | [Specialized giving](special-giving.md) |
-| Administer a restricted award, release a restriction, steward investments | [Funds, grants and investments](stewardship.md) |
-| Pay a supplier, reimburse a worker or recover an advance | [Purchasing and payables](payables.md) |
-| Invoice, collect, refund, handle disputed payments or sell a sermon | [Receivables and commerce](receivables.md) |
-| Value stock, giveaways, donated goods and goods held on consignment | [Inventory accounting](inventory-accounting.md) |
-| Handle cash, bank statements, settlements and foreign currencies | [Treasury and reconciliation](treasury.md) |
-| Pay employees and third parties and correct a prior payroll | [Payroll](payroll.md) |
-| Capitalize, maintain and dispose of assets, service loans and leases | [Assets and financing](assets.md) |
-| Plan ministry spending, allocate overheads and forecast cash | [Budgets and allocations](planning.md) |
-| Produce statements, close periods and consolidate churches | [Reporting and close](reporting.md) |
-| Localize financial rules, control access and exchange auditable data | [Controls and interfaces](controls.md) |
-| Verify a complete month and reconcile the control accounts | [Worked month](worked-month.md) |
+| Can we receive an envelope, online gift or weekly pledge from a visitor, couple, business or unnamed giver? | The giving clerk records [offerings, pledges and donor correspondence](giving.md). |
+| Who actually counted the money, resolved the discrepancy and received the sealed bag? | Counters and custodians follow the [offering room procedure](../handbook/finance/offering-room.md). |
+| May we accept donated equipment, credit a match or tell a family about a memorial gift? | The gift acceptance officer and donor steward review [specialized giving](special-giving.md) and the [supporter's instructions](../development/donor-service.md). |
+| Which purposes can a donor select, and what did the church agree to report to a sponsor? | Ministry officers maintain [designations, restrictions and grants](stewardship.md). |
+| How do gifts, corrections, approved support requests and acknowledgements move in either direction? | The authorized accounting liaison configures [ownership, exchange and recovery](accounting-exchange.md). |
+| How does an implementer verify a private statement, returned cheque, repeated import or disputed handoff? | See the [record dictionary](../implementation/finance/README.md), [decision tables](../decisions/finance/README.md) and [acceptance exercises](../acceptance/finance/README.md). |
 
-## Reading the financial data dictionary
+The external accounting system owns its chart, journal, bank settlement, payroll, supplier and customer balances, tax treatment, asset valuations, grant draw accounting, close and financial statements. The church can use its existing service, appoint a separate bookkeeping application or operate the relationship register independently. Grant officers can track deadlines, care staff can approve a support request and volunteers can schedule an activity while an accountant works in another product.
 
-Names are logical records. Every record has an immutable unique `id` and an owning `organization_id → Organization`, directly or through its mandatory parent. An arrow denotes one required parent of the named type, a question mark an optional value, braces an enumerated set, and plural members live in child rows. Multiple child rows may refer to the same parent unless uniqueness is specified. IDs and codes are distinct. Document snapshots preserve what was issued after a contact or rule changes.
+A giving report must identify the receiving church, period, cutoff, currency, included states, basis for recognizing corrections and disclosure audience. “Received for youth work” is a verified purpose total. Answering “available for youth work” requires a dated financial result from the accounting authority, including its reporting currency and coverage. If unavailable, show that result as unknown. No donor gift amount, pledge history or accounting status grants church membership, pastoral standing, voting rights, assistance or participation.
 
-`money` means a fixed-precision decimal plus a currency code, explicit on the row or inherited from its header. The currency defines payable precision. Quantities, rates, prices and intermediate calculations may retain additional precision. Dates denote local accounting days. An instant is a time with an unambiguous offset. Amounts are nonnegative unless an item explicitly allows signed values. A reference called `evidence` identifies an access-controlled, versioned attachment. A `source` contains the owner domain, type, stable record identifier, business event and revision. These references must resolve even after an operational item is archived.
-
-The entity that owns a ledger may encompass several congregations, campuses and ministries. Scope every reference to its permitted organization. Inter-entity business requires paired explicit counterparty references and separate books. Common actors include a preparer, independent approver, cashier, recorder, donor-services officer, payroll officer, auditor and report publisher. One user may hold several functions subject to transaction-level separation of duties. Examples are product acceptance fixtures with a stated accounting policy. Each church selects its own approved reporting, recognition, tax and payroll policy for its legal entities.
+For related designs, see the [ERPNext nonprofit records](https://github.com/vast-development-method/erpnext-doc/blob/main/docs/people-and-services/nonprofit.md), [Dolibarr membership and giving intake](https://github.com/vast-development-method/dolibarr-doc/blob/main/docs/public-workflows/membership-and-giving.md) and [Odoo payments and reconciliation](https://github.com/vast-development-method/odoo-doc/blob/main/docs/domains/payments-and-bank-reconciliation/README.md).

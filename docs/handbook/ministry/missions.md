@@ -22,7 +22,7 @@ Before departure, reconcile confirmed riders and persons actually boarded. Assig
 
 ## Plan a distribution and reconcile quantities
 
-Define a distribution session, site, supplies, units, named project steward, eligibility decisions, maximum entitlement and privacy mode. The warehouse owns movements and finance controls the value and any restrictions attached to the goods. Confirm transfers at both ends. Keep central stock in transit until acknowledged locally; issuing a community parcel is a different movement from moving it from a warehouse.
+Define a distribution session, site, supplies, units, named project steward, eligibility decisions, maximum entitlement and privacy mode. The distribution desk records what a steward physically received, issued or returned. If an inventory provider is connected, send quantities with the project, unit, dispatch and receipt references. The provider owns warehouse transfers and valuation. Confirm differences with the originating warehouse before closing the distribution. A household parcel issue has a different identity from the delivery of the pallet to the church.
 
 A unit conversion such as 1 crate = 12 sealed parcels requires approval for this item; weight cannot be converted to parcels without an item-specific rule. Record opening, receipts, actual issues, returns to central, spoilage and physical closing with their times. Hold unconfirmed promises separate from actual units distributed. A correction links the original handover; never silently change what the storekeeper remembers issuing.
 

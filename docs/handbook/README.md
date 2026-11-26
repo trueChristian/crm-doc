@@ -8,8 +8,8 @@ Start with a church task, then use the record and conformance material to design
 | Identity, households, formal membership, casework and independent assurance | [People, care and protection](people/README.md) |
 | Worship, rooms, serving, admissions, teaching and supervised collection | [Ministry operations](ministry/README.md) |
 | Boards, ballots, minutes, official registers, notices and delivery | [Governance and communications](governance/README.md) |
-| Gifts, accruals, payroll, treasury, reconciliations and close | [Finance](finance/README.md) |
-| Inventory, pricing, settlement, paid media, fundraising and sponsorship | [Commerce and development](commerce/README.md) |
+| Offering custody, designations, donor service and handoff to accounting | [Giving desk](finance/README.md) |
+| Event fee queries, church resources, sermon publication and withdrawal | [Church desk and media](commerce/README.md) |
 | Accounts, integration, privacy, accessibility, recovery and assisted work | [Platform](platform/README.md) |
 
 ## How to decide whether a feature is specified

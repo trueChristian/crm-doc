@@ -180,7 +180,6 @@ Use civil calendar date for `Campus.active_until`. Keep the date without convert
 | [CongregationCampus](CongregationCampus.md).`campus_id` | Campus identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [CongregationParticipation](../people/CongregationParticipation.md).`campus_id` | Campus identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [ContinuityPlan](../assurance/ContinuityPlan.md).`campus_id` | Campus identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [CourseOffering](../ministry/CourseOffering.md).`campus_id` | Campus identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [EventOccurrence](../ministry/EventOccurrence.md).`campus_id` | Campus identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [FacilitySpace](../ministry/FacilitySpace.md).`campus_id` | Campus identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [GoverningBody](../governance/GoverningBody.md).`campus_id` | Campus identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
@@ -191,13 +190,10 @@ Use civil calendar date for `Campus.active_until`. Keep the date without convert
 | [MinistryGroup](../ministry/MinistryGroup.md).`campus_id` | Campus identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [MinistryVehicle](../ministry/MinistryVehicle.md).`campus_id` | Campus identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [OperationsIncident](../ministry/OperationsIncident.md).`campus_id` | Campus identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [Product](../commerce/Product.md).`owner_campus_id` | Campus identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [ReadinessPlan](../ministry/ReadinessPlan.md).`campus_id` | Campus identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [RiskEntry](../assurance/RiskEntry.md).`campus_id` | Campus identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [SermonDelivery](../commerce/SermonDelivery.md).`campus_id` | Campus identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [ShopChannel](../commerce/ShopChannel.md).`campus_id` | Campus identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [StaffPosition](../administration/StaffPosition.md).`campus_id` | Campus identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [StockLocation](../commerce/StockLocation.md).`campus_id` | Campus identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [VisitorEncounter](../people/VisitorEncounter.md).`campus_id` | Campus identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [VolunteerProfile](../ministry/VolunteerProfile.md).`preferred_campus_id` | Campus identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 

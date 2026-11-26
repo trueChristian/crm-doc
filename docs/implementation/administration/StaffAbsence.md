@@ -6,7 +6,7 @@
 
 Identity, audit fields, ownership and effective-date notation follow the [shared record envelope](../../foundation/record-conventions.md). A business key or parent-child uniqueness rule below remains enforceable even when an implementation also assigns an opaque identifier.
 
-Scheduling sees availability. Personnel staff control reasons. Reversal after payroll produces a subsequent adjustment.
+Scheduling sees availability. Personnel staff control reasons. An approved cancellation restores availability and sends the corrected absence to the payroll contact when necessary.
 
 ## Field inventory
 

@@ -161,8 +161,6 @@ Use civil calendar date for `Organization.closed_on`. Keep the date without conv
 
 | Referencing record and field | Join key | Review when identity changes |
 | --- | --- | --- |
-| [AccessDecision](../commerce/AccessDecision.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [AccessPlan](../commerce/AccessPlan.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [AgreementParty](../development/AgreementParty.md).`internal_organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [AidProgram](../people/AidProgram.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [ArchiveCollection](../administration/ArchiveCollection.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
@@ -173,33 +171,36 @@ Use civil calendar date for `Organization.closed_on`. Keep the date without conv
 | [Campaign](../communications/Campaign.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [Campus](Campus.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [CapabilityTrial](../verification/CapabilityTrial.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [Cart](../commerce/Cart.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [Category](../commerce/Category.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [CeremonyRequest](../administration/CeremonyRequest.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [ChannelPublicationTarget](../communications/ChannelPublicationTarget.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [ChurchAffiliation](ChurchAffiliation.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [ChurchAffiliation](ChurchAffiliation.md).`related_organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
+| [CollectionBatch](../finance/CollectionBatch.md).`organization_id` | Organization identity | Reconcile the reference in the source record and preserve its correction history. |
 | [CommunicationPurpose](../communications/CommunicationPurpose.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [ConcernSubmission](../assurance/ConcernSubmission.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [Congregation](Congregation.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [ConsolidationGroup](../finance/ConsolidationGroup.md).`reporting_organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [ContactTree](../communications/ContactTree.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [ContinuityPlan](../assurance/ContinuityPlan.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [DeliveryEndpoint](../communications/DeliveryEndpoint.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [DispatchRequest](../communications/DispatchRequest.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [EmploymentEngagement](../administration/EmploymentEngagement.md).`legal_employer_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [ExemptionEvidence](../commerce/ExemptionEvidence.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [FinanceBook](../finance/FinanceBook.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
+| [FinanceCodeMapping](../finance/FinanceCodeMapping.md).`organization_id` | Organization identity | Reconcile the reference in the source record and preserve its correction history. |
+| [FinanceExchangeBatch](../finance/FinanceExchangeBatch.md).`organization_id` | Organization identity | Reconcile the reference in the source record and preserve its correction history. |
 | [FollowUpPath](../people/FollowUpPath.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
+| [Fund](../finance/Fund.md).`organization_id` | Organization identity | Reconcile the reference in the source record and preserve its correction history. |
 | [FundingOpportunity](../development/FundingOpportunity.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [FundraisingAppeal](../development/FundraisingAppeal.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
+| [Gift](../finance/Gift.md).`organization_id` | Organization identity | Reconcile the reference in the source record and preserve its correction history. |
 | [GiftOfferAssessment](../development/GiftOfferAssessment.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
+| [GivingParty](../finance/GivingParty.md).`organization_id` | Organization identity | Reconcile the reference in the source record and preserve its correction history. |
 | [GivingParty](../finance/GivingParty.md).`party_organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [GoverningBody](../governance/GoverningBody.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
+| [GrantAward](../finance/GrantAward.md).`organization_id` | Organization identity | Reconcile the reference in the source record and preserve its correction history. |
 | [Household](../people/Household.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [IncidentBulletin](../communications/IncidentBulletin.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [IncidentOccurrence](../assurance/IncidentOccurrence.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [IncidentReport](../assurance/IncidentReport.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
+| [InKindGift](../finance/InKindGift.md).`organization_id` | Organization identity | Reconcile the reference in the source record and preserve its correction history. |
 | [InsuranceClaim](../assurance/InsuranceClaim.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [InsurancePolicy](../assurance/InsurancePolicy.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [LoanTitle](../administration/LoanTitle.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
@@ -210,15 +211,10 @@ Use civil calendar date for `Organization.closed_on`. Keep the date without conv
 | [MessageTemplate](../communications/MessageTemplate.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [MilestoneDefinition](../people/MilestoneDefinition.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [OfficeRequest](../administration/OfficeRequest.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [Order](../commerce/Order.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [OutreachReferral](../people/OutreachReferral.md).`referring_organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [ParticipationCategory](../people/ParticipationCategory.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [PartnershipAgreement](../development/PartnershipAgreement.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [Person](../people/Person.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [PriceList](../commerce/PriceList.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [ProcessorPayout](../commerce/ProcessorPayout.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [Product](../commerce/Product.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [Promotion](../commerce/Promotion.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [ProtectionPolicy](../people/ProtectionPolicy.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [PublicPage](../administration/PublicPage.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [RelationshipType](../people/RelationshipType.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
@@ -237,11 +233,7 @@ Use civil calendar date for `Organization.closed_on`. Keep the date without conv
 | [SharingAgreement](../platform/SharingAgreement.md).`receiving_organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [SharingAgreement](../platform/SharingAgreement.md).`sending_organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [SharingRequest](../communications/SharingRequest.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [ShopChannel](../commerce/ShopChannel.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [StaffPosition](../administration/StaffPosition.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [StockLocation](../commerce/StockLocation.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [StoreCredit](../commerce/StoreCredit.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [Subscription](../commerce/Subscription.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [SuppressionPeriod](../communications/SuppressionPeriod.md).`organization_id` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [WorkspaceProfile](../platform/WorkspaceProfile.md).`organization_ref` | Organization identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 

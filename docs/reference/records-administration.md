@@ -24,8 +24,6 @@ Open the definition page for the fields, relationships and validation rules.
 | `EmploymentEngagement` | [Staff, clergy and employment administration](../administration/workforce.md) |
 | `GroundsWork` | [Weddings, funerals, memorials and cemetery administration](../administration/life-events.md) |
 | `IntermentRecord` | [Weddings, funerals, memorials and cemetery administration](../administration/life-events.md) |
-| `LeaveMovement` | [Staff, clergy and employment administration](../administration/workforce.md) |
-| `LeavePlan` | [Staff, clergy and employment administration](../administration/workforce.md) |
 | `LoanCopy` | [Front office, public information and lending](../administration/office-services.md) |
 | `LoanReservation` | [Front office, public information and lending](../administration/office-services.md) |
 | `LoanTitle` | [Front office, public information and lending](../administration/office-services.md) |
@@ -49,7 +47,6 @@ Open the definition page for the fields, relationships and validation rules.
 | `ReturnPeriod` | [Dated rolls, denominational returns and annual reports](../administration/annual-returns.md) |
 | `RoundPlacement` | [Agreements, service rounds and relief distribution](../administration/community-programs.md) |
 | `StaffAbsence` | [Staff, clergy and employment administration](../administration/workforce.md) |
-| `StaffCompensationTerm` | [Staff, clergy and employment administration](../administration/workforce.md) |
 | `StaffDeparture` | [Staff, clergy and employment administration](../administration/workforce.md) |
 | `StaffPosition` | [Staff, clergy and employment administration](../administration/workforce.md) |
 | `WorkTimeEntry` | [Staff, clergy and employment administration](../administration/workforce.md) |

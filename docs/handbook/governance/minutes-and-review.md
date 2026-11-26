@@ -1,6 +1,6 @@
 # Confirming minutes, correcting the record and hearing a review
 
-The clerk distinguishes an error in a transcript from a change in the body's decision. Keep the meeting evidence, signed minute edition, resolution, implementation action, spending authority, recipient extract and appellate ruling individually identifiable. The [minute book](../../governance/minutes-and-resolutions.md) and [review register](../../governance/annual-cycle-and-policy.md) own those records. A material correction may also affect a [financial reporting period](../../finance/reporting.md).
+The clerk distinguishes an error in a transcript from a change in the body's decision. Keep the meeting evidence, signed minute edition, resolution, implementation action, spending authority, recipient extract and appellate ruling individually identifiable. The [minute book](../../governance/minutes-and-resolutions.md) and [review register](../../governance/annual-cycle-and-policy.md) own those records. A material correction may also affect an [accountant’s previously acknowledged handoff](../../finance/accounting-exchange.md).
 
 ## Prepare and confirm
 

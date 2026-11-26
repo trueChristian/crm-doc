@@ -6,7 +6,7 @@
 
 Identity, audit fields, ownership and effective-date notation follow the [shared record envelope](../../foundation/record-conventions.md). A business key or parent-child uniqueness rule below remains enforceable even when an implementation also assigns an opaque identifier.
 
-Record removal or purge acknowledgements from controlled channels, discover affected active grants, and communicate remedies privately.
+Record removal acknowledgements from each controlled channel. Track affected partners and viewers privately until the responsible coordinator verifies the outcome.
 
 ## Field inventory
 
@@ -18,7 +18,7 @@ Record removal or purge acknowledgements from controlled channels, discover affe
 | `effective_at` | instant | Required when the record reaches its applicable state | [instant](../value-conventions.md#instant) |
 | `initiated_by` | ref UserAccount | Required when the record reaches its applicable state | [relation](../value-conventions.md#relation) |
 | `affected_uses` | set of code | Required when the record reaches its applicable state | [list](../value-conventions.md#list) |
-| `purchaser_remedy_ref` | opaque_ref? | Optional under owner conditions | [resource](../value-conventions.md#resource) |
+| `distribution_followup_ref` | opaque_ref? | Optional under owner conditions | [resource](../value-conventions.md#resource) |
 | `completed_at` | instant? | Optional under owner conditions | [instant](../value-conventions.md#instant) |
 
 ## Input, storage and exchange cases
@@ -103,18 +103,18 @@ Use ordered collection or mathematical set for `MediaWithdrawal.affected_uses`. 
 | One element later becomes restricted | authorization for member B withdrawn before export | Recompute permitted projection before export or display. |
 | Incomplete record | No affected_uses at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
-### purchaser_remedy_ref
+### distribution_followup_ref
 
-Use scoped or external reference for `MediaWithdrawal.purchaser_remedy_ref`. Resolve against the permitted kind, owning namespace and purpose.
+Use scoped or external reference for `MediaWithdrawal.distribution_followup_ref`. Resolve against the permitted kind, owning namespace and purpose.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
-| Admissible representation | verified purchaser_remedy_ref in the owner namespace | Resolve against the permitted kind, owning namespace and purpose. |
-| Malformed or unmapped | unmapped purchaser_remedy_ref | Request clarification or quarantine the mapping. |
+| Admissible representation | verified distribution_followup_ref in the owner namespace | Resolve against the permitted kind, owning namespace and purpose. |
+| Malformed or unmapped | unmapped distribution_followup_ref | Request clarification or quarantine the mapping. |
 | Same visible code from two sources | issuer A:007 and issuer B:007 | Retain distinct namespace/key pairs. |
 | Referenced evidence is restricted | restricted attachment behind an otherwise visible request | Show a minimal permitted result and check document access independently. |
 | Duplicate delivery of the same mapped reference | same namespace, key and accepted mapping twice | Resolve the same destination record once. |
-| Absent in intake | No purchaser_remedy_ref provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
+| Absent in intake | No distribution_followup_ref provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
 
 ### completed_at
 

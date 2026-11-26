@@ -32,7 +32,7 @@ The certified balance at the 10 January data cutoff is 41: opening 40, plus 3, l
 
 ## Preparation and exception handling
 
-1. Fix the definition version, civil as-of date, data cutoff instant, scope and reporting currency if finance lines are present. Record the expected submitting congregations, including units that closed during the year.
+1. Fix the definition version, civil as-of date, data cutoff instant, scope and reporting currency if finance lines are present. For a financial line obtain the approved external report edition, currency, entity and reporting basis. A missing or disputed figure remains unresolved until the accountable office supplies evidence. Record the expected submitting congregations, including units that closed during the year.
 2. Build a private inclusion workpaper keyed by allowed identities. Store only the proof needed for the line. Gift values, pastoral notes and relationship narratives do not belong on an ordinary membership workpaper.
 3. Compare movement totals with actual qualifying periods. A difference has an owner and one or more causes: unknown movement class, duplicate correction, conflicting dates, absent opening population, unresolved transfer or changed perimeter.
 4. Run exception queries in both directions. A movement with no affected period and an unexplained new period with no authorized decision are separate exceptions. A parallel group membership or directory entry satisfies neither.

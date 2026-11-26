@@ -14,7 +14,7 @@ Explain differences between quantity times unit cost and sponsor request. A prom
 | --- | --- | --- | --- |
 | `application_id` | ref GrantApplication | Required when the record reaches its applicable state | [relation](../value-conventions.md#relation) |
 | `project_id` | ref MissionProject | Required when the record reaches its applicable state | [relation](../value-conventions.md#relation) |
-| `finance_budget_line_id` | ref BudgetLine? | Optional under owner conditions | [relation](../value-conventions.md#relation) |
+| `accounting_budget_line_ref` | opaque_ref? | Optional under the authorized exchange | [resource](../value-conventions.md#resource) |
 | `category` | code | Required when the record reaches its applicable state | [vocab](../value-conventions.md#vocab) |
 | `quantity` | decimal | Required when the record reaches its applicable state | [decimal](../value-conventions.md#decimal) |
 | `unit_cost` | money | Required when the record reaches its applicable state | [money](../value-conventions.md#money) |
@@ -55,18 +55,15 @@ The target is [MissionProject](../ministry/MissionProject.md). Resolve the ident
 | Target rename | Rename MissionProject·A01 after linking | The existing project_id keeps the same identity and historic documents retain their original wording. |
 | Incomplete record | No project_id at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
-### finance_budget_line_id
+### accounting_budget_line_ref
 
-The target is [BudgetLine](../finance/BudgetLine.md). Resolve the identifier in the approved scope before using its fields.
+An optional accounting budget-line reference substantiates a sponsor proposal figure. The proposal preserves its approved request and currency when the external budget changes. Store the issuer, owning church, opaque identifier and, for versioned evidence, the edition used. Resolving this reference requires separate authority at the issuer.
 
-| Probe | Input or observation | Expected result |
-| --- | --- | --- |
-| Admissible representation | BudgetLine·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
-| Unresolved target | BudgetLine·MISSING | Queue the missing BudgetLine mapping or reject the command before linking. |
-| Wrong scope | BudgetLine·B01 | Do not attach another church’s BudgetLine without a supported exchange and local authority. |
-| Target rename | Rename BudgetLine·A01 after linking | The existing finance_budget_line_id keeps the same identity and historic documents retain their original wording. |
-| Absent in intake | No finance_budget_line_id provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
+| Probe | Expected result |
+| --- | --- |
+| No connected service | Keep the reference empty. The church workflow can proceed using its local evidence and authorization. |
+| Same identifier from another church or issuer | Preserve the separate namespace and deny cross-church lookup. |
+| Late or corrected reference | Keep the earlier edition and the reason for replacement. Replaying an acknowledged revision preserves one link. |
 
 ### category
 
@@ -169,7 +166,7 @@ Use monetary unit code for `ProposalBudgetLine.currency`. Resolve the code and i
 | Malformed or unmapped | ambiguous $ | Request the unambiguous currency. |
 | Two amounts have different currencies | 24.50 NAD and 24.50 USD | Report separate totals or translate using recorded rates. |
 | Catalog changes after document issue | document issued before currency-profile revision | The stored document keeps its currency. |
-| Unrecognized imported code | unmapped monetary unit in staged transaction | Stage unmapped currency; block financial posting. |
+| Unrecognized imported code | unmapped monetary unit in staged transaction | Hold the row for currency mapping before an amount-dependent approval or exchange. |
 | Incomplete record | No currency at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### indirect_basis

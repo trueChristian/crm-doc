@@ -22,6 +22,8 @@ At intake, ask how and when it is safe to respond, whether others may hear about
 
 A coordinator assigns an appropriate worker, agrees the actions and next review date, and records attempts separately from completed care. A confidential appointment reminder can use neutral wording if the person has approved the channel. Allow an interpreter or accessibility arrangement under a defined disclosure, with minimal case detail. When the worker is unavailable, transfer their open tasks, record acknowledgment and end prior access. A case can be reopened with a reason and a fresh access review.
 
+For district assignments, consent to routine home contact, attendance-based reviews and how to calculate visit coverage, use [pastoral visiting districts](visiting-districts.md).
+
 For prayer publication, preview the exact audience, channels, wording, publish time and expiry. Check authority again at dispatch. Staff may offer a version without names. Accept a withdrawal through an accessible route, stop future publication and remove live items according to policy. External copies already received cannot be silently recalled. For recurring care such as home communion or bereavement visits, agree recurrence, opt-out, backup owner and a final review; never auto-create indefinite outreach.
 
 ## Reports and verification

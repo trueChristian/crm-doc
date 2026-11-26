@@ -6,7 +6,7 @@
 
 Identity, audit fields, ownership and effective-date notation follow the [shared record envelope](../../foundation/record-conventions.md). A business key or parent-child uniqueness rule below remains enforceable even when an implementation also assigns an opaque identifier.
 
-Unique offer/allocation/revision. Link finance allocation of actual sponsor payment, with capped amount. Never match the sponsor's own matching receipt unless the published rules expressly establish another independent offer.
+Unique offer/allocation/revision. Link the verified gift allocation of actual sponsor payment, with capped amount. Never match the sponsor's own matching receipt unless the published rules expressly establish another independent offer.
 
 ## Field inventory
 
@@ -88,7 +88,7 @@ Use monetary unit code for `MatchQualification.currency`. Resolve the code and i
 | Malformed or unmapped | ambiguous $ | Request the unambiguous currency. |
 | Two amounts have different currencies | 24.50 NAD and 24.50 USD | Report separate totals or translate using recorded rates. |
 | Catalog changes after document issue | document issued before currency-profile revision | The stored document keeps its currency. |
-| Unrecognized imported code | unmapped monetary unit in staged transaction | Stage unmapped currency; block financial posting. |
+| Unrecognized imported code | unmapped monetary unit in staged transaction | Hold the row for currency mapping before an amount-dependent approval or exchange. |
 | Incomplete record | No currency at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### evaluated_at

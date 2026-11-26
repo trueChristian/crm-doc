@@ -7,10 +7,8 @@ Open the definition page for the fields, relationships and validation rules.
 | `AccessItemIssue` | [Facilities, equipment and fleet](../ministry/resources.md) |
 | `AccountabilityCheck` | [Operational readiness, interruptions and review](../ministry/readiness.md) |
 | `AdmissionOption` | [Registration, tickets and attendance](../ministry/registration.md) |
-| `AdmissionSaleAdjustment` | [Registration, tickets and attendance](../ministry/registration.md) |
-| `AdmissionSaleUnit` | [Registration, tickets and attendance](../ministry/registration.md) |
+| `AdmissionPaymentNotice` | [Registration, tickets and attendance](../ministry/registration.md) |
 | `AdmissionSeat` | [Registration, tickets and attendance](../ministry/registration.md) |
-| `AdmissionSettlementPart` | [Registration, tickets and attendance](../ministry/registration.md) |
 | `AdmissionTicket` | [Registration, tickets and attendance](../ministry/registration.md) |
 | `AssistanceIssue` | [Missions and community service](../ministry/missions.md) |
 | `AttendanceCount` | [Registration, tickets and attendance](../ministry/registration.md) |
@@ -20,9 +18,6 @@ Open the definition page for the fields, relationships and validation rules.
 | `ChildCheckIn` | [Children and supervised handover](../ministry/child-check-in.md) |
 | `CollectionAttempt` | [Children and supervised handover](../ministry/child-check-in.md) |
 | `CommunityDistribution` | [Missions and community service](../ministry/missions.md) |
-| `CourseOffering` | [Learning and formation](../ministry/learning.md) |
-| `CourseSession` | [Learning and formation](../ministry/learning.md) |
-| `Curriculum` | [Learning and formation](../ministry/learning.md) |
 | `DutyAcknowledgement` | [Operational readiness, interruptions and review](../ministry/readiness.md) |
 | `DutyShift` | [Volunteers and rotas](../ministry/volunteers.md) |
 | `EquipmentClass` | [Facilities, equipment and fleet](../ministry/resources.md) |
@@ -38,11 +33,11 @@ Open the definition page for the fields, relationships and validation rules.
 | `FacilityClosure` | [Facilities, equipment and fleet](../ministry/resources.md) |
 | `FacilityRental` | [Facilities, equipment and fleet](../ministry/resources.md) |
 | `FacilitySpace` | [Facilities, equipment and fleet](../ministry/resources.md) |
-| `FormationPath` | [Learning and formation](../ministry/learning.md) |
 | `GroupInvitation` | [Groups and participation](../ministry/groups.md) |
 | `GroupJoinRule` | [Groups and participation](../ministry/groups.md) |
 | `GroupKind` | [Groups and participation](../ministry/groups.md) |
 | `GroupLink` | [Groups and participation](../ministry/groups.md) |
+| `GroupMeeting` | [Groups and participation](../ministry/groups.md) |
 | `GroupParticipation` | [Groups and participation](../ministry/groups.md) |
 | `GroupRole` | [Groups and participation](../ministry/groups.md) |
 | `GroupRolePeriod` | [Groups and participation](../ministry/groups.md) |
@@ -53,10 +48,6 @@ Open the definition page for the fields, relationships and validation rules.
 | `HospitalityOffer` | [Programmes, hospitality and personal itineraries](../ministry/programmes.md) |
 | `IncidentUpdate` | [Operational readiness, interruptions and review](../ministry/readiness.md) |
 | `ItineraryNotice` | [Programmes, hospitality and personal itineraries](../ministry/programmes.md) |
-| `LearningAward` | [Learning and formation](../ministry/learning.md) |
-| `LearningEnrolment` | [Learning and formation](../ministry/learning.md) |
-| `LearningEvidence` | [Learning and formation](../ministry/learning.md) |
-| `LearningUnit` | [Learning and formation](../ministry/learning.md) |
 | `MinistryCalendar` | [Calendars and occurrences](../ministry/calendar.md) |
 | `MinistryGroup` | [Groups and participation](../ministry/groups.md) |
 | `MinistryPartner` | [Missions and community service](../ministry/missions.md) |
@@ -74,10 +65,6 @@ Open the definition page for the fields, relationships and validation rules.
 | `OperationalReview` | [Operational readiness, interruptions and review](../ministry/readiness.md) |
 | `OperationsIncident` | [Operational readiness, interruptions and review](../ministry/readiness.md) |
 | `PassengerBooking` | [Facilities, equipment and fleet](../ministry/resources.md) |
-| `PathDependency` | [Learning and formation](../ministry/learning.md) |
-| `PathParticipation` | [Learning and formation](../ministry/learning.md) |
-| `PathStep` | [Learning and formation](../ministry/learning.md) |
-| `PathStepResult` | [Learning and formation](../ministry/learning.md) |
 | `PositionRequirement` | [Volunteers and rotas](../ministry/volunteers.md) |
 | `ProgrammeSelection` | [Programmes, hospitality and personal itineraries](../ministry/programmes.md) |
 | `ProgrammeSession` | [Programmes, hospitality and personal itineraries](../ministry/programmes.md) |

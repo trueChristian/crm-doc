@@ -1,32 +1,31 @@
 # Church relationship manager
 
-This is a product and data specification for a congregation, a church with several campuses, or a network of churches. It describes what each person can accomplish, which records establish the facts, who may see or change them, and how to verify the result. It is written for church staff, members, designers, implementers and reviewers.
+A secretary can use this specification to admit a member, prepare a dated roll or issue a transfer letter. A ministry leader can plan a service, find an eligible substitute and arrange transport. A household can register for an event, correct a contact route or ask for a confidential visit. Each workflow identifies who may act, which records change, what other people may learn and how the church handles an exception.
 
-## Read at the level of the work
+The same model serves a congregation keeping its first electronic register, a church operating several campuses, and independent churches cooperating on a camp or a district return. The church sets its terminology, membership rules, governing authority and enabled services. A visitor, family member, donor, officeholder and sign-in account represent different relationships. One person can hold several at the same time.
 
-| When you need to… | Open |
+## Scope and integrations
+
+Start with the [capability and ownership map](docs/foundation/product-scope.md). It pairs church tasks with their records, operating rules, acceptance evidence and external dependencies. The church can operate the register, pastoral work, events and governance independently. It can connect an existing accounting package, an LMS, a website, a member app or another approved service as its needs grow.
+
+The [API, MCP and church app requirements](docs/platform/church-apps-and-integrations.md) cover receiving information from other systems, extending the church's own app, and exchanging authorized updates in both directions. The [giving and accounting handoff](docs/finance/README.md) and [church classes and learning provider](docs/ministry/learning.md) specify which side owns each decision. API and MCP provision through Joomla Component Builder is a delivery requirement. The business specification applies before deciding how to divide the product into Joomla components.
+
+## Find a church task
+
+| I need to… | Start here |
 | --- | --- |
-| Understand a whole task, its actors, its exception queue and what gets issued or posted | [Operating and implementation handbook](docs/handbook/README.md) |
-| Build a record, resolve its relationships, or check the meaning of a field and its inputs | [Record-by-record field specifications](docs/implementation/README.md) |
-| Prove your implementation produces the required result for specific inputs and policy choices | [Worked decision tables](docs/decisions/README.md) |
-| Verify that multiple departments agree after a refund, transfer, correction or restore | [Cross-department acceptance journeys](docs/verification/journeys.md) |
+| Set up congregations, campuses, roles, forms or local policy | [Organization and shared rules](docs/foundation/README.md) |
+| Welcome a visitor, maintain households, admit or transfer a member, record a rite or coordinate confidential care | [People and care](docs/people/README.md) |
+| Coordinate groups, class meetings, worship, volunteers, events, check-in, rooms, equipment or transport | [Ministry operations](docs/ministry/README.md) |
+| Give formal notice, establish quorum, approve minutes or follow up a resolution | [Governance](docs/governance/README.md) |
+| Find the safe recipient, prepare a bulletin or follow up an undelivered notice | [Communications](docs/communications/README.md) |
+| Record an offering, track a pledge, acknowledge a gift or resolve an accounting handoff | [Giving and stewardship](docs/finance/README.md) |
+| Handle an event fee, a church bookstall enquiry, or permission to publish a sermon | [Church desk and media](docs/commerce/README.md) |
+| Arrange a wedding or burial, lend a resource, appoint a worker, deliver relief or prepare a church return | [Church administration](docs/administration/README.md) |
+| Run an appeal, steward donor preferences or report a partnership's results | [Fundraising and partnerships](docs/development/README.md) |
+| Report an incident, handle a complaint independently or account for people during a disruption | [Assurance and independent review](docs/assurance/README.md) |
+| Manage access, privacy, migration, accessibility, recovery or reporting | [Platform services](docs/platform/README.md) |
 
-## Find your starting point
+## Design and verify a workflow
 
-| If you are working on… | Start here | A question the section answers |
-| --- | --- | --- |
-| Setting up a church or interpreting a field | [Organization and shared rules](docs/foundation/README.md) | What does a campus share with the congregation, and what needs separate authority? |
-| The register, family relationships or pastoral support | [People and care](docs/people/README.md) | Can a guest child join a household without becoming a member? |
-| Groups, worship, classes, volunteers, events or buildings | [Ministry operations](docs/ministry/README.md) | Who can serve, in which room, and at which occurrence? |
-| Boards, meetings, decisions or approved minutes | [Governance](docs/governance/README.md) | What was decided, by whom, and what remains outstanding? |
-| Announcements, conversations or reminders | [Communications](docs/communications/README.md) | Who should receive this notice, in which language, by which channel? |
-| Gifts, funds, payroll, accounts or the annual close | [Finance](docs/finance/README.md) | Can the treasurer trace a reported amount back to its approved source? |
-| Merchandise, a bookstall, sermon media or subscriptions | [Commerce and media](docs/commerce/README.md) | When does a paid order grant access and what happens on a refund? |
-| Staff, outreach programs, church offices or denominational reporting | [Church administration](docs/administration/README.md) | How does a clerk submit a return or a relief coordinator account for a distribution? |
-| Appeals, donor stewardship, grant applications or sponsorship | [Fundraising and partnerships](docs/development/README.md) | Who promised support, what is still due, and which gifts actually reached the books? |
-| Risk, insurance, complaints or continuity | [Assurance and independent review](docs/assurance/README.md) | Who owns the response, who reviews it independently, and how is closure evidenced? |
-| Finding a named logical table, relationship or workflow handoff | [Logical record catalogue](docs/reference/records.md) and [relationship map](docs/foundation/boundaries.md) | Where are this record's fields and rules, and which other departments depend on it? |
-| Accounts, access, privacy, integration, operations, analytics or assisted work | [Platform services](docs/platform/README.md) | How does the same permission apply in a search, export and automated suggestion? |
-| Planning implementation or checking the whole product | [Delivery and verification](docs/verification/README.md) | Which record, amount or permission must agree across departments? |
-
-Start with the area closest to the work in hand. Its index leads to record definitions, operating rules and acceptance cases. Use the [shared vocabulary](docs/foundation/record-conventions.md) when interpreting a field and the [cross-domain journeys](docs/verification/journeys.md) when a transaction crosses an ownership boundary. Each church chooses its terminology, governance rules, enabled capabilities and jurisdictional settings. Those choices are recorded so another person can reproduce an earlier result.
+Use the [desk manuals](docs/handbook/README.md) for the operator's decisions, the [relationship map](docs/foundation/boundaries.md) for handoffs and the [record catalogue](docs/reference/records.md) and [field specifications](docs/implementation/README.md) for the data. The [worked decisions](docs/decisions/README.md) give exact expected outcomes for named church policies. The [verification guide](docs/verification/README.md) covers adoption, cross-department rehearsal and recovery. The [reference guide](docs/foundation/product-scope.md#reference-guides) connects selected ERP and LMS chapters to the church tasks that use them.

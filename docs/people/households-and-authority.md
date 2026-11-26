@@ -36,3 +36,17 @@ An authorized guardian may request a time-limited delegate for a particular acti
 | A parent with an earlier collection grant receives a verified restriction before check-out | The current denial takes precedence, even if the person appears on a previously printed roster. A supervisor sees only the evidence their role allows. |
 | A worker tries to see a restricted household address through printable labels | Direct view, print, export, search and household mailing previews all apply the same restriction. |
 | The clerk needs the number of households with at least one formal member | Count distinct active households that have an effective HouseholdPerson linked to a qualifying Membership on the selected date. State whether additional residences count. |
+
+## Review a family change across existing commitments
+
+A household split may be disclosed in person while an event reminder, a directory print edition and a child release are already in progress. Accept a private correction request from an adult about their own information. If the request concerns another adult or a child, verify authority for that specific change. Give the office a way to keep a newly supplied address in a restricted review without exposing it to the previous household through a portal notification, household summary, failed validation response or old volunteer list.
+
+| Existing commitment | Owner’s action after the effective change |
+| --- | --- |
+| Household correspondence for a general bulletin | Preview the next authorized addressee and destination. A household split can produce zero, one or several permitted copies. Recheck any batches still in church custody and record their replacement or withdrawal. |
+| Child registered for an event at the former address | Keep the child's participation and event place. The check-out team requests the current collection decision at release. Moving residence alone cannot grant or revoke collection, guardianship or receipt of notices. |
+| Shared email or phone used by two adults | Verify which person can still use it for which purpose. Suspend sensitive deliveries to a contested endpoint until a safe, independently verified route exists. A new subscriber cannot use the old destination to read past private threads. |
+| Two people with a previously agreed joint pastoral visit | The assigned worker checks separately and privately which arrangements remain wanted. Offer separate contacts or neutral venues where appropriate. Each adult's response is visible only to those who need it. |
+| Membership, financial correspondence or prior certified records | Tell each independent owner only what it may receive. A person's transfer needs its own authorized decision. Issued statements and earlier roll editions keep their original evidence. |
+
+For a reversal, retain the original effective date and recording time of the disputed change. A steward distinguishes a mistaken record from a subsequent real move. Review downstream copies already issued, issue corrections where appropriate and record acknowledgment. Never restore a formerly shared route or a withdrawn authority just because the earlier address was restored.

@@ -301,7 +301,6 @@ Use revision number or opaque revision token for `Person.revision`. Compare unde
 
 | Referencing record and field | Join key | Review when identity changes |
 | --- | --- | --- |
-| [AccessGrant](../commerce/AccessGrant.md).`beneficiary_person_id` | Person identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [AccessItemIssue](../ministry/AccessItemIssue.md).`recipient_id` | Person identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [AccountInvitation](../platform/AccountInvitation.md).`intended_person_id` | Person identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [AccountabilityCheck](../ministry/AccountabilityCheck.md).`responsible_id` | Person identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
@@ -346,8 +345,6 @@ Use revision number or opaque revision token for `Person.revision`. Compare unde
 | [ContactRestriction](../communications/ContactRestriction.md).`person_id` | Person identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [ContactSubscription](../communications/ContactSubscription.md).`person_id` | Person identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [ContactWindow](../communications/ContactWindow.md).`person_id` | Person identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [CourseOffering](../ministry/CourseOffering.md).`instructor_id` | Person identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [CourseSession](../ministry/CourseSession.md).`teacher_person_id` | Person identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [CredentialRecord](../administration/CredentialRecord.md).`person_id` | Person identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [DecisionRuling](../governance/DecisionRuling.md).`deciding_person_id` | Person identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [DeliveryEndpoint](../communications/DeliveryEndpoint.md).`person_id` | Person identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
@@ -385,8 +382,6 @@ Use revision number or opaque revision token for `Person.revision`. Compare unde
 | [IntermentRecord](../administration/IntermentRecord.md).`deceased_person_id` | Person identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [ItemRecusal](../governance/ItemRecusal.md).`person_id` | Person identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [ItemRecusal](../governance/ItemRecusal.md).`presiding_person_id` | Person identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [LearningAward](../ministry/LearningAward.md).`person_id` | Person identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [LearningEnrolment](../ministry/LearningEnrolment.md).`person_id` | Person identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [MediaContributor](../commerce/MediaContributor.md).`person_id` | Person identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [MeetingNotice](../governance/MeetingNotice.md).`issue_authority_id` | Person identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [MeetingRoll](../governance/MeetingRoll.md).`certified_by` | Person identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
@@ -417,13 +412,9 @@ Use revision number or opaque revision token for `Person.revision`. Compare unde
 | [OperationalBriefing](../ministry/OperationalBriefing.md).`duty_lead_id` | Person identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [OperationalReview](../ministry/OperationalReview.md).`reviewer_id` | Person identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [OperationsIncident](../ministry/OperationsIncident.md).`controller_id` | Person identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [Order](../commerce/Order.md).`buyer_person_id` | Person identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [OutreachInterest](OutreachInterest.md).`person_id` | Person identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [OutreachReferral](OutreachReferral.md).`person_id` | Person identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [PassengerBooking](../ministry/PassengerBooking.md).`person_id` | Person identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [PathParticipation](../ministry/PathParticipation.md).`adviser_id` | Person identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [PathParticipation](../ministry/PathParticipation.md).`person_id` | Person identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [PayrollEngagement](../finance/PayrollEngagement.md).`person_id` | Person identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [Person](Person.md).`canonical_person_id` | Person identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [PersonContactPoint](PersonContactPoint.md).`person_id` | Person identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [PersonIdentifier](PersonIdentifier.md).`person_id` | Person identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |

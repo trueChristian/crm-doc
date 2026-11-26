@@ -6,7 +6,7 @@
 
 Identity, audit fields, ownership and effective-date notation follow the [shared record envelope](../../foundation/record-conventions.md). A business key or parent-child uniqueness rule below remains enforceable even when an implementation also assigns an opaque identifier.
 
-Dated revisions and coverage gaps remain reconstructable. Premium invoices and refunds pass through normal finance approval and settlement.
+Dated revisions and coverage gaps remain reconstructable. Route premium invoices and refunds to the external accounting office with the policy and endorsement reference.
 
 ## Field inventory
 

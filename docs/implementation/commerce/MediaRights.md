@@ -6,7 +6,7 @@
 
 Identity, audit fields, ownership and effective-date notation follow the [shared record envelope](../../foundation/record-conventions.md). A business key or parent-child uniqueness rule below remains enforceable even when an implementation also assigns an opaque identifier.
 
-Target at least one defined work component. Distinguish record, live transmission, replay, translation, download, preview, syndication and paid distribution. Missing or conflicting rights block that use pending review.
+Target at least one defined work component. Distinguish record, live transmission, replay, translation, download, preview and syndication. Missing or conflicting rights block that use pending review.
 
 ## Field inventory
 

@@ -195,14 +195,15 @@ Use human-readable text for `EventOccurrence.cancel_reason`. Preserve the meanin
 | [AttendanceRecord](AttendanceRecord.md).`occurrence_id` | EventOccurrence identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [CeremonyBooking](../administration/CeremonyBooking.md).`event_occurrence_ref` | EventOccurrence identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [ChildCheckIn](ChildCheckIn.md).`occurrence_id` | EventOccurrence identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
+| [CollectionBatch](../finance/CollectionBatch.md).`occurrence_id` | EventOccurrence identity | Reconcile the reference in the source record and preserve its correction history. |
 | [CommunityDistribution](CommunityDistribution.md).`occurrence_id` | EventOccurrence identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [CourseSession](CourseSession.md).`occurrence_id` | EventOccurrence identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [DutyShift](DutyShift.md).`occurrence_id` | EventOccurrence identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [EquipmentReservation](EquipmentReservation.md).`occurrence_id` | EventOccurrence identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [EventAccessDetail](EventAccessDetail.md).`occurrence_id` | EventOccurrence identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [EventPublication](EventPublication.md).`occurrence_id` | EventOccurrence identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [EventRegistration](EventRegistration.md).`occurrence_id` | EventOccurrence identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [GovernanceMeeting](../governance/GovernanceMeeting.md).`event_occurrence_id` | EventOccurrence identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
+| [GroupMeeting](GroupMeeting.md).`occurrence_id` | EventOccurrence identity | Preserve the roster link after cancellation, moves or a term closure. |
 | [MinistryProgramme](MinistryProgramme.md).`main_occurrence_id` | EventOccurrence identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [OccurrenceOverride](OccurrenceOverride.md).`occurrence_id` | EventOccurrence identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [OperationalBriefing](OperationalBriefing.md).`occurrence_id` | EventOccurrence identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |

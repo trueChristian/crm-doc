@@ -133,15 +133,13 @@ Use revision number or opaque revision token for `UserAccount.version`. Compare 
 
 | Referencing record and field | Join key | Review when identity changes |
 | --- | --- | --- |
-| [AccessException](../commerce/AccessException.md).`assigned_to` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [AccessGrant](../commerce/AccessGrant.md).`beneficiary_account_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [AccessItemIssue](../ministry/AccessItemIssue.md).`issued_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [AccessRole](AccessRole.md).`owner_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [AccountInvitation](AccountInvitation.md).`issued_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [AccountabilityCohort](../assurance/AccountabilityCohort.md).`supervisor_account_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [AccountabilityEntry](../assurance/AccountabilityEntry.md).`verified_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [AccountabilityTransfer](../assurance/AccountabilityTransfer.md).`acknowledged_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [AccountabilityTransfer](../assurance/AccountabilityTransfer.md).`dispatched_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
+| [AccountInvitation](AccountInvitation.md).`issued_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [AgreementReview](../development/AgreementReview.md).`reviewer_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [AidAdjustment](../people/AidAdjustment.md).`approved_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [AidAssessment](../people/AidAssessment.md).`assessor_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
@@ -168,7 +166,7 @@ Use revision number or opaque revision token for `UserAccount.version`. Compare 
 | [Authenticator](Authenticator.md).`account_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [AuthorityReview](../people/AuthorityReview.md).`reviewer_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [AwardDecisionReview](../development/AwardDecisionReview.md).`authorized_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [BankPayoutMatch](../commerce/BankPayoutMatch.md).`matched_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
+| [AwardMilestone](../finance/AwardMilestone.md).`owner_id` | UserAccount identity | Reconcile the reference in the source record and preserve its correction history. |
 | [BenefitDelivery](../development/BenefitDelivery.md).`reviewer_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [BulletinEdition](../communications/BulletinEdition.md).`editor_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [BulletinItem](../communications/BulletinItem.md).`proofed_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
@@ -183,24 +181,16 @@ Use revision number or opaque revision token for `UserAccount.version`. Compare 
 | [CareNote](../people/CareNote.md).`author_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [CarePlanAction](../people/CarePlanAction.md).`assigned_to` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [CareRequest](../people/CareRequest.md).`owner_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [Cart](../commerce/Cart.md).`account_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [CaseAppeal](../assurance/CaseAppeal.md).`independent_reviewer_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [CashCount](../commerce/CashCount.md).`counted_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [CashMovement](../commerce/CashMovement.md).`cashier_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [CashShift](../commerce/CashShift.md).`closed_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [CashShift](../commerce/CashShift.md).`opened_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [CashShift](../commerce/CashShift.md).`reviewed_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [CertificateIssue](../people/CertificateIssue.md).`issued_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [ChangeProposal](ChangeProposal.md).`requested_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [ChangeProposal](ChangeProposal.md).`reviewer_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [ChannelBindingChallenge](../communications/ChannelBindingChallenge.md).`issued_to_account_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [ChildCheckIn](../ministry/ChildCheckIn.md).`recorded_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [Collection](../commerce/Collection.md).`verifier_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [CollectionAttempt](../ministry/CollectionAttempt.md).`operator_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [CollectionAttempt](../ministry/CollectionAttempt.md).`second_reviewer_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [CollectionBatch](../finance/CollectionBatch.md).`custodian_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [CollectionCount](../finance/CollectionCount.md).`counted_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [CollectionCount](../finance/CollectionCount.md).`witnessed_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
+| [CollectionCount](../finance/CollectionCount.md).`counter_id` | UserAccount identity | Reconcile the reference in the source record and preserve its correction history. |
+| [CollectionCount](../finance/CollectionCount.md).`witness_id` | UserAccount identity | Reconcile the reference in the source record and preserve its correction history. |
 | [CongregationParticipation](../people/CongregationParticipation.md).`recorded_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [ContactTree](../communications/ContactTree.md).`steward_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [ContinuityDuty](../assurance/ContinuityDuty.md).`deputy_account_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
@@ -210,10 +200,6 @@ Use revision number or opaque revision token for `UserAccount.version`. Compare 
 | [ContinuityPlan](../assurance/ContinuityPlan.md).`coordinator_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [ControlTest](../assurance/ControlTest.md).`reviewer_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [ControlTest](../assurance/ControlTest.md).`tester_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [CountSession](../commerce/CountSession.md).`counter_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [CountSession](../commerce/CountSession.md).`reviewer_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [Coupon](../commerce/Coupon.md).`issued_to_account_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [CreditMovement](../commerce/CreditMovement.md).`approved_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [CustomFieldValue](CustomFieldValue.md).`recorded_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [Dashboard](Dashboard.md).`owner_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [DataPurpose](DataPurpose.md).`owner_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
@@ -227,7 +213,6 @@ Use revision number or opaque revision token for `UserAccount.version`. Compare 
 | [DisclosurePackage](DisclosurePackage.md).`prepared_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [DispatchRequest](../communications/DispatchRequest.md).`owner_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [DisposalDecision](DisposalDecision.md).`reviewed_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [DisputeEvidence](../commerce/DisputeEvidence.md).`reviewed_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [DocumentRevision](DocumentRevision.md).`uploaded_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [DonorServiceCase](../development/DonorServiceCase.md).`assigned_to` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [DuplicateCandidate](DuplicateCandidate.md).`reviewed_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
@@ -240,7 +225,6 @@ Use revision number or opaque revision token for `UserAccount.version`. Compare 
 | [EventPublication](../ministry/EventPublication.md).`approved_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [EvidenceCustody](../people/EvidenceCustody.md).`custodian_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [EvidenceCustody](../people/EvidenceCustody.md).`next_custodian_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [ExemptionEvidence](../commerce/ExemptionEvidence.md).`verified_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [ExerciseReview](../assurance/ExerciseReview.md).`approved_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [ExerciseReview](../assurance/ExerciseReview.md).`facilitator_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [ExitManifestItem](ExitManifestItem.md).`verified_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
@@ -248,18 +232,16 @@ Use revision number or opaque revision token for `UserAccount.version`. Compare 
 | [ExitPlan](ExitPlan.md).`requested_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [ExportJob](ExportJob.md).`requested_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [FacilityClosure](../ministry/FacilityClosure.md).`created_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
+| [FinanceCodeMapping](../finance/FinanceCodeMapping.md).`approved_by` | UserAccount identity | Reconcile the reference in the source record and preserve its correction history. |
 | [FollowUpAction](../people/FollowUpAction.md).`assigned_to` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [FollowUpAction](../people/FollowUpAction.md).`handoff_recipient_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [FollowUpEnrollment](../people/FollowUpEnrollment.md).`owner_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [FulfilmentException](../commerce/FulfilmentException.md).`assigned_to` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [FundRestriction](../finance/FundRestriction.md).`reviewer_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
+| [Fund](../finance/Fund.md).`owner_id` | UserAccount identity | Reconcile the reference in the source record and preserve its correction history. |
 | [FundingOpportunity](../development/FundingOpportunity.md).`owner_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [FundraisingAppeal](../development/FundraisingAppeal.md).`owner_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [GiftClaim](../commerce/GiftClaim.md).`purchaser_account_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [GiftClaim](../commerce/GiftClaim.md).`redeemed_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
+| [FundRestriction](../finance/FundRestriction.md).`reviewer_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
+| [GiftAdjustment](../finance/GiftAdjustment.md).`approved_by` | UserAccount identity | Reconcile the reference in the source record and preserve its correction history. |
 | [GiftOfferAssessment](../development/GiftOfferAssessment.md).`reviewer_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [GivingDocument](../finance/GivingDocument.md).`approved_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [GrantAction](../commerce/GrantAction.md).`decision_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [GrantApplication](../development/GrantApplication.md).`coordinator_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [GrantApplication](../development/GrantApplication.md).`signatory_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [GroupInvitation](../ministry/GroupInvitation.md).`invited_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
@@ -287,12 +269,7 @@ Use revision number or opaque revision token for `UserAccount.version`. Compare 
 | [InsurancePolicy](../assurance/InsurancePolicy.md).`owner_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [IntegrationPrincipal](IntegrationPrincipal.md).`owner_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [InterfaceEdition](InterfaceEdition.md).`owner_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [JournalEntry](../finance/JournalEntry.md).`approved_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [JournalEntry](../finance/JournalEntry.md).`created_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [LanguageEdition](LanguageEdition.md).`review_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [LearningAward](../ministry/LearningAward.md).`issuer_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [LearningEnrolment](../ministry/LearningEnrolment.md).`submitted_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [LearningEvidence](../ministry/LearningEvidence.md).`attested_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [LiveSession](../commerce/LiveSession.md).`producer_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [LocalChange](LocalChange.md).`actor_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [MappingEdition](MappingEdition.md).`approved_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
@@ -314,20 +291,14 @@ Use revision number or opaque revision token for `UserAccount.version`. Compare 
 | [OperationalBriefing](../ministry/OperationalBriefing.md).`decided_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [OperationalReview](../ministry/OperationalReview.md).`approved_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [OperationsIncident](../ministry/OperationsIncident.md).`reported_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [Order](../commerce/Order.md).`buyer_account_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [OrderAmendment](../commerce/OrderAmendment.md).`decision_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [OrderContact](../commerce/OrderContact.md).`changed_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [PartnerPromise](../development/PartnerPromise.md).`accountable_owner_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [PartnershipAgreement](../development/PartnershipAgreement.md).`authorized_signatory_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [PartnershipAgreement](../development/PartnershipAgreement.md).`church_owner_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [PartnershipDelivery](../development/PartnershipDelivery.md).`verified_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [PathStepResult](../ministry/PathStepResult.md).`approved_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [PersonMerge](../people/PersonMerge.md).`approved_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [PersonMilestone](../people/PersonMilestone.md).`verified_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [PersonRelationship](../people/PersonRelationship.md).`recorded_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [PlaybackSession](../commerce/PlaybackSession.md).`beneficiary_account_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [PolicyEndorsement](../assurance/PolicyEndorsement.md).`recorded_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [PostingRuleVersion](../finance/PostingRuleVersion.md).`approved_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [PresentationPreference](PresentationPreference.md).`account_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [PreservationHold](PreservationHold.md).`authorized_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [PreservationHold](PreservationHold.md).`release_authority` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
@@ -352,11 +323,9 @@ Use revision number or opaque revision token for `UserAccount.version`. Compare 
 | [ReadinessPlan](../ministry/ReadinessPlan.md).`approved_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [ReconciliationCheck](ReconciliationCheck.md).`signed_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [RecoveryCheck](RecoveryCheck.md).`owner_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [RecurringJournal](../finance/RecurringJournal.md).`owner_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [Refund](../commerce/Refund.md).`approved_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [RegisterBook](../people/RegisterBook.md).`custodian_account_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [RegisterEntry](../people/RegisterEntry.md).`entered_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [RegisteredDevice](RegisteredDevice.md).`assigned_to` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
+| [RegisterEntry](../people/RegisterEntry.md).`entered_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [RegistrationAnswer](../ministry/RegistrationAnswer.md).`captured_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [ReleaseRecord](ReleaseRecord.md).`approved_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [RemedyVerification](../assurance/RemedyVerification.md).`verifier_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
@@ -373,8 +342,6 @@ Use revision number or opaque revision token for `UserAccount.version`. Compare 
 | [ResponsibilityCover](ResponsibilityCover.md).`approved_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [RestoreExercise](RestoreExercise.md).`coordinator` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [RetentionRule](RetentionRule.md).`owner_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [ReturnRequest](../commerce/ReturnRequest.md).`decision_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [ReturnRequest](../commerce/ReturnRequest.md).`requester_account_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [ReunificationDecision](../assurance/ReunificationDecision.md).`checked_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [ReunificationDecision](../assurance/ReunificationDecision.md).`handover_operator_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [ReunificationDecision](../assurance/ReunificationDecision.md).`reviewer_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
@@ -398,11 +365,8 @@ Use revision number or opaque revision token for `UserAccount.version`. Compare 
 | [RoomBooking](../ministry/RoomBooking.md).`approved_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [RoomStay](../ministry/RoomStay.md).`received_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [RoomStay](../ministry/RoomStay.md).`sent_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [SalesTaxSelection](../commerce/SalesTaxSelection.md).`reviewed_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [SavedView](SavedView.md).`owner_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [ScheduledJob](ScheduledJob.md).`owner_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [SeatAssignment](../commerce/SeatAssignment.md).`assigned_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [SeatAssignment](../commerce/SeatAssignment.md).`beneficiary_account_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [Sermon](../commerce/Sermon.md).`owner_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [SermonSeries](../commerce/SermonSeries.md).`curator_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [ServiceObjective](ServiceObjective.md).`owner_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
@@ -421,14 +385,7 @@ Use revision number or opaque revision token for `UserAccount.version`. Compare 
 | [SponsorReport](../development/SponsorReport.md).`owner_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [StewardshipAction](../development/StewardshipAction.md).`assigned_to` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [StewardshipPlan](../development/StewardshipPlan.md).`owner_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [StockMovement](../commerce/StockMovement.md).`approved_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [StockRecall](../commerce/StockRecall.md).`issued_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [StockReceipt](../commerce/StockReceipt.md).`received_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [StockTransfer](../commerce/StockTransfer.md).`approved_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [StockTransfer](../commerce/StockTransfer.md).`requested_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [StoreCredit](../commerce/StoreCredit.md).`owner_account_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [SubjectRequest](SubjectRequest.md).`assigned_to` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [Subscription](../commerce/Subscription.md).`subscriber_account_id` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [SupervisionMovement](../ministry/SupervisionMovement.md).`accepted_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [SupervisionMovement](../ministry/SupervisionMovement.md).`requested_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [SupporterInstruction](../development/SupporterInstruction.md).`communicated_by` | UserAccount identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |

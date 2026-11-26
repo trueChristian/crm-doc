@@ -22,7 +22,7 @@ Record damaged item, lost use or external demand separately. Keep source currenc
 | `valuation_date` | date? | Optional under owner conditions | [date](../value-conventions.md#date) |
 | `evidence_ref` | ID? | Optional under owner conditions | [resource](../value-conventions.md#resource) |
 | `salvage_value` | money? | Optional under owner conditions | [money](../value-conventions.md#money) |
-| `expense_ref` | ID? | Optional under owner conditions | [resource](../value-conventions.md#resource) |
+| `expense_ref` | opaque_ref? | Optional under owner conditions | [resource](../value-conventions.md#resource) |
 
 ## Input, storage and exchange cases
 

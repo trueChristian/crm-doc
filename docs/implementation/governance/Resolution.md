@@ -189,7 +189,6 @@ The target is [Resolution](Resolution.md). Resolve the identifier in the approve
 
 | Referencing record and field | Join key | Review when identity changes |
 | --- | --- | --- |
-| [BudgetVersion](../finance/BudgetVersion.md).`meeting_resolution_ref` | Resolution identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [GovernancePolicyEdition](GovernancePolicyEdition.md).`authorizing_resolution_id` | Resolution identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [Resolution](Resolution.md).`supersedes_id` | Resolution identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [ResolutionAction](ResolutionAction.md).`resolution_id` | Resolution identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |

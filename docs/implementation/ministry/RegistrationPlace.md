@@ -147,7 +147,7 @@ Use unambiguous point in time for `RegistrationPlace.cancelled_at`. Compare as t
 
 | Referencing record and field | Join key | Review when identity changes |
 | --- | --- | --- |
-| [AdmissionSaleUnit](AdmissionSaleUnit.md).`place_id` | RegistrationPlace identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
+| [AdmissionPaymentNotice](AdmissionPaymentNotice.md).`place_id` | RegistrationPlace identity | Reconcile the originating provider unit, receipt and revision with this place before confirmation. |
 | [AdmissionSeat](AdmissionSeat.md).`place_id` | RegistrationPlace identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [AdmissionTicket](AdmissionTicket.md).`place_id` | RegistrationPlace identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [AttendanceRecord](AttendanceRecord.md).`place_id` | RegistrationPlace identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |

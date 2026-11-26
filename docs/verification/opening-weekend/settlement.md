@@ -1,45 +1,24 @@
-# Close the first settlement
+# Match weekend registrations and gifts to the external acknowledgment
 
-Use three transactions from church A in the opening weekend. Its fixture book uses one two-decimal currency, an unrestricted operating fund and a restricted relief fund. Numbers are in that currency. Assume no sales tax for these fixture items, an earned-on-sale recognition policy for goods delivered at the desk, and fee expense charged to the operating fund. The payment service settles these three transactions in one transfer. Opening balances are outside this workpaper. The bookstall holds at least two books at unit cost 6 before the exercise.
+Use church A and the people in the [register exercise](register.md). The event office has accepted two fee-bearing retreat places for P2’s family with a fee of 10 per place. Two separately approved gifts are also received. At the point of interruption, retain these source references and the observation for each. For this exercise, the church accepts independently confirmed capture to fund a held place and gift confirmation to acknowledge a gift. Use a single two-decimal currency.
 
-| Source | Owner and observed business event | Gross | Fund |
-| --- | --- | ---: | --- |
-| S1 | P2 buys and takes two books at 10 each | 20.00 | Operating |
-| G1 | P1 gives 30 to general ministry | 30.00 | Operating |
-| G2 | A giver chooses anonymous treatment for a 50 relief gift | 50.00 | Relief |
+| Source | Church observation | External gross |
+| --- | --- | ---: |
+| S1 | P2 books two distinct places S1a and S1b, 10 per place | 20.00 |
+| G1 | P1 gives to general ministry and elects a private acknowledgement | 30.00 |
+| G2 | An anonymous giver designates relief | 50.00 |
 
-P1 and P2 share an address. The application records the 20 sale to P2 and the 30 gift to P1. The 50 has no named donor. No adjustment to the membership register is needed. The provider withholds 3.00 in fees from the batch, then deposits 97.00. After the deposit, P2 returns one unused book at the original price and the provider debits 10.00 from the bank for the refund. There is no further fee in this fixture.
+P1 and P2 share endpoint E1. No booker, donor or receipt identity is inferred from that shared endpoint. The provider reports one combined transfer, with gross 100, fee 3 and net 97. The transfer has references for all three source transactions, one per place allocation on S1. A finance reviewer matches sources by identifier, currency, purpose and amount. The reviewer records the batch reference and acceptance or discrepancy for each source. The external books retain the bank reconciliation and fee accounting.
 
-## Expected posting bridge
-
-Take debit and credit as separate positive columns. Treat provider clearing as an asset account which can carry a temporary credit amount pending the refund debit. For a church producing separate fund balance sheets, use the fund detail in the next paragraph when posting the deposit.
-
-| Event | Debit | Credit |
+| Desk | Expected state after verified capture and acknowledgment | Expected state after P2 cancels S1b and the provider confirms a 10 refund |
 | --- | --- | --- |
-| S1 fulfilled and captured | Provider clearing 20.00 | Book sales 20.00 |
-| Two books issued | Cost of goods sold 12.00 | Inventory 12.00 |
-| G1 accepted | Provider clearing 30.00 | Unrestricted giving 30.00 |
-| G2 accepted | Provider clearing 50.00 | Restricted relief giving 50.00 |
-| Deposit confirmed | Bank 97.00 and fee expense 3.00 | Provider clearing 100.00 |
-| One refund confirmed | Sales returns 10.00 | Provider clearing 10.00 |
-| Returned copy inspected and restocked | Inventory 6.00 | Cost of goods sold 6.00 |
-| Bank debit matched | Provider clearing 10.00 | Bank 10.00 |
+| Registration | Two funded places with distinct active tickets | S1a remains active. One S1b cancellation, one retired ticket, one released place. Its refund moves from requested to externally confirmed. |
+| Giving | Exactly two gifts, 80 in total, one named general gift of 30 and one anonymous relief gift of 50 | Same two gifts and designations. Neither donor receives a refund notice. |
+| Finance liaison | Three external source references acknowledged with 100 gross. Only the liaison requires the fee/net details. | One refund reference mapped to S1b. The provider reports 87 net transferred over the complete sequence (97 less 10). |
+| Register and communications | Six people and their separately permitted destinations | Same six people. No membership or contact preference change on cancellation. |
 
-For the deposit, the operating fund debits bank 47 and fee expense 3 against its clearing credit of 50. Relief debits bank 50 against its clearing credit of 50. Assign both movements of the book, the return and the later refund debit to operating. Each fund balances at every posting event. Exactly one owner posts each cash movement even if several departments receive the same observation.
+Reimport the batch and refund twice. Counts, references and amounts remain unchanged. Try an external summary containing only net 97 and no source detail: it cannot substantiate how much went to relief or either event place. Retain the existing church observations, flag the external correlation as incomplete and have the reviewer obtain the source detail. The test passes only when both operational results and the handoff status can be distinguished.
 
-## Reconcile independently
+P2 sees the two place outcomes and the authorized adjustment without P1’s gift. P1 obtains only the private general gift acknowledgment. Neither adult gains access to the other's documents because they share an endpoint. A church choosing anonymous giving can report aggregate relief without creating an identifiable donor.
 
-| Evidence | Expected change from opening position |
-| --- | --- |
-| Bank | Operating +37.00, relief +50.00, combined +87.00 |
-| Provider clearing | Zero in each fund after the refund debit |
-| Inventory | One fewer saleable copy overall, carrying value down 6.00 |
-| Store results | Gross book sales 20.00, returns 10.00, net sales 10.00, net cost 6.00 |
-| Giving register | Two gifts totalling 80.00; one named gift 30.00, one anonymous restricted gift 50.00 |
-| Operating net activity | Giving 30.00 + net sales 10.00 − net cost 6.00 − fees 3.00 = 31.00 |
-| Relief net activity | 50.00 still restricted and unspent |
-| Control across funds | Net assets rise 81.00, equal to bank increase 87.00 less inventory decrease 6.00 |
-
-A donation statement available to P1 shows 30.00. A customer receipt available to P2 shows the original sale and subsequent refund. A supervisor discloses neither to the other adult merely because both use E1. A public fundraiser can use an authorized aggregate without identifying the anonymous donor. The refund has no effect on gift totals.
-
-[Order lifecycle](../../commerce/orders.md) · [Stock movements](../../commerce/inventory.md) · [Settlement and disputes](../../commerce/settlement.md) · [Giving](../../finance/giving.md) · [Book controls](../../finance/controls.md)
+[Church resource desks](../../commerce/desk-handoffs.md) · [Giving and handoff](../../finance/README.md) · [Event registration](../../ministry/registration.md)

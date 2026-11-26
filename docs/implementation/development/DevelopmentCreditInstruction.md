@@ -6,7 +6,7 @@
 
 Identity, audit fields, ownership and effective-date notation follow the [shared record envelope](../../foundation/record-conventions.md). A business key or parent-child uniqueness rule below remains enforceable even when an implementation also assigns an opaque identifier.
 
-Credit is influence or acknowledgement. Finance controls the actual giving party and any GiftAttribution. Multiple advisers cannot increase gift value or receive an official donor receipt solely for advising.
+Credit is influence or acknowledgement. The giving desk controls the actual giving party and any GiftAttribution. Multiple advisers cannot increase gift value or receive an official donor receipt solely for advising.
 
 ## Field inventory
 

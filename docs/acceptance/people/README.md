@@ -4,6 +4,7 @@ Use these exercises when two departments can individually pass their own rules w
 
 | Exercise | Starting question | Evidence to compare after the final step |
 | --- | --- | --- |
+| [Returning visitor, two interests and an external transfer](welcome-through-transfer.md) | What carries forward from a welcome card, and who decides a transfer succeeded? | One named person across two encounters, independent outcomes for two interests, one admission and one dated local exit after verified acknowledgment. |
 | [One physical handover across two desks](collection-and-reunification.md) | Can a current protective restriction defeat an obsolete list during a continuity exercise? | One release and nine present from an initial ten, with the restricted reasoning visible only to its owner. |
 | [Pastoral cover, referral delivery and staff return](pastoral-cover-and-referral.md) | Can a substitute perform agreed work without inheriting the coordinator's entire caseload? | The scoped assignment, two distinct visit outcomes, one acknowledged referral and the withdrawal time. |
 | [Petition endorsement after a membership correction](petition-and-certified-roll.md) | Can a reviewer resolve a historical class error after the petition closed? | Six submissions, three accepted rights and one proposed agenda item, with both membership evidence editions recoverable. |

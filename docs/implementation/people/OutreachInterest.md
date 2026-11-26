@@ -147,6 +147,7 @@ Declared alternatives in owner order: `open`, `referred`, `fulfilled`, `withdraw
 
 | Referencing record and field | Join key | Review when identity changes |
 | --- | --- | --- |
+| [OutreachReferral](OutreachReferral.md).`interest_id` | OutreachInterest identity | Preserve the purpose and receiving scope when a worker reviews the person or the interest. |
 | [FollowUpEnrollment](FollowUpEnrollment.md).`interest_id` | OutreachInterest identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 
 ## Acceptance evidence

@@ -6,7 +6,7 @@
 
 Identity, audit fields, ownership and effective-date notation follow the [shared record envelope](../../foundation/record-conventions.md). A business key or parent-child uniqueness rule below remains enforceable even when an implementation also assigns an opaque identifier.
 
-Split one finance allocation among appeals only up to that allocation's eligible amount. A credited channel belongs to its chosen appeal. Finance designation overrides any marketing tag. Preserve changes and net reversals.
+Split one verified gift allocation among appeals only up to that allocation's eligible amount. A credited channel belongs to its chosen appeal. The verified donor designation takes precedence over an appeal tag. Preserve changes and net reversals.
 
 ## Field inventory
 
@@ -88,7 +88,7 @@ Use monetary unit code for `AppealAllocationCredit.currency`. Resolve the code a
 | Malformed or unmapped | ambiguous $ | Request the unambiguous currency. |
 | Two amounts have different currencies | 24.50 NAD and 24.50 USD | Report separate totals or translate using recorded rates. |
 | Catalog changes after document issue | document issued before currency-profile revision | The stored document keeps its currency. |
-| Unrecognized imported code | unmapped monetary unit in staged transaction | Stage unmapped currency; block financial posting. |
+| Unrecognized imported code | unmapped monetary unit in staged transaction | Hold the row for currency mapping before an amount-dependent approval or exchange. |
 | Incomplete record | No currency at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
 
 ### basis

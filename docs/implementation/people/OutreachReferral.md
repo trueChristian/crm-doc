@@ -6,7 +6,7 @@
 
 Identity, audit fields, ownership and effective-date notation follow the [shared record envelope](../../foundation/record-conventions.md). A business key or parent-child uniqueness rule below remains enforceable even when an implementation also assigns an opaque identifier.
 
-External referrers may provide minimal information. Block outreach until permission or another documented, approved contact authority exists. Internal handoffs transfer only the needed purpose and owner.
+External referrers may provide minimal information. Block outreach until permission or another documented, approved contact authority exists. A referral offered for a recorded interest identifies that interest and its person. External intake can wait for identity verification. Internal handoffs transfer only the needed purpose and owner.
 
 ## Field inventory
 
@@ -14,6 +14,7 @@ External referrers may provide minimal information. Block outreach until permiss
 | --- | --- | --- | --- |
 | `id` | ID | Assigned or projected by owner | [key](../value-conventions.md#key) |
 | `person_id` | → Person? | Optional under owner conditions | [relation](../value-conventions.md#relation) |
+| `interest_id` | → OutreachInterest? | Required for an offer made to fulfil an existing expressed interest | [relation](../value-conventions.md#relation) |
 | `source_label` | restricted text? | Optional under owner conditions | [protected](../value-conventions.md#protected) |
 | `referring_organization_id` | → Organization? | Optional under owner conditions | [relation](../value-conventions.md#relation) |
 | `receiving_scope_ref` | ID? | Optional under owner conditions | [resource](../value-conventions.md#resource) |
@@ -21,7 +22,7 @@ External referrers may provide minimal information. Block outreach until permiss
 | `safe_summary` | restricted text | Required when the record reaches its applicable state | [protected](../value-conventions.md#protected) |
 | `initiated_at` | instant | Required when the record reaches its applicable state | [instant](../value-conventions.md#instant) |
 | `accepted_at` | instant? | Optional under owner conditions | [instant](../value-conventions.md#instant) |
-| `state` | enum(received, verifying_authority, offered, accepted, declined, expired) | Required when the record reaches its applicable state | [enum](../value-conventions.md#enum) |
+| `state` | enum(received, verifying_authority, offered, accepted, declined, expired, withdrawn) | Required when the record reaches its applicable state | [enum](../value-conventions.md#enum) |
 
 ## Input, storage and exchange cases
 
@@ -52,6 +53,17 @@ The target is [Person](Person.md). Resolve the identifier in the approved scope 
 | Wrong scope | Person·B01 | Do not attach another church’s Person without a supported exchange and local authority. |
 | Target rename | Rename Person·A01 after linking | The existing person_id keeps the same identity and historic documents retain their original wording. |
 | Absent in intake | No person_id provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
+
+### interest_id
+
+The [expressed interest](OutreachInterest.md) identifies the requested purpose. A referral from a third party can enter restricted intake before any interest or person is known. Once authority and a named interest exist, a worker may link them in the owning congregation. Compare any supplied person with the person on the interest and require permission for the receiving scope. A second interest expressed on the same visitor card can therefore be fulfilled, withdrawn or referred independently.
+
+| Input | Expected outcome |
+| --- | --- |
+| A visitor requests service times and a meal-team introduction, and the meal team accepts its referral. | Only the meal interest acquires the accepted handoff. The service enquiry retains its own state. |
+| An operator links a namesake's interest or uses a record from a neighbouring organization. | Reject the association without exposing the other person's request. |
+| Withdrawal and acceptance of the same offered referral arrive together. | Serialize the transitions against the current revision. If withdrawal wins, close the offered referral and exclude subsequent acceptance. If acceptance wins, record the subsequent withdrawal and notify the receiving owner to review further activity. |
+| An old external import has no interest reference. | Keep that field empty; staff may resolve it when evidence exists. Do not invent an interest to satisfy a historic import. |
 
 ### source_label
 
@@ -146,7 +158,7 @@ Use unambiguous point in time for `OutreachReferral.accepted_at`. Compare as the
 
 ### state
 
-Declared alternatives in owner order: `received`, `verifying_authority`, `offered`, `accepted`, `declined`, `expired`. Approval and lifecycle guards still apply to transitions.
+Declared alternatives in owner order: `received`, `verifying_authority`, `offered`, `accepted`, `declined`, `expired`, `withdrawn`. Approval and lifecycle guards still apply to transitions.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |

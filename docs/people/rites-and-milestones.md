@@ -17,7 +17,7 @@ A church can keep baptism, dedication, profession of faith, confirmation, recept
 
 ## Recording and retrieval
 
-1. Select the ceremony and applicable definition. Where preparation is required, refer to a course, pastoral appointment or signed form and show only its completion status to the registrar.
+1. Select the ceremony and applicable definition. Where preparation is required, link the minimum attestation from the external learning system, a pastoral appointment or a signed form and show only the approved preparation status to the registrar.
 2. Capture participants and roles, location, actual date or partial historical date and provenance. A marriage can have two principals; a baptism can record guardian or sponsor roles without granting them proxy rights.
 3. Registrar reviews duplicate candidates, evidence and register scope. A possible duplicate with poor historical evidence enters a review queue. For a group service, validate each entry separately and report exact successes and failures. Enter successful records once.
 4. An authorized approver confirms the entry, assigns its permanent reference, and permits an original certificate or later certified extract. A correction carries old and new wording, reviewer, reason, effective date and the earlier entry reference. Reprinting an unchanged issue is distinguishable from issuing a replacement.

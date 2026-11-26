@@ -17,7 +17,7 @@ A trustee checks risk acceptance, an insurance officer reconciles claims, and a 
 | [People and pastoral records](../people/README.md) | Refer protected concerns to the designated safeguarding lead. Consume only action-specific authority and privacy-safe status for operational decisions. Confidential pastoral narratives remain with their owners. |
 | [Workforce](../administration/workforce.md) | Route approved employment remedies and grievance results to the restricted personnel case. The independent docket controls investigation, conflicts and appeal. Volunteer cases can exist without an employment record. |
 | [Ministry and resources](../ministry/README.md) | Refer to actual event, building, equipment, responsible team and child check-out receipt. Maintenance, reservations and handover remain in those registers. |
-| [Financial assets](../finance/assets.md) | Refer to property/equipment identifiers, claims payments and financial corrections. Finance owns book values, postings and reconciliation; insurance documents preserve agreed coverage and valuation terms. |
+| [Accounting exchange](../finance/accounting-exchange.md) | Link the church property or equipment, insurer’s terms and permitted external claim-payment references. The accounting provider owns carrying values, financial corrections and reconciliation. |
 | [Operational recovery](../platform/operations-recovery.md) | Refer to service capability and restoration status during a disruption. Human continuity, accountability and handover remain in the active continuity record. |
 | [Shared record conventions](../foundation/record-conventions.md) | Reuse organization scope, typed identifiers, dates, evidence controls, immutable history and idempotent operations. |
 

@@ -6,7 +6,7 @@
 
 Identity, audit fields, ownership and effective-date notation follow the [shared record envelope](../../foundation/record-conventions.md). A business key or parent-child uniqueness rule below remains enforceable even when an implementation also assigns an opaque identifier.
 
-Partial receipts and direct vendor payments remain independently reconcilable. Unique source key and linkage to finance prevent double recovery or posting.
+Count a verified partial receipt or direct supplier settlement once per external source reference. Link the claim to the acknowledgement and retain disputes or reversals.
 
 ## Field inventory
 
@@ -18,7 +18,7 @@ Partial receipts and direct vendor payments remain independently reconcilable. U
 | `amount` | money | Required when the record reaches its applicable state | [money](../value-conventions.md#money) |
 | `effective_on` | date | Required when the record reaches its applicable state | [date](../value-conventions.md#date) |
 | `payer_ref` | ID | Required when the record reaches its applicable state | [resource](../value-conventions.md#resource) |
-| `accounting_ref` | ID? | Optional under owner conditions | [resource](../value-conventions.md#resource) |
+| `accounting_ref` | opaque_ref? | Optional under owner conditions | [resource](../value-conventions.md#resource) |
 | `reconciliation_state` | enum(expected, received, matched, disputed, reversed) | Required when the record reaches its applicable state | [enum](../value-conventions.md#enum) |
 | `source_key` | text | Required when the record reaches its applicable state | [text](../value-conventions.md#text) |
 

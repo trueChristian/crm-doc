@@ -20,7 +20,7 @@ Map evidence to the actual contribution, sale, approved supply or service event 
 | `verified_by` | ref UserAccount? | Optional under owner conditions | [relation](../value-conventions.md#relation) |
 | `gift_allocation_id` | ref GiftAllocation? | Optional under owner conditions | [relation](../value-conventions.md#relation) |
 | `in_kind_gift_id` | ref InKindGift? | Optional under owner conditions | [relation](../value-conventions.md#relation) |
-| `invoice_line_id` | ref SalesInvoiceLine? | Optional under owner conditions | [relation](../value-conventions.md#relation) |
+| `external_invoice_line_ref` | opaque_ref? | Optional under the authorized exchange | [resource](../value-conventions.md#resource) |
 | `service_entry_id` | ref ServiceTimeEntry? | Optional under owner conditions | [relation](../value-conventions.md#relation) |
 | `source_delivery_key` | text | Required when the record reaches its applicable state | [text](../value-conventions.md#text) |
 | `disposition` | offered/verified/disputed/reversed | Required when the record reaches its applicable state | [enum](../value-conventions.md#enum) |
@@ -134,18 +134,15 @@ The target is [InKindGift](../finance/InKindGift.md). Resolve the identifier in 
 | Target rename | Rename InKindGift·A01 after linking | The existing in_kind_gift_id keeps the same identity and historic documents retain their original wording. |
 | Absent in intake | No in_kind_gift_id provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
 
-### invoice_line_id
+### external_invoice_line_ref
 
-The target is [SalesInvoiceLine](../finance/SalesInvoiceLine.md). Resolve the identifier in the approved scope before using its fields.
+A sponsorship benefit can refer to the invoice line issued by the trading or accounting service. The agreement retains its delivery evidence even if no invoice applies. Store the issuer, owning church, opaque identifier and, for versioned evidence, the edition used. Resolving this reference requires separate authority at the issuer.
 
-| Probe | Input or observation | Expected result |
-| --- | --- | --- |
-| Admissible representation | SalesInvoiceLine·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
-| Unresolved target | SalesInvoiceLine·MISSING | Queue the missing SalesInvoiceLine mapping or reject the command before linking. |
-| Wrong scope | SalesInvoiceLine·B01 | Do not attach another church’s SalesInvoiceLine without a supported exchange and local authority. |
-| Target rename | Rename SalesInvoiceLine·A01 after linking | The existing invoice_line_id keeps the same identity and historic documents retain their original wording. |
-| Absent in intake | No invoice_line_id provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
+| Probe | Expected result |
+| --- | --- |
+| No connected service | Keep the reference empty. The church workflow can proceed using its local evidence and authorization. |
+| Same identifier from another church or issuer | Preserve the separate namespace and deny cross-church lookup. |
+| Late or corrected reference | Keep the earlier edition and the reason for replacement. Replaying an acknowledged revision preserves one link. |
 
 ### service_entry_id
 

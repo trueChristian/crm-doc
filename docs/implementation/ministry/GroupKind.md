@@ -6,7 +6,7 @@
 
 Identity, audit fields, ownership and effective-date notation follow the [shared record envelope](../../foundation/record-conventions.md). A business key or parent-child uniqueness rule below remains enforceable even when an implementation also assigns an opaque identifier.
 
-Unique code per organization. Examples include ministry, fellowship, committee, home group, course cohort and duty team. Retiring a kind preserves its old groups.
+Unique code per organization. Examples include ministry, fellowship, committee, home group, Sunday class and duty team. Retiring a kind preserves its old groups.
 
 ## Field inventory
 

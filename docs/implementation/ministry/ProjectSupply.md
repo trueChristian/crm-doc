@@ -6,7 +6,7 @@
 
 Identity, audit fields, ownership and effective-date notation follow the [shared record envelope](../../foundation/record-conventions.md). A business key or parent-child uniqueness rule below remains enforceable even when an implementation also assigns an opaque identifier.
 
-Planned quantities. Stock and finance own receipts, valuation and payments. Convert units only with an explicit valid conversion.
+Planned quantities. External stock or accounting providers own their receipts, valuation and payments. Convert units only with an explicit valid conversion.
 
 ## Field inventory
 
@@ -18,7 +18,7 @@ Planned quantities. Stock and finance own receipts, valuation and payments. Conv
 | `requested_qty` | decimal | Required when the record reaches its applicable state | [decimal](../value-conventions.md#decimal) |
 | `approved_qty` | decimal? | Optional under owner conditions | [decimal](../value-conventions.md#decimal) |
 | `stock_ref` | id? | Optional under owner conditions | [resource](../value-conventions.md#resource) |
-| `fund_ref` | → Fund? | Optional under owner conditions | [relation](../value-conventions.md#relation) |
+| `fund_ref` | id? | Optional under owner conditions | [resource](../value-conventions.md#resource) |
 
 ## Input, storage and exchange cases
 
@@ -104,16 +104,7 @@ Use scoped or external reference for `ProjectSupply.stock_ref`. Resolve against 
 
 ### fund_ref
 
-The target is [Fund](../finance/Fund.md). Resolve the identifier in the approved scope before using its fields.
-
-| Probe | Input or observation | Expected result |
-| --- | --- | --- |
-| Admissible representation | Fund·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
-| Unresolved target | Fund·MISSING | Queue the missing Fund mapping or reject the command before linking. |
-| Wrong scope | Fund·B01 | Do not attach another church’s Fund without a supported exchange and local authority. |
-| Target rename | Rename Fund·A01 after linking | The existing fund_ref keeps the same identity and historic documents retain their original wording. |
-| Absent in intake | No fund_ref provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
+Optional scoped reference to an agreed fund or designation in the issuing system. Resolve the source, organization and permitted purpose before displaying any details. Keep the local service record when the provider is unavailable. A failed or contradictory mapping requires staff review.
 
 ## Incoming references
 

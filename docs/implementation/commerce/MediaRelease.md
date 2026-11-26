@@ -6,7 +6,7 @@
 
 Identity, audit fields, ownership and effective-date notation follow the [shared record envelope](../../foundation/record-conventions.md). A business key or parent-child uniqueness rule below remains enforceable even when an implementation also assigns an opaque identifier.
 
-One edition may have different free and licensed releases. Each use requires current clearance. Publishing metadata can have a narrower audience than selling an unrelated product.
+Each audience and channel may have its own release. Each use requires current clearance, including discovery of titles, descriptions and transcripts.
 
 ## Field inventory
 
@@ -189,10 +189,7 @@ Declared alternatives in owner order: `scheduled`, `live`, `paused`, `expired`, 
 
 | Referencing record and field | Join key | Review when identity changes |
 | --- | --- | --- |
-| [AccessDecision](AccessDecision.md).`release_id` | MediaRelease identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [AccessScope](AccessScope.md).`release_id` | MediaRelease identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [MediaWithdrawal](MediaWithdrawal.md).`release_id` | MediaRelease identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
-| [PlaybackSession](PlaybackSession.md).`release_id` | MediaRelease identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 
 ## Acceptance evidence
 

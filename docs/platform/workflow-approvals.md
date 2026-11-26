@@ -1,6 +1,6 @@
 # Work queues, workflow editions and approvals
 
-A church secretary may need to chase a transfer certificate, an event organizer may wait for a guardian's permission and a treasurer may be waiting for an invoice approver. A personal work queue brings these assigned actions together while each domain remains the authority on what the business decision means. A task can be completed without changing a journal or confirming a meeting unless the owning domain explicitly accepts that command.
+A church secretary may need to chase a transfer certificate, an event organizer may wait for a guardian's permission and a treasurer may be waiting for a second reviewer on a corrected gift designation. A personal work queue brings these assigned actions together while each domain remains the authority on what the business decision means. A task can be completed without approving a gift handoff or confirming a meeting unless the owning domain explicitly accepts that command.
 
 ## Logical records
 

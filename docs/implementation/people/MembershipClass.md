@@ -19,7 +19,8 @@ Unique code per policy version. Renewal reminders, voting qualifications and the
 | `formal_member` | boolean | Required when the record reaches its applicable state | [bool](../value-conventions.md#bool) |
 | `voting_rule_ref` | ID? | Optional under owner conditions | [resource](../value-conventions.md#resource) |
 | `renewable` | boolean | Required when the record reaches its applicable state | [bool](../value-conventions.md#bool) |
-| `renewal_interval_months` | integer? | Optional under owner conditions | [integer](../value-conventions.md#integer) |
+| `renewal_interval_months` | integer? | Required and positive when renewable | [integer](../value-conventions.md#integer) |
+| `renewal_rule_ref` | ID? | Required when renewable, absent for permanent classes | [resource](../value-conventions.md#resource) |
 
 ## Input, storage and exchange cases
 
@@ -128,6 +129,17 @@ Use whole-number measure for `MembershipClass.renewal_interval_months`. Preserve
 | Value exceeds the bound by one | applicable maximum plus one | Return a range error before changing dependent totals. |
 | Missing count versus measured zero | observed 0 and omitted value | Keep absence distinct from an observed zero. |
 | Absent in intake | No renewal_interval_months provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
+
+### renewal_rule_ref
+
+Resolve this reference to the approved local renewal rule edition for this class and cycle. It binds the receipt window, calendar convention, grace, notice requirements, eligible standing and decision authority. Keep the edition used when a later policy revision changes the rules.
+
+| Probe | Expected result |
+| --- | --- |
+| Permanent class, empty interval and no renewal rule. | No renewal work item, deadline, reminder or lapse proposal can be generated. |
+| Renewable class lacks an interval, has a nonpositive interval or references an unapproved rule. | Return a configuration error before publishing or running the cycle. |
+| Annual cycle from 1 July, through 30 June, with grace through 14 July. | A paper form received on 14 July is within the window. A form received on 15 July needs the defined late-review route. |
+| A rule changes after a voting roll was certified. | Retain the edition used for the certified roll. Evaluate any corrected or new edition under its recorded policy and knowledge cutoff. |
 
 ## Incoming references
 

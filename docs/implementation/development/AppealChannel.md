@@ -15,7 +15,7 @@ Each named channel has at least one traceable invitation, event, offer or approv
 | `appeal_id` | ref FundraisingAppeal | Required when the record reaches its applicable state | [relation](../value-conventions.md#relation) |
 | `communication_campaign_id` | ref Campaign? | Optional under owner conditions | [relation](../value-conventions.md#relation) |
 | `event_id` | ref EventOccurrence? | Optional under owner conditions | [relation](../value-conventions.md#relation) |
-| `shop_offer_id` | ref Offer? | Optional under owner conditions | [relation](../value-conventions.md#relation) |
+| `external_offer_ref` | opaque_ref? | Optional under the authorized exchange | [resource](../value-conventions.md#resource) |
 | `source_code` | code | Required when the record reaches its applicable state | [vocab](../value-conventions.md#vocab) |
 | `attribution_window_days` | integer | Required when the record reaches its applicable state | [integer](../value-conventions.md#integer) |
 | `begins_at` | instant | Required when the record reaches its applicable state | [instant](../value-conventions.md#instant) |
@@ -65,18 +65,15 @@ The target is [EventOccurrence](../ministry/EventOccurrence.md). Resolve the ide
 | Target rename | Rename EventOccurrence·A01 after linking | The existing event_id keeps the same identity and historic documents retain their original wording. |
 | Absent in intake | No event_id provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
 
-### shop_offer_id
+### external_offer_ref
 
-The target is [Offer](../commerce/Offer.md). Resolve the identifier in the approved scope before using its fields.
+An appeal may identify an offer published by an external booking or retail provider. Campaign attribution counts the approved gift portion only. Store the issuer, owning church, opaque identifier and, for versioned evidence, the edition used. Resolving this reference requires separate authority at the issuer.
 
-| Probe | Input or observation | Expected result |
-| --- | --- | --- |
-| Admissible representation | Offer·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
-| Unresolved target | Offer·MISSING | Queue the missing Offer mapping or reject the command before linking. |
-| Wrong scope | Offer·B01 | Do not attach another church’s Offer without a supported exchange and local authority. |
-| Target rename | Rename Offer·A01 after linking | The existing shop_offer_id keeps the same identity and historic documents retain their original wording. |
-| Absent in intake | No shop_offer_id provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
+| Probe | Expected result |
+| --- | --- |
+| No connected service | Keep the reference empty. The church workflow can proceed using its local evidence and authorization. |
+| Same identifier from another church or issuer | Preserve the separate namespace and deny cross-church lookup. |
+| Late or corrected reference | Keep the earlier edition and the reason for replacement. Replaying an acknowledged revision preserves one link. |
 
 ### source_code
 

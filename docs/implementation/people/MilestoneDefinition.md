@@ -6,7 +6,7 @@
 
 Identity, audit fields, ownership and effective-date notation follow the [shared record envelope](../../foundation/record-conventions.md). A business key or parent-child uniqueness rule below remains enforceable even when an implementation also assigns an opaque identifier.
 
-A configurable non-sacramental milestone such as completing orientation, finishing a course or starting a year of service. Activities, rites and membership decisions keep their own authoritative records.
+A configurable non-sacramental milestone such as completing orientation, receiving an external completion attestation or starting a year of service. Activities, rites and membership decisions keep their own authoritative records.
 
 ## Field inventory
 

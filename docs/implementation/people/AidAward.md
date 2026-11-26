@@ -22,7 +22,7 @@ Repeatable partial awards with explicit limits. Require conflict-free approval a
 | `currency` | code? | Optional under owner conditions | [currency](../value-conventions.md#currency) |
 | `approved_quantity` | decimal? | Optional under owner conditions | [decimal](../value-conventions.md#decimal) |
 | `unit` | code? | Optional under owner conditions | [vocab](../value-conventions.md#vocab) |
-| `fund_ref` | → Fund? | Optional under owner conditions | [relation](../value-conventions.md#relation) |
+| `fund_ref` | ID? | Optional under owner conditions | [resource](../value-conventions.md#resource) |
 | `purpose` | code | Required when the record reaches its applicable state | [vocab](../value-conventions.md#vocab) |
 | `payee_kind` | code? | Optional under owner conditions | [vocab](../value-conventions.md#vocab) |
 | `payee_ref` | restricted ID? | Optional under owner conditions | [resource](../value-conventions.md#resource) |
@@ -135,7 +135,7 @@ Use monetary unit code for `AidAward.currency`. Resolve the code and its precisi
 | Malformed or unmapped | ambiguous $ | Request the unambiguous currency. |
 | Two amounts have different currencies | 24.50 NAD and 24.50 USD | Report separate totals or translate using recorded rates. |
 | Catalog changes after document issue | document issued before currency-profile revision | The stored document keeps its currency. |
-| Unrecognized imported code | unmapped monetary unit in staged transaction | Stage unmapped currency; block financial posting. |
+| Unrecognized imported code | unmapped monetary unit in staged transaction | Hold the row for currency mapping before an amount-dependent approval or exchange. |
 | Absent in intake | No currency provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
 
 ### approved_quantity
@@ -166,16 +166,14 @@ Use versioned classification or status code for `AidAward.unit`. Check the relev
 
 ### fund_ref
 
-The target is [Fund](../finance/Fund.md). Resolve the identifier in the approved scope before using its fields.
+This reference identifies the authorized funding source for the aid program or award. Resolve the church's mapping to the accounting provider and entity before requesting a financial commitment. A church designation can supply the ministry purpose. It cannot establish that funds are available. See [accounting exchange](../../finance/accounting-exchange.md).
 
-| Probe | Input or observation | Expected result |
-| --- | --- | --- |
-| Admissible representation | Fund·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
-| Unresolved target | Fund·MISSING | Queue the missing Fund mapping or reject the command before linking. |
-| Wrong scope | Fund·B01 | Do not attach another church’s Fund without a supported exchange and local authority. |
-| Target rename | Rename Fund·A01 after linking | The existing fund_ref keeps the same identity and historic documents retain their original wording. |
-| Absent in intake | No fund_ref provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
+| Probe | Expected result |
+| --- | --- |
+| The local source maps to one active source for this church and period. | Accept the mapping and retain its version with the request. |
+| A key belongs to another church or has two possible destinations. | Hold the financial handoff for a treasurer without exposing another organization's funding details. |
+| The provider retires a code after a confirmed payment. | Preserve the original confirmation. Future installments require a currently approved mapping. |
+| No source is available during intake. | Keep the optional field absent. The aid application can proceed to review, and a disbursement that requires a funding source waits. |
 
 ### purpose
 

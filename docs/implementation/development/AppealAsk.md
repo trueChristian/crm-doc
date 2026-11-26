@@ -6,7 +6,7 @@
 
 Identity, audit fields, ownership and effective-date notation follow the [shared record envelope](../../foundation/record-conventions.md). A business key or parent-child uniqueness rule below remains enforceable even when an implementation also assigns an opaque identifier.
 
-Acceptance can generate a finance pledge for review. Forecast amounts carry no ledger or receipt effect. Draft and declined asks never appear as amounts pledged.
+An accepted ask can create a pledge for the giving desk to verify. Forecast amounts carry no ledger or receipt effect. Draft and declined asks never appear as amounts pledged.
 
 ## Field inventory
 
@@ -62,7 +62,7 @@ Use monetary unit code for `AppealAsk.currency`. Resolve the code and its precis
 | Malformed or unmapped | ambiguous $ | Request the unambiguous currency. |
 | Two amounts have different currencies | 24.50 NAD and 24.50 USD | Report separate totals or translate using recorded rates. |
 | Catalog changes after document issue | document issued before currency-profile revision | The stored document keeps its currency. |
-| Unrecognized imported code | unmapped monetary unit in staged transaction | Stage unmapped currency; block financial posting. |
+| Unrecognized imported code | unmapped monetary unit in staged transaction | Hold the row for currency mapping before an amount-dependent approval or exchange. |
 | Absent in intake | No currency provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
 
 ### requested_kind

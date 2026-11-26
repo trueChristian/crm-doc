@@ -1,6 +1,6 @@
 # Bringing records in and keeping them trustworthy
 
-A new church can move from paper registers, spreadsheets and earlier software in stages. The migration lead owns a signed scope stating which years, congregations, kinds of evidence, attachments, restrictions, open balances and historic balances transfer. The applicable departmental custodian signs the reconciliation. Preserve a human-readable record of omissions and the reason for each.
+A new church can move from paper registers, spreadsheets and earlier software in stages. The migration lead owns a signed scope stating which years, congregations, kinds of evidence, attachments, restrictions, outstanding handoffs and historic gift records transfer. The applicable departmental custodian signs the reconciliation. Preserve a human-readable record of omissions and the reason for each.
 
 ## Logical records
 
@@ -20,16 +20,16 @@ A new church can move from paper registers, spreadsheets and earlier software in
 
 1. Inventory source authority and field ownership. Identify duplicates, multi-value cells, lost leading zeros, impossible dates, delayed transfers and missing photos. Distinguish zero from empty and explicitly cleared from absent. Keep partial birth dates at their actual precision. A report of suspect ages does not fill in birth dates.
 2. Start a dry run in a scoped staging area. Recognize encoding, delimiter, dates, decimal separators, phone format, time zone and translated codes. Validate references and relationship types before applying writes. Present counts for insert, update, skip, reject and ambiguous match; a custodian can sample before/after changes.
-3. Load parent records before dependent joins or defer unresolved references to a queue. Apply a declared unit atomically, for example one household and its household memberships, or one balanced journal and all lines. A batch may contain both committed units and review items. Record the disposition of every input row.
+3. Load parent records before dependent joins or defer unresolved references to a queue. Apply a declared unit atomically, for example one household and its household memberships, or one verified gift and all its designation allocations. A batch may contain both committed units and review items. Record the disposition of every input row.
 4. Map stable IDs, source provenance and rights first. Consent requires evidence appropriate to purpose. Unknown consent remains unknown. Do not trigger welcome emails, customer payments or published notices while replaying history. Activate downstream automation only at a specified and signed cutover.
 5. Check opening and closing totals per fund and currency, headcount by status and date, attachment counts or digests and orphan relationships. Reconcile skipped rows to source totals. Run a final delta against the agreed cutoff and preserve a read-only source snapshot for the approved duration. Give stewards a discrepancy queue.
-6. Restart from the last committed unit after interruption. Repeating a batch with the same changes returns previous operations. Conflicting changes since staging enter review. Undo before external delivery by compensating only rows owned by that batch. Where downstream postings or approvals exist, require a named compensating process and retain the chain.
+6. Restart from the last committed unit after interruption. Repeating a batch with the same changes returns previous operations. Conflicting changes since staging enter review. Undo before external delivery by compensating only rows owned by that batch. Where an external recipient has accepted a financial handoff or a church custodian has approved a change, require a named compensating process and retain the chain.
 
 ## Duplicate decisions
 
 Match deterministically on trusted source identifiers first. Similar names, an address, shared phone numbers, ambiguous transliterations and matching birth dates raise a candidate. They never prove a match unaided. Review the field provenance side by side, work from the least sensitive evidence needed, and choose the winner separately for each conflicting value. Include directed kinship, donation attribution, attendance, account links, active access grants, restrictions, effective dates and media consent in the impact preview.
 
-The keeper inherits valid references and the stricter active disclosure restrictions until reviewed. Merge participation links only where identifiers and domain keys agree. Consolidate alternate spellings as approved aliases. Preserve donor evidence, immutable journal and approved-minute references to their original subject through an alias. Two active personal accounts or contradictory safeguarding restrictions require escalation. Unmerging must distinguish pre-merge assignments from subsequent events and queue ambiguous links, with a record of how each was reallocated.
+The keeper inherits valid references and the stricter active disclosure restrictions until reviewed. Merge participation links only where identifiers and domain keys agree. Consolidate alternate spellings as approved aliases. Preserve donor evidence, external handoff references and approved-minute references to their original subject through an alias. Two active personal accounts or contradictory safeguarding restrictions require escalation. Unmerging must distinguish pre-merge assignments from subsequent events and queue ambiguous links, with a record of how each was reallocated.
 
 ## Acceptance
 

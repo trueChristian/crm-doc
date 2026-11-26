@@ -1,19 +1,22 @@
-# Commerce and fundraising decision tables
+# Church desk decisions
 
-These nine suites contain independent input-and-expected-output cases. Choose the policy matching the operation, open a range, enter the inputs in a fresh organization fixture, then compare the resulting outputs with that row. Monetary values are **integer minor units**, including amounts in the examples. Each table states its own order of operations, license window, recognition policy or cost method. The church must configure its actual policies separately.
+Each row starts with independent fixture data in one church unless a second church is explicitly named. Registration, delivery, publication approval and external money confirmations have different authorities. Record the input, permitted actor, resulting state, evidence and follow-up assignment for each scenario.
 
-A case ID identifies exactly one row. The ordering groups related input changes so a reviewer can follow boundary transitions. A replay uses the same source identity and must leave the first successful result unchanged. Do not treat a neighbouring case as the next transaction. For multi-event traces and reversal context use the [operations handbook](../../handbook/commerce/README.md).
+| Case | Inputs and operation | Verifiable result |
+| --- | --- | --- |
+| D01 · A waived place | One seat available. The registrar accepts an authorized full waiver for a named place. | One confirmed place and one live credential. No charge request. The door volunteer sees admission and the necessary safety details only. |
+| D02 · Partial family cancellation | Three places from the [family example](../../commerce/desk-handoffs.md). The charged child cancels. Provider times out after accepting the 20 adjustment. | One cancelled child place, two confirmed places, one pending adjustment until its original reference is resolved. Reconciliation leaves one completed adjustment. |
+| D03 · Late funding | A hold expires at 09:15. A waitlisted visitor accepts the last place at 09:16. Verified confirmation arrives at 09:17. | The waitlisted visitor keeps the confirmed place; the funded original enters review. A later provider replay creates no ticket or second refund request. |
+| D04 · Conflicting reference | Two responses carry one action identity, currency and unit; the second changes the amount. | Retain the first accepted observation and raise a discrepancy. No automatic change to eligibility or further financial request. |
+| D05 · Wrong church | Another congregation sends a genuine receipt bearing its own identifier but the same friendly booking code. | No cross-church match or disclosure. The connector receives the scoped rejection. |
+| D06 · Child collection | The booker presents a paid retreat ticket to collect a child. | The child collection desk still requires the separately authorized guardian or collector and handover. The ticket alone does not release the child. |
+| D07 · Donation at the desk | A visitor gives anonymously during a free resource pickup and declines contact. | The receiver records one anonymous gift and the steward records the resource movement. No inferred attendance, membership or contact permission. |
+| D08 · Bookstall redemption | A partner supplied two physical guides under a one-use pickup claim. The steward gave them out and a lost response causes a second scan. | Find the existing pickup receipt; no second pair of guides and no imported buyer profile. A return to the merchant produces no automatic return to the stall. |
+| D09 · Live-only service | A site viewer has service access. Rights for a song cover the live production; the proposed archive includes it. | The service can stream. Hold back the archive pending fresh clearance or an approved edit excluding the song. |
+| D10 · End boundary | A member-only replay ends at 10:00. Requests arrive at 09:59:59 and 10:00. | If all other rights permit, the first can start and the second is denied. The configured revocation interval bounds an existing session. |
+| D11 · Withdrawal and replay | The public transcript contains a private name; withdrawal is effective before an old release callback arrives. | The old callback cannot reinstate the transcript. Search, previews and controlled feeds suppress it, and unresolved external copies remain assigned. |
+| D12 · Unverified return | A hall renter presents a provider notification showing the deposit has been returned. The key is still signed out. | The payment view may show the verified deposit outcome. The custodian still owns the open key return and room inspection. |
 
-| Operation | Cases | Pages |
-| --- | ---: | ---: |
-| [Allocate a promotion and compute the quoted tax](01-quote/README.md) | 2,880 | 12 |
-| [Refund specific units to their original tenders](02-refund/README.md) | 4,800 | 20 |
-| [Issue, return and revalue original FIFO cost layers](03-fifo/README.md) | 4,158 | 18 |
-| [Prorate earned service against a paid plan change](04-proration/README.md) | 1,416 | 6 |
-| [Evaluate rental and rights boundaries for a named viewer](05-access/README.md) | 4,416 | 19 |
-| [Apply a licensed sale royalty and recoverable advance](06-royalties/README.md) | 2,480 | 11 |
-| [Recalculate qualifying gifts sponsor capacity and cash shortfall](07-match/README.md) | 1,920 | 8 |
-| [Measure sponsor entitlement after a cost disallowance](08-award/README.md) | 2,000 | 9 |
-| [Credit multi-component tax by returned unit](09-tax-credit/README.md) | 1,496 | 7 |
+Compare role-limited public, volunteer and administrator views, including exports, search results and notifications. Repeat accepted commands with the original idempotency keys. Where a provider is offline, the local record retains its pending or unknown outcome until the owning source supplies evidence.
 
-**Total coverage: 25,566 decisions.** Additional filters such as membership, organization, permissions and staff role belong in the access and workflow tests. They are not multiplied into the numerical suites when they would produce identical arithmetic.
+[Desk operations](../../handbook/commerce/README.md) · [Worked acceptance](../../acceptance/commerce/README.md)

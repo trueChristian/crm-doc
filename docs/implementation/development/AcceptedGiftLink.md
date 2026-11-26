@@ -6,7 +6,7 @@
 
 Identity, audit fields, ownership and effective-date notation follow the [shared record envelope](../../foundation/record-conventions.md). A business key or parent-child uniqueness rule below remains enforceable even when an implementation also assigns an opaque identifier.
 
-Unique source/target handoff. Link only records compatible with accepted terms. An intention can link a pledge when formally authorized; a posting requires the finance receipt or recognition decision.
+Unique source/target handoff. Link only records compatible with accepted terms. A formally authorized intention can link to a pledge. The giving desk verifies the actual receipt before reporting money received.
 
 ## Field inventory
 

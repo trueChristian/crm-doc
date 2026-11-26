@@ -133,7 +133,7 @@ Use versioned classification or status code for `GroupTerm.state`. Check the rel
 
 | Referencing record and field | Join key | Review when identity changes |
 | --- | --- | --- |
-| [CourseOffering](CourseOffering.md).`term_id` | GroupTerm identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
+| [GroupMeeting](GroupMeeting.md).`term_id` | GroupTerm identity | Preserve the roster link after cancellation, moves or a term closure. |
 | [GroupInvitation](GroupInvitation.md).`term_id` | GroupTerm identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [GroupJoinRule](GroupJoinRule.md).`term_id` | GroupTerm identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [GroupParticipation](GroupParticipation.md).`term_id` | GroupTerm identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |

@@ -6,7 +6,7 @@
 
 Identity, audit fields, ownership and effective-date notation follow the [shared record envelope](../../foundation/record-conventions.md). A business key or parent-child uniqueness rule below remains enforceable even when an implementation also assigns an opaque identifier.
 
-Finance owns deposit liability, invoicing, forfeiture approval and refunds. No facility operator can create cash or settle an invoice by completing a room inspection.
+The external accounting provider owns deposit liability, invoicing and refund status. Authorized church accounting staff approve any forfeiture under the agreed hire terms. No facility operator can create cash or settle an invoice by completing a room inspection.
 
 ## Field inventory
 

@@ -14,8 +14,8 @@ Cite an owned internal fact, approved evidence or explanatory narrative. Exclude
 | --- | --- | --- | --- |
 | `report_id` | ref SponsorReport | Required when the record reaches its applicable state | [relation](../value-conventions.md#relation) |
 | `outcome_id` | ref ProjectOutcome? | Optional under owner conditions | [relation](../value-conventions.md#relation) |
-| `award_cost_id` | ref AwardCost? | Optional under owner conditions | [relation](../value-conventions.md#relation) |
-| `finance_snapshot_id` | ref ReportSnapshot? | Optional under owner conditions | [relation](../value-conventions.md#relation) |
+| `accounting_cost_ref` | opaque_ref? | Optional under the authorized exchange | [resource](../value-conventions.md#resource) |
+| `accounting_snapshot_ref` | opaque_ref? | Optional under the authorized exchange | [resource](../value-conventions.md#resource) |
 | `narrative_text` | text? | Optional under owner conditions | [text](../value-conventions.md#text) |
 | `evidence_ref` | opaque_ref? | Optional under owner conditions | [resource](../value-conventions.md#resource) |
 | `disclosure_authority_ref` | opaque_ref? | Optional under owner conditions | [resource](../value-conventions.md#resource) |
@@ -51,31 +51,25 @@ The target is [ProjectOutcome](../ministry/ProjectOutcome.md). Resolve the ident
 | Target rename | Rename ProjectOutcome·A01 after linking | The existing outcome_id keeps the same identity and historic documents retain their original wording. |
 | Absent in intake | No outcome_id provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
 
-### award_cost_id
+### accounting_cost_ref
 
-The target is [AwardCost](../finance/AwardCost.md). Resolve the identifier in the approved scope before using its fields.
+The accounting service owns the evidence of an eligible cost. Record the approved amount and currency in the authorized reporting edition and retain this source reference. Store the issuer, owning church, opaque identifier and, for versioned evidence, the edition used. Resolving this reference requires separate authority at the issuer.
 
-| Probe | Input or observation | Expected result |
-| --- | --- | --- |
-| Admissible representation | AwardCost·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
-| Unresolved target | AwardCost·MISSING | Queue the missing AwardCost mapping or reject the command before linking. |
-| Wrong scope | AwardCost·B01 | Do not attach another church’s AwardCost without a supported exchange and local authority. |
-| Target rename | Rename AwardCost·A01 after linking | The existing award_cost_id keeps the same identity and historic documents retain their original wording. |
-| Absent in intake | No award_cost_id provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
+| Probe | Expected result |
+| --- | --- |
+| No connected service | Keep the reference empty. The church workflow can proceed using its local evidence and authorization. |
+| Same identifier from another church or issuer | Preserve the separate namespace and deny cross-church lookup. |
+| Late or corrected reference | Keep the earlier edition and the reason for replacement. Replaying an acknowledged revision preserves one link. |
 
-### finance_snapshot_id
+### accounting_snapshot_ref
 
-The target is [ReportSnapshot](../finance/ReportSnapshot.md). Resolve the identifier in the approved scope before using its fields.
+Where a sponsor requires a financial statement, link the authorized edition or signed extract supplied by the accounting office. The sponsor receives only evidence approved for its audience. Store the issuer, owning church, opaque identifier and, for versioned evidence, the edition used. Resolving this reference requires separate authority at the issuer.
 
-| Probe | Input or observation | Expected result |
-| --- | --- | --- |
-| Admissible representation | ReportSnapshot·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
-| Unresolved target | ReportSnapshot·MISSING | Queue the missing ReportSnapshot mapping or reject the command before linking. |
-| Wrong scope | ReportSnapshot·B01 | Do not attach another church’s ReportSnapshot without a supported exchange and local authority. |
-| Target rename | Rename ReportSnapshot·A01 after linking | The existing finance_snapshot_id keeps the same identity and historic documents retain their original wording. |
-| Absent in intake | No finance_snapshot_id provided | Keep the value absent and apply any conditional requirement at the relevant lifecycle step. |
+| Probe | Expected result |
+| --- | --- |
+| No connected service | Keep the reference empty. The church workflow can proceed using its local evidence and authorization. |
+| Same identifier from another church or issuer | Preserve the separate namespace and deny cross-church lookup. |
+| Late or corrected reference | Keep the earlier edition and the reason for replacement. Replaying an acknowledged revision preserves one link. |
 
 ### narrative_text
 

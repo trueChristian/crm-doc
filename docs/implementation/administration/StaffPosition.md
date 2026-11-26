@@ -19,7 +19,7 @@ A position can be vacant, shared or filled temporarily. Management chains have n
 | `department_ref` | scoped unit | Required at applicable lifecycle step | [resource](../value-conventions.md#resource) |
 | `campus_id` | optional Campus | Optional under owner conditions | [relation](../value-conventions.md#relation) |
 | `supervisor_position_id` | optional StaffPosition | Optional under owner conditions | [relation](../value-conventions.md#relation) |
-| `budget_dimension_ref` | → FinanceDimension | Required at applicable lifecycle step | [relation](../value-conventions.md#relation) |
+| `budget_dimension_ref` | opaque_ref? | Optional under the authorized exchange | [resource](../value-conventions.md#resource) |
 | `capacity_fte` | decimal | Required at applicable lifecycle step | [decimal](../value-conventions.md#decimal) |
 | `start_on` | dates | Required at applicable lifecycle step | [date](../value-conventions.md#date) |
 | `end_on` | dates | Required at applicable lifecycle step | [date](../value-conventions.md#date) |
@@ -121,16 +121,13 @@ The target is [StaffPosition](StaffPosition.md). Resolve the identifier in the a
 
 ### budget_dimension_ref
 
-The target is [FinanceDimension](../finance/FinanceDimension.md). Resolve the identifier in the approved scope before using its fields.
+The church controls staffing capacity and appointments. An optional external staffing or cost-centre reference supports an approved payroll export. Store the issuer, owning church, opaque identifier and, for versioned evidence, the edition used. Resolving this reference requires separate authority at the issuer.
 
-| Probe | Input or observation | Expected result |
-| --- | --- | --- |
-| Admissible representation | FinanceDimension·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
-| Unresolved target | FinanceDimension·MISSING | Queue the missing FinanceDimension mapping or reject the command before linking. |
-| Wrong scope | FinanceDimension·B01 | Do not attach another church’s FinanceDimension without a supported exchange and local authority. |
-| Target rename | Rename FinanceDimension·A01 after linking | The existing budget_dimension_ref keeps the same identity and historic documents retain their original wording. |
-| Incomplete record | No budget_dimension_ref at the step where the rule requires it | Identify the missing business fact before considering the record complete. |
+| Probe | Expected result |
+| --- | --- |
+| No connected service | Keep the reference empty. The church workflow can proceed using its local evidence and authorization. |
+| Same identifier from another church or issuer | Preserve the separate namespace and deny cross-church lookup. |
+| Late or corrected reference | Keep the earlier edition and the reason for replacement. Replaying an acknowledged revision preserves one link. |
 
 ### capacity_fte
 

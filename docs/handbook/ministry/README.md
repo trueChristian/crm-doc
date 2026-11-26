@@ -5,13 +5,13 @@ Choose the manual by the decision the operator needs to make. The [ministry reco
 | Operational decision | Manual | Acceptance evidence |
 | --- | --- | --- |
 | Which dated meetings exist, including moves and exceptions? | [Recurrence and calendar changes](recurrence.md) | Re-expand the same calendar across excluded dates and an offset change without losing registrations. |
-| Which seats belong to whom and how much remains refundable? | [Capacity, admission and priced units](admission.md) | Reconcile scarce seats, partial captures, bundle allocations and a family cancellation under replay. |
+| Which seats are funded, waiting or due for a refund review? | [Capacity, admission and provider decisions](admission.md) | Reconcile scarce seats, partial captures, provider acknowledgements and a family cancellation under replay. |
 | Who is responsible for this child at this moment? | [Child custody and room handover](supervision.md) | Recover interrupted transfers, evaluate current collection authority and reconcile an open session. |
 | How many people actually took part in a service or season? | [Counting participation through time](attendance.md) | Reproduce distinct-person counts, visit counts, anonymous observations and certified history. |
 | Who can serve without a conflict, fatigue or expired qualification? | [Rota construction and fair assignment](rota.md) | Reproduce candidate eligibility, a tie break, a standby substitution and coverage after a withdrawal. |
 | Can the church promise these rooms, stock and equipment? | [Reservations across rooms and equipment](facilities.md) | Resolve a partition, a pooled item, setup buffers and an interruption using one consistent plan. |
 | Which service order, music edition and media segment may each audience receive? | [Worship execution and media handoff](worship.md) | Follow one revision from planning to two differently cleared recordings. |
-| How does a learner move between classes and complete a pathway? | [Groups, education and progression](formation.md) | Close a term, transfer equivalent evidence, review a missing requirement and certify an outcome. |
+| How does a person move between church classes or request preparation review? | [Class transfers, mentoring and preparation](formation.md) | Close a term, verify a scoped issuer attestation, review a missing requirement and protect the signed register. |
 | Who and what actually travelled, and which assistance was delivered? | [Missions, transport and distribution](missions.md) | Reconcile passengers by segment and supplies by location without double counting a household. |
 
 ## Use during implementation review

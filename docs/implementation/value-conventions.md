@@ -64,7 +64,7 @@ Monetary unit code. Resolve the code and its precision as of the transaction.
 | currency symbol shared by multiple currencies | Request the unambiguous currency. |
 | Two amounts have different currencies | Report separate totals or translate using recorded rates. |
 | Catalog changes after document issue | The stored document keeps its currency. |
-| Unrecognized imported code | Stage unmapped currency; block financial posting. |
+| Unrecognized imported code | Hold the row for currency mapping before an amount-dependent approval or exchange. |
 
 ## date
 
@@ -402,3 +402,15 @@ Time zone with civil-time rules. Preserve zone identity; use the applicable loca
 | Staff view from a second zone | Show the requested local display without moving the actual instant. |
 | Zone changes for a campus | Re-evaluate future occurrences and retain historical issue evidence. |
 
+
+## interval
+
+Record the effective start and end together with the field's civil-date or instant basis. Use the [shared interval convention](../foundation/record-conventions.md). State whether a missing endpoint means open-ended or unknown. For an appointment valid from 1 June until 1 July, a 30 June duty is within the interval and a 1 July duty needs a new authority. Reject inverted intervals. A missing closing date on an application cannot by itself establish an active appointment.
+
+## operation
+
+Scope a retry key to the originating connection or actor, church and business action. Store the material input fingerprint and the original disposition. The same key and equivalent inputs returns the same record and status. Changed material inputs conflict. An interrupted submission whose receiver may have acted needs a lookup or reconciliation before a new external instruction. See [command outcomes](../handbook/business-commands.md).
+
+## references
+
+Where a field accepts a set of typed references, apply the [single-target relation rules](#relation) to every member and enforce the field's minimum, maximum and uniqueness rules. Reject an unauthorized or wrong-type member before applying the set. Two mentions of the same finding cannot count as two findings. An empty set, missing evidence and a set withheld from a particular reader have distinct reporting meanings.
