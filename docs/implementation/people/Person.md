@@ -57,7 +57,7 @@ The target is [Organization](../foundation/Organization.md). Resolve the identif
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Organization·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Organization·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Organization·MISSING | Queue the missing Organization mapping or reject the command before linking. |
 | Wrong scope | Organization·B01 | Do not attach another church’s Organization without a supported exchange and local authority. |
 | Target rename | Rename Organization·A01 after linking | The existing organization_id keeps the same identity and historic documents retain their original wording. |
@@ -278,7 +278,7 @@ The target is [Person](Person.md). Resolve the identifier in the approved scope 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Person·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Person·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Person·MISSING | Queue the missing Person mapping or reject the command before linking. |
 | Wrong scope | Person·B01 | Do not attach another church’s Person without a supported exchange and local authority. |
 | Target rename | Rename Person·A01 after linking | The existing canonical_person_id keeps the same identity and historic documents retain their original wording. |
@@ -328,6 +328,7 @@ Use revision number or opaque revision token for `Person.revision`. Compare unde
 | [CareParticipant](CareParticipant.md).`person_id` | Person identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [CareRequest](CareRequest.md).`requester_person_id` | Person identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [CareRequest](CareRequest.md).`subject_person_id` | Person identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
+| [CeremonyParty](../administration/CeremonyParty.md).`person_id` | Person identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [CeremonyRequest](../administration/CeremonyRequest.md).`coordinator_id` | Person identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [CertificateIssue](CertificateIssue.md).`recipient_person_id` | Person identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [ChannelBindingChallenge](../communications/ChannelBindingChallenge.md).`person_id` | Person identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
@@ -449,6 +450,7 @@ Use revision number or opaque revision token for `Person.revision`. Compare unde
 | [QuorumCheck](../governance/QuorumCheck.md).`certified_by` | Person identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [ReadinessCheck](../ministry/ReadinessCheck.md).`owner_id` | Person identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [ReadinessPlan](../ministry/ReadinessPlan.md).`owner_id` | Person identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
+| [RecruitmentCase](../administration/RecruitmentCase.md).`candidate_person_id` | Person identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [RegistrationPlace](../ministry/RegistrationPlace.md).`person_id` | Person identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [ReminderAcknowledgement](../communications/ReminderAcknowledgement.md).`responding_person_id` | Person identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |
 | [ReminderInstance](../communications/ReminderInstance.md).`subject_person_id` | Person identity | Inspect this reference in the source owner’s scope; preserve previous issue and correction history. |

@@ -46,7 +46,7 @@ The target is [Membership](Membership.md). Resolve the identifier in the approve
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | Membership·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | Membership·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | Membership·MISSING | Queue the missing Membership mapping or reject the command before linking. |
 | Wrong scope | Membership·B01 | Do not attach another church’s Membership without a supported exchange and local authority. |
 | Target rename | Rename Membership·A01 after linking | The existing membership_id keeps the same identity and historic documents retain their original wording. |
@@ -59,7 +59,7 @@ The target is [MembershipClass](MembershipClass.md). Resolve the identifier in t
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | MembershipClass·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | MembershipClass·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | MembershipClass·MISSING | Queue the missing MembershipClass mapping or reject the command before linking. |
 | Wrong scope | MembershipClass·B01 | Do not attach another church’s MembershipClass without a supported exchange and local authority. |
 | Target rename | Rename MembershipClass·A01 after linking | The existing class_id keeps the same identity and historic documents retain their original wording. |
@@ -124,7 +124,7 @@ The target is [MembershipPolicy](MembershipPolicy.md). Resolve the identifier in
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | MembershipPolicy·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | MembershipPolicy·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | MembershipPolicy·MISSING | Queue the missing MembershipPolicy mapping or reject the command before linking. |
 | Wrong scope | MembershipPolicy·B01 | Do not attach another church’s MembershipPolicy without a supported exchange and local authority. |
 | Target rename | Rename MembershipPolicy·A01 after linking | The existing policy_id keeps the same identity and historic documents retain their original wording. |
@@ -137,7 +137,7 @@ The target is [MembershipDecision](MembershipDecision.md). Resolve the identifie
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | MembershipDecision·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | MembershipDecision·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | MembershipDecision·MISSING | Queue the missing MembershipDecision mapping or reject the command before linking. |
 | Wrong scope | MembershipDecision·B01 | Do not attach another church’s MembershipDecision without a supported exchange and local authority. |
 | Target rename | Rename MembershipDecision·A01 after linking | The existing decision_id keeps the same identity and historic documents retain their original wording. |
