@@ -47,7 +47,7 @@ The target is [ReviewDocket](ReviewDocket.md). Resolve the identifier in the app
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ReviewDocket·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ReviewDocket·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ReviewDocket·MISSING | Queue the missing ReviewDocket mapping or reject the command before linking. |
 | Wrong scope | ReviewDocket·B01 | Do not attach another church’s ReviewDocket without a supported exchange and local authority. |
 | Target rename | Rename ReviewDocket·A01 after linking | The existing docket_id keeps the same identity and historic documents retain their original wording. |
@@ -60,7 +60,7 @@ The target is [UserAccount](../platform/UserAccount.md). Resolve the identifier 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | UserAccount·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | UserAccount·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | UserAccount·MISSING | Queue the missing UserAccount mapping or reject the command before linking. |
 | Wrong scope | UserAccount·B01 | Do not attach another church’s UserAccount without a supported exchange and local authority. |
 | Target rename | Rename UserAccount·A01 after linking | The existing decided_by keeps the same identity and historic documents retain their original wording. |
@@ -151,7 +151,7 @@ The target is [ReviewDecision](ReviewDecision.md). Resolve the identifier in the
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ReviewDecision·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ReviewDecision·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ReviewDecision·MISSING | Queue the missing ReviewDecision mapping or reject the command before linking. |
 | Wrong scope | ReviewDecision·B01 | Do not attach another church’s ReviewDecision without a supported exchange and local authority. |
 | Target rename | Rename ReviewDecision·A01 after linking | The existing follows_decision_id keeps the same identity and historic documents retain their original wording. |

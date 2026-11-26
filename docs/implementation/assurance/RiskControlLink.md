@@ -43,7 +43,7 @@ The target is [RiskEntry](RiskEntry.md). Resolve the identifier in the approved 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | RiskEntry·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | RiskEntry·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | RiskEntry·MISSING | Queue the missing RiskEntry mapping or reject the command before linking. |
 | Wrong scope | RiskEntry·B01 | Do not attach another church’s RiskEntry without a supported exchange and local authority. |
 | Target rename | Rename RiskEntry·A01 after linking | The existing risk_id keeps the same identity and historic documents retain their original wording. |
@@ -56,7 +56,7 @@ The target is [RiskControl](RiskControl.md). Resolve the identifier in the appro
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | RiskControl·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | RiskControl·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | RiskControl·MISSING | Queue the missing RiskControl mapping or reject the command before linking. |
 | Wrong scope | RiskControl·B01 | Do not attach another church’s RiskControl without a supported exchange and local authority. |
 | Target rename | Rename RiskControl·A01 after linking | The existing control_id keeps the same identity and historic documents retain their original wording. |

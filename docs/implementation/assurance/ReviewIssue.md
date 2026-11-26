@@ -47,7 +47,7 @@ The target is [ReviewDocket](ReviewDocket.md). Resolve the identifier in the app
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
 | Admissible representation | ReviewDocket·A01 | Resolve stable identity in the permitted scope. |
-| Malformed or unmapped | ReviewDocket·MISSING | Return a type mismatch without changing the link. |
+| Malformed or unmapped | existing object of a different type | Return a type mismatch without changing the link. |
 | Unresolved target | ReviewDocket·MISSING | Queue the missing ReviewDocket mapping or reject the command before linking. |
 | Wrong scope | ReviewDocket·B01 | Do not attach another church’s ReviewDocket without a supported exchange and local authority. |
 | Target rename | Rename ReviewDocket·A01 after linking | The existing docket_id keeps the same identity and historic documents retain their original wording. |
@@ -95,6 +95,7 @@ Use human-readable text for `ReviewIssue.reason`. Preserve the meaningful spelli
 ### evidence_refs
 
 Use ordered collection or mathematical set for `ReviewIssue.evidence_refs`. Preserve ordering when meaningful; enforce uniqueness when the declaration is a set.
+Field access: enforce the declared protection on reads, search, previews, exports and audit evidence as well as the underlying list value.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
@@ -121,6 +122,7 @@ Use unambiguous point in time for `ReviewIssue.response_due_at`. Compare as the 
 ### response_ref
 
 Use scoped or external reference for `ReviewIssue.response_ref`. Resolve against the permitted kind, owning namespace and purpose.
+Field access: enforce the declared protection on reads, search, previews, exports and audit evidence as well as the underlying resource value.
 
 | Probe | Input or observation | Expected result |
 | --- | --- | --- |
